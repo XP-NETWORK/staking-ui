@@ -1,5 +1,6 @@
 import "./Navbar.css"
 import xplogo from "../../assets/XpLogo.png"
+import metaLogo from "../../assets/MetaMask_Fox.svg"
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -11,8 +12,8 @@ export default function Navbar() {
                 <div className="Claim nav__button"><Link to='/claim'>Claim XPNET</Link></div>
             </div>
             <div className="metamask">
-                <div className="metamask__status">!!</div>
-                <div className="metamask__icon">Icon</div>
+                <div className="metamask__status"><div className="online"></div></div>
+                <div className="metamask__icon"><img src={metaLogo} alt="" /></div>
                 <div className="metamask__title">MetaMask</div>
             </div>
         </div>

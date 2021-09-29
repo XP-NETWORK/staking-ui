@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Stake.css"
 import image from "../../assets/Rectangle.png"
+import i from "../../assets/i.svg"
 
 export default function Stake() {
     return (
@@ -59,7 +60,15 @@ export default function Stake() {
                         </div>
                     </div>
                 </div>
-                <div className="stake__info">Info</div>
+                <div className="stake__info">
+                    <div className="info__title">
+                        <img src={i} alt="" />
+                        <span>It is a long</span>
+                    </div>
+                    <div className="info__text">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    </div>
+                </div>
             </div>
             <div className="summary">Summary</div>
         </div>

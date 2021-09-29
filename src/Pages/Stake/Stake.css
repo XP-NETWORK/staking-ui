@@ -244,8 +244,20 @@
     margin: 0 30px;
     padding: 16px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
     background: #F4F7FF;
     border: 1px solid #2A61EE;
     box-sizing: border-box;
     border-radius: 6px;
+}
+
+.info__title {
+    display: flex;
+}
+
+.info__title span{
+    padding-left: 14px;
 }
