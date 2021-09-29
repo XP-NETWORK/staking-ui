@@ -2,13 +2,14 @@ import React from 'react'
 import "./Stake.css"
 import image from "../../assets/Rectangle.png"
 import i from "../../assets/i.svg"
+import lock from "../../assets/Lock.svg"
 
 export default function Stake() {
     return (
         <div className="stake__container">
             <div className="stake">
                 <div className="stake__title">My Stake</div>
-                <div className="stake-line"></div>
+                <div className="line"></div>
                 <div className="stake__duration">
                     <div className="duration__header">
                         Staking Duration
@@ -70,7 +71,42 @@ export default function Stake() {
                     </div>
                 </div>
             </div>
-            <div className="summary">Summary</div>
+            <div className="summary">
+                <div className="stake__title">Summary</div>
+                <div className="line"></div>
+                <div className="summary__details">
+                    <div className="details details__amount">
+                        <div className="details__capture">Staking Amount</div>
+                        <div className="details__text">1.00 XPNET<span>$ 0.070</span></div>
+                    </div>
+                    <div className="details details__start">
+                        <div className="details__capture">Start Date</div>
+                        <div className="details__text">2021-09-27 12:34</div>
+                    </div>
+                    <div className="details details__end">
+                        <div className="details__capture">Start End</div>
+                        <div className="details__text">2021-03-06 12:34</div>
+                    </div>
+                    <div className="line"></div>
+                    <div className="details details__apy">
+                        <div className="details__capture">Est. APY</div>
+                        <div className="details__text">45%</div>
+                    </div>
+                    <div className="details details__rewards">
+                        <div className="details__capture">Estimated APY</div>
+                        <div className="details__text">368 XPNET<span>$ 12.050</span></div>
+                    </div>
+                    <div className="line"></div>
+                    <div className="agreement">
+                     <input type="checkbox" name="agree" id="agree" />
+                     <div className="agreement__text">
+                      I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
+                     </div>
+                    </div>
+                <div className="summary__button">Approve</div>
+                <div className="summary__button"></div>
+                </div>
+            </div>
         </div>
     )
 }
