@@ -109,6 +109,7 @@
 .stake__amount{
     display: flex;
     flex-direction: column;
+    margin-bottom: 26px;
 }
 
 .amount__header{
@@ -140,6 +141,35 @@
 .amount__input input{
     width: 100%;
     height: 48px;
+    background: #FBFCFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding-left: 16px;
+}
+
+
+.amount__input input:focus{
+    outline: none;
+}
+
+.rewards__header{
+    padding: 0 30px 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 126%;
+    letter-spacing: 0.03em;
+}
+
+.rewards{
+    margin: 0 30px;
+    padding: 15px;
+    width: 562px;
+    height: 170px;
+    
     background: #FBFCFF;
     border: 1px solid #E5E8F0;
     box-sizing: border-box;

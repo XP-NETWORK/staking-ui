@@ -39,7 +39,13 @@ export default function Stake() {
                         <input type="text" />
                     </div>
                     </div>
-                <div className="stake__rewards">Rewards</div>
+                <div className="stake__rewards">
+                    <div className="rewards__header">
+                        <div className="rewards__title">Staking Rewards</div>
+                        <div className="rewards__percent">45%</div>
+                    </div>
+                    <div className="rewards">Rewards</div>
+                </div>
                 <div className="stake__info">Info</div>
             </div>
             <div className="summary">Summary</div>
