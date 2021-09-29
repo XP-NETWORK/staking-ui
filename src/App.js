@@ -1,17 +1,15 @@
 
 import './App.css';
-import Navbar from './Navbar/Navbar';
 import './Normalize.css'
-import { Route, Switch } from "react-router-dom";
+import Navbar from './Navbar/Navbar';
+import Main from "./Pages/Main/Main"
 
 
 function App() {
   return (
     <div className="app__wraper">
       <Navbar />
-      <Switch>
-
-      </Switch>
+      <Main />
     </div>
   );
 }
