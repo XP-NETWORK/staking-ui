@@ -5,7 +5,8 @@
 
 .stake{
     width: 622px;
-    height: 660px;
+    height: 720px;
+    padding: 30px 0;
 
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
@@ -18,8 +19,8 @@
 
 .summary{
     width: 486px;
-    height: 660px;
-
+    height: 720px;
+    padding: 30px 0;
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
@@ -29,7 +30,7 @@
 .stake__title{
 
     padding-left: 30px;
-    padding-top: 22px;
+    /* padding-top: 22px; */
     padding-bottom: 22px;
 
     font-style: normal;
@@ -128,6 +129,7 @@
 
 
 .amount__subtitle{
+    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -153,6 +155,34 @@
     outline: none;
 }
 
+.amount__input{
+    position: relative;
+}
+
+.input__items{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.input__items .max{
+    width: 76px;
+    height: 32px;
+    left: 654px;
+    top: 319px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 14px;
+
+    background: #ECEDF3;
+    border-radius: 6px;
+}
+
 .rewards__header{
     padding: 0 30px 15px 30px;
     display: flex;
@@ -165,13 +195,57 @@
 }
 
 .rewards{
-    margin: 0 30px;
+    margin: 0 30px 25px 30px;
     padding: 15px;
     width: 562px;
     height: 170px;
+
+    display: flex;
+    justify-content: space-between;
     
     background: #FBFCFF;
     border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.rewards__widget{
+    flex-basis: 140px;
+}
+
+.rewards__widget img{
+    width: 100%;
+}
+
+.rewards__content{
+    flex-basis: 355px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.rewards__subtitle{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 146%;
+
+    padding-bottom: 19px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+}
+
+.stake__info{
+    width: 562px;
+    height: 108px;
+    
+    margin: 0 30px;
+    padding: 16px;
+
+    background: #F4F7FF;
+    border: 1px solid #2A61EE;
     box-sizing: border-box;
     border-radius: 6px;
 }

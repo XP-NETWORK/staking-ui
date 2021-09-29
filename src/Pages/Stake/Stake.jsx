@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Stake.css"
+import image from "../../assets/Rectangle.png"
 
 export default function Stake() {
     return (
@@ -37,14 +38,26 @@ export default function Stake() {
                     </div>
                     <div className="amount__input">
                         <input type="text" />
+                        <div className="input__items">
+                            <div className="xpnet">XPNET</div>
+                            <div className="max">MAX</div>
+                        </div>
                     </div>
-                    </div>
+                </div>
                 <div className="stake__rewards">
                     <div className="rewards__header">
                         <div className="rewards__title">Staking Rewards</div>
                         <div className="rewards__percent">45%</div>
                     </div>
-                    <div className="rewards">Rewards</div>
+                    <div className="rewards">
+                        <div className="rewards__widget">
+                            <img src={image} alt="Reward art" />
+                        </div>
+                        <div className="rewards__content">
+                            <div className="rewards__subtitle">Don't wait 3 month - get your NFT Reward right NOW</div>
+                            <div className="rewards__text">It is a long established fact that a reader will be content of a page when.</div>
+                        </div>
+                    </div>
                 </div>
                 <div className="stake__info">Info</div>
             </div>
