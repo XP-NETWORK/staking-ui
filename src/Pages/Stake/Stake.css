@@ -1,0 +1,147 @@
+.stake__container{
+    display: flex;
+    gap: 32px;
+}
+
+.stake{
+    width: 622px;
+    height: 660px;
+
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+
+    font-family: Inter;
+    color: #040D27;
+}
+
+.summary{
+    width: 486px;
+    height: 660px;
+
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.stake__title{
+
+    padding-left: 30px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 126%;
+}
+
+.stake-line{
+    height: 0;
+    border: 1px solid #E5E8F0;
+    margin-bottom: 11px;
+}
+
+.stake__duration{
+    padding: 0 30px;
+    font-family: Inter;
+}
+
+.duration__header{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 126%;
+    margin-bottom: 18px;
+}
+
+.durations__container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 26px;
+}
+
+.duration{
+    flex-basis: 125px;
+    height: 79px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: rgba(229, 232, 240, 0.5);
+ 
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.duration--active{
+    background: #FFFFFF; 
+    border: 1px solid #3180F7; 
+}
+
+.duration__title{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 126%;
+    letter-spacing: 0.03em;
+}
+
+.duration__subtitle{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 126%;
+    letter-spacing: 0.03em;
+    color: #1D1D1D;
+}
+
+.stake__amount{
+    padding: 0 30px;
+    display: flex;
+}
+
+.stake__amount{
+    display: flex;
+    flex-direction: column;
+}
+
+.amount__header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.amount__title{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 126%;
+    letter-spacing: 0.03em;
+}
+
+
+.amount__subtitle{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 126%;
+}
+
+.amount__subtitle span{
+    font-weight: 600;
+}
+
+.amount__input input{
+    width: 100%;
+    height: 48px;
+    background: #FBFCFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}

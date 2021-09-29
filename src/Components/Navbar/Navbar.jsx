@@ -1,5 +1,5 @@
 import "./Navbar.css"
-import xplogo from "../assets/XpLogo.png"
+import xplogo from "../../assets/XpLogo.png"
 import { Link } from "react-router-dom";
 
 export default function Navbar() {

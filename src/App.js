@@ -1,7 +1,7 @@
 
 import './App.css';
 import './Normalize.css'
-import Navbar from './Navbar/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 
 
