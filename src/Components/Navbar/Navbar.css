@@ -24,6 +24,10 @@
     justify-self: flex-end;
 }
 
+.metamask:hover{
+    cursor: pointer;
+}
+
 .nav__button--active{
     width: 126px;
     height: 32px;
