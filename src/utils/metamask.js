@@ -3,7 +3,7 @@ import ABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { chengeStatus } from "../redux/counterSlice";
 
-let contract = '0x31444E7110f33Db6CD6F23663BA21ea764139d78'
+let contract = '0x332CF8E0F619241E13731b0D7F002463F11c7a22'
 const W3 = new Web3(window.ethereum)
 
 let accounts
