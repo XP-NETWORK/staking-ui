@@ -33,7 +33,7 @@
 
 .nft{
     width: 486px;
-    height: 720px;
+    height: 640px;
     padding: 30px 0;
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
@@ -211,6 +211,20 @@
     border-radius: 4px;
 }
 
-.nft__widget img{
+
+
+.address__icon img{
     width: 100%;
+}
+
+.nft__address{
+    display: flex;
+    height: 48px;
+    padding: 13px;
+    margin-top: 6px;
+    justify-content: space-between;
+    background: #FBFCFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
 }

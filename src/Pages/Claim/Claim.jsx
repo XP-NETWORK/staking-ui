@@ -56,7 +56,9 @@ export default function Claim() {
                     </div>
                     <div className="nft__address">
                         <div className="address">dfghjklertyuiokjhgvrtyuiopkjh678ijbnm</div>
-                        <img src={pages} alt="" />
+                        <div className="address__icon">
+                            <img src={pages} alt="" />
+                        </div>
                     </div>
                 </div>
             </div>
