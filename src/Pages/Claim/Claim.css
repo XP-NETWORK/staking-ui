@@ -1,5 +1,7 @@
 .claim__container{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 32px;
 }
 
@@ -57,7 +59,7 @@
 
 .claim__capture{
     font-weight: 500;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 126%;
     
 
@@ -96,7 +98,7 @@
 
 .progress__title{
     font-weight: 500;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 126%;
     
 
@@ -109,7 +111,7 @@
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 126%;
     /* or 18px */
 
