@@ -6,6 +6,14 @@ import lock from "../../assets/lock.png"
 import Duration from "../../Components/Duration/Duration"
 
 export default function Stake() {
+
+const durations = [
+    {d:3, p: 45},
+    {d:6, p: 75},
+    {d:9, p: 100},
+    {d:1, p: 125},
+]
+
     return (
         <div className="stake__container">
             <div className="stake">
@@ -16,10 +24,9 @@ export default function Stake() {
                         Staking Duration
                     </div>
                     <div className="durations__container">
-                        <Duration month={3} apy={45} />
-                        <Duration month={6} apy={75} />
-                        <Duration month={9} apy={100} />
-                        <Duration month={1} apy={125} />
+                        {durations.map((e,i) => {
+                           return <Duration month={e.d} apy={e.p} key={i} />
+                        })}
                     </div>
                 </div>
                 <div className="stake__amount">
