@@ -3,9 +3,9 @@
     gap: 32px;
 }
 
-.claim__reward{
+.claim{
     width: 622px;
-    height: 720px;
+    height: 640px;
     padding: 30px 0;
 
     background: #FFFFFF;
@@ -15,6 +15,20 @@
 
     font-family: Inter;
     color: #040D27;
+
+    border: 1px solid #E5E8F0;
+}
+
+.claim__title{
+
+    padding-left: 30px;
+    /* padding-top: 22px; */
+    padding-bottom: 22px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 126%;
 }
 
 .nft{
@@ -25,4 +39,178 @@
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
+    border: 1px solid #E5E8F0;
+}
+
+.claim__details{
+    display: flex;
+    flex-direction: column;
+
+    padding: 30px;
+}
+
+.claim__det{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.claim__capture{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 126%;
+    
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+}
+
+.claim__text{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+    /* or 20px */
+
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.03em;
+
+    color: #040D27;
+}
+
+.progress-bar{
+    display: flex;
+    flex-direction: column;
+
+    margin:40px 0;
+}
+
+.progress__header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.progress__title{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 126%;
+    
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+}
+
+.progress__remaining{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 126%;
+    /* or 18px */
+
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.03em;
+
+    color: #686E7D;
+}
+
+.bar{
+    height: 9px;
+    background: #ECEDF3;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar__prog{
+    position: absolute;
+    background: #9AA1B9;
+    height: 9px;
+    /* width: 1px; */
+    left: 0px;
+}
+
+
+.claim__button{
+    width: 562px;
+    height: 44px;
+    background-color: #3180F7;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: #FFF;
+}
+
+.claim__button--disabled{
+    width: 562px;
+    height: 44px;
+    background-color: #ECEDF3;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: #1D1D1D;
+    opacity: 0.3;
+}
+
+.un-stake{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+    width: 562px;
+    height: 44px;
+    margin-top: 10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: #1D1D1D;
+}
+
+.un-stake span{
+    padding-left:15px;
+}
+
+.nft__title{
+    padding-left: 30px;
+    /* padding-top: 22px; */
+    padding-bottom: 22px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 126%;
+}
+
+.nft__content{
+    padding: 30px;
+}
+
+.nft__widget{
+    width: 426px;
+    height: 426px;
+    border-radius: 4px;
+}
+
+.nft__widget img{
+    width: 100%;
 }

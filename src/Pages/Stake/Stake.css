@@ -15,6 +15,7 @@
 
     font-family: Inter;
     color: #040D27;
+    border: 1px solid #E5E8F0;
 }
 
 .summary{
@@ -25,6 +26,7 @@
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
+    border: 1px solid #E5E8F0;
 }
 
 .stake__title{
