@@ -25,7 +25,7 @@ const durations = [
                     </div>
                     <div className="durations__container">
                         {durations.map((e,i) => {
-                           return <Duration month={e.d} apy={e.p} key={i} />
+                           return <Duration month={e.d} apy={e.p} key={i} index={i} />
                         })}
                     </div>
                 </div>

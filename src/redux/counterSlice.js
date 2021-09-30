@@ -12,13 +12,13 @@ export const counterSlice = createSlice({
       chengeStatus(state, action){
         state.connected = action.payload
       },
-      chengeDuraion(state, action){
+      changeDuraion(state, action){
         state.duration = action.payload 
       },
     },
   })
 
   // Action creators are generated for each case reducer function
-export const { chengeStatus, chengeDuraion } = counterSlice.actions
+export const { chengeStatus, changeDuraion } = counterSlice.actions
 
 export default counterSlice.reducer
