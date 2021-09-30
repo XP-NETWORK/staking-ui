@@ -4,8 +4,12 @@ import image from "../../assets/Rectangle.png"
 import i from "../../assets/i.svg"
 import lock from "../../assets/lock.png"
 import Duration from "../../Components/Duration/Duration"
+import { useDispatch, useSelector } from 'react-redux'
+
 
 export default function Stake() {
+
+const duration = useSelector(state => state.data.duration)
 
 const durations = [
     {d:3, p: 45},
@@ -13,6 +17,18 @@ const durations = [
     {d:9, p: 100},
     {d:1, p: 125},
 ]
+
+const getPercent = () => {
+    let percent
+    durations.forEach(item => {
+        // debugger
+        if(item.d === duration){
+            percent = item.p
+        }
+    })
+    return percent
+}
+getPercent()
 
     return (
         <div className="stake__container">
@@ -45,7 +61,7 @@ const durations = [
                 <div className="stake__rewards">
                     <div className="rewards__header">
                         <div className="rewards__title">Staking Rewards</div>
-                        <div className="rewards__percent">45%</div>
+                        <div className="rewards__percent">{getPercent()}%</div>
                     </div>
                     <div className="rewards">
                         <div className="rewards__widget">
@@ -86,7 +102,7 @@ const durations = [
                     <div className="line"></div>
                     <div className="details details__apy">
                         <div className="details__capture">Est. APY</div>
-                        <div className="details__text">45%</div>
+                        <div className="details__text">{getPercent()}%</div>
                     </div>
                     <div className="details details__rewards">
                         <div className="details__capture">Estimated APY</div>

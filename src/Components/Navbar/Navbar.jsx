@@ -18,9 +18,9 @@ export default function Navbar() {
         // dispatch(chengeStatus(true))
     }
 
-    useEffect(() => {
-        console.log("metaMaskStatus", metaMaskStatus)
-    }, [metaMaskStatus])
+    // useEffect(() => {
+    //     console.log("metaMaskStatus", metaMaskStatus)
+    // }, [metaMaskStatus])
 
     return (
         <div className="navbar">
