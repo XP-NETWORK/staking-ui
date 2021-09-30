@@ -322,6 +322,8 @@
     display: flex;
     padding: 16px;
 
+    margin: 50px 0 16px 0;
+
     gap: 15px;
 
     background: #F4F7FF;
@@ -343,4 +345,31 @@
 .agreement input{
     width: 18px;
     height: 18px;
+}
+
+.button{
+    width: 426px;
+    height: 44px;
+    color: #fff;
+    background: #3180F7;
+    border-radius: 6px;
+    margin: 12px 0;
+}
+
+.lock{
+    width: 426px;
+    height: 44px;
+    background-color: #ECEDF3;
+    border-radius: 6px;
+    margin: 12px 0;
+}
+
+.lock span{
+    margin-left: 10px;
+} 
+
+.summary__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

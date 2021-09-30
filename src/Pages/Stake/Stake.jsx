@@ -2,7 +2,7 @@ import React from 'react'
 import "./Stake.css"
 import image from "../../assets/Rectangle.png"
 import i from "../../assets/i.svg"
-import lock from "../../assets/Lock.svg"
+import lock from "../../assets/lock.png"
 
 export default function Stake() {
     return (
@@ -103,8 +103,8 @@ export default function Stake() {
                       I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
                      </div>
                     </div>
-                <div className="summary__button">Approve</div>
-                <div className="summary__button"></div>
+                <div className="summary__button button">Approve</div>
+                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
                 </div>
             </div>
         </div>
