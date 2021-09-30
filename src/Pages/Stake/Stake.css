@@ -147,6 +147,7 @@
 
     background: #ECEDF3;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .rewards__header{

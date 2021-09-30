@@ -31,45 +31,29 @@ const queryData = async () => {
 
 export const initMetaMask = async () => {
     // debugger
-
-    if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
-        accounts = await getAccounts()
-        if(accounts && accounts.length > 0) {
-            store.dispatch(chengeStatus(true))
-            queryData()
-        } else {
-            store.dispatch(chengeStatus(false))
-            console.log("Need to connect.")
+    
+    if(ethereum){
+        const chainId = await W3.eth.getChainId()
+        ethereum.on('accountsChanged', a => {
+            // debugger
+            console.log("...")
+            store.dispatch(chengeStatus(a.length > 0))
+            // accounts = a
+            // console.log("metaMask connected.")
+            // queryData()
+        })    
+        if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
+            accounts = await getAccounts()
+            if(accounts && accounts.length > 0) {
+                store.dispatch(chengeStatus(true))
+                queryData()
+            } else {
+                store.dispatch(chengeStatus(false))
+                console.log("Need to connect.")
+            }
+        }
+        else{
+            console.log("MetaMask is required.")
         }
     }
-    else{
-        console.log("MetaMask is required.")
-    }
-
-  
-    //   if(ethereum){ 
-    //     const chainId = await W3.eth.getChainId()
-    //     ethereum.on('chainChenged', chainId => {window.location.reload()})
-    //     if(chainId === 56){
-    //         ethereum.on('accountsChenged', a => {
-    //             accounts = a
-    //             console.log("metaMask connected.")
-    //             queryData()
-    //     })
-    //     if(typeof ethereum !== 'undefined' && ethereum.isMetaMask){
-    //             accounts = await getAccounts()
-    //             console.log(accounts)
-    //             if(accounts && accounts.loggedIn > 0){
-    //                 queryData()
-    //                 }
-    //                 else{
-
-    //                 }
-    //             }
-    //         }
-    //         }
-    //         else{
-    //         console.log("MetaMask is required.")
-    //     }
-
 }

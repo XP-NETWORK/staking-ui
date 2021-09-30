@@ -7,7 +7,6 @@ export default function Duration({ month, apy, index }) {
 
     const dispatch = useDispatch()
     const dur = useSelector(state => state.data.duration)
-    console.log(dur)
     const durationHandler = (i) => {
         const duration = i === 0 ? 3 : i === 1 ? 6 : i === 2 ? 9 : 1
         

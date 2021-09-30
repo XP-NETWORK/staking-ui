@@ -15,11 +15,11 @@ export default function Navbar() {
     const dispatch = useDispatch()
     const toggleMetaMask = () => {
         connectMetaMask()
-        dispatch(chengeStatus(true))
+        // dispatch(chengeStatus(true))
     }
 
     useEffect(() => {
-        
+        console.log("metaMaskStatus", metaMaskStatus)
     }, [metaMaskStatus])
 
     return (
