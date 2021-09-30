@@ -64,44 +64,6 @@
     margin-bottom: 26px;
 }
 
-.duration{
-    flex-basis: 125px;
-    height: 79px;
-    padding: 16px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    background: rgba(229, 232, 240, 0.5);
- 
-    box-sizing: border-box;
-    border-radius: 6px;
-}
-
-.duration--active{
-    background: #FFFFFF; 
-    border: 1px solid #3180F7; 
-}
-
-.duration__title{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 126%;
-    letter-spacing: 0.03em;
-}
-
-.duration__subtitle{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 126%;
-    letter-spacing: 0.03em;
-    color: #1D1D1D;
-}
-
 .stake__amount{
     padding: 0 30px;
     display: flex;

@@ -3,6 +3,7 @@ import "./Stake.css"
 import image from "../../assets/Rectangle.png"
 import i from "../../assets/i.svg"
 import lock from "../../assets/lock.png"
+import Duration from "../../Components/Duration/Duration"
 
 export default function Stake() {
     return (
@@ -15,22 +16,10 @@ export default function Stake() {
                         Staking Duration
                     </div>
                     <div className="durations__container">
-                        <div className="duration duration--active">
-                            <div className="duration__title">3 month</div>
-                            <div className="duration__subtitle">APY 45%</div>
-                        </div>
-                        <div className="duration">
-                            <div className="duration__title">6 month</div>
-                            <div className="duration__subtitle">APY 75%</div>
-                        </div>
-                        <div className="duration">
-                            <div className="duration__title">9 month</div>
-                            <div className="duration__subtitle">APY 100%</div>
-                        </div>
-                        <div className="duration">
-                            <div className="duration__title">1 year</div>
-                            <div className="duration__subtitle">APY 125%</div>
-                        </div>
+                        <Duration month={3} apy={45} />
+                        <Duration month={6} apy={75} />
+                        <Duration month={9} apy={100} />
+                        <Duration month={1} apy={125} />
                     </div>
                 </div>
                 <div className="stake__amount">

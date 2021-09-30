@@ -1,0 +1,28 @@
+.claim__container{
+    display: flex;
+    gap: 32px;
+}
+
+.claim__reward{
+    width: 622px;
+    height: 720px;
+    padding: 30px 0;
+
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+
+    font-family: Inter;
+    color: #040D27;
+}
+
+.nft{
+    width: 486px;
+    height: 720px;
+    padding: 30px 0;
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
