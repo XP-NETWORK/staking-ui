@@ -6,6 +6,8 @@ import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
 import { getActualTime } from "./redux/counterSlice"
 import { useDispatch } from "react-redux"
+import { logXPContract } from "../src/utils/xpnet"
+import { logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 
 
@@ -23,6 +25,8 @@ const doDate = () => {
     doDate()
     setInterval(doDate, 1000);
     initMetaMask()
+    logXPContract()
+    logStakeContract()
   }, [])
 
   return (
