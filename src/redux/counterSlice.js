@@ -3,6 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     connected: false,
     duration: 3,
+    startDate: '',
+    stakingAmount: 0,
+    stakeContract: undefined,
+    account: ''
 }
 
 export const counterSlice = createSlice({
@@ -15,10 +19,25 @@ export const counterSlice = createSlice({
       changeDuraion(state, action){
         state.duration = action.payload 
       },
+      getActualTime(state, action){
+        state.startDate = action.payload
+      },
+      changeStakingAmount(state, action){
+        state.stakingAmount = action.payload
+      },
+      updateAccount(state, action){
+        state.account = action.payload
+      }
     },
   })
 
-  // Action creators are generated for each case reducer function
-export const { chengeStatus, changeDuraion } = counterSlice.actions
+
+export const { 
+  chengeStatus,
+  changeDuraion,
+  getActualTime,
+  changeStakingAmount,
+  updateAccount
+} = counterSlice.actions
 
 export default counterSlice.reducer

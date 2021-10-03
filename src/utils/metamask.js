@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import ABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
-import { chengeStatus } from "../redux/counterSlice";
+import { chengeStatus, updateAccount } from "../redux/counterSlice";
 
 let contract = '0x332CF8E0F619241E13731b0D7F002463F11c7a22'
 const W3 = new Web3(window.ethereum)
@@ -12,6 +12,7 @@ const { ethereum } = window
 const getAccounts = async () => {
     const accounts = await ethereum.request({ method: 'eth_accounts' })
     console.log(accounts)
+    store.dispatch(updateAccount(accounts[0]))
     return accounts
 }
 
@@ -23,9 +24,13 @@ export const connectMetaMask = function() {
 
 const queryData = async () => {
     // debugger
+    try{
         const Contract = await new W3.eth.Contract(ABI, contract)
         console.log(Contract)
-
+    }
+    catch(error){
+        console.log(error)
+    }
 
 }
 

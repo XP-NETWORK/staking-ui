@@ -5,12 +5,17 @@ import i from "../../assets/i.svg"
 import lock from "../../assets/lock.png"
 import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
+import moment from 'moment';
+import { useState } from 'react'
+import { changeStakingAmount } from "../../redux/counterSlice"
 
 
 export default function Stake() {
-
+const dispatch = useDispatch()
+const [amount, setAmount] = useState("")
 const duration = useSelector(state => state.data.duration)
-
+const startDate = useSelector(state => state.data.startDate)
+const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
 const durations = [
     {d:3, p: 45},
     {d:6, p: 75},
@@ -28,6 +33,24 @@ const getPercent = () => {
     })
     return percent
 }
+
+const amountHandler = (e) => {
+    const reg = new RegExp('^[0-9]+$');
+    const num = Number(e.target.value)
+    if(reg.test(num)){
+        setAmount(e.target.value)
+        dispatch(changeStakingAmount(num))
+    }
+}
+
+const onBlurHandler = (e) => {
+    // debugger
+    const num = e.target.value
+    if(num === "0"){
+        setAmount("")
+    }
+}
+
 getPercent()
 
     return (
@@ -51,7 +74,7 @@ getPercent()
                         <div className="amount__subtitle">Availabe for Staking: <span>892.06 XPNET</span></div>
                     </div>
                     <div className="amount__input">
-                        <input type="text" />
+                        <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                         <div className="input__items">
                             <div className="xpnet">XPNET</div>
                             <div className="max">MAX</div>
@@ -89,15 +112,15 @@ getPercent()
                 <div className="summary__details">
                     <div className="details details__amount">
                         <div className="details__capture">Staking Amount</div>
-                        <div className="details__text">1.00 XPNET<span>$ 0.070</span></div>
+                        <div className="details__text">{amount} XPNET<span>$ 0.070</span></div>
                     </div>
                     <div className="details details__start">
                         <div className="details__capture">Start Date</div>
-                        <div className="details__text">2021-09-27 12:34</div>
+                        <div className="details__text">{startDate}</div>
                     </div>
                     <div className="details details__end">
-                        <div className="details__capture">Start End</div>
-                        <div className="details__text">2021-03-06 12:34</div>
+                        <div className="details__capture">End Date</div>
+                        <div className="details__text">{endDate}</div>
                     </div>
                     <div className="line"></div>
                     <div className="details details__apy">
