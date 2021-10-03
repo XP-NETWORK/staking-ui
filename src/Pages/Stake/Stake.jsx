@@ -1,4 +1,5 @@
 import React from 'react'
+import Web3 from "web3"
 import "./Stake.css"
 import image from "../../assets/Rectangle.png"
 import i from "../../assets/i.svg"
@@ -8,11 +9,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState } from 'react'
 import { changeStakingAmount } from "../../redux/counterSlice"
+import { approve } from "../../utils/xpnet"
 
 
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
+const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
 const balance = useSelector(state => state.data.balance)
@@ -143,7 +146,7 @@ getPercent()
                       I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
                      </div>
                     </div>
-                <div className="summary__button button">Approve</div>
+                <div onClick={() => approve(account)} className="summary__button button">Approve</div>
                 <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
                 </div>
             </div>

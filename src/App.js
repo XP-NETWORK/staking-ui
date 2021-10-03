@@ -35,7 +35,7 @@ const doDate = () => {
     doDate()
     setInterval(doDate, 1000);
     initMetaMask()
-    // logXPContract()
+    logXPContract()
     // logStakeContract()
   }, [])
 

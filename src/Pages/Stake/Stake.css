@@ -321,6 +321,7 @@
     background: #3180F7;
     border-radius: 6px;
     margin: 12px 0;
+    cursor: pointer;
 }
 
 .lock{
