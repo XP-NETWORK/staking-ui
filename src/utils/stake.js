@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 
-let stakeAddress = '0x332CF8E0F619241E13731b0D7F002463F11c7a22'
+let stakeAddress = '0x7Db98eD5d52c33329d66228c946a4D3c853E62B6'
 const W3 = new Web3(window.ethereum)
 
 const stakeContract = async () => {
@@ -19,3 +19,14 @@ export const logStakeContract = async () => {
     const stContract = await stakeContract()
     console.log("stake contract: ", stContract)
 }
+
+// export const checkBalance = async (address) => {
+//     // debugger
+//     try{
+//         const balance = await stakeContract.methods.balanceOf({from: address}).call()
+//         return balance
+//     }
+//     catch(error){
+//         console.log(error)
+//     }
+// }

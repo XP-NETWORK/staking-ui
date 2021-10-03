@@ -39,3 +39,10 @@
     letter-spacing: 0.03em;
     color: #1D1D1D;
 }
+
+
+@media screen and (max-width: 425px) {
+    .duration{
+        flex-basis: 160px;
+    }
+}

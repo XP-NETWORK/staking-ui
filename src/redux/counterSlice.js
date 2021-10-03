@@ -5,8 +5,8 @@ const initialState = {
     duration: 3,
     startDate: '',
     stakingAmount: 0,
-    stakeContract: undefined,
-    account: ''
+    account: '',
+    balance: 0,
 }
 
 export const counterSlice = createSlice({
@@ -27,6 +27,9 @@ export const counterSlice = createSlice({
       },
       updateAccount(state, action){
         state.account = action.payload
+      },
+      updateBalance(state, action){
+        state.balance = action.payload
       }
     },
   })
@@ -37,7 +40,8 @@ export const {
   changeDuraion,
   getActualTime,
   changeStakingAmount,
-  updateAccount
+  updateAccount,
+  updateBalance
 } = counterSlice.actions
 
 export default counterSlice.reducer

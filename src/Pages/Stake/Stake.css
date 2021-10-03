@@ -6,7 +6,7 @@
 }
 
 .stake{
-    width: 622px;
+    max-width: 622px;
     height: 720px;
     padding: 30px 0;
 
@@ -21,7 +21,7 @@
 }
 
 .summary{
-    width: 486px;
+    max-width: 486px;
     height: 720px;
     padding: 30px 0;
     background: #FFFFFF;
@@ -164,7 +164,7 @@
 .rewards{
     margin: 0 30px 25px 30px;
     padding: 15px;
-    width: 562px;
+    max-width: 562px;
     height: 170px;
 
     display: flex;
@@ -205,7 +205,7 @@
 }
 
 .stake__info{
-    width: 562px;
+    max-width: 562px;
     height: 108px;
     
     margin: 0 30px;
@@ -339,4 +339,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 425px) {
+    .durations__container{
+        flex-wrap: wrap;
+    }
 }

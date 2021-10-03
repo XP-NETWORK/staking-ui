@@ -15,6 +15,7 @@ const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
+const balance = useSelector(state => state.data.balance)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
 const durations = [
     {d:3, p: 45},
@@ -32,6 +33,10 @@ const getPercent = () => {
         }
     })
     return percent
+}
+
+const putMax = () => {
+    setAmount(balance)
 }
 
 const amountHandler = (e) => {
@@ -71,13 +76,13 @@ getPercent()
                 <div className="stake__amount">
                     <div className="amount__header">
                         <div className="amount__title">Enter your XPNET amount</div>
-                        <div className="amount__subtitle">Availabe for Staking: <span>892.06 XPNET</span></div>
+                        <div className="amount__subtitle">Availabe for Staking: <span>{balance} XPNET</span></div>
                     </div>
                     <div className="amount__input">
                         <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                         <div className="input__items">
                             <div className="xpnet">XPNET</div>
-                            <div className="max">MAX</div>
+                            <div onClick={ () => putMax()} className="max">MAX</div>
                         </div>
                     </div>
                 </div>
