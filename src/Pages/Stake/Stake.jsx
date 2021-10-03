@@ -16,7 +16,6 @@ export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const approved = useSelector(state => state.data.approved)
-console.log(approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
@@ -61,7 +60,24 @@ const onBlurHandler = (e) => {
     }
 }
 
-getPercent()
+const checkApprovance = () => {
+    if(!approved){
+        return (
+        <div>
+            <div onClick={() => approve(account)} className="summary__button button">Approve</div>
+            <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+        </div>
+        )
+    }
+    else{
+       return (
+        <div>
+           <div className="summary__button lock">Approved</div>
+           <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
+       </div>
+       )
+    }
+}
 
     return (
         <div className="stake__container">
@@ -148,8 +164,9 @@ getPercent()
                       I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
                      </div>
                     </div>
-                <div onClick={() => approve(account)} className="summary__button button">Approve</div>
-                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+                   {/* <div onClick={() => approve(account)} className="summary__button button">Approve</div> */}
+                    {checkApprovance()}
+                    {/* <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div> */}
                 </div>
             </div>
         </div>

@@ -334,7 +334,11 @@
 
 .lock span{
     margin-left: 10px;
-} 
+}
+
+.button span{
+    margin-left: 10px;
+}
 
 .summary__button{
     display: flex;
