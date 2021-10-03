@@ -16,6 +16,7 @@ const getAccounts = async () => {
 
 export const connectMetaMask = function() { 
     ethereum.request({ method: 'eth_requestAccounts' })
+    getAccounts()
 }
 
 export const initMetaMask = async () => {
@@ -27,6 +28,7 @@ export const initMetaMask = async () => {
             // debugger
             console.log("...")
             store.dispatch(chengeStatus(a.length > 0))
+            getAccounts()
         })    
         if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
             accounts = await getAccounts()

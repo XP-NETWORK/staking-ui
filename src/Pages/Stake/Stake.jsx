@@ -7,7 +7,7 @@ import lock from "../../assets/lock.png"
 import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { changeStakingAmount } from "../../redux/counterSlice"
 import { approve } from "../../utils/xpnet"
 
@@ -60,24 +60,49 @@ const onBlurHandler = (e) => {
     }
 }
 
+
 const checkApprovance = () => {
-    if(!approved){
-        return (
-        <div>
-            <div onClick={() => approve(account)} className="summary__button button">Approve</div>
-            <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
-        </div>
-        )
+    if(account){
+        if(!approved){
+            return (
+            <div>
+                <div onClick={() => approve(account)} className="summary__button button">Approve</div>
+                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+            </div>
+            )
+        }
+        else{
+           return (
+            <div>
+               <div className="summary__button lock">Approved</div>
+               <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
+           </div>
+           )
+        }
     }
     else{
-       return (
-        <div>
-           <div className="summary__button lock">Approved</div>
-           <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
-       </div>
-       )
+        if(!approved){
+            return (
+            <div>
+                <div className="summary__button lock">Approve</div>
+                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+            </div>
+            )
+        }
+        else{
+           return (
+            <div>
+               <div className="summary__button lock">Approved</div>
+               <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
+           </div>
+           )
+        }
     }
+    
 }
+
+useEffect(() => {
+}, [account])
 
     return (
         <div className="stake__container">
