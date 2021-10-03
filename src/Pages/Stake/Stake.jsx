@@ -15,6 +15,8 @@ import { approve } from "../../utils/xpnet"
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
+const approved = useSelector(state => state.data.approved)
+console.log(approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)

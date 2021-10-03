@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import XPNET from "../ABI/XPToken.json"
 import { store } from "../redux/store"
-import { updateBalance } from "../redux/counterSlice"
+import { updateBalance, updateApproved } from "../redux/counterSlice"
 
 let xpAddress = "0xbc53f71E12007b93Ed2868E5f6CAE1D2ceB7287C"
 const W3 = new Web3(window.ethereum)
@@ -46,7 +46,10 @@ export const approve = async (account) => {
         const Contract = await xpContract()
         console.log("approve", Contract)
         Contract.methods.approve(xpAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
-        .once('receipt', function(receipt){ console.log(receipt) })
+        .once('receipt', function(receipt){
+            console.log(receipt) 
+            store.dispatch(updateApproved(true))
+            })
     }
     catch(error){
         console.log(error)

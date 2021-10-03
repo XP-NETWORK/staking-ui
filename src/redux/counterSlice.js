@@ -33,7 +33,7 @@ export const counterSlice = createSlice({
         state.balance = action.payload
       },
       updateApproved(state, action){
-        state.balance = action.payload
+        state.approved = action.payload
       }
     },
   })
