@@ -21,9 +21,14 @@ export const logStakeContract = async () => {
 }
 
 export const stake = async (amonut, duration) => {
-    console.log("stake")
+    debugger
+    const weiValue = Web3.utils.toWei(amonut, 'ether');
+    const durInSec = duration*2629746
     try{
-
+        const Contract = await stakeContract()
+        Contract.methods.stake(weiValue,durInSec).send()
+        .once('receipt', function(receipt){
+            console.log(receipt)})
     }
     catch(error){
         console.log(console.error())
