@@ -1,16 +1,18 @@
 import "./Navbar.css"
 import xplogo from "../../assets/XpLogo.png"
 import metaLogo from "../../assets/MetaMask_Fox.svg"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { connectMetaMask } from "../../utils/metamask"
 import { useSelector, useDispatch } from 'react-redux'
 import { chengeStatus } from "../../redux/counterSlice";
 import { useEffect, useState } from "react"
 
+
 export default function Navbar() {
 
     const [rendered, setRendered] = useState('stake')
-
+    const location = useLocation();
+    console.log(location.pathname); 
     const metaMaskStatus = useSelector(state => state.data.connected)
     const dispatch = useDispatch()
     const toggleMetaMask = () => {

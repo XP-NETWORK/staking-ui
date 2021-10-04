@@ -3,8 +3,16 @@ import "./Claim.css"
 import unlock from "../../assets/unlock.png"
 import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
+import { useState, useEffect } from 'react'
+import { getProgress } from '../../utils/helper'
+
  
 export default function Claim() {
+
+    useEffect(() => {
+        getProgress()
+    }, [])
+
     return (
         <div className="claim__container">
             <div className="claim">
@@ -17,7 +25,7 @@ export default function Claim() {
                     </div>
                     <div className="claim__det claim__apy">
                         <div className="claim__capture">APY</div>
-                        <div className="claim__text">45%</div>
+                        <div className="claim__text">100%</div>
                     </div>
                     <div className="claim__det claim__reward">
                         <div className="claim__capture">Staking Reward</div>
@@ -37,7 +45,7 @@ export default function Claim() {
                             <div className="progress__remaining">60 days remaining</div>
                         </div>
                         <div className="bar">
-                            <div style={{width: `${25}%`}} className="bar__prog"></div>
+                            <div style={{width: `${getProgress()}%`}} className="bar__prog"></div>
                         </div>
                     </div>
                     <div className="claim__button">Claim XPNET</div>

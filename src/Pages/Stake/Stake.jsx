@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
 import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
+import { getPercent } from "../../utils/helper"
 import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
 
@@ -32,16 +33,16 @@ const durations = [
     {d:1, p: 125},
 ]
 
-const getPercent = () => {
-    let percent
-    durations.forEach(item => {
-        // debugger
-        if(item.d === duration){
-            percent = item.p
-        }
-    })
-    return percent
-}
+// const getPercent = () => {
+//     let percent
+//     durations.forEach(item => {
+//         // debugger
+//         if(item.d === duration){
+//             percent = item.p
+//         }
+//     })
+//     return percent
+// }
 
 const putMax = () => {
     setAmount(balance)
@@ -156,7 +157,7 @@ useEffect(() => {
                 <div className="stake__rewards">
                     <div className="rewards__header">
                         <div className="rewards__title">Staking Rewards</div>
-                        <div className="rewards__percent">{getPercent()}%</div>
+                        <div className="rewards__percent">{getPercent(durations, duration)}%</div>
                     </div>
                     <div className="rewards">
                         <div className="rewards__widget">
@@ -184,7 +185,7 @@ useEffect(() => {
                 <div className="summary__details">
                     <div className="details details__amount">
                         <div className="details__capture">Staking Amount</div>
-                        <div className="details__text">{amount} XPNET<span>$ {(amount*currentPrice.toFixed(2))}</span></div>
+                        <div className="details__text">{amount} XPNET<span>$ {(amount*currentPrice).toFixed(2)}</span></div>
                     </div>
                     <div className="details details__start">
                         <div className="details__capture">Start Date</div>
@@ -197,11 +198,11 @@ useEffect(() => {
                     <div className="line"></div>
                     <div className="details details__apy">
                         <div className="details__capture">Est. APY</div>
-                        <div className="details__text">{getPercent()}%</div>
+                        <div className="details__text">{getPercent(durations, duration)}%</div>
                     </div>
                     <div className="details details__rewards">
                         <div className="details__capture">Estimated APY</div>
-                        <div className="details__text">{getRewards()} XPNET<span>$ 1{(getRewards()*currentPrice).toFixed(2)}</span></div>
+                        <div className="details__text">{getRewards()} XPNET<span>$ {(getRewards()*currentPrice).toFixed(2)}</span></div>
                     </div>
                     <div className="line"></div>
                     <div className="agreement">
