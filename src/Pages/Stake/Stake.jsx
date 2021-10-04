@@ -16,7 +16,6 @@ export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const allowence = Number(useSelector(state => state.data.allowence))
-console.log(allowence)
 const agreement = useSelector(state => state.data.agreement)
 const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
@@ -63,6 +62,17 @@ const onBlurHandler = (e) => {
     }
 }
 
+const getRewards = () => {
+    // debugger
+    const rewards = duration === 3 ? 
+    amount*0.1125 :
+    duration === 6 ?
+    amount*0.375 :
+    duration === 9 ?
+    amount*0.75 :
+    amount*1.25
+    return rewards
+}
 
 const checkApprovance = () => {
     // debugger
@@ -189,7 +199,7 @@ useEffect(() => {
                     </div>
                     <div className="details details__rewards">
                         <div className="details__capture">Estimated APY</div>
-                        <div className="details__text">368 XPNET<span>$ 12.050</span></div>
+                        <div className="details__text">{getRewards()} XPNET<span>$ 12.050</span></div>
                     </div>
                     <div className="line"></div>
                     <div className="agreement">
