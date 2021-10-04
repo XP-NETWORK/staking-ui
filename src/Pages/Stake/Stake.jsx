@@ -15,7 +15,8 @@ import { approve } from "../../utils/xpnet"
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
-const allowence = useSelector(state => state.data.allowence)
+const allowence = Number(useSelector(state => state.data.allowence))
+console.log(allowence)
 const agreement = useSelector(state => state.data.agreement)
 const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
@@ -64,9 +65,10 @@ const onBlurHandler = (e) => {
 
 
 const checkApprovance = () => {
-    // If metamask coonnected
+    // debugger
     if(account && agreement){
-        if(allowence || approved){
+        // debugger
+        if(allowence){
             return (
             <div>
                <div className="summary__button lock">Approved</div>
