@@ -6,8 +6,9 @@ import Claim from "../../Pages/Claim/Claim"
 export default function Main() {
     return (
     <Switch>
-        <Route exact path="/stake"><Stake /></Route>
-        <Route exact path="/claim"><Claim /></Route>
+        <Route exact path="/"><Stake /></Route>
+        <Route path="/stake"><Stake /></Route>
+        <Route path="/claim"><Claim /></Route>
     </Switch>
     )
 }

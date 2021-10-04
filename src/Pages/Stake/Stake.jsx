@@ -8,13 +8,15 @@ import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
-import { changeStakingAmount } from "../../redux/counterSlice"
+import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
 import { approve } from "../../utils/xpnet"
 
 
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
+const allowence = useSelector(state => state.data.allowence)
+const agreement = useSelector(state => state.data.agreement)
 const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
@@ -62,8 +64,17 @@ const onBlurHandler = (e) => {
 
 
 const checkApprovance = () => {
-    if(account){
-        if(!approved){
+    // If metamask coonnected
+    if(account && agreement){
+        if(allowence || approved){
+            return (
+            <div>
+               <div className="summary__button lock">Approved</div>
+               <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
+            </div>
+           )
+        }
+        else{
             return (
             <div>
                 <div onClick={() => approve(account)} className="summary__button button">Approve</div>
@@ -71,38 +82,34 @@ const checkApprovance = () => {
             </div>
             )
         }
-        else{
-           return (
-            <div>
-               <div className="summary__button lock">Approved</div>
-               <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
-           </div>
-           )
-        }
     }
+    // else if(!account || !agreement){
+    //     return (
+    //         <div>
+    //             <div className="summary__button lock">Approve</div>
+    //             <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+    //         </div>
+    //     )
+    // }
     else{
-        if(!approved){
-            return (
+        return (
             <div>
                 <div className="summary__button lock">Approve</div>
                 <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
             </div>
-            )
-        }
-        else{
-           return (
-            <div>
-               <div className="summary__button lock">Approved</div>
-               <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
-           </div>
-           )
-        }
-    }
-    
+        )
+    } 
+}
+
+const agreementHandler = () => {
+    dispatch(updateAgreement())
 }
 
 useEffect(() => {
 }, [account])
+
+useEffect(() => {
+}, [allowence])
 
     return (
         <div className="stake__container">
@@ -184,7 +191,7 @@ useEffect(() => {
                     </div>
                     <div className="line"></div>
                     <div className="agreement">
-                     <input type="checkbox" name="agree" id="agree" />
+                     <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" />
                      <div className="agreement__text">
                       I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
                      </div>

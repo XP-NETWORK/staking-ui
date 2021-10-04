@@ -1,9 +1,11 @@
 import Web3 from "web3"
 import XPNET from "../ABI/XPToken.json"
 import { store } from "../redux/store"
-import { updateBalance, updateApproved } from "../redux/counterSlice"
+import { updateBalance, updateApproved, updateAllowence } from "../redux/counterSlice"
 
-let xpAddress = "0xbc53f71E12007b93Ed2868E5f6CAE1D2ceB7287C"
+
+export let xpAddress = "0xbc53f71E12007b93Ed2868E5f6CAE1D2ceB7287C"
+
 const W3 = new Web3(window.ethereum)
 
 const xpContract = async () => {
@@ -38,13 +40,13 @@ export const checkBalance = async (address) => {
 
 export const approve = async (account) => {
     // console.log("heelo approve", balance)
-    console.log("approve", account)
+    // console.log("approve", account)
     // const weiValue = Web3.utils.toWei(balance, 'ether');
 
     // console.log(weiValue)
     try{
         const Contract = await xpContract()
-        console.log("approve", Contract)
+        // console.log("approve", Contract)
         Contract.methods.approve(xpAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
         .once('receipt', function(receipt){
             console.log(receipt) 
@@ -54,5 +56,18 @@ export const approve = async (account) => {
     catch(error){
         console.log(error)
     }
-} 
+}
+
+export const checkAllowence = async (owner) => {
+    // console.log("checking allowens...")
+    // console.log(owner)
+    try{
+        const Contract = await xpContract()
+        const allowence = await Contract.methods.allowance(owner, xpAddress).call()
+        store.dispatch(updateAllowence(allowence))
+    }
+    catch(error){
+        console.log(error)
+    }
+}
 

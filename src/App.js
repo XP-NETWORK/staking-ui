@@ -6,7 +6,7 @@ import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
 import { getActualTime } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { logXPContract, checkBalance } from "../src/utils/xpnet"
+import { logXPContract, checkBalance, checkAllowence } from "../src/utils/xpnet"
 import { logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 
@@ -29,6 +29,7 @@ const doDate = () => {
 }
   useEffect(() => {
    if(address) updateBalance()
+   checkAllowence(address)
   }, [address])
 
   useEffect(() => {
