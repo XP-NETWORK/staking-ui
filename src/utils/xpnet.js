@@ -2,9 +2,10 @@ import Web3 from "web3"
 import XPNET from "../ABI/XPToken.json"
 import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence } from "../redux/counterSlice"
+import { stakeAddress } from "./stake"
 
 
-export let xpAddress = "0xAcFB2E7d6e6272f192D0D573A9bD1CC9d534dE1c"
+export let xpAddress = "0x54fd94B987af0e75c839Df8a66de3a7F4d9bCEdD"
 
 const W3 = new Web3(window.ethereum)
 
@@ -29,11 +30,9 @@ export const checkBalance = async (address) => {
     try{
         const Contract = await xpContract()
         const weiBalance = await Contract.methods.balanceOf(address).call()
-   
         const balance = Web3.utils.fromWei(weiBalance, 'ether');
         console.log(balance)
         store.dispatch(updateBalance(balance))
-
         return balance
     }
     catch(error){
@@ -42,15 +41,10 @@ export const checkBalance = async (address) => {
 }
 
 export const approve = async (account) => {
-    // console.log("heelo approve", balance)
-    // console.log("approve", account)
-    // const weiValue = Web3.utils.toWei(balance, 'ether');
-
-    // console.log(weiValue)
     try{
         const Contract = await xpContract()
         // console.log("approve", Contract)
-        Contract.methods.approve(xpAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
+        Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
         .once('receipt', function(receipt){
             console.log(receipt) 
             store.dispatch(updateApproved(true))
@@ -62,11 +56,10 @@ export const approve = async (account) => {
 }
 
 export const checkAllowence = async (owner) => {
-    // console.log("checking allowens...")
-    // console.log(owner)
     try{
         const Contract = await xpContract()
-        const allowence = await Contract.methods.allowance(owner, xpAddress).call()
+        console.log(owner, 'hello', stakeAddress)
+        const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
         store.dispatch(updateAllowence(allowence))
     }
     catch(error){

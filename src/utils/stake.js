@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 
-let stakeAddress = '0xe01D2743E56aaAFc7A8c27bA2F9623FA2e0D11D5'
+export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
 const W3 = new Web3(window.ethereum)
 
 const stakeContract = async () => {
@@ -20,13 +20,14 @@ export const logStakeContract = async () => {
     console.log("stake contract: ", stContract)
 }
 
-export const stake = async (amonut, duration, account) => {
+export const stake = async (amount, duration, account) => {
     debugger
-    const weiValue = Web3.utils.toWei(amonut, 'ether');
-    const durInSec = duration*2629746
+    // const weiValue = Web3.utils.toWei(amonut, 'ether');
+    const durInSec = 60*60*24*(duration * 30)
     try{
+        console.log(durInSec, amount, duration)
         const Contract = await stakeContract()
-        Contract.methods.stake(weiValue,durInSec).send({from:account})
+        Contract.methods.stake(Number(amount), durInSec).send({from:account})
         .once('receipt', function(receipt){
             console.log(receipt)})
     }

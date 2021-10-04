@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url("./assets/background_gradiant.4992cf895e6b2f4a07d7.png");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 code {

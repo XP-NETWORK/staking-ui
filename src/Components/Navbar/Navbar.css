@@ -1,13 +1,9 @@
 .navbar{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     /* border: 1px solid black; */
-    align-items: center;
-}
-
-.nav{
-    display: flex;
     align-items: center;
 }
 
@@ -22,7 +18,7 @@
 }
 
 .metamask{
-    justify-self: flex-end;
+    margin-left: 522px;
 }
 
 .metamask:hover{
@@ -102,13 +98,20 @@
 }
 
 @media screen and (max-width: 425px) {
-    .durations__container{
-        flex-wrap: wrap;
-    }
-    .stake{
-
-    }
-    .summary{
+    .navbar{
+        width: 425px;
+        justify-content: center;
+        gap: 10px;
         
+    }
+    .xp__logo{
+        order: -2;
+        padding: 10px 0;
+    }
+    .metamask{
+        order: -1;
+        margin: 0px;
+        padding: 10px 0;
+
     }
 }

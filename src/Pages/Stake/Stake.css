@@ -315,7 +315,7 @@
 }
 
 .button{
-    width: 426px;
+    max-width: 426px;
     height: 44px;
     color: #fff;
     background: #3180F7;
@@ -325,7 +325,7 @@
 }
 
 .lock{
-    width: 426px;
+    max-width: 426px;
     height: 44px;
     background-color: #ECEDF3;
     border-radius: 6px;
@@ -347,13 +347,49 @@
 }
 
 @media screen and (max-width: 425px) {
+    .stake__container{
+        max-width: 425px;
+        margin: 10px;
+    }
     .durations__container{
         flex-wrap: wrap;
     }
     .stake{
-
+        max-width: 400px;
+        padding: 15px 10px;
+        height: auto;
+    }
+    .stake__title{
+        padding-left: 10px;
+    }
+    .stake__duration{
+        padding: 0;
+    }
+    .stake__amount{
+        padding: 0;
+    }
+    .durations__container{
+        justify-content: space-around;
+        
+    }
+    .amount__subtitle{
+        display: flex;
     }
     .summary{
-        
+        max-width: 400px;
+        padding: 10px;
+        /* padding: 0; */
+    }
+    .summary__details{
+        padding: 0;
+    }
+    .rewards__header{
+        padding: 10px 0;
+    }
+    .rewards{
+        margin: 0;
+    }
+    .stake__info{
+        margin: 10px 0;
     }
 }
