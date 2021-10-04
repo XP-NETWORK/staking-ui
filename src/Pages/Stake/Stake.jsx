@@ -184,7 +184,7 @@ useEffect(() => {
                 <div className="summary__details">
                     <div className="details details__amount">
                         <div className="details__capture">Staking Amount</div>
-                        <div className="details__text">{amount} XPNET<span>$ {amount*currentPrice}</span></div>
+                        <div className="details__text">{amount} XPNET<span>$ {(amount*currentPrice.toFixed(2))}</span></div>
                     </div>
                     <div className="details details__start">
                         <div className="details__capture">Start Date</div>
@@ -201,7 +201,7 @@ useEffect(() => {
                     </div>
                     <div className="details details__rewards">
                         <div className="details__capture">Estimated APY</div>
-                        <div className="details__text">{getRewards()} XPNET<span>$ 1{getRewards()*currentPrice}</span></div>
+                        <div className="details__text">{getRewards()} XPNET<span>$ 1{(getRewards()*currentPrice).toFixed(2)}</span></div>
                     </div>
                     <div className="line"></div>
                     <div className="agreement">
