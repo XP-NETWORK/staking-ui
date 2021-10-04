@@ -77,7 +77,7 @@ const getRewards = () => {
 
 const checkApprovance = () => {
     // debugger
-    if(account && agreement){
+    if(account && agreement && amount){
         // debugger
         if(allowence){
             return (
