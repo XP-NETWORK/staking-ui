@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
 import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
+import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
 
 
@@ -82,7 +83,7 @@ const checkApprovance = () => {
             return (
             <div>
                <div className="summary__button lock">Approved</div>
-               <div className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
+               <div onClick={() => stake(amount, duration)} className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
             </div>
            )
         }
@@ -208,9 +209,7 @@ useEffect(() => {
                       I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
                      </div>
                     </div>
-                   {/* <div onClick={() => approve(account)} className="summary__button button">Approve</div> */}
                     {checkApprovance()}
-                    {/* <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div> */}
                 </div>
             </div>
         </div>

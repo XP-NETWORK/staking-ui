@@ -20,13 +20,12 @@ export const logStakeContract = async () => {
     console.log("stake contract: ", stContract)
 }
 
-// export const checkBalance = async (address) => {
-//     // debugger
-//     try{
-//         const balance = await stakeContract.methods.balanceOf({from: address}).call()
-//         return balance
-//     }
-//     catch(error){
-//         console.log(error)
-//     }
-// }
+export const stake = async (amonut, duration) => {
+    console.log("stake")
+    try{
+
+    }
+    catch(error){
+        console.log(console.error())
+    }
+}
