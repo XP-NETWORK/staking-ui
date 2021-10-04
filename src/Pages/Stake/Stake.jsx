@@ -18,6 +18,7 @@ const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const allowence = Number(useSelector(state => state.data.allowence))
 const agreement = useSelector(state => state.data.agreement)
+const currentPrice = useSelector(state => state.data.currentPrice)
 const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
@@ -183,7 +184,7 @@ useEffect(() => {
                 <div className="summary__details">
                     <div className="details details__amount">
                         <div className="details__capture">Staking Amount</div>
-                        <div className="details__text">{amount} XPNET<span>$ 0.070</span></div>
+                        <div className="details__text">{amount} XPNET<span>$ {amount*currentPrice}</span></div>
                     </div>
                     <div className="details details__start">
                         <div className="details__capture">Start Date</div>
@@ -200,7 +201,7 @@ useEffect(() => {
                     </div>
                     <div className="details details__rewards">
                         <div className="details__capture">Estimated APY</div>
-                        <div className="details__text">{getRewards()} XPNET<span>$ 12.050</span></div>
+                        <div className="details__text">{getRewards()} XPNET<span>$ 1{getRewards()*currentPrice}</span></div>
                     </div>
                     <div className="line"></div>
                     <div className="agreement">
