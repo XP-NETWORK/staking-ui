@@ -95,14 +95,14 @@ const checkApprovance = () => {
             )
         }
     }
-    // else if(!account || !agreement){
-    //     return (
-    //         <div>
-    //             <div className="summary__button lock">Approve</div>
-    //             <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
-    //         </div>
-    //     )
-    // }
+    else if(!agreement && allowence){
+        return (
+            <div>
+                <div className="summary__button lock">Approved</div>
+                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+            </div>
+        )
+    }
     else{
         return (
             <div>
