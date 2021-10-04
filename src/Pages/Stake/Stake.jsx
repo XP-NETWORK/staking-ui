@@ -85,7 +85,7 @@ const checkApprovance = () => {
             return (
             <div>
                <div className="summary__button lock">Approved</div>
-               <div onClick={() => stake(amount, duration)} className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
+               <div onClick={() => stake(amount, duration, account)} className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
             </div>
            )
         }

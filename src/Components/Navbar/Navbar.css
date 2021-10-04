@@ -100,3 +100,15 @@
     align-items: center;
     letter-spacing: 0.03em;
 }
+
+@media screen and (max-width: 425px) {
+    .durations__container{
+        flex-wrap: wrap;
+    }
+    .stake{
+
+    }
+    .summary{
+        
+    }
+}

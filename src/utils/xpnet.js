@@ -4,7 +4,7 @@ import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence } from "../redux/counterSlice"
 
 
-export let xpAddress = "0xbc53f71E12007b93Ed2868E5f6CAE1D2ceB7287C"
+export let xpAddress = "0xAcFB2E7d6e6272f192D0D573A9bD1CC9d534dE1c"
 
 const W3 = new Web3(window.ethereum)
 
@@ -28,9 +28,12 @@ export const checkBalance = async (address) => {
     // debugger
     try{
         const Contract = await xpContract()
-        const balance = await Contract.methods.balanceOf(address).call()
+        const weiBalance = await Contract.methods.balanceOf(address).call()
+   
+        const balance = Web3.utils.fromWei(weiBalance, 'ether');
         console.log(balance)
         store.dispatch(updateBalance(balance))
+
         return balance
     }
     catch(error){
