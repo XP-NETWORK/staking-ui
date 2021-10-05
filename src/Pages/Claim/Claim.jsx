@@ -41,7 +41,7 @@ export default function Claim() {
                 <div className="claim__details">
                     <div className="claim__det claim__amount">
                         <div className="claim__capture">Staking Amount</div>
-                        <div className="claim__text">{stakeInfo.amount} XPNET</div>
+                        <div className="claim__text">{stakeInfo.amount ? stakeInfo.amount : "0"} XPNET</div>
                     </div>
                     <div className="claim__det claim__apy">
                         <div className="claim__capture">APY</div>

@@ -76,7 +76,7 @@ export const getStakeById = async (id) => {
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
-        store.dispatch(updateStakeInfo(info))
+        store.dispatch(updateStakeInfo(Object.values(info)))
     }
     catch(error){
         console.log(error)
