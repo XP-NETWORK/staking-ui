@@ -71,7 +71,7 @@ export default function Claim() {
                             <div className="progress__remaining">60 days remaining</div>
                         </div>
                         <div className="bar">
-                            <div style={{width: `${getProgress()}%`}} className="bar__prog"></div>
+                            <div style={{width: `${getProgress(period, startTime)}%`}} className="bar__prog"></div>
                         </div>
                     </div>
                     <div className="claim__button">Claim XPNET</div>
