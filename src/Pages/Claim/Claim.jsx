@@ -4,10 +4,9 @@ import unlock from "../../assets/unlock.png"
 import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
-import { getProgress } from '../../utils/helper'
+import { getProgress, getPercents, getStartDate } from '../../utils/helper'
 import { balanceOf, getStakeById } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
-import { convertToMonth } from "./index"
  
 export default function Claim() {
 
@@ -46,7 +45,7 @@ export default function Claim() {
                     </div>
                     <div className="claim__det claim__apy">
                         <div className="claim__capture">APY</div>
-                        <div className="claim__text">{convertToMonth(stakeInfo[2]).percent}%</div>
+                        <div className="claim__text">{getPercents(stakeInfo[2]).percent}%</div>
                     </div>
                     <div className="claim__det claim__reward">
                         <div className="claim__capture">Staking Reward</div>
@@ -54,7 +53,7 @@ export default function Claim() {
                     </div>
                     <div className="claim__det claim__start">
                         <div className="claim__capture">Start day</div>
-                        <div className="claim__text">2021-09-27 12:34</div>
+                        <div className="claim__text">{getStartDate(stakeInfo[4])}</div>
                     </div>
                     <div className="claim__det claim__end">
                         <div className="claim__capture">End day</div>
