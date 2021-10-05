@@ -26,6 +26,7 @@ const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
+console.log(startDate)
 const balance = useSelector(state => state.data.balance)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
 const durations = [

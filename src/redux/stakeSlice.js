@@ -4,6 +4,7 @@ const initialState = {
     amount: '',
     duration: '',
     startDate: '',
+    startTime: ''
 }
 
 export const stakeSlice = createSlice({
@@ -18,6 +19,9 @@ export const stakeSlice = createSlice({
         },
         updateStartDate(state, action){
             state.startDate = action.payload
+        },
+        updateStartTime(state, action){
+            state.startTime = action.payload
         }
     },
   })
@@ -26,7 +30,8 @@ export const stakeSlice = createSlice({
 export const { 
     updateAmount,
     updateDuration,
-    updateStartDate
+    updateStartDate,
+    updateStartTime
 } = stakeSlice.actions
 
 export default stakeSlice.reducer

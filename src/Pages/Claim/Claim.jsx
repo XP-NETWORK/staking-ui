@@ -13,7 +13,10 @@ export default function Claim() {
     const address = useSelector(state => state.data.account)
     const tokens = useSelector(state => state.data.tokenIDs)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
-    console.log(stakeInfo)
+    const stakedAmount = useSelector(state => state.stakeData.amount)
+    const period = useSelector(state => state.stakeData.duration)
+    const startTime = useSelector(state => state.stakeData.startTime)
+    console.log("start time: ", startTime)
     console.log("token ids: ",tokens)
 
    
@@ -41,11 +44,11 @@ export default function Claim() {
                 <div className="claim__details">
                     <div className="claim__det claim__amount">
                         <div className="claim__capture">Staking Amount</div>
-                        <div className="claim__text">{stakeInfo[0] ? stakeInfo[0] : "0"} XPNET</div>
+                        <div className="claim__text">{stakedAmount ? stakedAmount : "0"} XPNET</div>
                     </div>
                     <div className="claim__det claim__apy">
                         <div className="claim__capture">APY</div>
-                        <div className="claim__text">{getPercents(stakeInfo[2]).percent}%</div>
+                        <div className="claim__text">{getPercents(period).percent}%</div>
                     </div>
                     <div className="claim__det claim__reward">
                         <div className="claim__capture">Staking Reward</div>
@@ -53,11 +56,11 @@ export default function Claim() {
                     </div>
                     <div className="claim__det claim__start">
                         <div className="claim__capture">Start day</div>
-                        <div className="claim__text">{getStartDate(stakeInfo[4])}</div>
+                        <div className="claim__text">{getStartDate(startTime)}</div>
                     </div>
                     <div className="claim__det claim__end">
                         <div className="claim__capture">End day</div>
-                        <div className="claim__text">2021-12-27 12:34</div>
+                        <div className="claim__text">{getEndDate(period, startTime)}</div>
                     </div>
                     <div className="progress-bar">
                         <div className="progress__header">

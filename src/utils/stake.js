@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
-import { updateAmount, updateDuration, updateStartDate } from "../redux/stakeSlice"
+import { updateAmount, updateDuration, updateStartDate ,updateStartTime } from "../redux/stakeSlice"
 
 
 export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
@@ -58,7 +58,7 @@ export const balanceOf = async (owner) => {
 const tokenOfOwnerByIndex = async (str, owner) => {
     // debugger
     if(str){
-        const num = parseInt(str)
+    const num = parseInt(str)
     const Contract = await stakeContract()
     let tokens;
     for (let i = 0; i < num; i++) {
@@ -75,17 +75,18 @@ const tokenOfOwnerByIndex = async (str, owner) => {
 }
 
 export const getStakeById = async (id) => {
+    // debugger
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
-        // console.log(info)
+        console.log(info)
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
-        console.log("Staked amount: ", info.amount)
+        // console.log("Staked amount: ", info.amount)
         store.dispatch(updateDuration(info.lockInPeriod))
-        console.log("lockInPeriod: ", info.lockInPeriod)
-        store.dispatch(updateStartDate(info.startTime))
-        console.log("start time: ", info.startTime)
+        // console.log("lockInPeriod: ", info.lockInPeriod)
+        store.dispatch(updateStartTime(info.startTime))
+        // console.log("start time: ", info.startTime)
     }
     catch(error){
         console.log(error)
