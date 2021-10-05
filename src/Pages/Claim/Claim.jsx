@@ -4,7 +4,7 @@ import unlock from "../../assets/unlock.png"
 import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
-import { getProgress, getPercents, getStartDate } from '../../utils/helper'
+import { getProgress, getPercents, getStartDate, getEndDate } from '../../utils/helper'
 import { balanceOf, getStakeById } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
  
@@ -20,7 +20,7 @@ export default function Claim() {
 
     useEffect(() => {
         if(!tokens){
-            balanceOf(address)
+        balanceOf(address)
         }
     }, [tokens])
 

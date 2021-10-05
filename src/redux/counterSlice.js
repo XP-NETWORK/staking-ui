@@ -12,7 +12,7 @@ const initialState = {
     agreement: false,
     currentPrice: '',
     tokenIDs:'',
-    stakeInfo: ''
+    stakeInfo: '',
 }
 
 export const counterSlice = createSlice({
@@ -54,7 +54,7 @@ export const counterSlice = createSlice({
       },
       updateStakeInfo(state, action){
         state.stakeInfo = action.payload
-      }
+      },
     },
   })
 
