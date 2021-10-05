@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { getProgress } from '../../utils/helper'
 import { balanceOf, getStakeById } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
+import { convertToMonth } from "./index"
  
 export default function Claim() {
 
@@ -41,11 +42,11 @@ export default function Claim() {
                 <div className="claim__details">
                     <div className="claim__det claim__amount">
                         <div className="claim__capture">Staking Amount</div>
-                        <div className="claim__text">{stakeInfo.amount ? stakeInfo.amount : "0"} XPNET</div>
+                        <div className="claim__text">{stakeInfo[0] ? stakeInfo[0] : "0"} XPNET</div>
                     </div>
                     <div className="claim__det claim__apy">
                         <div className="claim__capture">APY</div>
-                        <div className="claim__text">100%</div>
+                        <div className="claim__text">{convertToMonth(stakeInfo[2]).percent}%</div>
                     </div>
                     <div className="claim__det claim__reward">
                         <div className="claim__capture">Staking Reward</div>
