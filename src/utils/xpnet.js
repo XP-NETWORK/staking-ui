@@ -26,7 +26,7 @@ export const logXPContract = async () => {
 
 
 export const checkBalance = async (address) => {
-    debugger
+    // debugger
     try{
         const Contract = await xpContract()
         const weiBalance = await Contract.methods.balanceOf(address).call()
@@ -59,7 +59,7 @@ export const approve = async (account) => {
 export const checkAllowence = async (owner) => {
     try{
         const Contract = await xpContract()
-        console.log(owner, 'hello', stakeAddress)
+        // console.log(owner, 'hello', stakeAddress)
         const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
         store.dispatch(updateAllowence(allowence))
     }
@@ -68,8 +68,3 @@ export const checkAllowence = async (owner) => {
     }
 }
 
-
-
-export const balanceOf = (owner) => {
-    console.log("Cheching balance...")
-}

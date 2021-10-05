@@ -5,15 +5,17 @@ import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
 import { getProgress } from '../../utils/helper'
-import { balanceOf } from "../../utils/xpnet"
+import { balanceOf } from "../../utils/stake"
 
-
+import { useDispatch, useSelector } from "react-redux"
  
 export default function Claim() {
 
+    const address = useSelector(state => state.data.account)
+
     useEffect(() => {
         getProgress()
-        balanceOf()
+        balanceOf(address)
     }, [])
 
     return (

@@ -35,3 +35,17 @@ export const stake = async (amount, duration, account) => {
         console.log(console.error())
     }
 }
+
+
+
+export const balanceOf = async (owner) => {
+    debugger
+    console.log("Balance of: ", owner)
+    try{
+        const Contract = await stakeContract()
+        const arr = await Contract.methods.balanceOf(owner).call()
+        console.log("balance arr", arr)
+    }
+    catch(error){console.log(error)}
+
+}
