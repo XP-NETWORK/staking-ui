@@ -6,16 +6,22 @@ import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
 import { getProgress } from '../../utils/helper'
 import { balanceOf } from "../../utils/stake"
-
 import { useDispatch, useSelector } from "react-redux"
  
 export default function Claim() {
 
     const address = useSelector(state => state.data.account)
+    const tokens = useSelector(state => state.data.tokenIDs)
+    console.log("token ids: ",tokens)
+
+    useEffect(() => {
+        if(!tokens){
+            balanceOf(address)
+        }
+    }, [tokens])
 
     useEffect(() => {
         getProgress()
-        balanceOf(address)
     }, [])
 
     return (

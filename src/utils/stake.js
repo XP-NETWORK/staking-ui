@@ -1,5 +1,7 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
+import { store } from "../redux/store"
+import { updateTokenIDs } from "../redux/counterSlice"
 
 export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
 const W3 = new Web3(window.ethereum)
@@ -39,13 +41,33 @@ export const stake = async (amount, duration, account) => {
 
 
 export const balanceOf = async (owner) => {
-    debugger
+    // debugger
     console.log("Balance of: ", owner)
     try{
         const Contract = await stakeContract()
-        const arr = await Contract.methods.balanceOf(owner).call()
-        console.log("balance arr", arr)
+        const str = await Contract.methods.balanceOf(owner).call()
+        console.log("balance arr", str)
+        tokenOfOwnerByIndex(str, owner)
     }
     catch(error){console.log(error)}
 
+}
+
+const tokenOfOwnerByIndex = async (str, owner) => {
+    // debugger
+    if(str){
+        const num = parseInt(str)
+    const Contract = await stakeContract()
+    let tokens;
+    for (let i = 0; i < num; i++) {
+        try{
+            const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
+            console.log("token", token)
+            store.dispatch(updateTokenIDs(token))
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+    }
 }
