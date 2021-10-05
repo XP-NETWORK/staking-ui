@@ -2,6 +2,8 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
+import { updateAmount, updateDuration, updateStartDate } from "../redux/stakeSlice"
+
 
 export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
 const W3 = new Web3(window.ethereum)
@@ -76,7 +78,14 @@ export const getStakeById = async (id) => {
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
+        // console.log(info)
         store.dispatch(updateStakeInfo(Object.values(info)))
+        store.dispatch(updateAmount(info.amount))
+        console.log("Staked amount: ", info.amount)
+        store.dispatch(updateDuration(info.lockInPeriod))
+        console.log("lockInPeriod: ", info.lockInPeriod)
+        store.dispatch(updateStartDate(info.startTime))
+        console.log("start time: ", info.startTime)
     }
     catch(error){
         console.log(error)
