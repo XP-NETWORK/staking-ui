@@ -110,18 +110,21 @@
     }
     .metamask{
         order: -1;
-        margin: 0px;
+        margin-left: 25px;
         padding: 10px 0;
 
     }
     .nav__buttons{
         justify-content: center;
         align-items: center;
-        padding: 5px;
+        padding: 6px;
         background: #ECEDF3;
         border-radius: 8px;
     }
     .nav__button{
-        width: 200px;
+        width: 194px;
+    }
+    .nav__button--active{
+        width: 194px;
     }
 }

@@ -5,14 +5,18 @@ import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
 import { getProgress } from '../../utils/helper'
-import { balanceOf } from "../../utils/stake"
+import { balanceOf, getStakeById } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
  
 export default function Claim() {
 
     const address = useSelector(state => state.data.account)
     const tokens = useSelector(state => state.data.tokenIDs)
+    const stakeInfo = useSelector(state => state.data.stakeInfo)
+    console.log(stakeInfo)
     console.log("token ids: ",tokens)
+
+   
 
     useEffect(() => {
         if(!tokens){
@@ -29,15 +33,15 @@ export default function Claim() {
             <div className="claim">
                 <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
-                <select style={{visibility:`${tokens ? 'visible':'hidden'}`}} name="" id="">
+                <select onClick={(item) => getStakeById(item.target.value)} style={{visibility:`${tokens ? 'visible':'hidden'}`}} name="" id="">
                     {tokens ? tokens.map( (item, i )=> {
-                        return <option key={i}>{item}</option>
+                        return <option id={i} key={i}>{item}</option>
                     }):null}
                 </select>
                 <div className="claim__details">
                     <div className="claim__det claim__amount">
                         <div className="claim__capture">Staking Amount</div>
-                        <div className="claim__text">100 XPNET</div>
+                        <div className="claim__text">{stakeInfo.amount} XPNET</div>
                     </div>
                     <div className="claim__det claim__apy">
                         <div className="claim__capture">APY</div>
