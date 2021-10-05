@@ -29,6 +29,11 @@ export default function Claim() {
             <div className="claim">
                 <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
+                <select style={{visibility:`${tokens ? 'visible':'hidden'}`}} name="" id="">
+                    {tokens ? tokens.map( (item, i )=> {
+                        return <option key={i}>{item}</option>
+                    }):null}
+                </select>
                 <div className="claim__details">
                     <div className="claim__det claim__amount">
                         <div className="claim__capture">Staking Amount</div>

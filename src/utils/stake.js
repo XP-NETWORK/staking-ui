@@ -71,3 +71,7 @@ const tokenOfOwnerByIndex = async (str, owner) => {
     }
     }
 }
+
+export const getStake = async (id) => {
+console.log(id)
+}
