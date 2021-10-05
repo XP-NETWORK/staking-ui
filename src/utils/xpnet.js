@@ -26,12 +26,13 @@ export const logXPContract = async () => {
 
 
 export const checkBalance = async (address) => {
-    // debugger
+    debugger
     try{
         const Contract = await xpContract()
         const weiBalance = await Contract.methods.balanceOf(address).call()
-        const balance = Web3.utils.fromWei(weiBalance, 'ether');
-        console.log(balance)
+        console.log("wei balance: ",weiBalance)
+        const balance = parseInt(Web3.utils.fromWei(weiBalance, 'ether'));
+        console.log("Balance:", balance)
         store.dispatch(updateBalance(balance))
         return balance
     }
@@ -67,3 +68,8 @@ export const checkAllowence = async (owner) => {
     }
 }
 
+
+
+export const balanceOf = (owner) => {
+    console.log("Cheching balance...")
+}

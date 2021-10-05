@@ -5,12 +5,15 @@ import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
 import { getProgress } from '../../utils/helper'
+import { balanceOf } from "../../utils/xpnet"
+
 
  
 export default function Claim() {
 
     useEffect(() => {
         getProgress()
+        balanceOf()
     }, [])
 
     return (

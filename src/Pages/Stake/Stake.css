@@ -350,6 +350,7 @@
     .stake__container{
         max-width: 425px;
         margin: 10px;
+        gap: 10px;
     }
     .durations__container{
         flex-wrap: wrap;
