@@ -16,8 +16,11 @@ export default function Claim() {
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
-    console.log("start time: ", startTime)
-    console.log("token ids: ",tokens)
+    const startDate = useSelector(state => state.stakeData.startDate)
+    // console.log("start date: ", startDate)
+    // console.log("start time: ", startTime)
+    // console.log("period :", period)
+    // console.log("token ids: ",tokens)
 
    
 
@@ -60,7 +63,7 @@ export default function Claim() {
                     </div>
                     <div className="claim__det claim__end">
                         <div className="claim__capture">End day</div>
-                        <div className="claim__text">{getEndDate(period, startTime)}</div>
+                        <div className="claim__text">{getEndDate(period, startDate)}</div>
                     </div>
                     <div className="progress-bar">
                         <div className="progress__header">

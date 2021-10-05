@@ -14,7 +14,7 @@ export const getPercent = (durationsArr, duration ) => {
 }
 
 
-export const getProgress = () => {
+export const getProgress = (start) => {
     const daysDuration = 60
     const daysPassed = 22
     return daysPassed/daysDuration*100
@@ -32,7 +32,7 @@ export const getPercents = (seconds) => {
 
 export const getStartDate = (str) => {
     const seconds = parseInt(str)
-    console.log(seconds, str, 'hello')
+    // console.log(seconds, str, 'hello')
     const startDate = moment.unix(seconds).format("YYYY-MM-DD HH:MM")
     store.dispatch(updateStartDate(startDate))
     return startDate
@@ -40,25 +40,20 @@ export const getStartDate = (str) => {
 
 export const getEndDate = (seconds, start) => {
     // debugger
-    let endDate
-    const startDate = getStartDate(start)
-    console.log(startDate)
-    if(start){
-        // console.log(startDate)
-    if(start === '7776000')return {percent: 45, month: 3}
-    else if(start === '15552000'){
-        endDate = moment(startDate).add(3, 'month').format("YYYY-MM-DD HH:MM")
+    // let endDate
+    console.log("start: ", start)
+    console.log("period: ", seconds)
+    // endDate = moment(start).add(3, 'month').format('YYYY-MM-DD hh:mm')
+    if(seconds === '7776000'){
+        return moment(start).add(3, 'month').format('YYYY-MM-DD hh:mm')
     }
-    else if(start === '23328000'){
-        endDate = moment(startDate).add(6, 'month').format("YYYY-MM-DD HH:MM")
+    else if(seconds === '15552000'){
+        return moment(start).add(6, 'month').format("YYYY-MM-DD HH:MM")
     }
-    else if(start === '31104000'){
-        endDate = moment(startDate).add(9, 'month').format("YYYY-MM-DD HH:MM")
+    else if(seconds === '23328000'){
+        return moment(start).add(9, 'month').format("YYYY-MM-DD HH:MM")
     }
-    else {
-        endDate = moment(startDate).add(12, 'month').format("YYYY-MM-DD HH:MM")
+    else if(seconds === '31104000'){
+        return moment(start).add(1, 'year').format("YYYY-MM-DD HH:MM")
     }
-    }
-    return endDate
-// return endDate
-}
+ }

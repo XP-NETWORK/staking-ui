@@ -19,7 +19,7 @@ const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const allowence = useSelector(state => state.data.allowence)
 const etherValue = Web3.utils.fromWei(allowence, 'ether');
-console.log("Allowence: ",etherValue)
+// console.log("Allowence: ",etherValue)
 const agreement = useSelector(state => state.data.agreement)
 const currentPrice = useSelector(state => state.data.currentPrice)
 const approved = useSelector(state => state.data.approved)
