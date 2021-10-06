@@ -1,6 +1,6 @@
 import React from 'react'
 import { stake } from "../../utils/stake"
-import "./Approvance.css"
+import "./Buttons.css"
 import lock from "../../assets/lock.png"
 
 export function Approvance({ approvance, amount, duration, account, agreement }) {

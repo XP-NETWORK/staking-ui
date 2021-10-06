@@ -12,7 +12,7 @@ import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
 import { getPercent } from "../../utils/helper"
 import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
-import {Approvance, Lock} from '../../Components/Buttons/Approvance'
+import { Approvance, Lock} from "../../Components/Buttons/Buttons"
 
 
 export default function Stake() {

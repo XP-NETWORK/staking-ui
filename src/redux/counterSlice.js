@@ -13,7 +13,8 @@ const initialState = {
     currentPrice: '',
     tokenIDs:'',
     stakeInfo: '',
-    chainId: ""
+    chainId: "",
+    buttonsLoader: false
 }
 
 export const counterSlice = createSlice({
@@ -58,6 +59,9 @@ export const counterSlice = createSlice({
       },
       updateChainId(state, action){
         state.chainId = action.payload
+      },
+      updateButtonsLoader(state, action){
+        state.buttonsLoader = action.payload
       }
     },
   })
@@ -76,7 +80,8 @@ export const {
   updateCurrentPrice,
   updateTokenIDs,
   updateStakeInfo,
-  updateChainId
+  updateChainId,
+  updateButtonsLoader
 } = counterSlice.actions
 
 export default counterSlice.reducer
