@@ -1,6 +1,6 @@
 .connect__container{
 display: flex;
-height: 100%;
+height: 80%;
 justify-content: center;
 align-items: center;
 
@@ -39,8 +39,15 @@ margin-bottom: 20px;
 
 .connect__button{
 padding: 10px 16px;
-top: 365px;
 color: white;
 background: #3180F6;
 border-radius: 6px;
+cursor: pointer;
+margin-bottom: 10px;
+
+}
+
+.required{
+    color: #f63131;
+    font-size: 12px;
 }
