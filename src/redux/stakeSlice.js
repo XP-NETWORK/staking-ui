@@ -5,7 +5,8 @@ const initialState = {
     duration: '',
     startDate: '',
     startTime: '',
-    nftTokenId: ''
+    nftTokenId: '',
+    availableRewards: ""
 }
 
 export const stakeSlice = createSlice({
@@ -26,6 +27,9 @@ export const stakeSlice = createSlice({
         },
         updateNftTokenId(state, action){
             state.nftTokenId = action.payload
+        },
+        updateAvailableRewards(state, action){
+            state.availableRewards = action.payload
         }
     },
   })
@@ -36,7 +40,8 @@ export const {
     updateDuration,
     updateStartDate,
     updateStartTime,
-    updateNftTokenId
+    updateNftTokenId,
+    updateAvailableRewards
 } = stakeSlice.actions
 
 export default stakeSlice.reducer

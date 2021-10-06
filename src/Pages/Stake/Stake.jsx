@@ -12,21 +12,23 @@ import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
 import { getPercent } from "../../utils/helper"
 import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
+import {Approvance, Lock} from '../../Components/Buttons/Approvance'
 
 
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const allowence = useSelector(state => state.data.allowence)
+// console.log("Allowence: ",allowence)
 const etherValue = Web3.utils.fromWei(allowence, 'ether');
-// console.log("Allowence: ",etherValue)
+// console.log("Allowence etherValue: ",etherValue)
 const agreement = useSelector(state => state.data.agreement)
 const currentPrice = useSelector(state => state.data.currentPrice)
 const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
-console.log(startDate)
+// console.log(startDate)
 const balance = useSelector(state => state.data.balance)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
 const durations = [
@@ -78,53 +80,6 @@ const getRewards = () => {
     amount*0.75 :
     amount*1.25
     return rewards
-}
-
-const checkApprovance = () => {
-    // debugger
-    if(account && agreement && amount){
-        // debugger
-        if(allowence){
-            return (
-            <div>
-               <div className="summary__button lock">Approved</div>
-               <div onClick={() => stake(amount, duration, account)} className="summary__button button"><img src={lock} alt=""/><span>Lock</span></div>
-            </div>
-           )
-        }
-        else{
-            return (
-            <div>
-                <div onClick={() => approve(account)} className="summary__button button">Approved</div>
-                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
-            </div>
-            )
-        }
-    }
-    else if(!agreement && allowence){
-        return (
-            <div>
-                <div className="summary__button lock">Approved</div>
-                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
-            </div>
-        )
-    }
-    else if(account && agreement && !amount){
-        return (
-            <div>
-                <div className="summary__button lock">Approved</div>
-                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
-            </div>
-        )
-    }
-    else{
-        return (
-            <div>
-                <div className="summary__button lock">Approve</div>
-                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
-            </div>
-        )
-    } 
 }
 
 const agreementHandler = () => {
@@ -222,7 +177,8 @@ useEffect(() => {
                       I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
                      </div>
                     </div>
-                    {checkApprovance()}
+                    <Approvance agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
+                    <Lock agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
                 </div>
             </div>
         </div>

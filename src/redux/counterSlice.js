@@ -13,6 +13,7 @@ const initialState = {
     currentPrice: '',
     tokenIDs:'',
     stakeInfo: '',
+    chainId: ""
 }
 
 export const counterSlice = createSlice({
@@ -55,6 +56,9 @@ export const counterSlice = createSlice({
       updateStakeInfo(state, action){
         state.stakeInfo = action.payload
       },
+      updateChainId(state, action){
+        state.chainId = action.payload
+      }
     },
   })
 
@@ -71,7 +75,8 @@ export const {
   updateAgreement,
   updateCurrentPrice,
   updateTokenIDs,
-  updateStakeInfo
+  updateStakeInfo,
+  updateChainId
 } = counterSlice.actions
 
 export default counterSlice.reducer

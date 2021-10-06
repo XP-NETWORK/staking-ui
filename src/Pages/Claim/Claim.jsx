@@ -25,9 +25,11 @@ export default function Claim() {
 
 
     useEffect((async) => {
-        showAvailableRewards()
-    }, [])
-
+        if(stakeInfo){
+        showAvailableRewards(stakeInfo[1])
+        }
+    }, [stakeInfo])
+    
     useEffect(() => {
         if(!tokens){
         balanceOf(address)

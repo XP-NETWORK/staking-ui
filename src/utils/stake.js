@@ -25,13 +25,14 @@ export const logStakeContract = async () => {
 }
 
 export const stake = async (amount, duration, account) => {
-    debugger
     // const weiValue = Web3.utils.toWei(amonut, 'ether');
+    debugger
     const durInSec = 60*60*24*(duration * 30)
     try{
         console.log(durInSec, amount, duration)
         const Contract = await stakeContract()
-        Contract.methods.stake(Number(amount), durInSec).send({from:account})
+        console.log(amount, 'helo')
+        Contract.methods.stake(amount, durInSec).send({from:account})
         .once('receipt', function(receipt){
             console.log(receipt)})
     }
@@ -95,9 +96,11 @@ export const getStakeById = async (id) => {
 }
 
 export const showAvailableRewards = async (nftId) => {
-    console.log("showAvailableRewards...")
+    console.log("nftTokenId: ", nftId)
+    const Contract = await stakeContract()
     try{
-
+    const awailable = await Contract.methods.showAvailableRewards(nftId).call()
+    console.log("awailable:", awailable)
     }
     catch(error){
         console.log(error)

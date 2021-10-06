@@ -12,7 +12,7 @@ export default function Navbar() {
 
     const [rendered, setRendered] = useState('stake')
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
     const metaMaskStatus = useSelector(state => state.data.connected)
     const dispatch = useDispatch()
     const toggleMetaMask = () => {

@@ -313,7 +313,7 @@
     width: 18px;
     height: 18px;
 }
-
+/* 
 .button{
     max-width: 426px;
     height: 44px;
@@ -344,7 +344,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 @media screen and (max-width: 425px) {
     .stake__container{

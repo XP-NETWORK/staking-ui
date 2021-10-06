@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import XPNET from "../ABI/XPToken.json"
 import { store } from "../redux/store"
-import { updateBalance, updateApproved, updateAllowence } from "../redux/counterSlice"
+import { updateBalance, updateApproved, updateAllowence, } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
 
@@ -61,7 +61,9 @@ export const checkAllowence = async (owner) => {
         const Contract = await xpContract()
         // console.log(owner, 'hello', stakeAddress)
         const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
-        store.dispatch(updateAllowence(allowence))
+        // console.log("allowence: ",typeof allowence, allowence, parseInt(allowence))
+        if(parseInt(allowence)) store.dispatch(updateAllowence(allowence))
+        
     }
     catch(error){
         console.log(error)
