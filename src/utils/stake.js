@@ -93,3 +93,13 @@ export const getStakeById = async (id) => {
         console.log(error)
     }
 }
+
+export const showAvailableRewards = async (nftId) => {
+    console.log("showAvailableRewards...")
+    try{
+
+    }
+    catch(error){
+        console.log(error)
+    }
+}

@@ -5,7 +5,7 @@ import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
 import { getProgress, getPercents, getStartDate, getEndDate } from '../../utils/helper'
-import { balanceOf, getStakeById } from "../../utils/stake"
+import { balanceOf, getStakeById, showAvailableRewards } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
  
 export default function Claim() {
@@ -17,12 +17,16 @@ export default function Claim() {
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
     const startDate = useSelector(state => state.stakeData.startDate)
+    
     // console.log("start date: ", startDate)
     // console.log("start time: ", startTime)
     // console.log("period :", period)
     // console.log("token ids: ",tokens)
 
-   
+
+    useEffect((async) => {
+        showAvailableRewards()
+    }, [])
 
     useEffect(() => {
         if(!tokens){
