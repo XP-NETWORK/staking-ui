@@ -15,17 +15,13 @@ export const getPercent = (durationsArr, duration ) => {
 
 
 export const getProgress = (seconds, start) => {
-    console.log("period: ", seconds)
-
+    // console.log("period: ", seconds)
     const dayNow = Math.floor(Date.now()/1000)
-    console.log("day now: ", dayNow)
-
+    // console.log("day now: ", dayNow)
     const daysDuration = seconds
-    console.log("days",daysDuration)
-
+    // console.log("days",daysDuration)
     const daysPassed = dayNow - start
-    console.log("daysPassed: ", daysPassed, start)
-    
+    // console.log("daysPassed: ", daysPassed, start)
     return daysPassed/daysDuration*100
 } 
 

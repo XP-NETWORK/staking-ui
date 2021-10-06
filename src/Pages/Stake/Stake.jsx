@@ -95,13 +95,21 @@ const checkApprovance = () => {
         else{
             return (
             <div>
-                <div onClick={() => approve(account)} className="summary__button button">Approve</div>
+                <div onClick={() => approve(account)} className="summary__button button">Approved</div>
                 <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
             </div>
             )
         }
     }
     else if(!agreement && allowence){
+        return (
+            <div>
+                <div className="summary__button lock">Approved</div>
+                <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+            </div>
+        )
+    }
+    else if(account && agreement && !amount){
         return (
             <div>
                 <div className="summary__button lock">Approved</div>
