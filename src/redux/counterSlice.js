@@ -14,7 +14,8 @@ const initialState = {
     tokenIDs:'',
     stakeInfo: '',
     chainId: "",
-    buttonsLoader: false
+    aproveLoader: false,
+    lockLoader: false
 }
 
 export const counterSlice = createSlice({
@@ -60,8 +61,11 @@ export const counterSlice = createSlice({
       updateChainId(state, action){
         state.chainId = action.payload
       },
-      updateButtonsLoader(state, action){
-        state.buttonsLoader = action.payload
+      updateAproveButtonsLoader(state, action){
+        state.aproveLoader = action.payload
+      },
+      updateAproveLockLoader(state, action){
+        state.lockLoader = action.payload
       }
     },
   })
@@ -81,7 +85,8 @@ export const {
   updateTokenIDs,
   updateStakeInfo,
   updateChainId,
-  updateButtonsLoader
+  updateAproveButtonsLoader,
+  updateAproveLockLoader
 } = counterSlice.actions
 
 export default counterSlice.reducer
