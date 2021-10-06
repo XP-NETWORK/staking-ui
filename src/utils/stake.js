@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
-import { updateAmount, updateDuration, updateStartDate ,updateStartTime } from "../redux/stakeSlice"
+import { updateAmount, updateDuration, updateStartDate ,updateStartTime, updateNftTokenId } from "../redux/stakeSlice"
 
 
 export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
@@ -87,6 +87,7 @@ export const getStakeById = async (id) => {
         // console.log("lockInPeriod: ", info.lockInPeriod)
         store.dispatch(updateStartTime(info.startTime))
         // console.log("start time: ", info.startTime)
+        store.dispatch(updateNftTokenId(info.nftTokenId))
     }
     catch(error){
         console.log(error)
