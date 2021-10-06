@@ -4,8 +4,8 @@ import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
 import { updateAmount, updateDuration, updateStartDate ,updateStartTime, updateNftTokenId } from "../redux/stakeSlice"
 
-
-export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
+// export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
+export let stakeAddress = '0xa3DdbCc52f6B41cE397d9e94947820da5855FBDc'
 const W3 = new Web3(window.ethereum)
 
 const stakeContract = async () => {
@@ -25,14 +25,14 @@ export const logStakeContract = async () => {
 }
 
 export const stake = async (amount, duration, account) => {
-    // const weiValue = Web3.utils.toWei(amonut, 'ether');
+    const weiValue = Web3.utils.toWei(amount, 'ether');
     debugger
     const durInSec = 60*60*24*(duration * 30)
     try{
         console.log(durInSec, amount, duration)
         const Contract = await stakeContract()
         console.log(amount, 'helo')
-        Contract.methods.stake(amount, durInSec).send({from:account})
+        Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', function(receipt){
             console.log(receipt)})
     }
@@ -76,7 +76,8 @@ const tokenOfOwnerByIndex = async (str, owner) => {
 }
 
 export const getStakeById = async (id) => {
-    // debugger
+    debugger
+    
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()

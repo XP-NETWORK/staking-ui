@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { getProgress, getPercents, getStartDate, getEndDate } from '../../utils/helper'
 import { balanceOf, getStakeById, showAvailableRewards } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
+import NFT from '../../Components/NFT/NFT'
  
 export default function Claim() {
 
@@ -26,14 +27,21 @@ export default function Claim() {
     console.log("staker:", stakeInfo[5], typeof stakeInfo[5] )
 
     const showUnStake = () => {
-        if(address.toLowerCase() === stakeInfo[5].toLowerCase()){
-        return (
-            <div className="un-stake">
-                <img src={unlock} alt="" />
-                <span>Un-Stake</span>
-            </div>
-            )
+        if(address && stakeInfo){
+            if(address.toLowerCase() === stakeInfo[5].toLowerCase()){
+                return (
+                    <div className="un-stake">
+                        <img src={unlock} alt="" />
+                        <span>Un-Stake</span>
+                    </div>
+                    )
+                }
         }
+    }
+
+    const showTokens = () => {
+        // debugger
+        if (tokens.length > 0) return tokens.map((item, i) => { return <NFT item={item} index={i} key={i}/> })
     }
 
     useEffect((async) => {
@@ -58,11 +66,11 @@ export default function Claim() {
                 <div className="claim">
                     <div className="claim__title">Staking Reward</div>
                     <div className="line"></div>
-                    <select onClick={(item) => getStakeById(item.target.value)} style={{visibility:`${tokens ? 'visible':'hidden'}`}} name="" id="">
+                    {/* <select onClick={(item) => getStakeById(item.target.value)} style={{visibility:`${tokens ? 'visible':'hidden'}`}} name="" id="">
                         {tokens ? tokens.map( (item, i )=> {
                             return <option id={i} key={i}>{item}</option>
                         }):null}
-                    </select>
+                    </select> */}
                     <div className="claim__details">
                         <div className="claim__det claim__amount">
                             <div className="claim__capture">Staking Amount</div>
@@ -97,20 +105,33 @@ export default function Claim() {
                         { showUnStake() }
                     </div>
                 </div>
-                <div className="nft">
-                    <div className="nft__title">NFT</div>
-                    <div className="line"></div>
-                    <div className="nft__content">
-                        <div className="nft__widget">
-                            <img src={bigart} alt="widget" />
-                        </div>
-                        <div className="nft__address">
-                            <div className="address">dfghjklertyuiokjhgvrtyuiopkjh678ijbnm</div>
-                            <div className="address__icon">
-                                <img src={pages} alt="" />
+                <div className="nft__wrapper">
+                    <div className="nft">
+                        <div className="nft__title">NFT</div>
+                        <div className="line"></div>
+                        <div className="nft__content">
+                            <div className="nft__widget">
+                                <div className="left-arrow arrow">!</div>
+                                <div className="widget__art">
+                                    <img src={bigart} alt="widget" />
+                                </div>
+                                <div className="right-arrow arrow">!</div>
+                            </div>
+                            <div className="nft__address">
+                                <div className="address">{address}</div>
+                                <div className="address__icon">
+                                    <img src={pages} alt="" />
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div className="nfts__toggler">
+                        {/* <NFT />
+                        <NFT />
+                        <NFT />
+                        <NFT />  */}
+                        { showTokens() }
+                    </div>  
                 </div>
             </div>
         )

@@ -1,0 +1,13 @@
+.token{
+width: 105px;
+height: 105px;
+background-color: rgb(255, 255, 255);
+border: 1px solid #E5E8F0;
+box-sizing: border-box;
+border-radius: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+}
+

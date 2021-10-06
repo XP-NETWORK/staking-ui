@@ -2,24 +2,71 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 32px;
+    justify-content: space-between;
+    /* gap: 32px; */
+    /* align-items: flex-start; */
+    /* border: 1px solid black; */
 }
 
 .claim{
-    width: 622px;
-    height: 640px;
     padding: 30px 0;
-
+    max-width: 622px;
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
-
     font-family: Inter;
     color: #040D27;
-
     border: 1px solid #E5E8F0;
 }
+
+.nft__wrapper{
+    max-width: 486px;
+    /* height: 320px; */
+    /* height: 720px; */
+    /* padding: 30px 0; */
+    display: flex;
+    flex-direction: column;
+}
+
+.nft{
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #E5E8F0;
+    padding: 30px 0 24px 0;
+    margin-bottom: 10px;
+    /*
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #E5E8F0; */
+}
+
+.nfts__toggler{
+    /* background: #FFFFFF; */
+    /* border: 1px solid #E5E8F0; */
+    box-sizing: border-box;
+    border-radius: 6px;
+    /* border: 1px solid #E5E8F0; */
+    display: flex;
+    justify-content: space-around;
+    /* padding: 10px 0; */
+    /* width: 486px; */
+    /* background-color: rgb(102, 83, 83); */
+}
+
+
+
+
+
+
+
+
+
+
 
 .claim__title{
 
@@ -31,17 +78,6 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 126%;
-}
-
-.nft{
-    width: 486px;
-    height: 640px;
-    padding: 30px 0;
-    background: #FFFFFF;
-    border: 1px solid #E5E8F0;
-    box-sizing: border-box;
-    border-radius: 6px;
-    border: 1px solid #E5E8F0;
 }
 
 .claim__details{
@@ -205,13 +241,18 @@
 }
 
 .nft__content{
-    padding: 30px;
+    /* padding: 22px 30px 8px 30px;
+    margin-bottom: 24px; */
 }
 
 .nft__widget{
     width: 426px;
-    height: 426px;
+    height: 314px;
     border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 30px;
 }
 
 
@@ -224,10 +265,36 @@
     display: flex;
     height: 48px;
     padding: 13px;
-    margin-top: 6px;
+    margin: 6px 30px 20px 30px;
     justify-content: space-between;
     background: #FBFCFF;
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
+}
+
+.nfts__toggler{
+    display: flex;
+    width: 486px;
+    /* background-color: rgb(102, 83, 83); */
+}
+
+ .widget__art{
+    max-width: 292px;
+   
+} 
+
+.widget__art img{
+    width: 100%;
+}
+
+.arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 50%;
 }
