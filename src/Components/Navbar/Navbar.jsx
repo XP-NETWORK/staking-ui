@@ -14,15 +14,18 @@ export default function Navbar() {
     const location = useLocation();
     // console.log(location)
     const metaMaskStatus = useSelector(state => state.data.connected)
+    console.log(metaMaskStatus)
     const dispatch = useDispatch()
     const toggleMetaMask = () => {
         connectMetaMask()
     }
 
-    return (
-        <div className="navbar">
+    const showNav = () => {
+        if(metaMaskStatus){
+            return(
+            <div className="navbar">
             <div className="xp__logo"><img src={xplogo} alt="XP.Network Logo" /></div>
-            <div className="nav__buttons">
+                <div className="nav__buttons">
                 <div className={location.pathname === '/stake' || location.pathname === '/' ? `Stake nav__button--active`: `Stake nav__button`}><Link to='/stake'>Stake XPNET</Link></div>
                 <div className={location.pathname === '/claim' ?`Claim nav__button--active`:`Claim nav__button`}><Link to='/claim'>Claim XPNET</Link></div>
             </div>
@@ -31,6 +34,22 @@ export default function Navbar() {
                 <div className="metamask__icon"><img src={metaLogo} alt="" /></div>
                 <div className="metamask__title">MetaMask</div>
             </div>
-        </div>
+            </div>
+            )
+        }
+        else{
+            return(
+            <div className="navbar">
+                <div className="xp__logo"><img src={xplogo} alt="XP.Network Logo" /></div>
+                <div className="investor">| Investor Portal</div>
+            </div>
+            )
+        }
+    }
+
+    return (
+        <>
+        {showNav()}
+        </>
     )
 }
