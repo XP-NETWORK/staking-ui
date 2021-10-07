@@ -6,7 +6,7 @@ import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
 import { getProgress, getPercents, getStartDate, getEndDate, nf } from '../../utils/helper'
-import { balanceOf, getStakeById, showAvailableRewards } from "../../utils/stake"
+import { balanceOf, getStakeById, showAvailableRewards, claimXpNet } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
@@ -21,6 +21,7 @@ export default function Claim() {
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
     const startDate = useSelector(state => state.stakeData.startDate)
+    const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     let history = useHistory();
     // console.log("start date: ", startDate)
     // console.log("start time: ", startTime)
@@ -103,7 +104,7 @@ export default function Claim() {
                                 <div style={{width: `${getProgress(period, startTime)}%`}} className="bar__prog"></div>
                             </div>
                         </div>
-                        <div className="claim__button">Claim XPNET</div>
+                        <div onClick={() => claimXpNet(stakeInfo[1], rewardsWai, address)} className="claim__button">Claim XPNET</div>
                         <div style={{visibility:`${address && stakeInfo ? 'visible':'hidden'}`}} className="un-stake">
                         <   img src={unlock} alt="" />
                             <span>Un-Stake</span>

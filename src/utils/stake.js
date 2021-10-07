@@ -109,3 +109,16 @@ export const showAvailableRewards = async (nftId) => {
         console.log(error)
     }
 }
+
+export const claimXpNet = async (nftId,rewards, account) => {
+    debugger
+    console.log("claimXpNet nftId: ",nftId)
+    console.log("claimXpNet rewards: ", rewards)
+    const Contract = await stakeContract()
+    try{
+    const claimed = await Contract.methods.withdrawRewards(nftId, rewards).send({from:account})
+    }
+    catch(error){
+        console.log(error)
+    }
+}
