@@ -13,6 +13,7 @@ export const getPercent = (durationsArr, duration ) => {
     return percent
 }
 
+export const nf = Intl.NumberFormat();
 
 export const getProgress = (seconds, start) => {
     // console.log("period: ", seconds)

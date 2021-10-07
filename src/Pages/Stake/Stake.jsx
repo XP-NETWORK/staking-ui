@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
 import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
-import { getPercent } from "../../utils/helper"
+import { getPercent, nf } from "../../utils/helper"
 import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
@@ -99,7 +99,7 @@ useEffect(() => {
                     <div className="stake__amount">
                         <div className="amount__header">
                             <div className="amount__title">Enter your XPNET amount</div>
-                            <div className="amount__subtitle">Availabe for Staking: <span>{balance} XPNET</span></div>
+                            <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
                         </div>
                         <div className="amount__input">
                             <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />

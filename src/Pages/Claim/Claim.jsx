@@ -1,10 +1,11 @@
 import React from 'react'
+import Web3 from "web3"
 import "./Claim.css"
 import unlock from "../../assets/unlock.png"
 import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useState, useEffect } from 'react'
-import { getProgress, getPercents, getStartDate, getEndDate } from '../../utils/helper'
+import { getProgress, getPercents, getStartDate, getEndDate, nf } from '../../utils/helper'
 import { balanceOf, getStakeById, showAvailableRewards } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router'
@@ -25,7 +26,8 @@ export default function Claim() {
     // console.log("period :", period)
     // console.log("token ids: ",tokens)
     console.log("account: ", address, typeof address)
-    console.log("staker:", stakeInfo[5], typeof stakeInfo[5] )
+    console.log("staker:", stakeInfo[5], typeof stakeInfo[5])
+    const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
 
     useEffect(() => {
         if(!address || !balance){
@@ -67,7 +69,7 @@ export default function Claim() {
         getProgress()
     }, [])
 
-    if(true){
+    
         return (
             <div className="claim__container">
                 <div className="claim">
@@ -81,7 +83,7 @@ export default function Claim() {
                     <div className="claim__details">
                         <div className="claim__det claim__amount">
                             <div className="claim__capture">Staking Amount</div>
-                            <div className="claim__text">{stakedAmount ? stakedAmount : "0"} XPNET</div>
+                            <div className="claim__text">{stakedAmount ? nf.format(stakedAmountEther) : "0"} XPNET</div>
                         </div>
                         <div className="claim__det claim__apy">
                             <div className="claim__capture">APY</div>
@@ -109,7 +111,10 @@ export default function Claim() {
                             </div>
                         </div>
                         <div className="claim__button">Claim XPNET</div>
-                        { showUnStake() }
+                        <div style={{visibility:`${address && stakeInfo ? 'visible':'hidden'}`}} className="un-stake">
+                        <   img src={unlock} alt="" />
+                            <span>Un-Stake</span>
+                        </div>
                     </div>
                 </div>
                 <div className="nft__wrapper">
@@ -138,8 +143,5 @@ export default function Claim() {
                 </div>
             </div>
         )
-    }
-    else{
-        <div>false</div>
-    }
+   
 }
