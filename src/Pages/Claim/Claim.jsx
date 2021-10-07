@@ -11,6 +11,11 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
 import ClaimReward from '../../Components/ClaimReward.jsx/ClaimReward'
+import ClaimAmount from './Parts/ClaimAmount'
+import ClaimAPY from './Parts/ClaimAPY'
+import ClaimStart from './Parts/ClaimStart'
+import ProgressBar from './Parts/ProgressBar'
+import End from './Parts/End'
  
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
@@ -71,44 +76,18 @@ export default function Claim() {
         }
     }, [tokens])
 
-    useEffect(() => {
-
-        getProgress()
-    }, [])
-
-    
         return (
             <div className="claim__container">
                 <div className="claim">
                     <div className="claim__title">Staking Reward</div>
                     <div className="line"></div>
                     <div className="claim__details">
-                        <div className="claim__det claim__amount">
-                            <div className="claim__capture">Staking Amount</div>
-                            <div className="claim__text">{stakedAmount ? nf.format(stakedAmountEther) : "0"} XPNET</div>
-                        </div>
-                        <div className="claim__det claim__apy">
-                            <div className="claim__capture">APY</div>
-                            <div className="claim__text">{period ? getPercents(period).percent : "0"}%</div>
-                        </div>
+                        <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
+                        <ClaimAPY period={period} />
                         <ClaimReward />
-                        <div className="claim__det claim__start">
-                            <div className="claim__capture">Start day</div>
-                            <div className="claim__text">{getStartDate(startTime) !== "Invalid date" ? getStartDate(startTime): "--:--:-- --:--"}</div>
-                        </div>
-                        <div className="claim__det claim__end">
-                            <div className="claim__capture">End day</div>
-                            <div className="claim__text">{getStartDate(startTime) !== "Invalid date" ? getEndDate(period, startDate): "--:--:-- --:--"}</div>
-                        </div>
-                        <div className="progress-bar">
-                            <div className="progress__header">
-                                <div className="progress__title">Staking Duration</div>
-                                <div className="progress__remaining">{period/60/60/24} days remaining</div>
-                            </div>
-                            <div className="bar">
-                                <div style={{width: `${getProgress(period, startTime)}%`}} className="bar__prog"></div>
-                            </div>
-                        </div>
+                        <ClaimStart startTime={startTime} />
+                        <End startTime={startTime} period={period} startDate={startDate} />
+                        <ProgressBar period={period} startTime={startTime} />
                         <div onClick={() => claimXpNet(stakeInfo[1], rewardsWai, address)} className="claim__button">Claim XPNET</div>
                         <div style={{visibility:`${address && stakeInfo ? 'visible':'hidden'}`}} className="un-stake">
                         <   img src={unlock} alt="" />
