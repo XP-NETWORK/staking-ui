@@ -13,28 +13,10 @@ import axios from 'axios';
 import Web3 from "web3"
 
 
-const W3 = new Web3(window.ethereum)
-const { ethereum } = window
-let accounts
 
 
 function App() {
-
-
-
-const accountsChanged = () => {
-  if(ethereum){
-    // debugger
-    ethereum.on("accountsChanged", accounts => {
-      if (accounts.length > 0) {
-         dispatch(updateAccount(accounts[0]))
-         showAvailableRewards()
-       }
-   });
-  }
-}
-
-
+  
 const dispatch = useDispatch()
 const address = useSelector(state => state.data.account)
 
@@ -43,19 +25,37 @@ const getCurrentPrice = async () => {
   console.log("price", currentPrice)
   dispatch(updateCurrentPrice(currentPrice))
 }
+
 const updateBalance = async () => {
   const balance = await checkBalance(address)
   // console.log(balance)
 }
+
 const doDate = () => {
     let str = moment().format('YYYY-MM-DD hh:mm')
     dispatch(getActualTime(str))
 }
 
+const accountsChanged = () => {
+  const { ethereum } = window
+  if(ethereum){
+  // debugger
+  ethereum.on("accountsChanged", accounts => {
+    if (accounts.length > 0) {
+       dispatch(updateAccount(accounts[0]))
+       showAvailableRewards()
+     }
+ });
+}
+}
+
+
 useEffect(() => {
  if(address) updateBalance()
  checkAllowence(address)
 }, [address])
+
+
 
 useEffect(() => {
   getCurrentPrice()

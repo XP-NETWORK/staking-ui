@@ -23,7 +23,6 @@ export default function Main() {
     else if(!account && loader){
         return <Loader />
     }
-
     else{
         return (
             <Switch>
