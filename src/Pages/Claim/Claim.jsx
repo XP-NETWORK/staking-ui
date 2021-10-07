@@ -76,11 +76,6 @@ export default function Claim() {
                 <div className="claim">
                     <div className="claim__title">Staking Reward</div>
                     <div className="line"></div>
-                    {/* <select onClick={(item) => getStakeById(item.target.value)} style={{visibility:`${tokens ? 'visible':'hidden'}`}} name="" id="">
-                        {tokens ? tokens.map( (item, i )=> {
-                            return <option id={i} key={i}>{item}</option>
-                        }):null}
-                    </select> */}
                     <div className="claim__details">
                         <div className="claim__det claim__amount">
                             <div className="claim__capture">Staking Amount</div>
@@ -88,16 +83,16 @@ export default function Claim() {
                         </div>
                         <div className="claim__det claim__apy">
                             <div className="claim__capture">APY</div>
-                            <div className="claim__text">{getPercents(period).percent}%</div>
+                            <div className="claim__text">{period ? getPercents(period).percent : "0"}%</div>
                         </div>
                         <ClaimReward />
                         <div className="claim__det claim__start">
                             <div className="claim__capture">Start day</div>
-                            <div className="claim__text">{getStartDate(startTime)}</div>
+                            <div className="claim__text">{getStartDate(startTime) !== "Invalid date" ? getStartDate(startTime): "--:--:-- --:--"}</div>
                         </div>
                         <div className="claim__det claim__end">
                             <div className="claim__capture">End day</div>
-                            <div className="claim__text">{getEndDate(period, startDate)}</div>
+                            <div className="claim__text">{getStartDate(startTime) !== "Invalid date" ? getEndDate(period, startDate): "--:--:-- --:--"}</div>
                         </div>
                         <div className="progress-bar">
                             <div className="progress__header">

@@ -6,7 +6,7 @@ const initialState = {
     startDate: '',
     startTime: '',
     nftTokenId: '',
-    availableRewards: ""
+    availableRewards: "",
 }
 
 export const stakeSlice = createSlice({
@@ -30,7 +30,7 @@ export const stakeSlice = createSlice({
         },
         updateAvailableRewards(state, action){
             state.availableRewards = action.payload
-        }
+        },
     },
   })
 

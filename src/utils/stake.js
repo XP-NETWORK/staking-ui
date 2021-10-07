@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
-import { updateAmount, updateDuration, updateStartDate ,updateStartTime, updateNftTokenId } from "../redux/stakeSlice"
+import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId } from "../redux/stakeSlice"
 
 
 export let stakeAddress = '0xcd3eE3F9f01690abe6D8759D381047644b92e05F'
@@ -102,6 +102,7 @@ export const showAvailableRewards = async (nftId) => {
     try{
     const available = await Contract.methods.showAvailableRewards(nftId).call()
     console.log("available:", available)
+    store.dispatch(updateAvailableRewards(available))
     return available
     }
     catch(error){
