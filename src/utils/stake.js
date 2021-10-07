@@ -4,8 +4,8 @@ import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
 import { updateAmount, updateDuration, updateStartDate ,updateStartTime, updateNftTokenId } from "../redux/stakeSlice"
 
-// export let stakeAddress = '0x8de823911D793F0404c6Cc74C94c0a08AcB834B9'
-export let stakeAddress = '0xa3DdbCc52f6B41cE397d9e94947820da5855FBDc'
+
+export let stakeAddress = '0x65b8B135a07b65D0f888cc324d6179d7533E2f81'
 const W3 = new Web3(window.ethereum)
 
 const stakeContract = async () => {
