@@ -254,7 +254,10 @@
 .nfts__toggler{
     display: flex;
     width: 486px;
-    /* background-color: rgb(102, 83, 83); */
+}
+
+.un-stake:hover{
+    cursor: pointer;
 }
 
  .widget__art{

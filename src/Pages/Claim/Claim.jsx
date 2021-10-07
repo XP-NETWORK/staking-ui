@@ -4,10 +4,9 @@ import "./Claim.css"
 import unlock from "../../assets/unlock.png"
 import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
-import { useState, useEffect } from 'react'
-import { getProgress, getPercents, getStartDate, getEndDate, nf } from '../../utils/helper'
-import { balanceOf, getStakeById, showAvailableRewards, claimXpNet } from "../../utils/stake"
-import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from 'react'
+import { balanceOf, showAvailableRewards, claimXpNet, getStakeById } from "../../utils/stake"
+import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
 import ClaimReward from '../../Components/ClaimReward.jsx/ClaimReward'
@@ -74,7 +73,14 @@ export default function Claim() {
         if(!tokens){
         balanceOf(address)
         }
+
     }, [tokens])
+
+    useEffect(() => {
+        if(tokens){
+            getStakeById(tokens[0])
+        }
+    }, [])
 
         return (
             <div className="claim__container">
@@ -90,7 +96,7 @@ export default function Claim() {
                         <ProgressBar period={period} startTime={startTime} />
                         <div onClick={() => claimXpNet(stakeInfo[1], rewardsWai, address)} className="claim__button">Claim XPNET</div>
                         <div style={{visibility:`${address && stakeInfo ? 'visible':'hidden'}`}} className="un-stake">
-                        <   img src={unlock} alt="" />
+                            <img src={unlock} alt="" />
                             <span>Un-Stake</span>
                         </div>
                     </div>
