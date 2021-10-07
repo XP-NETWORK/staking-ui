@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 export default function Main() {
     const account = useSelector(state => state.data.account)
     const loader = useSelector(state => state.data.connected)
-    console.log("Loader:",loader)
+    // console.log("Loader:",loader)
 
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Web3 from "web3"
 import "./Claim.css"
 import unlock from "../../assets/unlock.png"
@@ -17,6 +17,7 @@ import End from './Parts/End'
 import NFTAdres from './Parts/NFTAdres'
 import ClaimButton from './Parts/ClaimButton'
 import UnStakeButton from './Parts/UnStakeButton'
+import Loader from '../../Components/Loader/Loader'
  
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
@@ -33,9 +34,11 @@ export default function Claim() {
     // console.log("start time: ", startTime)
     // console.log("period :", period)
     // console.log("token ids: ",tokens)
-    console.log("account: ", address, typeof address)
-    console.log("staker:", stakeInfo[5], typeof stakeInfo[5])
+    // console.log("account: ", address, typeof address)
+    // console.log("staker:", stakeInfo[5], typeof stakeInfo[5])
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
+
+    const [loader, setLoader] = useState(true)
 
     useEffect(() => {
         if(!address || !balance){
@@ -61,65 +64,71 @@ export default function Claim() {
         if (tokens.length > 0) return tokens.map((item, i) => { return <NFT item={item} index={i} key={i}/> })
     }
 
-    useEffect((async) => {
+    useEffect(async() => {
         if(stakeInfo){
             setInterval(() => {
         showAvailableRewards(stakeInfo[1])
-                console.log('hello')
+                // console.log('hello')
             },5000)
-        showAvailableRewards(stakeInfo[1])
+        await showAvailableRewards(stakeInfo[1])
         }
     }, [stakeInfo])
     
-    useEffect(() => {
+    useEffect(async() => {
         if(!tokens){
-        balanceOf(address)
+        await balanceOf(address)
         }
 
-    }, [tokens])
-
-    useEffect(() => {
-        if(tokens){
-            getStakeById(tokens[0])
-        }
     }, [])
 
-        return (
-            <div className="claim__container">
-                <div className="claim">
-                    <div className="claim__title">Staking Reward</div>
-                    <div className="line"></div>
-                    <div className="claim__details">
-                        <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
-                        <ClaimAPY period={period} />
-                        <ClaimReward />
-                        <ClaimStart startTime={startTime} />
-                        <End startTime={startTime} period={period} startDate={startDate} />
-                        <ProgressBar period={period} startTime={startTime} />
-                        <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
-                        <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
-                    </div>
-                </div>
-                <div className="nft__wrapper">
-                    <div className="nft">
-                        <div className="nft__title">NFT</div>
+    useEffect( async () => {
+        if(tokens){
+            await getStakeById(tokens[0])
+            setLoader(false)
+        }
+    }, [tokens])
+
+        if(!loader){
+            return (
+                <div className="claim__container">
+                    <div className="claim">
+                        <div className="claim__title">Staking Reward</div>
                         <div className="line"></div>
-                        <div className="nft__content">
-                            <div className="nft__widget">
-                                <div className="left-arrow arrow">!</div>
-                                <div className="widget__art">
-                                    <img src={bigart} alt="widget" />
-                                </div>
-                                <div className="right-arrow arrow">!</div>
-                            </div>
-                            <NFTAdres address={address}/>
+                        <div className="claim__details">
+                            <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
+                            <ClaimAPY period={period} />
+                            <ClaimReward />
+                            <ClaimStart startTime={startTime} />
+                            <End startTime={startTime} period={period} startDate={startDate} />
+                            <ProgressBar period={period} startTime={startTime} />
+                            <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
+                            <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
                         </div>
                     </div>
-                    <div style={{display:`${!tokens ? "none": "flex"}`}} className="nfts__toggler">
-                        { showTokens() }
-                    </div>  
+                    <div className="nft__wrapper">
+                        <div className="nft">
+                            <div className="nft__title">NFT</div>
+                            <div className="line"></div>
+                            <div className="nft__content">
+                                <div className="nft__widget">
+                                    <div className="left-arrow arrow">!</div>
+                                    <div className="widget__art">
+                                        <img src={bigart} alt="widget" />
+                                    </div>
+                                    <div className="right-arrow arrow">!</div>
+                                </div>
+                                <NFTAdres address={address}/>
+                            </div>
+                        </div>
+                        <div style={{display:`${!tokens ? "none": "flex"}`}} className="nfts__toggler">
+                            { showTokens() }
+                        </div>  
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else{
+            return <Loader />
+        }
    
 }

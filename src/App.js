@@ -22,7 +22,7 @@ const address = useSelector(state => state.data.account)
 
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
-  console.log("price", currentPrice)
+  // console.log("price", currentPrice)
   dispatch(updateCurrentPrice(currentPrice))
 }
 

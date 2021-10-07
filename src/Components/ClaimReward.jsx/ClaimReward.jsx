@@ -11,7 +11,7 @@ export default function ClaimReward() {
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const rewards = Web3.utils.fromWei(rewardsWai, 'ether');
 
-    console.log("ClaimReward: ", stakeInfo[1])
+    // console.log("ClaimReward: ", stakeInfo[1])
 
 
 
@@ -19,7 +19,7 @@ export default function ClaimReward() {
         // debugger
       const interval = setInterval(() => {
         
-        console.log(rewards)
+        // console.log(rewards)
         // setRewards(rewards);
       }, 1000);
       return () => clearInterval(interval);

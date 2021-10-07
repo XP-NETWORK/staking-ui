@@ -15,7 +15,7 @@ export default function Navbar() {
     // console.log(location)
     const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
-    console.log("Nuvbar",balance)
+    // console.log("Nuvbar",balance)
     const dispatch = useDispatch()
     const toggleMetaMask = () => {
         connectMetaMask()

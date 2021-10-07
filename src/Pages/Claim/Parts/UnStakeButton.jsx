@@ -3,7 +3,7 @@ import unlock from "../../../assets/unlock.png"
 import { withrow } from "../../../utils/stake"
 
 export default function UnStakeButton({ stakeInfo, address, stakerAddress }) {
-    console.log(stakerAddress, address)
+    // console.log(stakerAddress, address)
     if(stakerAddress) stakerAddress = stakerAddress.toLowerCase()
     if(address) address = address.toLowerCase()
     if(stakerAddress === address){

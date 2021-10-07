@@ -10,7 +10,7 @@ import ButtonLoader from '../Loader/ButtonLoader'
 export function Approvance({ approvance, amount, duration, account, agreement }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
 
-    console.log(approvance)
+    // console.log(approvance)
     
     useEffect(() => {
         

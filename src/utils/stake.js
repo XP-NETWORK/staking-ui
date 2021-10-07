@@ -29,9 +29,9 @@ export const stake = async (amount, duration, account) => {
     debugger
     const durInSec = 60*60*24*(duration * 30)
     try{
-        console.log(durInSec, amount, duration)
+        // console.log(durInSec, amount, duration)
         const Contract = await stakeContract()
-        console.log(amount, 'helo')
+        // console.log(amount, 'helo')
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', function(receipt){
             console.log(receipt)})
@@ -45,11 +45,11 @@ export const stake = async (amount, duration, account) => {
 
 export const balanceOf = async (owner) => {
     // debugger
-    console.log("Balance of: ", owner)
+    // console.log("Balance of: ", owner)
     try{
         const Contract = await stakeContract()
         const str = await Contract.methods.balanceOf(owner).call()
-        console.log("balance arr", str)
+        // console.log("balance arr", str)
         tokenOfOwnerByIndex(str, owner)
     }
     catch(error){console.log(error)}
@@ -65,7 +65,7 @@ const tokenOfOwnerByIndex = async (str, owner) => {
     for (let i = 0; i < num; i++) {
         try{
             const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
-            console.log("token", token)
+            // console.log("token", token)
             store.dispatch(updateTokenIDs(token))
         }
         catch(error){
@@ -81,7 +81,7 @@ export const getStakeById = async (id) => {
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
-        console.log(info)
+        // console.log(info)
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
         // console.log("Staked amount: ", info.amount)
