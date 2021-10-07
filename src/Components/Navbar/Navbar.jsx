@@ -26,7 +26,11 @@ export default function Navbar() {
         if(account){
             return(
             <div className="navbar">
-            <div className="xp__logo"><img src={xplogo} alt="XP.Network Logo" /></div>
+            <div className="xp__logo">
+                <Link to='/stake'>
+                    <img src={xplogo} alt="XP.Network Logo" />
+                </Link>
+            </div>
                 <div className="nav__buttons">
                 <div className={location.pathname === '/stake' || location.pathname === '/' ? `Stake nav__button--active`: `Stake nav__button`}><Link to='/stake'>Stake XPNET</Link></div>
                 <div style={{visibility:`${balance ? 'visible' : 'hidden'}`}} className={location.pathname === '/claim' ?`Claim nav__button--active`:`Claim nav__button`}><Link to='/claim'>Claim XPNET</Link></div>
@@ -42,7 +46,11 @@ export default function Navbar() {
         else{
             return(
             <div className="navbar">
-                <div className="xp__logo"><Link to='/claim'><img src={xplogo} alt="XP.Network Logo" /></ Link></div>
+                <div className="xp__logo">
+                    <Link to='/stake'>
+                        <img src={xplogo} alt="XP.Network Logo" />
+                    </Link>
+                </div>
                 <div className="investor">| Investor Portal</div>
             </div>
             )

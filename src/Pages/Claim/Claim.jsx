@@ -7,10 +7,11 @@ import { useState, useEffect } from 'react'
 import { getProgress, getPercents, getStartDate, getEndDate } from '../../utils/helper'
 import { balanceOf, getStakeById, showAvailableRewards } from "../../utils/stake"
 import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
  
 export default function Claim() {
-
+    const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
     const tokens = useSelector(state => state.data.tokenIDs)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
@@ -18,13 +19,19 @@ export default function Claim() {
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
     const startDate = useSelector(state => state.stakeData.startDate)
-    
+    let history = useHistory();
     // console.log("start date: ", startDate)
     // console.log("start time: ", startTime)
     // console.log("period :", period)
     // console.log("token ids: ",tokens)
     console.log("account: ", address, typeof address)
     console.log("staker:", stakeInfo[5], typeof stakeInfo[5] )
+
+    useEffect(() => {
+        if(!address || !balance){
+            history.push("/stake")
+        }
+    }, [])
 
     const showUnStake = () => {
         if(address && stakeInfo){
