@@ -1,26 +1,23 @@
-.loader__wrapper{
 
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+.button__loader,
+.button__loader:before,
+.button__loader:after {
+    position: absolute;
+    top: -10px;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    transform: scale(1);
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation: load7 1.8s infinite ease-in-out;
+    animation: load7 1.8s infinite ease-in-out;
 }
 
-.loader,
-.loader:before,
-.loader:after {
-  border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
-}
-.loader {
-  color: #0066ff;
-  font-size: 10px;
-  margin: 80px auto;
+.button__loader {
+  color: #ffffff;
+  font-size: 4px;
+  /* margin: 80px auto; */
   position: relative;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
@@ -29,18 +26,18 @@
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
-.loader:before,
-.loader:after {
+.button__loader:before,
+.button__loader:after {
   content: '';
   position: absolute;
   top: 0;
 }
-.loader:before {
+.button__loader:before {
   left: -3.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
-.loader:after {
+.button__loader:after {
   left: 3.5em;
 }
 @-webkit-keyframes load7 {

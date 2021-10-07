@@ -4,16 +4,23 @@ import { approve } from "../../utils/xpnet"
 import "./Buttons.css"
 import lock from "../../assets/lock.png"
 import { useSelector } from 'react-redux'
+import ButtonLoader from '../Loader/ButtonLoader'
+
 
 export function Approvance({ approvance, amount, duration, account, agreement }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
+
     console.log(approvance)
-    // debugger
+    
+    useEffect(() => {
+        
+    }, [approveloader])
+
     if(approvance){
         return <div className="summary__button lock">Approved</div>
     }
     else if(!approvance && agreement){
-        return <div onClick={() => approve(account)} className="summary__button button">{approveloader ? "Loading..." : "Approve"}</div>
+        return <div onClick={() => approve(account)} className="summary__button button">{approveloader ? <ButtonLoader /> : "Approve"}</div>
     }
     else{
         return <div className="summary__button lock">Approve</div>
