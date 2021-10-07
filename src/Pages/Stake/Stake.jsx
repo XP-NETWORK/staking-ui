@@ -39,17 +39,6 @@ const durations = [
     {d:1, p: 125},
 ]
 
-// const getPercent = () => {
-//     let percent
-//     durations.forEach(item => {
-//         // debugger
-//         if(item.d === duration){
-//             percent = item.p
-//         }
-//     })
-//     return percent
-// }
-
 const putMax = () => {
     setAmount(balance)
 }
@@ -92,8 +81,6 @@ useEffect(() => {
 
 useEffect(() => {
 }, [allowence])
-
-    if(account){
         return (
             <div className="stake__container">
                 <div className="stake">
@@ -184,8 +171,5 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-        )
-    }else{
-        return <Connect />
-    }
+        )   
 }

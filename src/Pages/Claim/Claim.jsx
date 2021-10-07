@@ -125,11 +125,7 @@ export default function Claim() {
                             </div>
                         </div>
                     </div>
-                    <div className="nfts__toggler">
-                        {/* <NFT />
-                        <NFT />
-                        <NFT />
-                        <NFT />  */}
+                    <div style={{display:`${!tokens ? "none": "block"}`}} className="nfts__toggler">
                         { showTokens() }
                     </div>  
                 </div>

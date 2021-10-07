@@ -13,15 +13,16 @@ export default function Navbar() {
     const [rendered, setRendered] = useState('stake')
     const location = useLocation();
     // console.log(location)
-    const metaMaskStatus = useSelector(state => state.data.connected)
-    console.log(metaMaskStatus)
+    const account = useSelector(state => state.data.account)
+    console.log("Nuvbar",account)
     const dispatch = useDispatch()
     const toggleMetaMask = () => {
         connectMetaMask()
     }
 
     const showNav = () => {
-        if(metaMaskStatus){
+
+        if(account){
             return(
             <div className="navbar">
             <div className="xp__logo"><img src={xplogo} alt="XP.Network Logo" /></div>
@@ -29,8 +30,8 @@ export default function Navbar() {
                 <div className={location.pathname === '/stake' || location.pathname === '/' ? `Stake nav__button--active`: `Stake nav__button`}><Link to='/stake'>Stake XPNET</Link></div>
                 <div className={location.pathname === '/claim' ?`Claim nav__button--active`:`Claim nav__button`}><Link to='/claim'>Claim XPNET</Link></div>
             </div>
-            <div onClick={ () => toggleMetaMask()} className="metamask">
-                <div className="metamask__status"><div className={metaMaskStatus ? 'online' : 'offline'}></div></div>
+            <div className="metamask">
+                <div className="metamask__status"><div className={account ? 'online' : 'offline'}></div></div>
                 <div className="metamask__icon"><img src={metaLogo} alt="" /></div>
                 <div className="metamask__title">MetaMask</div>
             </div>

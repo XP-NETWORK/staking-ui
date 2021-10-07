@@ -19,8 +19,6 @@ export const connectMetaMask = function() {
     getAccounts()
 }
 
-
-
 export const initMetaMask = async () => {
     // debugger
     if(ethereum){

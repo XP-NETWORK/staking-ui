@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
-import { getActualTime, updateCurrentPrice, updateAccount} from "./redux/counterSlice"
+import { getActualTime, updateCurrentPrice, updateAccount, chengeStatus} from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logXPContract, checkBalance, checkAllowence } from "../src/utils/xpnet"
 import { logStakeContract, showAvailableRewards } from "../src/utils/stake"
@@ -20,13 +20,18 @@ let accounts
 
 function App() {
 
-if(ethereum){
-  window.ethereum.on("accountsChanged", accounts => {
-    if (accounts.length > 0) {
-       dispatch(updateAccount(accounts[0]))
-       showAvailableRewards()
-     }
- });
+
+
+const accountsChanged = () => {
+  if(ethereum){
+    // debugger
+    ethereum.on("accountsChanged", accounts => {
+      if (accounts.length > 0) {
+         dispatch(updateAccount(accounts[0]))
+         showAvailableRewards()
+       }
+   });
+  }
 }
 
 
@@ -54,15 +59,12 @@ useEffect(() => {
 
 useEffect(() => {
   getCurrentPrice()
-  setInterval(getCurrentPrice, 200000)
-}, [])
-
-useEffect(() => {
   doDate()
   setInterval(doDate, 1000);
   initMetaMask()
   logXPContract()
   logStakeContract()
+  accountsChanged()
 }, [])
 
   return (
