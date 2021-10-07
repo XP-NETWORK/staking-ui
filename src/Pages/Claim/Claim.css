@@ -10,6 +10,7 @@
 
 .claim{
     padding-top: 30px;
+    height: 630px;
     max-width: 622px;
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
@@ -37,16 +38,14 @@
     border: 1px solid #E5E8F0;
     padding: 30px 0 24px 0;
     margin-bottom: 10px;
-
 }
 
 .nfts__toggler{
 
     box-sizing: border-box;
     border-radius: 6px;
-
-    display: flex;
-    justify-content: space-around;
+    /* display: flex; */
+    justify-content: flex-start;
 
 }
 
@@ -165,6 +164,35 @@
     align-items: center;
     letter-spacing: 0.03em;
     color: #FFF;
+    margin: 5px 0;
+}
+
+.claim__button span{
+    margin-left: 10px;
+}
+
+.claim__button--unactive span{
+    margin-left: 10px;
+}
+
+.claim__button--unactive:hover{
+    margin-left: 10px;
+}
+
+.claim__button--unactive{
+    width: 562px;
+    height: 44px;
+    background-color: #ECEDF3;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: #FFF;
+    margin: 5px 0;
 }
 
 .claim__button:hover{
@@ -249,6 +277,10 @@
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
+}
+
+.address__icon:hover{
+    cursor: pointer;
 }
 
 .nfts__toggler{

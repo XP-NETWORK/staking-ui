@@ -2,10 +2,9 @@ import React from 'react'
 import Web3 from "web3"
 import "./Claim.css"
 import unlock from "../../assets/unlock.png"
-import pages from "../../assets/pages.png"
 import bigart from "../../assets/bigart.png"
 import { useEffect } from 'react'
-import { balanceOf, showAvailableRewards, claimXpNet, getStakeById } from "../../utils/stake"
+import { balanceOf, showAvailableRewards, claimXpNet, getStakeById, withrow } from "../../utils/stake"
 import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
@@ -15,6 +14,9 @@ import ClaimAPY from './Parts/ClaimAPY'
 import ClaimStart from './Parts/ClaimStart'
 import ProgressBar from './Parts/ProgressBar'
 import End from './Parts/End'
+import NFTAdres from './Parts/NFTAdres'
+import ClaimButton from './Parts/ClaimButton'
+import UnStakeButton from './Parts/UnStakeButton'
  
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
@@ -94,11 +96,8 @@ export default function Claim() {
                         <ClaimStart startTime={startTime} />
                         <End startTime={startTime} period={period} startDate={startDate} />
                         <ProgressBar period={period} startTime={startTime} />
-                        <div onClick={() => claimXpNet(stakeInfo[1], rewardsWai, address)} className="claim__button">Claim XPNET</div>
-                        <div style={{visibility:`${address && stakeInfo ? 'visible':'hidden'}`}} className="un-stake">
-                            <img src={unlock} alt="" />
-                            <span>Un-Stake</span>
-                        </div>
+                        <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
+                        <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
                     </div>
                 </div>
                 <div className="nft__wrapper">
@@ -113,15 +112,10 @@ export default function Claim() {
                                 </div>
                                 <div className="right-arrow arrow">!</div>
                             </div>
-                            <div className="nft__address">
-                                <div className="address">{address}</div>
-                                <div className="address__icon">
-                                    <img src={pages} alt="" />
-                                </div>
-                            </div>
+                            <NFTAdres address={address}/>
                         </div>
                     </div>
-                    <div style={{display:`${!tokens ? "none": "block"}`}} className="nfts__toggler">
+                    <div style={{display:`${!tokens ? "none": "flex"}`}} className="nfts__toggler">
                         { showTokens() }
                     </div>  
                 </div>

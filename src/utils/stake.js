@@ -76,7 +76,7 @@ const tokenOfOwnerByIndex = async (str, owner) => {
 }
 
 export const getStakeById = async (id) => {
-    debugger
+    // debugger
     
     const Contract = await stakeContract()
     try{
@@ -111,9 +111,9 @@ export const showAvailableRewards = async (nftId) => {
 }
 
 export const claimXpNet = async (nftId,rewards, account) => {
-    debugger
-    console.log("claimXpNet nftId: ",nftId)
-    console.log("claimXpNet rewards: ", rewards)
+    // debugger
+    // console.log("claimXpNet nftId: ",nftId)
+    // console.log("claimXpNet rewards: ", rewards)
     const Contract = await stakeContract()
     try{
     const claimed = await Contract.methods.withdrawRewards(nftId, rewards).send({from:account})
@@ -122,3 +122,15 @@ export const claimXpNet = async (nftId,rewards, account) => {
         console.log(error)
     }
 }
+
+export const withrow = async ( nftId, adress ) => {
+    // debugger
+    
+    const Contract = await stakeContract()
+    try{
+        const withdrawen = Contract.methods.withdraw(nftId).send({from:adress})
+    }
+    catch(error){
+        console.log(error)
+    }
+} 
