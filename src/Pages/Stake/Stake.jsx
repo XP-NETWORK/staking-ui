@@ -14,6 +14,7 @@ import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
 import Connect from '../Connect/Connect'
+import NFT from '../../Components/NFT/NFT'
 
 
 export default function Stake() {
@@ -153,11 +154,11 @@ useEffect(() => {
                         <div className="line"></div>
                         <div className="details details__apy">
                             <div className="details__capture">Est. APY</div>
-                            <div className="details__text">{getPercent(durations, duration)}%</div>
+                            <div className="details__text">{nf.format(getPercent(durations, duration))}%</div>
                         </div>
                         <div className="details details__rewards">
                             <div className="details__capture">Estimated APY</div>
-                            <div className="details__text">{getRewards()} XPNET<span>$ {nf.format((getRewards()*currentPrice).toFixed(2))}</span></div>
+                            <div className="details__text">{nf.format(getRewards())} XPNET<span>$ {nf.format((getRewards()*currentPrice).toFixed(2))}</span></div>
                         </div>
                         <div className="line"></div>
                         <div className="agreement">

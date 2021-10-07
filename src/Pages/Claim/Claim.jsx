@@ -57,6 +57,10 @@ export default function Claim() {
 
     useEffect((async) => {
         if(stakeInfo){
+            setInterval(() => {
+        showAvailableRewards(stakeInfo[1])
+                console.log('hello')
+            },5000)
         showAvailableRewards(stakeInfo[1])
         }
     }, [stakeInfo])
@@ -68,6 +72,7 @@ export default function Claim() {
     }, [tokens])
 
     useEffect(() => {
+
         getProgress()
     }, [])
 
