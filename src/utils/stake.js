@@ -100,8 +100,9 @@ export const showAvailableRewards = async (nftId) => {
     console.log("nftTokenId: ", nftId)
     const Contract = await stakeContract()
     try{
-    const awailable = await Contract.methods.showAvailableRewards(nftId).call()
-    console.log("awailable:", awailable)
+    const available = await Contract.methods.showAvailableRewards(nftId).call()
+    console.log("available:", available)
+    return available
     }
     catch(error){
         console.log(error)

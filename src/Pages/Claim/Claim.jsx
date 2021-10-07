@@ -10,6 +10,7 @@ import { balanceOf, getStakeById, showAvailableRewards } from "../../utils/stake
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
+import ClaimReward from '../../Components/ClaimReward.jsx/ClaimReward'
  
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
@@ -89,10 +90,7 @@ export default function Claim() {
                             <div className="claim__capture">APY</div>
                             <div className="claim__text">{getPercents(period).percent}%</div>
                         </div>
-                        <div className="claim__det claim__reward">
-                            <div className="claim__capture">Staking Reward</div>
-                            <div className="claim__text">115 XPNET</div>
-                        </div>
+                        <ClaimReward />
                         <div className="claim__det claim__start">
                             <div className="claim__capture">Start day</div>
                             <div className="claim__text">{getStartDate(startTime)}</div>
