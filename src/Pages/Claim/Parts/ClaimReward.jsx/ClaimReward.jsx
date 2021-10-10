@@ -1,8 +1,8 @@
 import { useEffect, useState} from 'react'
 import { useSelector } from "react-redux"
-import { nf } from '../../utils/helper'
+import { nf } from '../../../../utils/helper'
 import Web3 from "web3"
-import { showAvailableRewards } from "../../utils/stake"
+import { showAvailableRewards } from "../../../../utils/stake"
 
 
 export default function ClaimReward() {

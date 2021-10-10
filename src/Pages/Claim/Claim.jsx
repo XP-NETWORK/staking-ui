@@ -8,7 +8,7 @@ import { balanceOf, showAvailableRewards, claimXpNet, getStakeById, withrow } fr
 import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
-import ClaimReward from '../../Components/ClaimReward.jsx/ClaimReward'
+import ClaimReward from './Parts/ClaimReward.jsx/ClaimReward'
 import ClaimAmount from './Parts/ClaimAmount'
 import ClaimAPY from './Parts/ClaimAPY'
 import ClaimStart from './Parts/ClaimStart'
@@ -25,6 +25,7 @@ export default function Claim() {
     const address = useSelector(state => state.data.account)
     const tokens = useSelector(state => state.data.tokenIDs)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
+    console.log(stakeInfo)
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
@@ -72,11 +73,18 @@ export default function Claim() {
     }, [])
 
     useEffect( async () => {
+        debugger
+        console.log("hello". tokens)
         if(tokens){
+            debugger
             await getStakeById(tokens[0])
             setLoader(false)
         }
-    }, [tokens])
+    }, [])
+
+    useEffect(() => {
+
+    }, [stakeInfo])    
 
         if(!loader){
             return (

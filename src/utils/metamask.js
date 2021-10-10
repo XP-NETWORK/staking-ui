@@ -22,14 +22,6 @@ export const connectMetaMask = function() {
 export const initMetaMask = async () => {
     // debugger
     if(ethereum){
-        // const chainId = await W3.eth.getChainId()
-        // ethereum.on('accountsChanged', a => {
-        //     // debugger
-        //     console.log("...", a)
-        //     store.dispatch(chengeStatus(a.length > 0))
-        //     getAccounts()
-        // })    
-
         if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
             accounts = await getAccounts()
             if(accounts && accounts.length > 0) {

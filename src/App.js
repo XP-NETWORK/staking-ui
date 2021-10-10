@@ -7,7 +7,7 @@ import { initMetaMask } from "../src/utils/metamask"
 import { getActualTime, updateCurrentPrice, updateAccount, chengeStatus} from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logXPContract, checkBalance, checkAllowence } from "../src/utils/xpnet"
-import { logStakeContract, showAvailableRewards } from "../src/utils/stake"
+import { logStakeContract, showAvailableRewards, getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
 import Web3 from "web3"
@@ -16,10 +16,21 @@ import Web3 from "web3"
 
 
 function App() {
-  
+const balance = useSelector(state => state.data.balance)
+// console.log('app balance: ', balance)
+const tokens = useSelector(state => state.data.tokenIDs)
+console.log('app tokens: ', tokens)
+const stakeInfo = useSelector(state => state.data.stakeInfo)
+// console.log(stakeInfo)
+const stakedAmount = useSelector(state => state.stakeData.amount)
+// console.log("stakedAmount: ", stakedAmount)
+const period = useSelector(state => state.stakeData.duration)
+// console.log("period: ", period)
+const startTime = useSelector(state => state.stakeData.startTime)
+const startDate = useSelector(state => state.stakeData.startDate)
+const rewardsWai = useSelector(state => state.stakeData.availableRewards)
 const dispatch = useDispatch()
 const address = useSelector(state => state.data.account)
-
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
   // console.log("price", currentPrice)
@@ -50,12 +61,12 @@ const accountsChanged = () => {
 }
 
 
-useEffect(() => {
+useEffect(async() => {
  if(address) updateBalance()
- checkAllowence(address)
+ await checkAllowence(address)
+ await getAmountOfTokens(address)
+ await tokenOfOwnerByIndex(tokens, address)
 }, [address])
-
-
 
 useEffect(() => {
   getCurrentPrice()
@@ -64,6 +75,7 @@ useEffect(() => {
   initMetaMask()
   logXPContract()
   logStakeContract()
+
   accountsChanged()
 }, [])
 

@@ -47,39 +47,62 @@ export const stake = async (amount, duration, account) => {
     }
 }
 
+// Take owner addres and get amount of tokens on owner. APP
+export const getAmountOfTokens = async (owner) => {
+    // debugger
+    const Contract = await stakeContract()
+    if(owner){
+        try{
+            const tokensAmount = await Contract.methods.balanceOf(owner).call()
+            // console.log("getAmountOfTokens:", tokensAmount)
+            store.dispatch(updateTokenIDs(tokensAmount))
+            }
+            catch(error){
+                console.log(error)
+            }
+    }
+}
 
 
+// ^^^^^^^^^^^^^^^^^^^^^^^^
 export const balanceOf = async (owner) => {
     // debugger
     // console.log("Balance of: ", owner)
     try{
         const Contract = await stakeContract()
         const str = await Contract.methods.balanceOf(owner).call()
-        // console.log("balance arr", str)
-        tokenOfOwnerByIndex(str, owner)
+        console.log("balance arr", str)
+        await tokenOfOwnerByIndex(str, owner)
     }
     catch(error){console.log(error)}
 
 }
 
-const tokenOfOwnerByIndex = async (str, owner) => {
+// Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
+export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
     // debugger
-    if(str){
-    const num = parseInt(str)
-    const Contract = await stakeContract()
-    let tokens;
-    for (let i = 0; i < num; i++) {
-        try{
-            const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
-            // console.log("token", token)
-            store.dispatch(updateTokenIDs(token))
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
+    // let tokenArr = []
+
+    if(tokenAmount){
+        const num = parseInt(tokenAmount)
+        const Contract = await stakeContract()
+        // for (let i = 0; i < num; i++) {
+        //     try{
+        //         const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
+        //         console.log(`toke: ${i}: `, token)
+        //         tokenArr.push(token)
+        //     }
+        //     catch(error){
+        //         console.log(error)
+        //     }
+        // }
+        store.dispatch(updateTokenIDs())
+    
     }
 }
+
+
+
 
 export const getStakeById = async (index) => {
     // debugger
