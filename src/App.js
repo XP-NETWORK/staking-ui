@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
-import { getActualTime, updateCurrentPrice, updateAccount, chengeStatus} from "./redux/counterSlice"
+import { getActualTime, updateCurrentPrice, updateAccount, chengeStatus, updateTokensArray} from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logXPContract, checkBalance, checkAllowence } from "../src/utils/xpnet"
 import { logStakeContract, showAvailableRewards, getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
@@ -18,8 +18,13 @@ import Web3 from "web3"
 function App() {
 const balance = useSelector(state => state.data.balance)
 // console.log('app balance: ', balance)
-const tokens = useSelector(state => state.data.tokenIDs)
-console.log('app tokens: ', tokens)
+const tokensArr = useSelector(state => state.stakeData.tokensArray)
+console.log("tokensArr: ", tokensArr)
+const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
+const tokens = useSelector(state => state.stakeData.tokensAmount)
+// console.log('app tokens: ', tokens)
+
+
 const stakeInfo = useSelector(state => state.data.stakeInfo)
 // console.log(stakeInfo)
 const stakedAmount = useSelector(state => state.stakeData.amount)
@@ -61,12 +66,22 @@ const accountsChanged = () => {
 }
 
 
-useEffect(async() => {
- if(address) updateBalance()
- await checkAllowence(address)
- await getAmountOfTokens(address)
- await tokenOfOwnerByIndex(tokens, address)
+useEffect(async () => {
+  // debugger
+ if(address) {
+    await updateBalance()
+    await checkAllowence(address)
+    await getAmountOfTokens(address)
+    await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+  }
 }, [address])
+
+useEffect(() => {
+  // debugger
+  if(tokens){
+    tokenOfOwnerByIndex(tokensFlag, tokens, address)
+  }
+}, [tokens])
 
 useEffect(() => {
   getCurrentPrice()
@@ -75,7 +90,6 @@ useEffect(() => {
   initMetaMask()
   logXPContract()
   logStakeContract()
-
   accountsChanged()
 }, [])
 

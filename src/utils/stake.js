@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex } from "../redux/stakeSlice"
+import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag } from "../redux/stakeSlice"
 
 
 export let stakeAddress = '0xcd3eE3F9f01690abe6D8759D381047644b92e05F'
@@ -49,13 +49,13 @@ export const stake = async (amount, duration, account) => {
 
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
-    // debugger
+    debugger
     const Contract = await stakeContract()
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
             // console.log("getAmountOfTokens:", tokensAmount)
-            store.dispatch(updateTokenIDs(tokensAmount))
+            store.dispatch(updateTokensAmount(tokensAmount))
             }
             catch(error){
                 console.log(error)
@@ -79,25 +79,27 @@ export const balanceOf = async (owner) => {
 }
 
 // Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
-export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
-    // debugger
-    // let tokenArr = []
-
-    if(tokenAmount){
-        const num = parseInt(tokenAmount)
-        const Contract = await stakeContract()
-        // for (let i = 0; i < num; i++) {
-        //     try{
-        //         const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
-        //         console.log(`toke: ${i}: `, token)
-        //         tokenArr.push(token)
-        //     }
-        //     catch(error){
-        //         console.log(error)
-        //     }
-        // }
-        store.dispatch(updateTokenIDs())
-    
+export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
+    debugger
+    let tokenArr = []
+    if(flag === false){
+        if(tokenAmount){
+            const num = parseInt(tokenAmount)
+            const Contract = await stakeContract()
+            for (let i = 0; i < num; i++) {
+                try{
+                    const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
+                    console.log(`toke: ${i}: `, token)
+                    tokenArr.push(token)
+                }
+                catch(error){
+                    console.log(error)
+                }
+            }
+            store.dispatch(updateTokensArray(tokenArr))
+            store.dispatch(updateTokensAmountFlag(true))
+        
+        }
     }
 }
 

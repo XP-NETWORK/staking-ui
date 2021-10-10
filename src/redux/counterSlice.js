@@ -54,6 +54,7 @@ export const counterSlice = createSlice({
         state.currentPrice = action.payload
       },
       updateTokenIDs(state, action){
+        // debugger
         state.tokenIDs = action.payload
       },
       updateStakeInfo(state, action){

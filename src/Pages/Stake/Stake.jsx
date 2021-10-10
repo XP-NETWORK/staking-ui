@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
 import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
+import { updateTokensArray } from "../../redux/stakeSlice"
 import { getPercent, nf } from "../../utils/helper"
 import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"

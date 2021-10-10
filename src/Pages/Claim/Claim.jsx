@@ -24,6 +24,8 @@ export default function Claim() {
     const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
     const tokens = useSelector(state => state.data.tokenIDs)
+    const tokensArr = useSelector(state => state.stakeData.tokensArray)
+    console.log("Claim: ", tokens)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
     console.log(stakeInfo)
     const stakedAmount = useSelector(state => state.stakeData.amount)
@@ -63,30 +65,32 @@ export default function Claim() {
 
     const showTokens = () => {
         // debugger
-        if (tokens.length > 0) return tokens.map((item, i) => { return <NFT item={item} index={i} key={i}/> })
+        if(tokensArr){
+            return tokensArr.map((item, i) => { return <NFT item={item} index={i} key={i}/> })
+        }
     }
     
-    useEffect(async() => {
-        if(!tokens){
-        await balanceOf(address)
-        }
-    }, [])
+    // useEffect(async() => {
+    //     if(!tokens){
+    //     await balanceOf(address)
+    //     }
+    // }, [])
 
-    useEffect( async () => {
-        debugger
-        console.log("hello". tokens)
-        if(tokens){
-            debugger
-            await getStakeById(tokens[0])
-            setLoader(false)
-        }
-    }, [])
+    // useEffect( async () => {
+    //     debugger
+    //     console.log("hello", tokens)
+    //     if(tokens){
+    //         debugger
+    //         await getStakeById(tokens[0])
+    //         setLoader(false)
+    //     }
+    // }, [])
 
     useEffect(() => {
 
     }, [stakeInfo])    
 
-        if(!loader){
+        if(true){
             return (
                 <div className="claim__container">
                     <div className="claim">
@@ -112,7 +116,7 @@ export default function Claim() {
                                 <NFTAdres address={address}/>
                             </div>
                         </div>
-                        <div style={{display:`${!tokens ? "none": "flex"}`}} className="nfts__toggler">
+                        <div className="nfts__toggler">
                             { showTokens() }
                         </div>  
                     </div>
