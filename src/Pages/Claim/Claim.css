@@ -251,18 +251,6 @@
     margin-bottom: 24px; */
 }
 
-.nft__widget{
-    width: 426px;
-    height: 314px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 30px;
-}
-
-
-
 .address__icon img{
     width: 100%;
 }
@@ -292,22 +280,4 @@
     cursor: pointer;
 }
 
- .widget__art{
-    max-width: 292px;
-   
-} 
 
-.widget__art img{
-    width: 100%;
-}
-
-.arrow{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 42px;
-    height: 42px;
-    border: 1px solid #E5E8F0;
-    box-sizing: border-box;
-    border-radius: 50%;
-}

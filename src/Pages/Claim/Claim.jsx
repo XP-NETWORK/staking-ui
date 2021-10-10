@@ -18,7 +18,7 @@ import NFTAdres from './Parts/NFTAdres'
 import ClaimButton from './Parts/ClaimButton'
 import UnStakeButton from './Parts/UnStakeButton'
 import Loader from '../../Components/Loader/Loader'
-import Widget from './Parts/Widget'
+import Widget from './Parts/Widget/Widget'
  
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
@@ -111,7 +111,7 @@ export default function Claim() {
                             <div className="nft__title">NFT</div>
                             <div className="line"></div>
                             <div className="nft__content">
-                                <Widget />
+                                <Widget tokens={tokens} />
                                 <NFTAdres address={address}/>
                             </div>
                         </div>
