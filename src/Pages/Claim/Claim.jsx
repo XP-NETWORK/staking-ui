@@ -64,22 +64,11 @@ export default function Claim() {
         // debugger
         if (tokens.length > 0) return tokens.map((item, i) => { return <NFT item={item} index={i} key={i}/> })
     }
-
-    useEffect(async() => {
-        if(stakeInfo){
-            setInterval(() => {
-        showAvailableRewards(stakeInfo[1])
-                // console.log('hello')
-            },5000)
-        await showAvailableRewards(stakeInfo[1])
-        }
-    }, [stakeInfo])
     
     useEffect(async() => {
         if(!tokens){
         await balanceOf(address)
         }
-
     }, [])
 
     useEffect( async () => {

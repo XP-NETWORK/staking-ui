@@ -3,7 +3,7 @@ import Web3 from "web3"
 import "./Stake.css"
 import image from "../../assets/Rectangle.png"
 import i from "../../assets/i.svg"
-import lock from "../../assets/lock.png"
+
 import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';

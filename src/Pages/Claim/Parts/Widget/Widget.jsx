@@ -9,23 +9,24 @@ import "./Widget.css"
 export default function Widget({ tokens }) {
     const stakeInfo = useSelector(state => state.data.stakeInfo)
     const tokenId = parseInt(stakeInfo[6])
+    const tokenIndex = useSelector(state => state.stakeData.nftTokenIndex)
    
     
     const swapToken = (side) => {
-        debugger
-        console.log(side)
+        // debugger
+        // console.log(side)
         if(tokens.length > 1){
             if(side === "right"){
-                if(tokenId === tokens.length){
+                if(tokenIndex === tokens.length){
                     getStakeById(0)
                 }
-                else getStakeById(tokenId + 1)
+                else getStakeById(tokenIndex + 1)
             }
             else{
-                if(tokenId === 0){
+                if(tokenIndex === 0){
                     getStakeById(tokens.length)
                 }
-                else getStakeById(tokenId - 1)
+                else getStakeById(tokenIndex - 1)
             }
         }
     }

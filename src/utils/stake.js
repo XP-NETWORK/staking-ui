@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateTokenIDs, updateStakeInfo } from "../redux/counterSlice"
-import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId } from "../redux/stakeSlice"
+import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex } from "../redux/stakeSlice"
 
 
 export let stakeAddress = '0xcd3eE3F9f01690abe6D8759D381047644b92e05F'
@@ -75,13 +75,14 @@ const tokenOfOwnerByIndex = async (str, owner) => {
     }
 }
 
-export const getStakeById = async (id) => {
+export const getStakeById = async (index) => {
     // debugger
     
     const Contract = await stakeContract()
     try{
-        const info = await Contract.methods.stakes(id).call()
+        const info = await Contract.methods.stakes(index).call()
         console.log(info)
+        store.dispatch(updateNftTokenIndex(index))
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
         // console.log("Staked amount: ", info.amount)
