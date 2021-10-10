@@ -10,6 +10,18 @@
     opacity: 0.6;
 }
 
+.nav__button--disabled{
+    width: 126px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: #1D1D1D;
+    opacity: 0.2;
+}
+
 .nav__button--active{
     width: 126px;
     height: 32px;
@@ -20,4 +32,24 @@
     background-color: #fff;
     color: #2853EB;
     cursor: pointer;
+}
+
+.nav__buttons{
+    display: flex;
+}
+
+@media screen and (max-width: 425px) {
+    .nav__buttons{
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        background: #ECEDF3;
+        border-radius: 8px;
+    }
+    .nav__button{
+        width: 194px;
+    }
+    .nav__button--active{
+        width: 194px;
+    }
 }

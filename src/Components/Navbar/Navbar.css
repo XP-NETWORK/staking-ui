@@ -23,11 +23,6 @@
 }
 
 
-
-.nav__buttons{
-    display: flex;
-}
-
 .metamask{
     width: 175px;
     height: 32px;
@@ -87,19 +82,5 @@
         order: -1;
         margin-left: 25px;
         padding: 10px 0;
-
-    }
-    .nav__buttons{
-        justify-content: center;
-        align-items: center;
-        padding: 6px;
-        background: #ECEDF3;
-        border-radius: 8px;
-    }
-    .nav__button{
-        width: 194px;
-    }
-    .nav__button--active{
-        width: 194px;
     }
 }
