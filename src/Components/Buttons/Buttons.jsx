@@ -10,8 +10,9 @@ import ButtonLoader from '../Loader/ButtonLoader'
 
 export function Approvance({ approvance, amount, duration, account, agreement }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
+    const lockloader = useSelector(state => state.data.lockLoader)
 
-    // console.log(approvance)
+    console.log(approvance)
     
     useEffect(() => {
         
@@ -33,7 +34,11 @@ export function Lock({ approvance, amount, duration, account, agreement }){
     const lockloader = useSelector(state => state.data.lockLoader)
     
     if(approvance && agreement && amount){
-        return <div onClick={() => stake(amount, duration, account)} className="summary__button button"><img src={lockWhite} alt=""/><span>{lockloader ? "Loading..." : "Lock"}</span></div>
+        return (
+            <div onClick={() => stake(amount, duration, account)} className="summary__button button">
+                {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Lock</span></>}
+                {/* <img src={lockWhite} alt=""/><span>{lockloader ? <ButtonLoader /> : "Lock"}</span> */}
+            </div>)
     }
     else{
         return <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
