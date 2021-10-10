@@ -6,6 +6,7 @@ import { connectMetaMask } from "../../utils/metamask"
 import { useSelector, useDispatch } from 'react-redux'
 import { chengeStatus } from "../../redux/counterSlice";
 import { useEffect, useState } from "react"
+import NavButton from "./Parts/NavButton";
 
 
 export default function Navbar() {
@@ -32,8 +33,10 @@ export default function Navbar() {
                 </Link>
             </div>
                 <div className="nav__buttons">
-                <div className={location.pathname === '/stake' || location.pathname === '/' ? `Stake nav__button--active`: `Stake nav__button`}><Link to='/stake'>Stake XPNET</Link></div>
-                <div style={{visibility:`${balance ? 'visible' : 'hidden'}`}} className={location.pathname === '/claim' ?`Claim nav__button--active`:`Claim nav__button`}><Link to='/claim'>Claim XPNET</Link></div>
+                {/* <div className={location.pathname === '/stake' || location.pathname === '/' ? `Stake nav__button--active`: `Stake nav__button`}><Link to='/stake'>Stake XPNET</Link></div> */}
+                <NavButton location={location} type="stake-btn" />
+                {/* <div style={{visibility:`${balance ? 'visible' : 'hidden'}`}} className={location.pathname === '/claim' ?`Claim nav__button--active`:`Claim nav__button`}><Link to='/claim'>Claim XPNET</Link></div> */}
+                <NavButton balance={balance} location={location} type={'claim-btn'} />
             </div>
             <div className="metamask">
                 <div className="metamask__status"><div className={account ? 'online' : 'offline'}></div></div>

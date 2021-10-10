@@ -42,37 +42,45 @@ export const checkBalance = async (address) => {
 }
 
 export const approve = async (account) => {
+    debugger
     try{
+        store.dispatch(updateAproveButtonsLoader(true))
         const Contract = await xpContract()
         // console.log("approve", Contract)
         Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
-        store.dispatch(updateAproveButtonsLoader(true))
         .once('receipt', function(receipt){
+            debugger
             console.log(receipt) 
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
         })
         .on('error', () => {
+            debugger
             console.log("reject")
             store.dispatch(updateAproveButtonsLoader(false))
         })
     }
     catch(error){
+        debugger
+        store.dispatch(updateAproveButtonsLoader(false))
         console.log(error)
     }
 }
 
 export const checkAllowence = async (owner) => {
-    try{
-        const Contract = await xpContract()
-        // console.log(owner, 'hello', stakeAddress)
-        const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
-        // console.log("allowence: ",typeof allowence, allowence, parseInt(allowence))
-        if(parseInt(allowence)) store.dispatch(updateAllowence(allowence))
-        
-    }
-    catch(error){
-        console.log(error)
+    // debugger
+    if(owner){
+        try{
+            const Contract = await xpContract()
+            // console.log(owner, 'hello', stakeAddress)
+            const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
+            // console.log("allowence: ",typeof allowence, allowence, parseInt(allowence))
+            if(parseInt(allowence)) store.dispatch(updateAllowence(allowence))
+            
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 }
 

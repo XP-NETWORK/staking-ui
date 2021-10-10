@@ -81,7 +81,7 @@ export const getStakeById = async (id) => {
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
-        // console.log(info)
+        console.log(info)
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
         // console.log("Staked amount: ", info.amount)

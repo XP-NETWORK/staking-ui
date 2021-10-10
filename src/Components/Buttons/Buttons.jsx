@@ -15,6 +15,7 @@ export function Approvance({ approvance, amount, duration, account, agreement })
     useEffect(() => {
         
     }, [approveloader])
+    
 
     if(approvance){
         return <div className="summary__button lock">Approved</div>
