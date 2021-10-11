@@ -49,7 +49,7 @@ export const stake = async (amount, duration, account) => {
 
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
-    debugger
+    // debugger
     const Contract = await stakeContract()
     if(owner){
         try{
@@ -80,7 +80,7 @@ export const balanceOf = async (owner) => {
 
 // Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
 export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
-    debugger
+    // debugger
     let tokenArr = []
     if(flag === false){
         if(tokenAmount){
@@ -106,14 +106,14 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
 
 
 
-export const getStakeById = async (index) => {
+export const getStakeById = async (id, i) => {
     // debugger
-    
+    console.log("getStakeById")
     const Contract = await stakeContract()
     try{
-        const info = await Contract.methods.stakes(index).call()
+        const info = await Contract.methods.stakes(id).call()
         console.log(info)
-        store.dispatch(updateNftTokenIndex(index))
+        store.dispatch(updateNftTokenIndex(i))
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
         // console.log("Staked amount: ", info.amount)

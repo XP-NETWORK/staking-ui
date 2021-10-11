@@ -19,7 +19,7 @@ function App() {
 const balance = useSelector(state => state.data.balance)
 // console.log('app balance: ', balance)
 const tokensArr = useSelector(state => state.stakeData.tokensArray)
-console.log("tokensArr: ", tokensArr)
+// console.log("tokensArr: ", tokensArr)
 const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 // console.log('app tokens: ', tokens)
@@ -59,7 +59,7 @@ const accountsChanged = () => {
   ethereum.on("accountsChanged", accounts => {
     if (accounts.length > 0) {
        dispatch(updateAccount(accounts[0]))
-       showAvailableRewards()
+      //  showAvailableRewards()
      }
  });
 }
@@ -67,6 +67,7 @@ const accountsChanged = () => {
 
 
 useEffect(async () => {
+  // console.log("1")
   // debugger
  if(address) {
     await updateBalance()
@@ -77,6 +78,7 @@ useEffect(async () => {
 }, [address])
 
 useEffect(() => {
+  // console.log("2")
   // debugger
   if(tokens){
     tokenOfOwnerByIndex(tokensFlag, tokens, address)
@@ -84,13 +86,18 @@ useEffect(() => {
 }, [tokens])
 
 useEffect(() => {
+  // console.log("3")
   getCurrentPrice()
-  doDate()
-  setInterval(doDate, 1000);
   initMetaMask()
   logXPContract()
   logStakeContract()
   accountsChanged()
+}, [])
+
+useEffect(() => {
+  // console.log("4")
+  doDate()
+  setInterval(doDate, 1000);
 }, [])
 
   return (

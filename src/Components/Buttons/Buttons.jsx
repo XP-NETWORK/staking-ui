@@ -12,7 +12,7 @@ export function Approvance({ approvance, amount, duration, account, agreement })
     const approveloader = useSelector(state => state.data.aproveLoader)
     const lockloader = useSelector(state => state.data.lockLoader)
 
-    console.log(approvance)
+    // console.log(approvance)
     
     useEffect(() => {
         

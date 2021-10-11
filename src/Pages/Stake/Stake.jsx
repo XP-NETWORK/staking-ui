@@ -78,11 +78,13 @@ const agreementHandler = () => {
     dispatch(updateAgreement())
 }
 
-useEffect(() => {
-}, [account])
+// useEffect(() => {
+// }, [account])
 
-useEffect(() => {
-}, [allowence])
+// useEffect(() => {
+// }, [allowence])
+
+
         return (
             <div className="stake__container">
                 <div className="stake">

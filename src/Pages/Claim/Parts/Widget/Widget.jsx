@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 import "./Widget.css"
 
 export default function Widget({ tokens }) {
+    console.log("widget", tokens)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
     const tokenId = parseInt(stakeInfo[6])
     const tokenIndex = useSelector(state => state.stakeData.nftTokenIndex)
@@ -31,9 +32,9 @@ export default function Widget({ tokens }) {
         }
     }
 
-    useEffect(() => {
-    console.log("Rerender widget.")
-    }, [tokens])
+    // useEffect(() => {
+    // console.log("Rerender widget.")
+    // }, [tokens])
 
     return (
         <div className="nft__widget">

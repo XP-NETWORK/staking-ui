@@ -25,9 +25,9 @@ export default function Claim() {
     const address = useSelector(state => state.data.account)
     const tokens = useSelector(state => state.data.tokenIDs)
     const tokensArr = useSelector(state => state.stakeData.tokensArray)
-    console.log("Claim: ", tokens)
+    // console.log("Claim: ", tokens)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
-    console.log(stakeInfo)
+    // console.log(stakeInfo)
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
@@ -42,31 +42,24 @@ export default function Claim() {
     // console.log("staker:", stakeInfo[5], typeof stakeInfo[5])
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
 
-    const [loader, setLoader] = useState(true)
 
-    useEffect(() => {
-        if(!address || !balance){
-            history.push("/stake")
-        }
-    }, [])
-
-    const showUnStake = () => {
-        if(address && stakeInfo){
-            if(address.toLowerCase() === stakeInfo[5].toLowerCase()){
-                return (
-                    <div className="un-stake">
-                        <img src={unlock} alt="" />
-                        <span>Un-Stake</span>
-                    </div>
-                    )
-                }
-        }
-    }
+    // const showUnStake = () => {
+    //     if(address && stakeInfo){
+    //         if(address.toLowerCase() === stakeInfo[5].toLowerCase()){
+    //             return (
+    //                 <div className="un-stake">
+    //                     <img src={unlock} alt="" />
+    //                     <span>Un-Stake</span>
+    //                 </div>
+    //                 )
+    //             }
+    //     }
+    // }
 
     const showTokens = () => {
         // debugger
         if(tokensArr){
-            return tokensArr.map((item, i) => { return <NFT item={item} index={i} key={i}/> })
+            return tokensArr.map((tokenID, i) => { return <NFT tokenID={tokenID} i={i} key={i}/> })
         }
     }
     
@@ -76,18 +69,30 @@ export default function Claim() {
     //     }
     // }, [])
 
-    // useEffect( async () => {
-    //     debugger
-    //     console.log("hello", tokens)
-    //     if(tokens){
-    //         debugger
-    //         await getStakeById(tokens[0])
-    //         setLoader(false)
+    // useEffect(() => {
+       
+    //     if(!address || !balance){
+    //         history.push("/stake")
     //     }
     // }, [])
 
     useEffect(() => {
+        debugger
+        if(!address || !balance){
+            history.push("/stake")
+        }
+        if(!stakeInfo){
+            console.log("hello", tokensArr)
+            if(tokensArr){
+            debugger
+            getStakeById(tokensArr[0])
+            // setLoader(false)
+            }
+        } 
+    }, [])
 
+    useEffect(() => {
+        // Rerender the component when stakiInfo change.
     }, [stakeInfo])    
 
         if(true){
@@ -112,7 +117,7 @@ export default function Claim() {
                             <div className="nft__title">NFT</div>
                             <div className="line"></div>
                             <div className="nft__content">
-                                <Widget tokens={tokens} />
+                                <Widget tokens={tokensArr} />
                                 <NFTAdres address={address}/>
                             </div>
                         </div>
