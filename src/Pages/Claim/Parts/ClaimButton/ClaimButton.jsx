@@ -1,5 +1,5 @@
 import React from 'react'
-import { claimXpNet } from "../../../utils/stake"
+import { claimXpNet } from "../../../../utils/stake"
 
 export default function ClaimButton({ stakeInfo, rewardsWai, address }) {
     return (

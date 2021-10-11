@@ -1,5 +1,5 @@
 import React from 'react'
-import { getStartDate } from "../../../utils/helper"
+import { getStartDate } from "../../../../utils/helper"
 
 export default function ClaimStart({ startTime }) {
     return (

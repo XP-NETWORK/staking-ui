@@ -1,5 +1,5 @@
 import React from 'react'
-import pages from "../../../assets/pages.png"
+import pages from "../../../../assets/pages.png"
 
 export default function NFTAdres({address}) {
 

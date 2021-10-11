@@ -1,5 +1,5 @@
 import React from 'react'
-import { getProgress } from "../../../utils/helper"
+import { getProgress } from "../../../../utils/helper"
 
 export default function ProgressBar({ period, startTime }) {
     return (

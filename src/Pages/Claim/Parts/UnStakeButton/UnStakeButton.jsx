@@ -1,8 +1,8 @@
 import React from 'react'
-import unlock from "../../../assets/lock_open.svg"
-import unlockWhite from "../../../assets/lock_openWhite.svg"
 
-import { withrow } from "../../../utils/stake"
+import unlockWhite from "../../../../assets/lock_openWhite.svg"
+
+import { withrow } from "../../../../utils/stake"
 
 export default function UnStakeButton({ stakeInfo, address, stakerAddress }) {
     // console.log(stakerAddress, address)

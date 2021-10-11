@@ -1,5 +1,5 @@
 import React from 'react'
-import { getStartDate, getEndDate } from "../../../utils/helper"
+import { getStartDate, getEndDate } from "../../../../utils/helper"
 
 export default function End({ startTime, period, startDate }) {
     return (
