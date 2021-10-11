@@ -16,18 +16,18 @@ export default function ClaimReward() {
   
       
 
-    useEffect( () => {
+    useEffect(async() => {
         console.log("5")
       // debugger
         if(int)clearInterval(int)
         if(stakeInfo){
-        const interval = setInterval( () => {
-            console.log("claim use: ",stakeInfo[1] )
-            showAvailableRewards(stakeInfo[1])
+        const interval = setInterval(async() => {
+            // console.log("claim use: ",stakeInfo[1] )
+            await showAvailableRewards(stakeInfo[1])
         },2000)
         setInt(interval)
 
-        showAvailableRewards(stakeInfo[1])
+        await showAvailableRewards(stakeInfo[1])
         }
     
     }, [stakeInfo])

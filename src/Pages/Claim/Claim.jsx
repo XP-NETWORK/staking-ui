@@ -41,42 +41,14 @@ export default function Claim() {
     // console.log("account: ", address, typeof address)
     // console.log("staker:", stakeInfo[5], typeof stakeInfo[5])
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
-
-
-    // const showUnStake = () => {
-    //     if(address && stakeInfo){
-    //         if(address.toLowerCase() === stakeInfo[5].toLowerCase()){
-    //             return (
-    //                 <div className="un-stake">
-    //                     <img src={unlock} alt="" />
-    //                     <span>Un-Stake</span>
-    //                 </div>
-    //                 )
-    //             }
-    //     }
-    // }
-
     const showTokens = () => {
         // debugger
         if(tokensArr){
             return tokensArr.map((tokenID, i) => { return <NFT tokenID={tokenID} i={i} key={i}/> })
         }
     }
-    
-    // useEffect(async() => {
-    //     if(!tokens){
-    //     await balanceOf(address)
-    //     }
-    // }, [])
 
-    // useEffect(() => {
-       
-    //     if(!address || !balance){
-    //         history.push("/stake")
-    //     }
-    // }, [])
-
-    useEffect(() => {
+    useEffect(async() => {
         debugger
         if(!address || !balance){
             history.push("/stake")
@@ -85,17 +57,17 @@ export default function Claim() {
             console.log("hello", tokensArr)
             if(tokensArr){
             debugger
-            getStakeById(tokensArr[0])
+            await getStakeById(tokensArr[0], 0)
             // setLoader(false)
             }
         } 
-    }, [])
+    }, [tokensArr])
 
     useEffect(() => {
         // Rerender the component when stakiInfo change.
     }, [stakeInfo])    
 
-        if(true){
+        if(tokensArr){
             return (
                 <div className="claim__container">
                     <div className="claim">

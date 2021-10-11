@@ -11,23 +11,26 @@ export default function Widget({ tokens }) {
     const stakeInfo = useSelector(state => state.data.stakeInfo)
     const tokenId = parseInt(stakeInfo[6])
     const tokenIndex = useSelector(state => state.stakeData.nftTokenIndex)
+    // console.log("tokenIndex",tokenIndex)
    
     
     const swapToken = (side) => {
-        // debugger
+        debugger
         // console.log(side)
         if(tokens.length > 1){
-            if(side === "right"){
-                if(tokenIndex === tokens.length){
-                    getStakeById(0)
+            if(side === "prev"){
+                if(tokenIndex === 0){
+                    getStakeById(tokenIndex[tokens.length -1], tokens.length-1)
                 }
-                else getStakeById(tokenIndex + 1)
+                else{
+                    getStakeById(tokenIndex-1, tokenIndex-1)
+                }
             }
             else{
                 if(tokenIndex === 0){
-                    getStakeById(tokens.length)
+                    getStakeById(tokens[tokens.length-1], tokens.length)
                 }
-                else getStakeById(tokenIndex - 1)
+                else getStakeById(tokens[tokenIndex - 1], tokenIndex - 1)
             }
         }
     }
@@ -38,11 +41,11 @@ export default function Widget({ tokens }) {
 
     return (
         <div className="nft__widget">
-            <div onClick={item => swapToken('left')} className="left-arrow arrow"><img src={leftArrow} alt="" /></div>
+            <div onClick={item => swapToken('prev')} className="left-arrow arrow"><img src={leftArrow} alt="" /></div>
             <div className="widget__art">
                 <img src={bigart} alt="widget" />
             </div>
-            <div onClick={item => swapToken('right')} className="right-arrow arrow"><img src={rightArrow} alt="" /></div>
+            <div onClick={item => swapToken('next')} className="right-arrow arrow"><img src={rightArrow} alt="" /></div>
         </div>
     )
 }

@@ -65,15 +65,12 @@
 .durations__container{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 26px;
+    margin-bottom: 10px;
 }
+
 
 .stake__amount{
     padding: 0 30px;
-    display: flex;
-}
-
-.stake__amount{
     display: flex;
     flex-direction: column;
     margin-bottom: 26px;
@@ -148,60 +145,6 @@
     background: #ECEDF3;
     border-radius: 6px;
     cursor: pointer;
-}
-
-.rewards__header{
-    padding: 0 30px 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 126%;
-    letter-spacing: 0.03em;
-}
-
-.rewards{
-    margin: 0 30px 25px 30px;
-    padding: 15px;
-    max-width: 562px;
-    height: 170px;
-
-    display: flex;
-    justify-content: space-between;
-    
-    background: #FBFCFF;
-    border: 1px solid #E5E8F0;
-    box-sizing: border-box;
-    border-radius: 6px;
-}
-
-.rewards__widget{
-    flex-basis: 140px;
-}
-
-.rewards__widget img{
-    width: 100%;
-}
-
-.rewards__content{
-    flex-basis: 355px;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.rewards__subtitle{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 146%;
-
-    padding-bottom: 19px;
-
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.03em;
 }
 
 .stake__info{
@@ -313,6 +256,9 @@
     width: 18px;
     height: 18px;
 }
+.stake__amount--mobile{
+    display: none;
+}
 /* 
 .button{
     max-width: 426px;
@@ -349,16 +295,21 @@
 @media screen and (max-width: 425px) {
     .stake__container{
         max-width: 425px;
-        margin: 10px;
+        /* margin: 10px; */
         gap: 10px;
     }
     .durations__container{
         flex-wrap: wrap;
+        gap: 5px;
+    }
+    .stake__amount--mobile{
+        display: block;
     }
     .stake{
-        max-width: 400px;
+        /* max-width: 400px; */
         padding: 15px 10px;
         height: auto;
+        border: hidden;
     }
     .stake__title{
         padding-left: 10px;
@@ -367,7 +318,7 @@
         padding: 0;
     }
     .stake__amount{
-        padding: 0;
+        display: none;
     }
     .durations__container{
         justify-content: space-around;
@@ -384,13 +335,5 @@
     .summary__details{
         padding: 0;
     }
-    .rewards__header{
-        padding: 10px 0;
-    }
-    .rewards{
-        margin: 0;
-    }
-    .stake__info{
-        margin: 10px 0;
-    }
+  
 }

@@ -16,6 +16,7 @@ import { approve } from "../../utils/xpnet"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
 import Connect from '../Connect/Connect'
 import NFT from '../../Components/NFT/NFT'
+import Reawards from './parts/Reawards'
 
 
 export default function Stake() {
@@ -113,21 +114,25 @@ const agreementHandler = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="stake__rewards">
+                    <div className="stake__amount--mobile">
+                            <div className="amount__title">Enter your XPNET amount</div>
+                            <div className="amount__input">
+                            <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                            <div className="input__items">
+                                <div className="xpnet">XPNET</div>
+                                <div onClick={ () => putMax()} className="max">MAX</div>
+                            </div>
+                        </div>
+                            <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
+                    </div>
+                    {/* <div className="stake__rewards">
                         <div className="rewards__header">
                             <div className="rewards__title">Staking Rewards</div>
                             <div className="rewards__percent">{getPercent(durations, duration)}%</div>
                         </div>
-                        <div className="rewards">
-                            <div className="rewards__widget">
-                                <img src={image} alt="Reward art" />
-                            </div>
-                            <div className="rewards__content">
-                                <div className="rewards__subtitle">Don't wait 3 month - get your NFT Reward right NOW</div>
-                                <div className="rewards__text">It is a long established fact that a reader will be content of a page when.</div>
-                            </div>
-                        </div>
-                    </div>
+                        <Reawards />
+                    </div> */}
+                    <Reawards durations={durations} duration={duration} />
                     <div className="stake__info">
                         <div className="info__title">
                             <img src={i} alt="" />

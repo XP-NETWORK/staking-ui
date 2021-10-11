@@ -1,0 +1,88 @@
+
+.rewards{
+    margin: 0 30px 25px 30px;
+    padding: 15px;
+    max-width: 562px;
+    height: 170px;
+
+    display: flex;
+    justify-content: space-between;
+    
+    background: #FBFCFF;
+    /* background-color: salmon; */
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.rewards__header{
+    padding: 0 30px 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 126%;
+    letter-spacing: 0.03em;
+}
+
+.rewards__widget{
+    flex-basis: 140px;
+}
+
+.rewards__widget img{
+    width: 100%;
+}
+
+.rewards__content{
+    flex-basis: 355px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.rewards__subtitle{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 146%;
+
+    padding-bottom: 19px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+}
+
+
+@media screen and (max-width: 425px){
+    .rewards{
+        flex-direction: column;
+        height: auto;
+    }
+    .rewards__content{
+        flex-basis: auto;
+        display: flex;
+    }
+    .rewards__header{
+        padding: 20px 0 10px 0;
+    }
+    .rewards{
+        margin: 0;
+    }
+    .stake__info{
+        margin: 10px 0;
+    }
+    .amount__input{
+        margin: 10px 0;
+    }
+    .rewards__subtitle{
+        margin-top: 10px;
+        font-size: 18px;
+        padding-bottom: 10px;
+    }
+    .rewards__text{
+        font-size: 18px;
+    }
+  
+}

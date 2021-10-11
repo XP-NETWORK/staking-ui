@@ -106,14 +106,14 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
 
 
 
-export const getStakeById = async (id, i) => {
+export const getStakeById = async (id, index) => {
     // debugger
     console.log("getStakeById")
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
         console.log(info)
-        store.dispatch(updateNftTokenIndex(i))
+        store.dispatch(updateNftTokenIndex(index))
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
         // console.log("Staked amount: ", info.amount)

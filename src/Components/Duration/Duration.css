@@ -1,8 +1,7 @@
 .duration{
     flex-basis: 125px;
-    height: 79px;
+    height: 90px;
     padding: 16px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -43,6 +42,7 @@
 
 @media screen and (max-width: 425px) {
     .duration{
-        flex-basis: 160px;
+        flex-basis: 190px;
+        margin-bottom: 5px;
     }
 }
