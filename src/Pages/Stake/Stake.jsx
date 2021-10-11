@@ -23,6 +23,7 @@ import DetailsStart from './parts/DetailsStart'
 import DetailsEnd from './parts/DetailsEnd'
 import DetailsApy from './parts/DetailsApy'
 import DetailsRewards from './parts/DetailsRewards'
+import StakeAmount from './parts/StakeAmount'
 
 
 export default function Stake() {
@@ -95,6 +96,7 @@ const agreementHandler = () => {
         return (
             <div className="stake__container">
                 <div className="stake">
+                    
                     <div className="stake__title">My Stake</div>
                     <div className="line"></div>
                     <div className="stake__duration">
@@ -102,6 +104,7 @@ const agreementHandler = () => {
                             Staking Duration
                         </div>
                         <div className="durations__container">
+                            
                             {durations.map((e,i) => {
                                return <Duration month={e.d} apy={e.p} key={i} index={i} />
                             })}
@@ -131,38 +134,19 @@ const agreementHandler = () => {
                         </div>
                         <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
                     </div>
+                    {/* <StakeAmount balance={balance} /> */}
                     <Reawards durations={durations} duration={duration} />
                     <StakeInfo />
                 </div>
                 <div className="summary">
+                    
                     <div className="stake__title">Summary</div>
                     <div className="line"></div>
                     <div className="summary__details">
-                        {/* <div className="details details__amount">
-                            <div className="details__capture">Staking Amount</div>
-                            <div className="details__text">{amount} XPNET<span>$ {nf.format((amount*currentPrice).toFixed(2))}</span></div>
-                        </div> */}
                         <DetailsAmount amount={amount} currentPrice={currentPrice} />
-                        {/* <div className="details details__start">
-                            <div className="details__capture">Start Date</div>
-                            <div className="details__text">{startDate}</div>
-                        </div> */}
-                        <DetailsStart startDate={startDate} />
-                        {/* <div className="details details__end">
-                            <div className="details__capture">End Date</div>
-                            <div className="details__text">{endDate}</div>
-                        </div> */}
                         <DetailsEnd endDate={endDate} />
                         <div className="line"></div>
-                        {/* <div className="details details__apy">
-                            <div className="details__capture">Est. APY</div>
-                            <div className="details__text">{nf.format(getPercent(durations, duration))}%</div>
-                        </div> */}
                         <DetailsApy durations={durations} duration={duration} />
-                        {/* <div className="details details__rewards">
-                            <div className="details__capture">Estimated APY</div>
-                            <div className="details__text">{nf.format(getRewards())} XPNET<span>$ {nf.format((getRewards()*currentPrice).toFixed(2))}</span></div>
-                        </div> */}
                         <DetailsRewards currentPrice={currentPrice} amount={amount} duration={duration} />
                         <div className="line"></div>
                         <div className="agreement">

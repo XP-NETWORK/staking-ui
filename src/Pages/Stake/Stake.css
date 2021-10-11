@@ -178,58 +178,48 @@
 .stake__amount--mobile{
     display: none;
 }
-/* 
-.button{
-    max-width: 426px;
-    height: 44px;
-    color: #fff;
-    background: #3180F7;
-    border-radius: 6px;
-    margin: 12px 0;
-    cursor: pointer;
-}
 
-.lock{
-    max-width: 426px;
-    height: 44px;
-    background-color: #ECEDF3;
-    border-radius: 6px;
-    margin: 12px 0;
-}
+@media screen and (max-width: 600px) {
 
-.lock span{
-    margin-left: 10px;
-}
 
-.button span{
-    margin-left: 10px;
-}
-
-.summary__button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-@media screen and (max-width: 425px) {
     .stake__container{
-        max-width: 425px;
-        /* margin: 10px; */
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 600px;
+    }
+    
+    .stake{
+        flex-basis: 600px;
+        border-radius: unset;
+        height: auto;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .summary{
+        flex-basis: 600px;
+        max-width: 600px;
+        border-radius: unset;
+    }
+    
+    .stake__container{
         gap: 10px;
     }
+
     .durations__container{
-        flex-wrap: wrap;
-        gap: 5px;
+        /* background-color: tomato; */
+        margin: 0 10px;
+        max-width: 600px;
+        /* flex-wrap: wrap; */
+        /* gap: 5px; */
+        /* margin-bottom: 26px; */
+        /* padding: 0 10px; */
+        justify-content: space-between;
     }
     .stake__amount--mobile{
         display: block;
     }
-    .stake{
-        /* max-width: 400px; */
-        padding: 15px 10px;
-        height: auto;
-        border: hidden;
-    }
+
     .stake__title{
         padding: 0 10px 20px 10px;
     }
@@ -239,18 +229,23 @@
     .stake__amount{
         display: none;
     }
-    .durations__container{
-        justify-content: space-around;
-        
+
+    .amount__title{
+        padding: 10px 10px;
     }
+
     .amount__subtitle{
         display: flex;
+        padding: 10px;
     }
-    .summary{
-        max-width: 425px;
-        /* padding: 10px; */
-        border: hidden;
-        /* padding: 0; */
+    .duration__header{
+        padding: 0 10px;
     }
-  
+
+    .amount__input{
+        padding: 0 10px; 
+    }
+    .input__items{
+        right: 16PX;
+    }
 }

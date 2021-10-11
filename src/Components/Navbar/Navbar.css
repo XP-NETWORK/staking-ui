@@ -5,6 +5,11 @@
     justify-content: flex-start;
     /* border: 1px solid black; */
     align-items: center;
+    
+}
+
+.navbar--mobile{
+    display: none;
 }
 
 .xp__logo{
@@ -67,20 +72,43 @@
     letter-spacing: 0.03em;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 600px) {
     .navbar{
-        width: 425px;
-        justify-content: center;
-        gap: 10px;
-        
+        display: none;
+       
     }
+
+    .navbar--mobile{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 30px);
+        gap: 5px;
+        padding: 10px 0;
+    }
+
     .xp__logo{
         order: -2;
         padding: 10px 0;
+        width: 270px;
+        
     }
     .metamask{
+        display: flex;
         order: -1;
-        margin-left: 25px;
+        margin-left: 0px;
+        width: 270px;
         padding: 10px 0;
+        height: auto;
+    }
+    /* .nav__buttons{
+        background-color:#ECEDF3;
+        padding: 10px;
+        border-radius: 8px;
+    } */
+
+    .metamask__icon{
+       /* padding: unset; */
     }
 }

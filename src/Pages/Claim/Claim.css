@@ -281,3 +281,38 @@
 }
 
 
+
+@media screen and (max-width: 600px) {
+    /* .claim{
+        max-width: 600px;
+    }
+
+    .claim__button{
+        width: 400px;
+    }
+
+    .claim__details{
+        display: flex;
+        flex-direction: column;
+        padding: 0 30px;
+    }
+
+    .claim__button{
+        max-width: 600px;
+    } */
+    .claim{
+        flex-basis: 600px;
+        padding: 20px 10px 30px 10px;
+        height: auto;
+        }
+    .nft__wrapper{
+        flex-basis: 600px;
+        max-width: unset;
+        }
+    .claim__details{
+        padding: unset;
+    }
+    .claim__title{
+        padding: 10px 0;
+    }
+}

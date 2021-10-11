@@ -38,7 +38,7 @@
     display: flex;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 600px) {
     .nav__buttons{
         justify-content: center;
         align-items: center;
@@ -47,9 +47,9 @@
         border-radius: 8px;
     }
     .nav__button{
-        width: 194px;
+        width: 270px;
     }
     .nav__button--active{
-        width: 194px;
+        width: 272px;
     }
 }

@@ -71,6 +71,7 @@ export default function Claim() {
             return (
                 <div className="claim__container">
                     <div className="claim">
+                        
                         <div className="claim__title">Staking Reward</div>
                         <div className="line"></div>
                         <div className="claim__details">
@@ -86,6 +87,7 @@ export default function Claim() {
                     </div>
                     <div className="nft__wrapper">
                         <div className="nft">
+                            
                             <div className="nft__title">NFT</div>
                             <div className="line"></div>
                             <div className="nft__content">

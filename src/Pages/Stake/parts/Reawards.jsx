@@ -18,7 +18,7 @@ export default function Reawards({ durations, duration }) {
                     <div className="rewards__subtitle">Don't wait 3 month - get your NFT Reward right NOW</div>
                     <div className="rewards__text">A unique chain-agnostic NFT that serves as the access key to staking rewards.</div>
                 </div>
-            </div>          
+            </div>
         </div>
     )
 }

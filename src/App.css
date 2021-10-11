@@ -5,3 +5,12 @@
   height: 100vh;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 600px){
+  .app__wraper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}

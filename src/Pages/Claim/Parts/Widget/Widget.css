@@ -30,3 +30,10 @@
 .arrow:hover{
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+    .nft__widget{
+        margin: 0 auto;
+        /* background-color: turquoise; */
+    }
+}

@@ -15,8 +15,9 @@ code {
     monospace;
 }
 
-@media screen and (max-width: 425px){
+@media screen and (max-width: 600px){
   body{
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: #E5E5E5;
     background-image: unset;
   }}

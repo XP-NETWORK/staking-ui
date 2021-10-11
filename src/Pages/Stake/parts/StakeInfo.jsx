@@ -5,6 +5,7 @@ import "./StakeInfo.css"
 export default function StakeInfo() {
     return (
         <div className="stake__info">
+       
             <div className="info__title">
                 <img src={i} alt="" />
                 <span>Don’t sell your XPNET NFT</span>
