@@ -5,7 +5,8 @@
     justify-content: flex-start;
     /* border: 1px solid black; */
     align-items: center;
-    
+    /* background-color: turquoise; */
+    position: relative;
 }
 
 .navbar--mobile{
@@ -23,12 +24,13 @@
     width: 100%;
 }
 
-.metamask{
-    margin-left: 522px;
-}
+/* .metamask{
+    margin-left: 546px;
+} */
 
 
 .metamask{
+    right: 0;
     width: 175px;
     height: 32px;
     background: #EDF0F8;
@@ -39,6 +41,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: absolute;
 }
 
 .metamask__icon{
@@ -95,6 +98,7 @@
         
     }
     .metamask{
+        position: unset;
         display: flex;
         order: -1;
         margin-left: 0px;
@@ -110,5 +114,13 @@
 
     .metamask__icon{
        /* padding: unset; */
+    }
+}
+
+@media screen and (max-width: 1140px){
+    .navbar{
+        max-width: 600px;
+
+        margin: 0 auto;
     }
 }
