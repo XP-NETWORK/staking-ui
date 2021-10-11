@@ -1,5 +1,5 @@
 .loader__wrapper{
-
+    transform: scale(0.5);
     height: 80vh;
     display: flex;
     align-items: center;

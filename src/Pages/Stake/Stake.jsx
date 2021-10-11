@@ -1,35 +1,36 @@
 import React from 'react'
 import Web3 from "web3"
 import "./Stake.css"
-import image from "../../assets/Rectangle.png"
-import i from "../../assets/i.svg"
+// import image from "../../assets/Rectangle.png"
+// import i from "../../assets/i.svg"
 
 import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
 import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
-import { updateTokensArray } from "../../redux/stakeSlice"
+// import { updateTokensArray } from "../../redux/stakeSlice"
 import { getPercent, nf } from "../../utils/helper"
-import { stake } from "../../utils/stake"
-import { approve } from "../../utils/xpnet"
+// import { stake } from "../../utils/stake"
+// import { approve } from "../../utils/xpnet"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
-import Connect from '../Connect/Connect'
+// import Connect from '../Connect/Connect'
 import NFT from '../../Components/NFT/NFT'
 import Reawards from './parts/Reawards'
 import StakeInfo from './parts/StakeInfo'
 import DetailsAmount from './parts/DetailsAmount'
-import DetailsStart from './parts/DetailsStart'
+// import DetailsStart from './parts/DetailsStart'
 import DetailsEnd from './parts/DetailsEnd'
 import DetailsApy from './parts/DetailsApy'
 import DetailsRewards from './parts/DetailsRewards'
-import StakeAmount from './parts/StakeAmount'
+// import StakeAmount from './parts/StakeAmount'
 
 
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const allowence = useSelector(state => state.data.allowence)
+console.log(allowence)
 // console.log("Allowence: ",allowence)
 const etherValue = Web3.utils.fromWei(allowence, 'ether');
 // console.log("Allowence etherValue: ",etherValue)

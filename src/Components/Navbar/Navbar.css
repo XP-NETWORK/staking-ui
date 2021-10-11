@@ -75,10 +75,17 @@
     letter-spacing: 0.03em;
 }
 
+@media screen and (max-width: 1140px){
+    .navbar{
+        max-width: 600px;
+
+        margin: 0 auto;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .navbar{
         display: none;
-       
     }
 
     .navbar--mobile{
@@ -117,10 +124,8 @@
     }
 }
 
-@media screen and (max-width: 1140px){
-    .navbar{
-        max-width: 600px;
-
-        margin: 0 auto;
+@media screen and (max-width: 425px){
+    .navbar--mobile{
+        /* background-color: tomato; */
     }
 }

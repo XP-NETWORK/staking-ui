@@ -53,3 +53,12 @@
         width: 272px;
     }
 }
+
+@media screen and (max-width: 425px){
+    .nav__button{
+        width: 200px;
+    }
+    .nav__button--active{
+        width: 200px;
+    }
+}

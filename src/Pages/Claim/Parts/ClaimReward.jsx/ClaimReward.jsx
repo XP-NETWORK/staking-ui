@@ -11,6 +11,7 @@ export default function ClaimReward() {
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const rewards = Web3.utils.fromWei(rewardsWai, 'ether');
     const [int, setInt] = useState()
+    const currentToken = useSelector(state => state.stakeData.index)
     // console.log("ClaimReward: ", stakeInfo[1])
     
   
@@ -19,7 +20,7 @@ export default function ClaimReward() {
     useEffect(async() => {
         console.log("5")
       // debugger
-        if(int)clearInterval(int)
+        if(int){clearInterval(int)}
         if(stakeInfo){
         const interval = setInterval(async() => {
             // console.log("claim use: ",stakeInfo[1] )
@@ -30,7 +31,7 @@ export default function ClaimReward() {
         await showAvailableRewards(stakeInfo[1])
         }
     
-    }, [stakeInfo])
+    }, [stakeInfo, currentToken])
 
     return (
         <div className="claim__det claim__reward">

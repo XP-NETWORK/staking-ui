@@ -25,14 +25,21 @@ export const logStakeContract = async () => {
 }
 
 export const stake = async (amount, duration, account) => {
-    const weiValue = Web3.utils.toWei(amount, 'ether');
+    const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     debugger
-    const durInSec = 60*60*24*(duration * 30)
+    let durInSec
+    if(duration!==1){
+         durInSec = 60*60*24*(duration * 30)
+    }
+    else{
+         durInSec = 31622400 
+    }
     try{
         // console.log(durInSec, amount, duration)
         store.dispatch(updateAproveLockLoader(true))
         const Contract = await stakeContract()
         // console.log(amount, 'helo')
+        console.log(durInSec, 'seconds', duration)
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', function(receipt){
             store.dispatch(updateAproveLockLoader(false))

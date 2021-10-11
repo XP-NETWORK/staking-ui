@@ -20,6 +20,10 @@
     padding-left: 14px;
 }
 
+.info__text{
+  /* padding-top: 10px; */
+}
+
 @media screen and (max-width: 600px){
     .info__title {
         margin-bottom: 10px;
@@ -34,6 +38,6 @@
     .info__text{
         font-size: 24px;
         line-height: 126%;
-        opacity: 0.;
+        opacity: 0.4;
     }
 }

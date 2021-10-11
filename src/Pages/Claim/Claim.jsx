@@ -73,20 +73,7 @@ export default function Claim() {
         }
     }, [tokensArr, currentToken])
 
-    // useEffect( async () => {
-    //     debugger
-    //     if(!stakeInfo){
-    //         console.log("hello", tokensArr)
-    //         if(tokensArr){
-    //         debugger
-    //         await getStakeById(tokensArr[currentToken], currentToken)
-    //         // setLoader(false)
-    //         }
-    //     }  
-    // }, [currentToken])
-
     useEffect(() => {
-        // Rerender the component when stakiInfo change.
     }, [stakeInfo])    
 
         if(tokensArr){
