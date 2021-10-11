@@ -65,14 +65,12 @@
         display: flex;
     }
     .rewards__header{
-        padding: 20px 0 10px 0;
+        padding: 30px 0 10px 0;
     }
     .rewards{
         margin: 0;
     }
-    .stake__info{
-        margin: 10px 0;
-    }
+ 
     .amount__input{
         margin: 10px 0;
     }

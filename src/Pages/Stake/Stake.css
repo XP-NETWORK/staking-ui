@@ -147,87 +147,6 @@
     cursor: pointer;
 }
 
-.stake__info{
-    max-width: 562px;
-    height: 108px;
-    
-    margin: 0 30px;
-    padding: 16px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    background: #F4F7FF;
-    border: 1px solid #2A61EE;
-    box-sizing: border-box;
-    border-radius: 6px;
-}
-
-.info__title {
-    display: flex;
-}
-
-.info__title span{
-    padding-left: 14px;
-}
-
-.summary__details{
-    padding: 15px 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.summary__details .line{
-    margin: 16px 0;
-}
-
-.details{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-}
-
-
-.details__capture{
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 126%;
-    
-
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.03em;
-
-    color: #686E7D;
-}
-
-.details__text{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 126%;
-    /* or 20px */
-
-    display: flex;
-    align-items: center;
-    text-align: right;
-    letter-spacing: 0.03em;
-
-    color: #040D27;
-    position: relative;
-}
-
-.details__text span{
-    font-size: 12px;
-    position: absolute;
-    right: 0px;
-    top: -20px;
-    opacity: 0.6;
-}
-
-
-
 .agreement{
     display: flex;
     padding: 16px;
@@ -312,7 +231,7 @@
         border: hidden;
     }
     .stake__title{
-        padding-left: 10px;
+        padding: 0 10px 20px 10px;
     }
     .stake__duration{
         padding: 0;
@@ -328,12 +247,10 @@
         display: flex;
     }
     .summary{
-        max-width: 400px;
-        padding: 10px;
+        max-width: 425px;
+        /* padding: 10px; */
+        border: hidden;
         /* padding: 0; */
-    }
-    .summary__details{
-        padding: 0;
     }
   
 }

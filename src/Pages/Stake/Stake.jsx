@@ -17,6 +17,12 @@ import { Approvance, Lock} from "../../Components/Buttons/Buttons"
 import Connect from '../Connect/Connect'
 import NFT from '../../Components/NFT/NFT'
 import Reawards from './parts/Reawards'
+import StakeInfo from './parts/StakeInfo'
+import DetailsAmount from './parts/DetailsAmount'
+import DetailsStart from './parts/DetailsStart'
+import DetailsEnd from './parts/DetailsEnd'
+import DetailsApy from './parts/DetailsApy'
+import DetailsRewards from './parts/DetailsRewards'
 
 
 export default function Stake() {
@@ -117,57 +123,47 @@ const agreementHandler = () => {
                     <div className="stake__amount--mobile">
                             <div className="amount__title">Enter your XPNET amount</div>
                             <div className="amount__input">
-                            <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
-                            <div className="input__items">
+                                <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                                <div className="input__items">
                                 <div className="xpnet">XPNET</div>
                                 <div onClick={ () => putMax()} className="max">MAX</div>
                             </div>
                         </div>
-                            <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
+                        <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
                     </div>
-                    {/* <div className="stake__rewards">
-                        <div className="rewards__header">
-                            <div className="rewards__title">Staking Rewards</div>
-                            <div className="rewards__percent">{getPercent(durations, duration)}%</div>
-                        </div>
-                        <Reawards />
-                    </div> */}
                     <Reawards durations={durations} duration={duration} />
-                    <div className="stake__info">
-                        <div className="info__title">
-                            <img src={i} alt="" />
-                            <span>It is a long</span>
-                        </div>
-                        <div className="info__text">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                        </div>
-                    </div>
+                    <StakeInfo />
                 </div>
                 <div className="summary">
                     <div className="stake__title">Summary</div>
                     <div className="line"></div>
                     <div className="summary__details">
-                        <div className="details details__amount">
+                        {/* <div className="details details__amount">
                             <div className="details__capture">Staking Amount</div>
                             <div className="details__text">{amount} XPNET<span>$ {nf.format((amount*currentPrice).toFixed(2))}</span></div>
-                        </div>
-                        <div className="details details__start">
+                        </div> */}
+                        <DetailsAmount amount={amount} currentPrice={currentPrice} />
+                        {/* <div className="details details__start">
                             <div className="details__capture">Start Date</div>
                             <div className="details__text">{startDate}</div>
-                        </div>
-                        <div className="details details__end">
+                        </div> */}
+                        <DetailsStart startDate={startDate} />
+                        {/* <div className="details details__end">
                             <div className="details__capture">End Date</div>
                             <div className="details__text">{endDate}</div>
-                        </div>
+                        </div> */}
+                        <DetailsEnd endDate={endDate} />
                         <div className="line"></div>
-                        <div className="details details__apy">
+                        {/* <div className="details details__apy">
                             <div className="details__capture">Est. APY</div>
                             <div className="details__text">{nf.format(getPercent(durations, duration))}%</div>
-                        </div>
-                        <div className="details details__rewards">
+                        </div> */}
+                        <DetailsApy durations={durations} duration={duration} />
+                        {/* <div className="details details__rewards">
                             <div className="details__capture">Estimated APY</div>
                             <div className="details__text">{nf.format(getRewards())} XPNET<span>$ {nf.format((getRewards()*currentPrice).toFixed(2))}</span></div>
-                        </div>
+                        </div> */}
+                        <DetailsRewards currentPrice={currentPrice} amount={amount} duration={duration} />
                         <div className="line"></div>
                         <div className="agreement">
                          <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" />

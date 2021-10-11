@@ -1,0 +1,37 @@
+.stake__info{
+    max-width: 562px;
+    height: 108px;
+    margin: 0 30px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: #F4F7FF;
+    border: 1px solid #2A61EE;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.info__title {
+    display: flex;
+}
+
+.info__title span{
+    padding-left: 14px;
+}
+
+@media screen and (max-width: 425px){
+    .info__title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    }
+    .stake__info{
+        margin: 10px 0;
+        height: auto;
+    }
+    .info__text{
+        font-size: 16px;
+        line-height: 126%;
+        opacity: 0.8;
+    }
+}
