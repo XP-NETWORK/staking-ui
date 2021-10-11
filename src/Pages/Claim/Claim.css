@@ -151,7 +151,7 @@
 }
 
 
-.claim__button{
+/* .claim__button{
     width: 562px;
     height: 44px;
     background-color: #3180F7;
@@ -233,7 +233,7 @@
 
 .un-stake span{
     padding-left:15px;
-}
+} */
 
 .nft__title{
     padding-left: 30px;
@@ -283,23 +283,6 @@
 
 
 @media screen and (max-width: 600px) {
-    /* .claim{
-        max-width: 600px;
-    }
-
-    .claim__button{
-        width: 400px;
-    }
-
-    .claim__details{
-        display: flex;
-        flex-direction: column;
-        padding: 0 30px;
-    }
-
-    .claim__button{
-        max-width: 600px;
-    } */
     .claim{
         flex-basis: 600px;
         padding: 20px 10px 30px 10px;
