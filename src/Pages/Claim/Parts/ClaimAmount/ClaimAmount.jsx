@@ -1,5 +1,5 @@
 import React from 'react'
-import { nf } from '../../../utils/helper'
+import { nf } from '../../../../utils/helper'
 
 export default function ClaimAmount({stakedAmount, stakedAmountEther}) {
     return (

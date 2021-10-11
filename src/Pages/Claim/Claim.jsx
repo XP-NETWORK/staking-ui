@@ -9,7 +9,7 @@ import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
 import ClaimReward from './Parts/ClaimReward.jsx/ClaimReward'
-import ClaimAmount from './Parts/ClaimAmount'
+import ClaimAmount from './Parts/ClaimAmount/ClaimAmount'
 import ClaimAPY from './Parts/ClaimAPY'
 import ClaimStart from './Parts/ClaimStart'
 import ProgressBar from './Parts/ProgressBar'
