@@ -3,7 +3,8 @@ import bigart from "../../../../assets/bigart.png"
 import leftArrow from "../../../../assets/arrow_left.svg"
 import rightArrow from "../../../../assets/arrow_right.svg"
 import { getStakeById } from "../../../../utils/stake"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { updateIndex } from "../../../../redux/stakeSlice"
 import "./Widget.css"
 
 export default function Widget({ tokens }) {
@@ -11,26 +12,23 @@ export default function Widget({ tokens }) {
     const stakeInfo = useSelector(state => state.data.stakeInfo)
     const tokenId = parseInt(stakeInfo[6])
     const tokenIndex = useSelector(state => state.stakeData.nftTokenIndex)
-    // console.log("tokenIndex",tokenIndex)
+    const currentToken = useSelector(state => state.stakeData.index)
+    const dispatch = useDispatch()
+    console.log("tokenIndex",tokenIndex)
+    console.log("tokenID: ", tokenId)
    
     
     const swapToken = (side) => {
         debugger
         // console.log(side)
         if(tokens.length > 1){
-            if(side === "prev"){
-                if(tokenIndex === 0){
-                    getStakeById(tokenIndex[tokens.length -1], tokens.length-1)
-                }
-                else{
-                    getStakeById(tokenIndex-1, tokenIndex-1)
-                }
+            if(side === "next"){
+                dispatch(updateIndex(currentToken+1))
+                if(currentToken===tokens.length-1){dispatch(updateIndex(0))}
             }
             else{
-                if(tokenIndex === 0){
-                    getStakeById(tokens[tokens.length-1], tokens.length)
-                }
-                else getStakeById(tokens[tokenIndex - 1], tokenIndex - 1)
+                dispatch(updateIndex(currentToken-1))
+                if(currentToken===0){dispatch(updateIndex(tokens.length-1))}
             }
         }
     }

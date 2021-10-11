@@ -33,6 +33,7 @@ export default function Claim() {
     const startTime = useSelector(state => state.stakeData.startTime)
     const startDate = useSelector(state => state.stakeData.startDate)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
+    const currentToken = useSelector(state => state.stakeData.index)
     let history = useHistory();
     // console.log("start date: ", startDate)
     // console.log("start time: ", startTime)
@@ -50,6 +51,7 @@ export default function Claim() {
 
     useEffect(async() => {
         debugger
+        
         if(!address || !balance){
             history.push("/stake")
         }
@@ -57,11 +59,31 @@ export default function Claim() {
             console.log("hello", tokensArr)
             if(tokensArr){
             debugger
-            await getStakeById(tokensArr[0], 0)
+            await getStakeById(tokensArr[currentToken], currentToken)
             // setLoader(false)
             }
-        } 
-    }, [tokensArr])
+        }
+        else{
+            console.log("hello", tokensArr)
+            if(tokensArr){
+            debugger
+            await getStakeById(tokensArr[currentToken], currentToken)
+            // setLoader(false)
+            }
+        }
+    }, [tokensArr, currentToken])
+
+    // useEffect( async () => {
+    //     debugger
+    //     if(!stakeInfo){
+    //         console.log("hello", tokensArr)
+    //         if(tokensArr){
+    //         debugger
+    //         await getStakeById(tokensArr[currentToken], currentToken)
+    //         // setLoader(false)
+    //         }
+    //     }  
+    // }, [currentToken])
 
     useEffect(() => {
         // Rerender the component when stakiInfo change.
