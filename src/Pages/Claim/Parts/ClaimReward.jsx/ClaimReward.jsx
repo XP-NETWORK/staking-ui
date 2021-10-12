@@ -3,10 +3,11 @@ import { useSelector } from "react-redux"
 import { nf } from '../../../../utils/helper'
 import Web3 from "web3"
 import { showAvailableRewards } from "../../../../utils/stake"
+import { useLocation } from "react-router-dom";
 
 
 export default function ClaimReward() {
-
+    const location = useLocation();
     const stakeInfo = useSelector(state => state.data.stakeInfo)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const rewards = Web3.utils.fromWei(rewardsWai, 'ether');
@@ -14,8 +15,11 @@ export default function ClaimReward() {
     const currentToken = useSelector(state => state.stakeData.index)
     // console.log("ClaimReward: ", stakeInfo[1])
     
-  
-      
+    useEffect(() => {
+        return () => {
+            clearInterval(int)
+        }
+    },[])
 
     useEffect(async() => {
         console.log("5")
@@ -30,7 +34,7 @@ export default function ClaimReward() {
 
         await showAvailableRewards(stakeInfo[1])
         }
-    
+        
     }, [stakeInfo, currentToken])
 
     return (

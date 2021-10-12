@@ -13,7 +13,7 @@ export function Approvance({ approvance, amount, duration, account }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
     // const lockloader = useSelector(state => state.data.lockLoader)
     const agreement = useSelector(state => state.data.agreement)
-    console.log("Buttons: ", agreement)
+
 
     // console.log(approvance)
     

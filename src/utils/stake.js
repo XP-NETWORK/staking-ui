@@ -1,8 +1,10 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
+import { useSelector } from "react-redux"
 import { updateTokenIDs, updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
 import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIndex } from "../redux/stakeSlice"
+import { useDispatch } from "react-redux"
 
 
 export let stakeAddress = '0xcd3eE3F9f01690abe6D8759D381047644b92e05F'
@@ -43,8 +45,10 @@ export const stake = async (amount, duration, account) => {
         // console.log(amount, 'helo')
         console.log(durInSec, 'seconds', duration)
         Contract.methods.stake(weiValue, durInSec).send({from:account})
-        .once('receipt', function(receipt){
+        .once('receipt', async function(receipt){
+            debugger
             store.dispatch(updateAproveLockLoader(false))
+            await getAmountOfTokens(account)
             console.log(receipt)})
         .on('error',() => {
             store.dispatch(updateAproveLockLoader(false))

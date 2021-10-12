@@ -10,6 +10,10 @@
     opacity: 0.6;
 }
 
+.nav__button:hover{
+/* background-color: tomato; */
+}
+
 .nav__button--disabled{
     width: 126px;
     height: 32px;

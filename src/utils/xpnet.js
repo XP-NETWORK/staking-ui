@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 
 export let xpAddress = "0x3241Ae82AB966176bd760632BFC9A13D22Cf8C88"
 const W3 = new Web3(window.ethereum)
-const accountAddress = (state => state.data.account)
+const state = store.getState()
 // Create xpNet smart contract.
 const xpContract = async () => {
     try{
@@ -55,7 +55,7 @@ export const approve = async (account) => {
             console.log(receipt) 
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
-            checkAllowence(accountAddress)
+            checkAllowence(state.data.allowence)
         })
         .on('error', () => {
             debugger

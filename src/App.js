@@ -52,6 +52,7 @@ const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
+    debugger
     if (accounts.length > 0) {
        dispatch(updateAccount(accounts[0]))
      }
