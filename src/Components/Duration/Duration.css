@@ -13,6 +13,9 @@
     cursor: pointer;
 }
 
+.duration:hover{
+    background: rgb(229, 232, 240, 1);
+}
 
 
 .duration--active{

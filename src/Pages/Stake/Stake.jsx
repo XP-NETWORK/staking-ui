@@ -154,7 +154,7 @@ useEffect(() => {
                         </div> */}
                         <Agreement />
                         <Approvance agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
-                        <Lock agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
+                        <Lock approvance={allowence} amount={amount} duration={duration} account={account} />
                     </div>
                 </div>
             </div>

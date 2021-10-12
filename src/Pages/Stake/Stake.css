@@ -132,8 +132,7 @@
 .input__items .max{
     width: 76px;
     height: 32px;
-    left: 654px;
-    top: 319px;
+  
     
     display: flex;
     justify-content: center;
@@ -141,9 +140,13 @@
 
     margin-left: 14px;
 
-    background: #ECEDF3;
+    background: rgba(229, 232, 240, 0.5);
     border-radius: 6px;
     cursor: pointer;
+}
+
+.max:hover{
+    background: rgb(229, 232, 240, 1);
 }
 
 .stake__amount--mobile{

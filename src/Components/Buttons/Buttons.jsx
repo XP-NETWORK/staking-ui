@@ -6,21 +6,24 @@ import lock from "../../assets/lock.svg"
 import lockWhite from "../../assets/lockWhite.svg"
 import { useSelector } from 'react-redux'
 import ButtonLoader from '../Loader/ButtonLoader'
+import approved from "../../assets/approved_icon.svg"
 
 
-export function Approvance({ approvance, amount, duration, account, agreement }) {
+export function Approvance({ approvance, amount, duration, account }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
-    const lockloader = useSelector(state => state.data.lockLoader)
+    // const lockloader = useSelector(state => state.data.lockLoader)
+    const agreement = useSelector(state => state.data.agreement)
+    console.log("Buttons: ", agreement)
 
     // console.log(approvance)
     
     useEffect(() => {
         
-    }, [approveloader])
+    }, [approveloader, agreement])
     
 
     if(approvance){
-        return <div className="summary__button lock">Approved</div>
+        return <div className="summary__button approved"><img src={approved}></img>Approved</div>
     }
     else if(!approvance && agreement){
         return <div onClick={() => approve(account)} className="summary__button button">{approveloader ? <ButtonLoader /> : "Approve"}</div>
@@ -30,14 +33,13 @@ export function Approvance({ approvance, amount, duration, account, agreement })
     }
 }
 
-export function Lock({ approvance, amount, duration, account, agreement }){
+export function Lock({ approvance, amount, duration, account}){
     const lockloader = useSelector(state => state.data.lockLoader)
-    
+    const agreement = useSelector(state => state.data.agreement)
     if(approvance && agreement && amount){
         return (
             <div onClick={() => stake(amount, duration, account)} className="summary__button button">
                 {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Lock</span></>}
-                {/* <img src={lockWhite} alt=""/><span>{lockloader ? <ButtonLoader /> : "Lock"}</span> */}
             </div>)
     }
     else{

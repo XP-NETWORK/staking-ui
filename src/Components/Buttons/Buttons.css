@@ -11,6 +11,22 @@
     position: relative;
 }
 
+.button:hover{
+    background-color: #2549D1;
+}
+
+.approved{
+    max-width: 426px;
+    height: 44px;
+    background-color: unset;
+    border-radius: 6px;
+    margin: 6px 0;
+    color: #02C68B;
+}
+.approved img{
+    margin-right: 5px;
+}
+
 .lock{
     max-width: 426px;
     height: 44px;
@@ -18,6 +34,8 @@
     border-radius: 6px;
     margin: 6px 0;
 }
+
+
 
 .lock span{
     margin-left: 2px;

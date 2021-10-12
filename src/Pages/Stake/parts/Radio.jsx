@@ -7,6 +7,8 @@ import "./Radio.css"
 export default function Radio() {
     const dispatch = useDispatch()
     const [radio, setRadio] = useState(false)
+    const agree = useSelector(state => state.data.agreement)
+    console.log("Radio: ", agree)
 
     const radioHandler = () => {
         setRadio(prev => !prev)
