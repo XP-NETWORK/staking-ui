@@ -17,7 +17,7 @@ code {
 
 @media screen and (max-width: 600px){
   body{
-    /* background-color: #fff; */
+    font-family: Inter;
     background-color: #E5E5E5;
     background-image: unset;
   }}

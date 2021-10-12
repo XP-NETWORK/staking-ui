@@ -57,13 +57,10 @@
 
 @media screen and (max-width: 600px){
     .stake__rewards{
-        /* background-color: turquoise; */
         padding: 10px;    
     }
     
     .rewards{
-        /* margin: 0; */
-        /* padding: 0; */
         flex-direction: column;
         height: auto;
         max-width: unset;
@@ -90,4 +87,23 @@
         font-size: 20px;
     }
   
+}
+
+@media screen and (max-width: 425px){
+    .rewards__title{
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 126%;
+        letter-spacing: 0.03em;
+    }
+    .rewards__subtitle{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 146%;
+        letter-spacing: 0.03em;
+    }
+    .rewards__text{
+        font-size: 16px;
+        line-height: 133%;
+    }
 }

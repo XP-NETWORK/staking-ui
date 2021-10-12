@@ -1,0 +1,26 @@
+
+.agreement{
+    display: flex;
+    padding: 16px;
+    margin: 50px 0 16px 0;
+    gap: 15px;
+    background: #F4F7FF;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 126%;
+    display: flex;
+    align-items: flex-start;
+    letter-spacing: 0.03em;
+    color: #686E7D;
+}
+
+.agreement input{
+    width: 18px;
+    height: 18px;
+}
+
+@media screen and (max-width: 425px){
+    .agreement{
+        margin-top: 25px;
+    }
+}

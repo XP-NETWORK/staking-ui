@@ -5,10 +5,9 @@ import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoad
 import { stakeAddress } from "./stake"
 
 export let xpAddress = "0x3241Ae82AB966176bd760632BFC9A13D22Cf8C88"
-
-
 const W3 = new Web3(window.ethereum)
 
+// Create xpNet smart contract.
 const xpContract = async () => {
     try{
         const Contract = await new W3.eth.Contract(XPNET, xpAddress)
@@ -19,12 +18,13 @@ const xpContract = async () => {
     }
 }
 
+// Log XPNet smart contract to console.
 export const logXPContract = async () => {
     const XPContract = await xpContract()
     console.log("xp contract", XPContract)
 }
 
-
+// Check balance on this account.
 export const checkBalance = async (address) => {
     // debugger
     try{
@@ -41,6 +41,7 @@ export const checkBalance = async (address) => {
     }
 }
 
+// Aprove this account.
 export const approve = async (account) => {
     debugger
     try{
@@ -67,6 +68,7 @@ export const approve = async (account) => {
     }
 }
 
+// Check the allowence on this account.
 export const checkAllowence = async (owner) => {
     // debugger
     if(owner){

@@ -37,3 +37,10 @@
         /* background-color: turquoise; */
     }
 }
+
+@media screen and (max-width: 425px) {
+    .nft__widget{
+        margin: 0 auto;
+        width: 300px;
+    }
+}

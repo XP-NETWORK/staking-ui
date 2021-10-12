@@ -2,28 +2,16 @@ import "./Navbar.css"
 import xplogo from "../../assets/XPLogo.svg"
 import metaLogo from "../../assets/MetaMask_Fox.svg"
 import { Link, useLocation } from "react-router-dom";
-import { connectMetaMask } from "../../utils/metamask"
-import { useSelector, useDispatch } from 'react-redux'
-import { chengeStatus } from "../../redux/counterSlice";
-import { useEffect, useState } from "react"
+import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
 
 
 export default function Navbar() {
-
-    const [rendered, setRendered] = useState('stake')
     const location = useLocation();
-    // console.log(location)
     const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
-    // console.log("Nuvbar",balance)
-    const dispatch = useDispatch()
-    const toggleMetaMask = () => {
-        connectMetaMask()
-    }
 
     const showNav = () => {
-
         if(account){
             return(
             <>

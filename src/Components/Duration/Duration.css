@@ -45,4 +45,17 @@
         flex-basis: 190px;
         margin-bottom: 5px;
     }
+    .duration__title{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 126%;
+    }
+    .duration__subtitle{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 126%;
+        letter-spacing: 0.03em;
+    }
 }

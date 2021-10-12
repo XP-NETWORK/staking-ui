@@ -23,6 +23,7 @@ import DetailsAmount from './parts/DetailsAmount'
 import DetailsEnd from './parts/DetailsEnd'
 import DetailsApy from './parts/DetailsApy'
 import DetailsRewards from './parts/DetailsRewards'
+import Agreement from './parts/Agreement'
 // import StakeAmount from './parts/StakeAmount'
 
 
@@ -32,11 +33,11 @@ const [amount, setAmount] = useState("")
 const allowence = useSelector(state => state.data.allowence)
 console.log(allowence)
 // console.log("Allowence: ",allowence)
-const etherValue = Web3.utils.fromWei(allowence, 'ether');
+// const etherValue = Web3.utils.fromWei(allowence, 'ether');
 // console.log("Allowence etherValue: ",etherValue)
 const agreement = useSelector(state => state.data.agreement)
 const currentPrice = useSelector(state => state.data.currentPrice)
-const approved = useSelector(state => state.data.approved)
+// const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
@@ -87,13 +88,6 @@ const agreementHandler = () => {
     dispatch(updateAgreement())
 }
 
-// useEffect(() => {
-// }, [account])
-
-// useEffect(() => {
-// }, [allowence])
-
-
         return (
             <div className="stake__container">
                 <div className="stake">
@@ -102,10 +96,9 @@ const agreementHandler = () => {
                     <div className="line"></div>
                     <div className="stake__duration">
                         <div className="duration__header">
-                            Staking Duration
+                        Select staking period
                         </div>
                         <div className="durations__container">
-                            
                             {durations.map((e,i) => {
                                return <Duration month={e.d} apy={e.p} key={i} index={i} />
                             })}
@@ -113,7 +106,7 @@ const agreementHandler = () => {
                     </div>
                     <div className="stake__amount">
                         <div className="amount__header">
-                            <div className="amount__title">Enter your XPNET amount</div>
+                            <div className="amount__title">Enter XPNET amount</div>
                             <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
                         </div>
                         <div className="amount__input">
@@ -133,9 +126,9 @@ const agreementHandler = () => {
                                 <div onClick={ () => putMax()} className="max">MAX</div>
                             </div>
                         </div>
-                        <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
+                        <div className="amount__subtitle">Availabe for Staking:<span>{nf.format(balance)} XPNET</span></div>
                     </div>
-                    {/* <StakeAmount balance={balance} /> */}
+    
                     <Reawards durations={durations} duration={duration} />
                     <StakeInfo />
                 </div>
@@ -150,12 +143,13 @@ const agreementHandler = () => {
                         <DetailsApy durations={durations} duration={duration} />
                         <DetailsRewards currentPrice={currentPrice} amount={amount} duration={duration} />
                         <div className="line"></div>
-                        <div className="agreement">
-                         <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" />
-                         <div className="agreement__text">
-                          I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
-                         </div>
-                        </div>
+                        {/* <div className="agreement">
+                            <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" />
+                            <div className="agreement__text">
+                             I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
+                            </div>
+                        </div> */}
+                        <Agreement />
                         <Approvance agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
                         <Lock agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
                     </div>

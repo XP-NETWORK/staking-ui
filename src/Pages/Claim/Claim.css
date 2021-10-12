@@ -215,3 +215,27 @@
         padding: 10px 0;
     }
 }
+
+@media screen and (max-width: 425px){
+    .claim__container{
+        max-width: 300px;
+        
+        background-color: turquoise;
+        
+    }
+    .claim{
+        /* flex-basis: 380px; */
+        max-width: 300px;
+        background-color: tomato;
+        height: auto;
+        }
+    .nft__wrapper{
+        /* flex-basis: 380px; */
+        padding: unset;
+        margin: unset;
+        max-width: 300px;
+        }
+    .nfts__toggler{
+        max-width: 300px;
+    }
+}

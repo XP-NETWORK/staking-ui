@@ -20,9 +20,6 @@
     padding-left: 14px;
 }
 
-.info__text{
-  /* padding-top: 10px; */
-}
 
 @media screen and (max-width: 600px){
     .info__title {
@@ -39,5 +36,20 @@
         font-size: 24px;
         line-height: 126%;
         opacity: 0.4;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .info__title{
+        font-size: 16px;
+        line-height: 126%;
+        letter-spacing: 0.03em;
+    }
+    .info__text{
+        font-size: 16px;
+        line-height: 126%;
+        letter-spacing: 0.03em;
+        color: #686E7D;
+        opacity: unset;
     }
 }

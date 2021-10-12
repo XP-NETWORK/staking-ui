@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import Web3 from "web3"
 import "./Claim.css"
-import unlock from "../../assets/unlock.png"
-import bigart from "../../assets/bigart.png"
 import { useEffect } from 'react'
-import { balanceOf, showAvailableRewards, claimXpNet, getStakeById, withrow } from "../../utils/stake"
+import { getStakeById } from "../../utils/stake"
 import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
@@ -80,8 +78,8 @@ export default function Claim() {
             return (
                 <div className="claim__container">
                     <div className="claim">
-                        
-                        <div className="claim__title">Staking Reward</div>
+                        fsdfsdf
+                        {/* <div className="claim__title">Staking Reward</div>
                         <div className="line"></div>
                         <div className="claim__details">
                             <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
@@ -92,20 +90,21 @@ export default function Claim() {
                             <ProgressBar period={period} startTime={startTime} />
                             <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
                             <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="nft__wrapper">
                         <div className="nft">
-                            
-                            <div className="nft__title">NFT</div>
+                            asdad
+                            {/* <div className="nft__title">NFT</div>
                             <div className="line"></div>
                             <div className="nft__content">
                                 <Widget tokens={tokensArr} />
                                 <NFTAdres address={address}/>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="nfts__toggler">
-                            { showTokens() }
+                            sdfsdf
+                            {/* { showTokens() } */}
                         </div>  
                     </div>
                 </div>

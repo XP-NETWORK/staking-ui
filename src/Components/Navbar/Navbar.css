@@ -3,9 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    /* border: 1px solid black; */
     align-items: center;
-    /* background-color: turquoise; */
     position: relative;
 }
 
@@ -23,11 +21,6 @@
 .xp__logo img{
     width: 100%;
 }
-
-/* .metamask{
-    margin-left: 546px;
-} */
-
 
 .metamask{
     right: 0;
@@ -78,7 +71,6 @@
 @media screen and (max-width: 1140px){
     .navbar{
         max-width: 600px;
-
         margin: 0 auto;
     }
 }
@@ -93,15 +85,17 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        width: calc(100% - 30px);
+        /* width: calc(100% - 30px); */
+        max-width: 600px;
         gap: 5px;
         padding: 10px 0;
+        /* background-color: tomato; */
     }
 
     .xp__logo{
         order: -2;
         padding: 10px 0;
-        width: 270px;
+        width: 285px;
         
     }
     .metamask{
@@ -109,23 +103,17 @@
         display: flex;
         order: -1;
         margin-left: 0px;
-        width: 270px;
+        width: 285px;
         padding: 10px 0;
         height: auto;
-    }
-    /* .nav__buttons{
-        background-color:#ECEDF3;
-        padding: 10px;
-        border-radius: 8px;
-    } */
-
-    .metamask__icon{
-       /* padding: unset; */
     }
 }
 
 @media screen and (max-width: 425px){
-    .navbar--mobile{
-        /* background-color: tomato; */
+    .xp__logo{
+        width: 200px;
+    }
+    .metamask{
+        width: 200px;
     }
 }

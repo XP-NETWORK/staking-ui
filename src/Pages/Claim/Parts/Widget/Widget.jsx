@@ -33,10 +33,6 @@ export default function Widget({ tokens }) {
         }
     }
 
-    // useEffect(() => {
-    // console.log("Rerender widget.")
-    // }, [tokens])
-
     return (
         <div className="nft__widget">
             <div onClick={item => swapToken('prev')} className="left-arrow arrow"><img src={leftArrow} alt="" /></div>

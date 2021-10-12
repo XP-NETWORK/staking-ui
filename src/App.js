@@ -1,50 +1,46 @@
 import './App.css';
 import './Normalize.css'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
-import { getActualTime, updateCurrentPrice, updateAccount, chengeStatus, updateTokensArray} from "./redux/counterSlice"
+import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { logXPContract, checkBalance, checkAllowence } from "../src/utils/xpnet"
-import { logStakeContract, showAvailableRewards, getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
+import { logStakeContract, getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
-import Web3 from "web3"
-
-
 
 
 function App() {
-const balance = useSelector(state => state.data.balance)
+// const balance = useSelector(state => state.data.balance)
 // console.log('app balance: ', balance)
-const tokensArr = useSelector(state => state.stakeData.tokensArray)
+// const tokensArr = useSelector(state => state.stakeData.tokensArray)
 // console.log("tokensArr: ", tokensArr)
 const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 // console.log('app tokens: ', tokens)
 
 
-const stakeInfo = useSelector(state => state.data.stakeInfo)
+// const stakeInfo = useSelector(state => state.data.stakeInfo)
 // console.log(stakeInfo)
-const stakedAmount = useSelector(state => state.stakeData.amount)
+// const stakedAmount = useSelector(state => state.stakeData.amount)
 // console.log("stakedAmount: ", stakedAmount)
-const period = useSelector(state => state.stakeData.duration)
+// const period = useSelector(state => state.stakeData.duration)
 // console.log("period: ", period)
-const startTime = useSelector(state => state.stakeData.startTime)
-const startDate = useSelector(state => state.stakeData.startDate)
-const rewardsWai = useSelector(state => state.stakeData.availableRewards)
+// const startTime = useSelector(state => state.stakeData.startTime)
+// const startDate = useSelector(state => state.stakeData.startDate)
+// const rewardsWai = useSelector(state => state.stakeData.availableRewards)
 const dispatch = useDispatch()
 const address = useSelector(state => state.data.account)
+
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
-  // console.log("price", currentPrice)
   dispatch(updateCurrentPrice(currentPrice))
 }
 
 const updateBalance = async () => {
   const balance = await checkBalance(address)
-  // console.log(balance)
 }
 
 const doDate = () => {
@@ -55,11 +51,9 @@ const doDate = () => {
 const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
-  // debugger
   ethereum.on("accountsChanged", accounts => {
     if (accounts.length > 0) {
        dispatch(updateAccount(accounts[0]))
-      //  showAvailableRewards()
      }
  });
 }
@@ -67,8 +61,6 @@ const accountsChanged = () => {
 
 
 useEffect(async () => {
-  // console.log("1")
-  // debugger
  if(address) {
     await updateBalance()
     await checkAllowence(address)
@@ -78,15 +70,12 @@ useEffect(async () => {
 }, [address])
 
 useEffect(() => {
-  // console.log("2")
-  // debugger
   if(tokens){
     tokenOfOwnerByIndex(tokensFlag, tokens, address)
   }
 }, [tokens])
 
 useEffect(() => {
-  // console.log("3")
   getCurrentPrice()
   initMetaMask()
   logXPContract()
@@ -95,7 +84,6 @@ useEffect(() => {
 }, [])
 
 useEffect(() => {
-  // console.log("4")
   doDate()
   setInterval(doDate, 1000);
 }, [])

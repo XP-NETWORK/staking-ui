@@ -92,3 +92,12 @@
     }
 
 }
+
+@media screen and (max-width: 425px){
+    .claim__button--unactive{
+        width: 400px;
+    }
+    .claim__button{
+        width: 400px;
+    }
+} 
