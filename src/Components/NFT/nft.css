@@ -1,5 +1,5 @@
 .token{
-width: 110px;
+width: calc(100%/4);
 height: 110px;
 background-color: rgb(255, 255, 255);
 border: 1px solid #E5E8F0;

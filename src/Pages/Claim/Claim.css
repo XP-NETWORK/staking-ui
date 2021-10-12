@@ -38,6 +38,7 @@
     box-sizing: border-box;
     border-radius: 6px;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 

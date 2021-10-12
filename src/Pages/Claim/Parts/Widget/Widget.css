@@ -29,6 +29,7 @@
 
 .arrow:hover{
     cursor: pointer;
+    background-color: #E5E8F0;
 }
 
 @media screen and (max-width: 600px) {
