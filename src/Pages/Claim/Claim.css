@@ -3,9 +3,6 @@
     flex-wrap: wrap;
     justify-content: center;
     justify-content: space-between;
-    /* gap: 32px; */
-    /* align-items: flex-start; */
-    /* border: 1px solid black; */
 }
 
 .claim{
@@ -23,9 +20,6 @@
 
 .nft__wrapper{
     max-width: 486px;
-    /* height: 320px; */
-    /* height: 720px; */
-    /* padding: 30px 0; */
     display: flex;
     flex-direction: column;
 }
@@ -41,12 +35,9 @@
 }
 
 .nfts__toggler{
-
     box-sizing: border-box;
     border-radius: 6px;
-    /* display: flex; */
     justify-content: flex-start;
-
 }
 
 
@@ -153,18 +144,11 @@
 
 .nft__title{
     padding-left: 30px;
-    /* padding-top: 22px; */
     padding-bottom: 22px;
-
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
     line-height: 126%;
-}
-
-.nft__content{
-    /* padding: 22px 30px 8px 30px;
-    margin-bottom: 24px; */
 }
 
 .address__icon img{
@@ -199,14 +183,25 @@
 
 
 @media screen and (max-width: 600px) {
+    .claim__container{
+        width: calc(100% - 20px);
+    }
     .claim{
         flex-basis: 600px;
         padding: 20px 10px 30px 10px;
         height: auto;
+        margin-bottom: 16px;
+        border-bottom: rgb(168, 163, 168) 1px solid;
+        border-top: rgb(168, 163, 168) 1px solid;
+        border-radius: unset;
         }
     .nft__wrapper{
         flex-basis: 600px;
         max-width: unset;
+        border-radius: unset;
+
+        border-bottom: rgb(168, 163, 168) 1px solid;
+        border-top: rgb(168, 163, 168) 1px solid;
         }
     .claim__details{
         padding: unset;
@@ -214,28 +209,30 @@
     .claim__title{
         padding: 10px 0;
     }
+    .nft__title{
+        padding: 10px;
+    }
+    .nft{
+        border-radius: unset;
+        padding-top: 10px;
+    }
 }
 
 @media screen and (max-width: 425px){
     .claim__container{
-        max-width: 300px;
-        
-        background-color: turquoise;
-        
+        width: 100%  
     }
     .claim{
-        /* flex-basis: 380px; */
-        max-width: 300px;
-        background-color: tomato;
+        width: 100%;
         height: auto;
         }
     .nft__wrapper{
-        /* flex-basis: 380px; */
+        width: calc(100% - 20px);
         padding: unset;
         margin: unset;
-        max-width: 300px;
+      
         }
     .nfts__toggler{
-        max-width: 300px;
+        width: calc(100% - 20px);
     }
 }

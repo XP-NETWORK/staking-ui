@@ -14,7 +14,6 @@ export default function Main() {
 
 
     useEffect(() => {
-        console.log(loader, 'hello')
     }, [loader])
 
     if(!account && !loader){

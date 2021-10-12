@@ -2,7 +2,7 @@ import { React, useEffect} from 'react'
 import bigart from "../../../../assets/bigart.png"
 import leftArrow from "../../../../assets/arrow_left.svg"
 import rightArrow from "../../../../assets/arrow_right.svg"
-import { getStakeById } from "../../../../utils/stake"
+// import { getStakeById } from "../../../../utils/stake"
 import { useSelector, useDispatch } from "react-redux"
 import { updateIndex } from "../../../../redux/stakeSlice"
 import "./Widget.css"

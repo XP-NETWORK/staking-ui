@@ -85,19 +85,19 @@
 
 @media screen and (max-width: 600px) {
     .claim__button--unactive{
-        width: 600px;
+        width: 100%
     }
     .claim__button{
-        width: 580px;
+        width: 100%
     }
 
 }
 
 @media screen and (max-width: 425px){
     .claim__button--unactive{
-        width: 400px;
+        width: 100%;
     }
     .claim__button{
-        width: 400px;
+        width: 100%;
     }
 } 
