@@ -11,3 +11,16 @@ justify-content: center;
 cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+.token{
+    width: calc(100%/10);
+    }
+}
+
+
+@media screen and (max-width: 425px){
+    .token{
+        width: calc(100%/10);
+        }
+
+}

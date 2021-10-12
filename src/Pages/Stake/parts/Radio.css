@@ -1,0 +1,25 @@
+.craftCheckBox{
+    width: 20px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.391);
+    border-radius: 4px;
+    position: relative;
+}
+
+.craftCheckBox:hover{
+    cursor: pointer;
+}
+
+.craftCheckBox--borderless{
+    width: 20px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0);
+    border-radius: 4px;
+    position: relative;
+}
+
+.craftCheckBox--active{
+    position: absolute;
+    top: -4px;
+    left: -4px;
+}

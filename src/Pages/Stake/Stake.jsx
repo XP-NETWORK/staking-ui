@@ -88,6 +88,9 @@ const agreementHandler = () => {
     dispatch(updateAgreement())
 }
 
+useEffect(() => {
+}, [allowence])
+
         return (
             <div className="stake__container">
                 <div className="stake">
@@ -126,7 +129,7 @@ const agreementHandler = () => {
                                 <div onClick={ () => putMax()} className="max">MAX</div>
                             </div>
                         </div>
-                        <div className="amount__subtitle">Availabe for Staking:<span>{nf.format(balance)} XPNET</span></div>
+                        <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div>
                     </div>
     
                     <Reawards durations={durations} duration={duration} />

@@ -184,7 +184,7 @@
 
 @media screen and (max-width: 600px) {
     .claim__container{
-        width: calc(100% - 20px);
+        width: 100%;
     }
     .claim{
         flex-basis: 600px;
@@ -216,6 +216,10 @@
         border-radius: unset;
         padding-top: 10px;
     }
+    .nfts__toggler{
+        width: 100%;
+        border-radius: unset;
+    }
 }
 
 @media screen and (max-width: 425px){
@@ -227,13 +231,13 @@
         height: auto;
         }
     .nft__wrapper{
-        width: calc(100% - 20px);
+        width: 100%;
         padding: unset;
         margin: unset;
       
         }
     .nfts__toggler{
-        width: calc(100% - 20px);
+        width: 100%;
     }
     .nft__address{
         /* width: 100px;

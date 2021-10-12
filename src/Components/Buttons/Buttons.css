@@ -5,7 +5,7 @@
     color: #fff;
     background: #3180F7;
     border-radius: 6px;
-    margin: 12px 0;
+    margin: 6px 0;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -16,7 +16,7 @@
     height: 44px;
     background-color: #ECEDF3;
     border-radius: 6px;
-    margin: 12px 0;
+    margin: 6px 0;
 }
 
 .lock span{

@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { updateAgreement } from "../../../redux/counterSlice"
 import "./Agreement.css"
+import Radio from './Radio'
 
 export default function Agreement() {
 
@@ -13,7 +14,9 @@ export default function Agreement() {
 
     return (
         <div className="agreement">
-            <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" />
+            {/* <Radio /> */}
+            {/* <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" /> */}
+            <Radio />
             <div className="agreement__text">
              I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
             </div>
