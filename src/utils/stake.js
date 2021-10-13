@@ -1,10 +1,9 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
-import { useSelector } from "react-redux"
-import { updateTokenIDs, updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateAmount, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIndex } from "../redux/stakeSlice"
-import { useDispatch } from "react-redux"
+import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
+import { updateAmount, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIndex } from "../redux/stakeSlice"
+
 
 
 export let stakeAddress = '0xcd3eE3F9f01690abe6D8759D381047644b92e05F'
@@ -24,13 +23,12 @@ const stakeContract = async () => {
 // Log the contract.
 export const logStakeContract = async () => {
     const stContract = await stakeContract()
-    console.log("stake contract: ", stContract)
-}
+    return stContract
+    }
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account) => {
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
-    debugger
     let durInSec
     if(duration!==1){
          durInSec = 60*60*24*(duration * 30)
@@ -39,17 +37,15 @@ export const stake = async (amount, duration, account) => {
          durInSec = 31622400 
     }
     try{
-        // console.log(durInSec, amount, duration)
         store.dispatch(updateAproveLockLoader(true))
         const Contract = await stakeContract()
-        // console.log(amount, 'helo')
-        console.log(durInSec, 'seconds', duration)
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
-            debugger
+            // debugger
             store.dispatch(updateAproveLockLoader(false))
             await getAmountOfTokens(account)
-            console.log(receipt)})
+            // console.log(receipt)
+        })
         .on('error',() => {
             store.dispatch(updateAproveLockLoader(false))
         })
@@ -62,12 +58,10 @@ export const stake = async (amount, duration, account) => {
 
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
-    // debugger
     const Contract = await stakeContract()
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
-            // console.log("getAmountOfTokens:", tokensAmount)
             store.dispatch(updateTokensAmount(tokensAmount))
             }
             catch(error){
@@ -79,7 +73,6 @@ export const getAmountOfTokens = async (owner) => {
 
 // Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
 export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
-    // debugger
     let tokenArr = []
     if(flag === false){
         if(tokenAmount){
@@ -88,7 +81,6 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
             for (let i = 0; i < num; i++) {
                 try{
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
-                    console.log(`toke: ${i}: `, token)
                     tokenArr.push(token)
                 }
                 catch(error){
@@ -104,12 +96,9 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
 
 // Get token by id.
 export const getStakeById = async (id, index) => {
-    // debugger
-    console.log("getStakeById")
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
-        console.log(info)
         store.dispatch(updateNftTokenIndex(index))
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
@@ -122,13 +111,12 @@ export const getStakeById = async (id, index) => {
     }
 }
 
-// Show the rewards of the token.
+
 export const showAvailableRewards = async (nftId) => {
-    console.log("nftTokenId: ", nftId)
     const Contract = await stakeContract()
     try{
     const available = await Contract.methods.showAvailableRewards(nftId).call()
-    console.log("available:", available)
+
     store.dispatch(updateAvailableRewards(available))
     return available
     }
@@ -139,9 +127,17 @@ export const showAvailableRewards = async (nftId) => {
 
 // Claim the rewards of choesen token.
 export const claimXpNet = async (nftId,rewards, account) => {
+    debugger
+    // store.dispatch(updateWithdrawed(true))
     const Contract = await stakeContract()
     try{
-    const claimed = await Contract.methods.withdrawRewards(nftId, rewards).send({from:account})
+        await Contract.methods.withdrawRewards(nftId, rewards).send({from:account})
+        .once('receipt', () => {
+            store.dispatch(updateWithdrawed(false))
+        })
+        .on('error', () => {
+            store.dispatch(updateWithdrawed(false))
+        })
     }
     catch(error){
         console.log(error)
@@ -150,9 +146,10 @@ export const claimXpNet = async (nftId,rewards, account) => {
 
 // Withdrow token and rewards. 
 export const withrow = async ( nftId, adress ) => {
+    debugger
     const Contract = await stakeContract()
     try{
-        const withdrawen = Contract.methods.withdraw(nftId).send({from:adress})
+        const result = await Contract.methods.withdraw(nftId).send({from:adress})
     }
     catch(error){
         console.log(error)

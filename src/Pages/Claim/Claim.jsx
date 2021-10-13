@@ -21,11 +21,8 @@ import Widget from './Parts/Widget/Widget'
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
-    // const tokens = useSelector(state => state.data.tokenIDs)
     const tokensArr = useSelector(state => state.stakeData.tokensArray)
-    // console.log("Claim: ", tokens)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
-    // console.log(stakeInfo)
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
@@ -42,26 +39,23 @@ export default function Claim() {
         }
     }
 
-    useEffect(async() => {
-        debugger
-        
+    useEffect(() => {
+        const getData = async () => {
+            await getStakeById(tokensArr[currentToken], currentToken)
+        }
         if(!address || !balance){
             history.push("/stake")
         }
         if(!stakeInfo){
-            console.log("hello", tokensArr)
             if(tokensArr){
-            debugger
-            await getStakeById(tokensArr[currentToken], currentToken)
-            // setLoader(false)
+            getData()
+            // await getStakeById(tokensArr[currentToken], currentToken)
             }
         }
         else{
-            console.log("hello", tokensArr)
             if(tokensArr){
-            debugger
-            await getStakeById(tokensArr[currentToken], currentToken)
-            // setLoader(false)
+            getData()
+            // await getStakeById(tokensArr[currentToken], currentToken)
             }
         }
     

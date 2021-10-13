@@ -1,15 +1,12 @@
 import { useState } from 'react'
 import checked from "../../../assets/check_box.png"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { updateAgreement } from "../../../redux/counterSlice"
 import "./Radio.css"
 
 export default function Radio() {
     const dispatch = useDispatch()
     const [radio, setRadio] = useState(false)
-    const agree = useSelector(state => state.data.agreement)
-    console.log("Radio: ", agree)
-
     const radioHandler = () => {
         setRadio(prev => !prev)
         dispatch(updateAgreement())

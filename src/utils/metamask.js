@@ -9,7 +9,6 @@ const { ethereum } = window
 
 const getAccounts = async () => {
     const accounts = await ethereum.request({ method: 'eth_accounts' })
-    // console.log(accounts)
     store.dispatch(updateAccount(accounts[0]))
     return accounts
 }
@@ -20,7 +19,7 @@ export const connectMetaMask = function() {
 }
 
 export const initMetaMask = async () => {
-    // debugger
+
     if(ethereum){
         if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
             accounts = await getAccounts()

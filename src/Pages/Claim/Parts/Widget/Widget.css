@@ -54,3 +54,19 @@
         /* margin: 0 5px; */
     }
 }
+
+@media screen and (max-width: 320px) {
+    .nft__widget{
+        margin: 0 auto;
+        display: flex;
+        width: 290px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .arrow{
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        /* margin: 0 5px; */
+    }
+}

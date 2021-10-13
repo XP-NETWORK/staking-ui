@@ -8,7 +8,6 @@ export default function StakeAmount({ balance }) {
     const [amount, setAmount] = useState("")
     const dispatch = useDispatch()
     const onBlurHandler = (e) => {
-        // debugger
         const num = e.target.value
         if(num === "0"){
             setAmount("")

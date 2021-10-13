@@ -62,3 +62,17 @@
         letter-spacing: 0.03em;
     }
 }
+
+@media screen and (max-width: 375px) {
+    .duration{
+        flex-basis: 170px;
+       
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .duration{
+        flex-basis: 140px;
+       
+    }
+}

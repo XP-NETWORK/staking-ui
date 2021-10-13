@@ -1,21 +1,17 @@
 import React, { useEffect } from 'react'
 import { stake } from "../../utils/stake"
 import { approve } from "../../utils/xpnet"
-import "./Buttons.css"
 import lock from "../../assets/lock.svg"
 import lockWhite from "../../assets/lockWhite.svg"
 import { useSelector } from 'react-redux'
 import ButtonLoader from '../Loader/ButtonLoader'
 import approved from "../../assets/approved_icon.svg"
+import "./Buttons.css"
 
 
 export function Approvance({ approvance, amount, duration, account }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
-    // const lockloader = useSelector(state => state.data.lockLoader)
     const agreement = useSelector(state => state.data.agreement)
-
-
-    // console.log(approvance)
     
     useEffect(() => {
         
@@ -23,7 +19,7 @@ export function Approvance({ approvance, amount, duration, account }) {
     
 
     if(approvance){
-        return <div className="summary__button approved"><img src={approved}></img>Approved</div>
+        return <div className="summary__button approved"><img src={approved} alt=""></img>Approved</div>
     }
     else if(!approvance && agreement){
         return <div onClick={() => approve(account)} className="summary__button button">{approveloader ? <ButtonLoader /> : "Approve"}</div>

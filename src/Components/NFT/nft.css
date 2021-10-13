@@ -28,7 +28,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid #3180F7; 
 }
 
 @media screen and (max-width: 600px) {
@@ -36,7 +36,10 @@
         width: 50px;
         height: 50px;
     }
-
+    .token--active{
+        width: 50px;
+        height: 50px; 
+    }
 }
 
 
@@ -44,6 +47,10 @@
     .token{
         width: 50px;
         height: 50px;
+    }
+    .token--active{
+        width: 50px;
+        height: 50px; 
     }
 
 }

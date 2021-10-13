@@ -11,6 +11,7 @@ const initialState = {
     tokensArray: '',
     tokensAmount: '',
     tokensAmountFlag: false,
+    withdrawed: false,
     index: 0
 }
 
@@ -40,7 +41,6 @@ export const stakeSlice = createSlice({
             state.nftTokenIndex = parseInt(action.payload)
         },
         updateTokensArray(state, action){
-            // debugger
             state.tokensArray = action.payload
         },
         updateTokensAmount(state, action){
@@ -51,6 +51,9 @@ export const stakeSlice = createSlice({
         },
         updateIndex(state, action){
             state.index = action.payload
+        },
+        updateWithdrawed(state, action){
+            state.withdrawed = action.payload
         }
     },
   })
@@ -67,7 +70,8 @@ export const {
     updateTokensArray,
     updateTokensAmount,
     updateTokensAmountFlag,
-    updateIndex
+    updateIndex,
+    updateWithdrawed
 } = stakeSlice.actions
 
 export default stakeSlice.reducer

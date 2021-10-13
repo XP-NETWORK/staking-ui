@@ -6,31 +6,15 @@ import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { logXPContract, checkBalance, checkAllowence } from "../src/utils/xpnet"
-import { logStakeContract, getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
+import { checkBalance, checkAllowence } from "../src/utils/xpnet"
+import { getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
 
 
 function App() {
-// const balance = useSelector(state => state.data.balance)
-// console.log('app balance: ', balance)
-// const tokensArr = useSelector(state => state.stakeData.tokensArray)
-// console.log("tokensArr: ", tokensArr)
 const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
 const tokens = useSelector(state => state.stakeData.tokensAmount)
-// console.log('app tokens: ', tokens)
-
-
-// const stakeInfo = useSelector(state => state.data.stakeInfo)
-// console.log(stakeInfo)
-// const stakedAmount = useSelector(state => state.stakeData.amount)
-// console.log("stakedAmount: ", stakedAmount)
-// const period = useSelector(state => state.stakeData.duration)
-// console.log("period: ", period)
-// const startTime = useSelector(state => state.stakeData.startTime)
-// const startDate = useSelector(state => state.stakeData.startDate)
-// const rewardsWai = useSelector(state => state.stakeData.availableRewards)
 const dispatch = useDispatch()
 const address = useSelector(state => state.data.account)
 
@@ -40,7 +24,7 @@ const getCurrentPrice = async () => {
 }
 
 const updateBalance = async () => {
-  const balance = await checkBalance(address)
+  await checkBalance(address)
 }
 
 const doDate = () => {
@@ -61,13 +45,16 @@ const accountsChanged = () => {
 }
 
 
-useEffect(async () => {
- if(address) {
-    await updateBalance()
-    await checkAllowence(address)
-    await getAmountOfTokens(address)
-    await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+useEffect( () => {
+  const getData = async () =>{
+    if(address) {
+      await updateBalance()
+      await checkAllowence(address)
+      await getAmountOfTokens(address)
+      await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+    }
   }
+  getData()
 }, [address])
 
 useEffect(() => {
@@ -79,8 +66,6 @@ useEffect(() => {
 useEffect(() => {
   getCurrentPrice()
   initMetaMask()
-  logXPContract()
-  logStakeContract()
   accountsChanged()
 }, [])
 

@@ -1,47 +1,30 @@
 import React from 'react'
-import Web3 from "web3"
 import "./Stake.css"
-// import image from "../../assets/Rectangle.png"
-// import i from "../../assets/i.svg"
-
 import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState, useEffect } from 'react'
-import { changeStakingAmount, updateAgreement } from "../../redux/counterSlice"
-// import { updateTokensArray } from "../../redux/stakeSlice"
-import { getPercent, nf } from "../../utils/helper"
-// import { stake } from "../../utils/stake"
-// import { approve } from "../../utils/xpnet"
+import { changeStakingAmount } from "../../redux/counterSlice"
+import { nf } from "../../utils/helper"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
-// import Connect from '../Connect/Connect'
-// import NFT from '../../Components/NFT/NFT'
 import Reawards from './parts/Reawards'
 import StakeInfo from './parts/StakeInfo'
 import DetailsAmount from './parts/DetailsAmount'
-// import DetailsStart from './parts/DetailsStart'
 import DetailsEnd from './parts/DetailsEnd'
 import DetailsApy from './parts/DetailsApy'
 import DetailsRewards from './parts/DetailsRewards'
 import Agreement from './parts/Agreement'
-// import StakeAmount from './parts/StakeAmount'
 
 
 export default function Stake() {
 const dispatch = useDispatch()
 const [amount, setAmount] = useState("")
 const allowence = useSelector(state => state.data.allowence)
-console.log(allowence)
-// console.log("Allowence: ",allowence)
-// const etherValue = Web3.utils.fromWei(allowence, 'ether');
-// console.log("Allowence etherValue: ",etherValue)
 const agreement = useSelector(state => state.data.agreement)
 const currentPrice = useSelector(state => state.data.currentPrice)
-// const approved = useSelector(state => state.data.approved)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
-// console.log(startDate)
 const balance = useSelector(state => state.data.balance)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
 const durations = [
@@ -65,28 +48,26 @@ const amountHandler = (e) => {
 }
 
 const onBlurHandler = (e) => {
-    // debugger
     const num = e.target.value
     if(num === "0"){
         setAmount("")
     }
 }
 
-const getRewards = () => {
-    // debugger
-    const rewards = duration === 3 ? 
-    amount*0.1125 :
-    duration === 6 ?
-    amount*0.375 :
-    duration === 9 ?
-    amount*0.75 :
-    amount*1.25
-    return rewards
-}
+// const getRewards = () => {
+//     const rewards = duration === 3 ? 
+//     amount*0.1125 :
+//     duration === 6 ?
+//     amount*0.375 :
+//     duration === 9 ?
+//     amount*0.75 :
+//     amount*1.25
+//     return rewards
+// }
 
-const agreementHandler = () => {
-    dispatch(updateAgreement())
-}
+// const agreementHandler = () => {
+//     dispatch(updateAgreement())
+// }
 
 useEffect(() => {
 }, [allowence])
@@ -146,12 +127,6 @@ useEffect(() => {
                         <DetailsApy durations={durations} duration={duration} />
                         <DetailsRewards currentPrice={currentPrice} amount={amount} duration={duration} />
                         <div className="line"></div>
-                        {/* <div className="agreement">
-                            <input onChange={() => agreementHandler()} checked={agreement} type="checkbox" name="agree" id="agree" />
-                            <div className="agreement__text">
-                             I have read and I agree to <a href="#">XPNET Staking Service Agreement</a>
-                            </div>
-                        </div> */}
                         <Agreement />
                         <Approvance agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
                         <Lock approvance={allowence} amount={amount} duration={duration} account={account} />

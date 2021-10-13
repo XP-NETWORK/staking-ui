@@ -35,7 +35,6 @@ export const counterSlice = createSlice({
         state.stakingAmount = action.payload
       },
       updateAccount(state, action){
-        // console.log("from redux function: ",state.account);
         state.account = action.payload
       },
       updateBalance(state, action){
@@ -54,7 +53,6 @@ export const counterSlice = createSlice({
         state.currentPrice = action.payload
       },
       updateTokenIDs(state, action){
-        // debugger
         state.tokenIDs = action.payload
       },
       updateStakeInfo(state, action){

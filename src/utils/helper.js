@@ -16,13 +16,9 @@ export const getPercent = (durationsArr, duration ) => {
 export const nf = Intl.NumberFormat();
 
 export const getProgress = (seconds, start) => {
-    // console.log("period: ", seconds)
     const dayNow = Math.floor(Date.now()/1000)
-    // console.log("day now: ", dayNow)
     const daysDuration = seconds
-    // console.log("days",daysDuration)
     const daysPassed = dayNow - start
-    // console.log("daysPassed: ", daysPassed, start)
     return daysPassed/daysDuration*100
 } 
 
@@ -38,18 +34,12 @@ export const getPercents = (seconds) => {
 
 export const getStartDate = (str) => {
     const seconds = parseInt(str)
-    // console.log(seconds, str, 'hello')
     const startDate = moment.unix(seconds).format("YYYY-MM-DD HH:MM")
     store.dispatch(updateStartDate(startDate))
     return startDate
 }
 
 export const getEndDate = (seconds, start) => {
-    // debugger
-    // let endDate
-    // console.log("start: ", start)
-    // console.log("period: ", seconds)
-    // endDate = moment(start).add(3, 'month').format('YYYY-MM-DD hh:mm')
     if(seconds === '7776000'){
         return moment(start).add(3, 'month').format('YYYY-MM-DD hh:mm')
     }

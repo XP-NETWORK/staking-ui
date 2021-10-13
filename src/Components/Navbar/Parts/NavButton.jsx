@@ -5,13 +5,9 @@ import { useSelector } from 'react-redux';
 
 
 export default function NavButton({ location, type, balance }) {
-    const flag = useSelector(state => state.stakeData.updateTokensAmountFlag)
     const tokens = parseInt(useSelector(state => state.stakeData.tokensAmount))
 
-    console.log("tokens: ", typeof tokens)
-
     useEffect(() => {
-        
     }, [balance])
 
     if(type === 'stake-btn') return (

@@ -1,26 +1,20 @@
-import { React, useEffect} from 'react'
 import bigart from "../../../../assets/bigart.png"
 import leftArrow from "../../../../assets/arrow_left.svg"
 import rightArrow from "../../../../assets/arrow_right.svg"
-// import { getStakeById } from "../../../../utils/stake"
 import { useSelector, useDispatch } from "react-redux"
 import { updateIndex } from "../../../../redux/stakeSlice"
 import "./Widget.css"
 
 export default function Widget({ tokens }) {
-    console.log("widget", tokens)
+
     const stakeInfo = useSelector(state => state.data.stakeInfo)
-    const tokenId = parseInt(stakeInfo[6])
-    const tokenIndex = useSelector(state => state.stakeData.nftTokenIndex)
     const currentToken = useSelector(state => state.stakeData.index)
     const dispatch = useDispatch()
-    console.log("tokenIndex",tokenIndex)
-    console.log("tokenID: ", tokenId)
-   
+
     
     const swapToken = (side) => {
         debugger
-        // console.log(side)
+   
         if(tokens.length > 1){
             if(side === "next"){
                 dispatch(updateIndex(currentToken+1))

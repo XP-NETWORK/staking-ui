@@ -255,3 +255,9 @@
         white-space: nowrap;
     }
 }
+
+@media screen and (max-width: 325px){
+    .nfts__toggler{
+        width: 100%;
+    }
+}

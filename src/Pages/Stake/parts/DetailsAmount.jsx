@@ -1,5 +1,5 @@
 import React from 'react'
-import { getPercent, nf } from "../../../utils/helper"
+import { nf } from "../../../utils/helper"
 import "./Details.css"
 
 export default function DetailsAmount({ amount, currentPrice }) {

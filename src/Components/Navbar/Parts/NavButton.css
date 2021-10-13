@@ -51,10 +51,10 @@
         border-radius: 8px;
     }
     .nav__button{
-        width: 285px;
+        width: 292px;
     }
     .nav__button--active{
-        width: 285px;
+        width: 292px;
     }
 }
 
@@ -64,5 +64,23 @@
     }
     .nav__button--active{
         width: 200px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .nav__button{
+        width: 178px;
+    }
+    .nav__button--active{
+        width: 178px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .nav__button{
+        width: 150px;
+    }
+    .nav__button--active{
+        width: 150px;
     }
 }

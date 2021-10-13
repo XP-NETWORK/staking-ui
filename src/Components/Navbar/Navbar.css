@@ -95,7 +95,7 @@
     .xp__logo{
         order: -2;
         padding: 10px 0;
-        width: 285px;
+        width: 280px;
         
     }
     .metamask{
@@ -103,7 +103,7 @@
         display: flex;
         order: -1;
         margin-left: 0px;
-        width: 285px;
+        width: 302px;
         padding: 10px 0;
         height: auto;
     }
@@ -115,5 +115,23 @@
     }
     .metamask{
         width: 200px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .xp__logo{
+        width: 178px;
+    }
+    .metamask{
+        width: 178px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .xp__logo{
+        width: 150px;
+    }
+    .metamask{
+        width: 150px;
     }
 }

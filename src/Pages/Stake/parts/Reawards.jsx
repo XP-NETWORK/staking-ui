@@ -1,6 +1,6 @@
 import React from 'react'
 import image from "../../../assets/Rectangle.png"
-import { getPercent, nf } from "../../../utils/helper"
+import { getPercent } from "../../../utils/helper"
 import "./Reawards.css"
 
 export default function Reawards({ durations, duration }) {
