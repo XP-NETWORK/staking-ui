@@ -163,7 +163,6 @@ export const checkIsUnLocked = async (id) => {
     const Contract = await stakeContract()
     try{
         const isUnlocked = await Contract.methods.checkIsUnlocked(id).call()
-        console.log(isUnlocked)
         store.dispatch(updateIsUnlocked(isUnlocked))
     }
     catch(error){

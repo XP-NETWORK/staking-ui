@@ -6,12 +6,10 @@ import { useSelector } from "react-redux"
 
 export default function UnStakeButton({ stakeInfo, address, stakerAddress }) {
     const isUnlocked = useSelector(state => state.stakeData.isUnlocked)
-    console.log(isUnlocked)
     if(stakerAddress) stakerAddress = stakerAddress.toLowerCase()
     if(address) address = address.toLowerCase()
 
     if(isUnlocked === false){
-        console.log("isLocked false: ", isUnlocked)
         return <></>
     }
     else{

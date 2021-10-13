@@ -36,7 +36,6 @@ const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
-    debugger
     if (accounts.length > 0) {
        dispatch(updateAccount(accounts[0]))
      }
@@ -52,7 +51,7 @@ useEffect( () => {
       await checkAllowence(address)
       await getAmountOfTokens(address)
       await tokenOfOwnerByIndex(tokensFlag, tokens, address)
-      await logStakeContract()
+      // await logStakeContract()
     }
   }
   getData()
