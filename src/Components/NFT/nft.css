@@ -1,26 +1,49 @@
 .token{
-width: calc(100%/4);
-height: 110px;
-background-color: rgb(255, 255, 255);
-border: 1px solid #E5E8F0;
-box-sizing: border-box;
-border-radius: 6px;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    width: calc(100%/4);
+    height: 110px;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.7;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+
+.token:hover{
+    opacity: 1;
+}
+
+.token--active{
+    opacity: 1;
+    width: calc(100%/4);
+    height: 110px;
+    background-color: rgb(255, 255, 255);
+    opacity: 1;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid black;
 }
 
 @media screen and (max-width: 600px) {
-.token{
-    width: calc(100%/10);
+    .token{
+        width: 50px;
+        height: 50px;
     }
+
 }
 
 
 @media screen and (max-width: 425px){
     .token{
-        width: calc(100%/10);
-        }
+        width: 50px;
+        height: 50px;
+    }
 
 }

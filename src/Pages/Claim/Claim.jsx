@@ -21,7 +21,7 @@ import Widget from './Parts/Widget/Widget'
 export default function Claim() {
     const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
-    const tokens = useSelector(state => state.data.tokenIDs)
+    // const tokens = useSelector(state => state.data.tokenIDs)
     const tokensArr = useSelector(state => state.stakeData.tokensArray)
     // console.log("Claim: ", tokens)
     const stakeInfo = useSelector(state => state.data.stakeInfo)

@@ -39,6 +39,7 @@
     border-radius: 6px;
     justify-content: flex-start;
     flex-wrap: wrap;
+    
 }
 
 
@@ -220,6 +221,7 @@
     .nfts__toggler{
         width: 100%;
         border-radius: unset;
+        margin: 0 10px 10px 10px;
     }
 }
 
