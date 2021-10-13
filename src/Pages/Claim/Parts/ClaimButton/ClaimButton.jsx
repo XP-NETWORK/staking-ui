@@ -8,8 +8,6 @@ import { useSelector, useDispatch } from 'react-redux'
 export default function ClaimButton({ stakeInfo, rewardsWai, address }) {
     const dispatch = useDispatch()
     const loader = useSelector(state => state.stakeData.withdrawed)
-    console.log("ClaimButton: ", loader)
-
     const claimHandler = () => {
         claimXpNet(stakeInfo, rewardsWai, address)
         dispatch(updateWithdrawed(true))

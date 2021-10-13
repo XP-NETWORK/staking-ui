@@ -12,7 +12,8 @@ const initialState = {
     tokensAmount: '',
     tokensAmountFlag: false,
     withdrawed: false,
-    index: 0
+    index: 0,
+    nftLoaders: []
 }
 
 export const stakeSlice = createSlice({
@@ -54,6 +55,12 @@ export const stakeSlice = createSlice({
         },
         updateWithdrawed(state, action){
             state.withdrawed = action.payload
+        },
+        addLoader(state, action){
+            state.nftLoaders = [...state.tftLoaders, action.payload]
+        },
+        updateLoader(state, action){
+            // SOONE
         }
     },
   })
@@ -71,7 +78,8 @@ export const {
     updateTokensAmount,
     updateTokensAmountFlag,
     updateIndex,
-    updateWithdrawed
+    updateWithdrawed,
+    addLoader
 } = stakeSlice.actions
 
 export default stakeSlice.reducer

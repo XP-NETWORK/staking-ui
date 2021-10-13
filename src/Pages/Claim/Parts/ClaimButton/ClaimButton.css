@@ -12,6 +12,7 @@
     letter-spacing: 0.03em;
     color: #FFF;
     margin: 5px 0;
+    transition: .17s;
 }
 
 .claim__button:hover{

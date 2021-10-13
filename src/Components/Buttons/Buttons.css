@@ -9,6 +9,7 @@
     cursor: pointer;
     overflow: hidden;
     position: relative;
+    transition: 0.17s;
 }
 
 .button:hover{

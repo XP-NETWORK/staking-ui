@@ -27,6 +27,19 @@
     border-radius: 50%;
 }
 
+.arrow--disabled{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 .arrow:hover{
     cursor: pointer;
     background-color: #E5E8F0;
