@@ -14,12 +14,6 @@
     color: #686E7D;
 }
 
-.agreement input{
-    width: 18px;
-    height: 18px;
-}
-
-
 @media screen and (max-width: 425px){
     .agreement{
         margin-top: 25px;

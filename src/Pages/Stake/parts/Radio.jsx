@@ -14,13 +14,15 @@ export default function Radio() {
 
     if(radio === false){
         return (
-            <div onClick={() => radioHandler()} className="craftCheckBox"></div>
+            <div><div onClick={() => radioHandler()} className="craftCheckBox"></div></div>
         )
     }
     else{
         return(
-        <div onClick={() => radioHandler()} className="craftCheckBox--borderless">
-            <img className="craftCheckBox--active" src={checked} alt="" />
+        <div>
+            <div onClick={() => radioHandler()} className="craftCheckBox--borderless">
+                <img className="craftCheckBox--active" src={checked} alt="" />
+            </div>
         </div>
         )
     }

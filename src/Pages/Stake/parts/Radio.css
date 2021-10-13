@@ -1,5 +1,6 @@
 .craftCheckBox{
-    width: 20px;
+    flex-basis: 16px;
+    /* width: 20px; */
     height: 16px;
     border: 2px solid rgba(0, 0, 0, 0.391);
     border-radius: 4px;
@@ -11,15 +12,44 @@
 }
 
 .craftCheckBox--borderless{
-    width: 20px;
+    flex-basis: 16px;
     height: 16px;
-    border: 2px solid rgba(255, 255, 255, 0);
+    border: 2px solid transparent;
     border-radius: 4px;
     position: relative;
+    border: 2px solid transparent;
 }
 
 .craftCheckBox--active{
     position: absolute;
     top: -4px;
     left: -4px;
+}
+
+@media screen and (max-width: 600px) {
+    .craftCheckBox--borderless{
+        width: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+    }
+    .craftCheckBox{
+        width: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+        border: 2px solid rgba(0, 0, 0, 0.391);
+    }
+}
+
+@media screen and (max-width: 425px){
+    .craftCheckBox--borderless{
+        flex-basis: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+    }
+    .craftCheckBox{
+         flex-basis: 16px;
+        height: 16px;
+        /* border: 2px solid transparent; */
+        border: 2px solid rgba(0, 0, 0, 0.391);
+    }
 }
