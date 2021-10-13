@@ -54,6 +54,7 @@ export default function Navbar() {
         }
         else{
             return(
+            <>
             <div className="navbar">
                 <div className="xp__logo">
                     <Link to='/stake'>
@@ -62,6 +63,15 @@ export default function Navbar() {
                 </div>
                 <div className="investor">| Investor Portal</div>
             </div>
+            <div className="navbar--mobile">
+            <div className="xp__logo">
+                <Link to='/stake'>
+                    <img src={xplogo} alt="XP.Network Logo" />
+                </Link>
+            </div>
+            <div className="investor">| Investor Portal</div>
+        </div>
+            </>
             )
         }
     }

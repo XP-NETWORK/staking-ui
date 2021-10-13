@@ -11,6 +11,15 @@ export default function ClaimReward() {
     const [int, setInt] = useState()
     const currentToken = useSelector(state => state.stakeData.index)
 
+    const doSome = () => {
+        console.log("some")
+        clearInterval(int)
+    }
+
+    useEffect(() => {
+        // debugger
+        if(int){clearInterval(int)}
+    }, [int])
 
     useEffect(() => {
         if(int){clearInterval(int)}
