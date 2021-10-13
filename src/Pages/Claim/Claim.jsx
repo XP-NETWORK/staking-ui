@@ -2,7 +2,7 @@
 import Web3 from "web3"
 import "./Claim.css"
 import { useEffect } from 'react'
-import { getStakeById } from "../../utils/stake"
+import { getStakeById, checkIsUnLocked } from "../../utils/stake"
 import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
@@ -44,6 +44,7 @@ export default function Claim() {
     useEffect(() => {
         const getData = async () => {
             await getStakeById(tokensArr[currentToken], currentToken)
+            await checkIsUnLocked(currentToken)
         }
         if(!address || !balance){
             history.push("/stake")

@@ -8,7 +8,6 @@ export default function NFT({ tokenID, i }) {
     const dispatch = useDispatch()
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const nftTokenId = useSelector(state => state.stakeData.nftTokenId)
-    console.log("withdrawed: ", withdrawed)
 
     const onClickHandler = () => {
         getStakeById(tokenID, i)

@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIndex } from "../redux/stakeSlice"
+import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIndex, updateIsUnlocked } from "../redux/stakeSlice"
 
 
 
@@ -22,8 +22,8 @@ const stakeContract = async () => {
 
 // Log the contract.
 export const logStakeContract = async () => {
-    const stContract = await stakeContract()
-    return stContract
+    const Contract = await stakeContract()
+    console.log(Contract)
     }
 
 // Lock the XPNet.
@@ -157,3 +157,16 @@ export const withrow = async ( nftId, adress ) => {
         console.log(error)
     }
 } 
+
+
+export const checkIsUnLocked = async (id) => {
+    const Contract = await stakeContract()
+    try{
+        const isUnlocked = await Contract.methods.checkIsUnlocked(id).call()
+        console.log(isUnlocked)
+        store.dispatch(updateIsUnlocked(isUnlocked))
+    }
+    catch(error){
+        console.log(error)
+    }
+}

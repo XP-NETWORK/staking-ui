@@ -7,7 +7,7 @@ import { initMetaMask } from "../src/utils/metamask"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence } from "../src/utils/xpnet"
-import { getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
+import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
 
@@ -52,6 +52,7 @@ useEffect( () => {
       await checkAllowence(address)
       await getAmountOfTokens(address)
       await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+      await logStakeContract()
     }
   }
   getData()

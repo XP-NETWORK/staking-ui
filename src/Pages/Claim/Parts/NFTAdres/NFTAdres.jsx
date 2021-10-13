@@ -1,10 +1,10 @@
 import React from 'react'
 import pages from "../../../../assets/pages.png"
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 
 export default function NFTAdres({address}) {
-
+    
     const copyTextToClipboard = async() => {
         if ('clipboard' in navigator) {
           return await navigator.clipboard.writeText(address);
