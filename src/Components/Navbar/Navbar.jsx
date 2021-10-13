@@ -10,6 +10,7 @@ export default function Navbar() {
     const location = useLocation();
     const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
+    
 
     const showNav = () => {
         if(account){
@@ -44,7 +45,7 @@ export default function Navbar() {
                 </div>
                 <div className="nav__buttons">
                     <NavButton location={location} type="stake-btn" />
-                    <NavButton balance={balance} location={location} type={'claim-btn'} />
+                    <NavButton balance={balance}  location={location} type={'claim-btn'} />
                 </div>
                 
             </div>

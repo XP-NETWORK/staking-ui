@@ -15,11 +15,11 @@ export default function ClaimReward() {
     const currentToken = useSelector(state => state.stakeData.index)
     // console.log("ClaimReward: ", stakeInfo[1])
     
-    useEffect(() => {
-        return () => {
-            clearInterval(int)
-        }
-    },[])
+    // useEffect(() => {
+    //     return () => {
+    //         clearInterval(int)
+    //     }
+    // },[])
 
     useEffect(async() => {
         console.log("5")

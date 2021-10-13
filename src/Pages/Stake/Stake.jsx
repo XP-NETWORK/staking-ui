@@ -15,7 +15,7 @@ import { getPercent, nf } from "../../utils/helper"
 // import { approve } from "../../utils/xpnet"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
 // import Connect from '../Connect/Connect'
-import NFT from '../../Components/NFT/NFT'
+// import NFT from '../../Components/NFT/NFT'
 import Reawards from './parts/Reawards'
 import StakeInfo from './parts/StakeInfo'
 import DetailsAmount from './parts/DetailsAmount'
