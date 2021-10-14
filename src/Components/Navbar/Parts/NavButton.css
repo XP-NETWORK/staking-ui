@@ -40,7 +40,14 @@
 }
 
 .nav__buttons{
+    margin-left: 30px;
     display: flex;
+}
+
+@media screen and (max-width: 1140px){
+    .nav__buttons{
+        margin-left: 10px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -50,6 +57,7 @@
         padding: 6px;
         background: #ECEDF3;
         border-radius: 8px;
+        margin-left: unset;
     }
     .nav__button{
         width: 292px;

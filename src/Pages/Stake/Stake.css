@@ -153,6 +153,13 @@
     display: none;
 }
 
+@media screen and (max-width: 1140px) {
+    .summary{
+        flex-basis: 620px;
+        max-width: 620px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .stake__container{
         display: flex;

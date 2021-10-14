@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import checked from "../../../assets/check_box.png"
+import checked from "../../../assets/check_box.svg"
 import { useDispatch } from "react-redux"
 import { updateAgreement } from "../../../redux/counterSlice"
 import "./Radio.css"

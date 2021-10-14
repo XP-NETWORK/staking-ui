@@ -2,9 +2,9 @@
 .rewards{
     margin: 0 auto 20px auto;
     padding: 15px;
-    max-width: 562px;
-    height: 170px;
-
+    max-width:  560px;
+    height: auto;
+    /* margin: 0 10px; */
     display: flex;
     justify-content: space-between;
     
@@ -27,7 +27,7 @@
 }
 
 .rewards__widget{
-    flex-basis: 140px;
+    flex-basis: 120px;
 }
 
 .rewards__widget img{
@@ -52,6 +52,10 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.03em;
+}
+
+.rewards__text{
+    line-height: 160%;
 }
 
 

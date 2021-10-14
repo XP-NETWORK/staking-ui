@@ -57,6 +57,13 @@
 
 }
 
+@media screen and (max-width: 1140px){
+ .xp__logo{
+     width: 130px;
+ }   
+}
+
+
 @media screen and (max-width: 425px){
     .navbar--mobile{
         width: 100%;

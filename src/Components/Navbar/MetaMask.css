@@ -15,25 +15,25 @@
 
 .account{
     width: 140px;
-    text-overflow: ellipsis;
-    overflow: hidden; 
-    white-space: nowrap;
+
 }
 
 .account__icon{
+  
+}
+.account__icon canvas {
+    border-radius: 25px;
     width: 18px;
     height: 18px;
-    border-radius: 25px;
-    background-color: tomato;
 }
-
 @media screen and (max-width: 600px) { 
     .metamask{
         position: unset;
         display: flex;
         order: -1;
         margin-left: 0px;
-        width: 302px;
+        width: 202px;
+        margin-left: 100px;
         padding: 10px 0;
         height: auto;
     }
@@ -65,6 +65,7 @@
         width: 150px;
     }
     .account{
+        font-size: 14px;
         width: 80px;
     }
 }
