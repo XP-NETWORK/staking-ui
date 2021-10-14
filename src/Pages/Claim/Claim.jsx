@@ -28,15 +28,16 @@ export default function Claim() {
     const startDate = useSelector(state => state.stakeData.startDate)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const currentToken = useSelector(state => state.stakeData.index)
-    // const nftLoaders = useSelector(state => state.stakeData.nftLoaders)
-    // console.log("nftLoaders: ", nftLoaders)
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     
 
     const showTokens = () => {
         if(tokensArr){
-            return tokensArr.map((tokenID, i) => { return <NFT tokenID={tokenID} i={i} key={i}/> })
+            return tokensArr.map((tokenID, i) => { 
+                console.log("tokenID: ", tokenID)
+                console.log("index: ", i)
+                return <NFT tokenID={tokenID} i={i} key={i}/> })
         }
     }
 

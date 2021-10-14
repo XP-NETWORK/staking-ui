@@ -40,7 +40,7 @@ export const stakeSlice = createSlice({
             state.availableRewards = action.payload
         },
         updateNftTokenIndex(state, action){
-            state.nftTokenIndex = parseInt(action.payload)
+            state.nftTokenIndex = action.payload
         },
         updateTokensArray(state, action){
             state.tokensArray = action.payload

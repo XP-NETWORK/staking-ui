@@ -15,7 +15,8 @@ const initialState = {
     stakeInfo: '',
     chainId: "",
     aproveLoader: false,
-    lockLoader: false
+    lockLoader: false,
+    picPositionX: 0
 }
 
 export const counterSlice = createSlice({
@@ -66,6 +67,15 @@ export const counterSlice = createSlice({
       },
       updateAproveLockLoader(state, action){
         state.lockLoader = action.payload
+      },
+      goForth(state, action){
+        state.picPositionX = state.picPositionX - (292 * (action.payload ? action.payload : 1))
+      },
+      goBack(state, action){
+        state.picPositionX = state.picPositionX + (292 * (action.payload ? action.payload : 1))
+      },
+      chengePositionX(state, action){
+        state.picPositionX = action.payload
       }
     },
   })
@@ -86,7 +96,10 @@ export const {
   updateStakeInfo,
   updateChainId,
   updateAproveButtonsLoader,
-  updateAproveLockLoader
+  updateAproveLockLoader,
+  goForth,
+  goBack,
+  chengePositionX
 } = counterSlice.actions
 
 export default counterSlice.reducer
