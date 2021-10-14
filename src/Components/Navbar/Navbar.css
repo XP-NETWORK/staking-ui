@@ -22,51 +22,6 @@
     width: 100%;
 }
 
-.metamask{
-    right: 0;
-    width: 175px;
-    height: 32px;
-    background: #EDF0F8;
-    border: 1px solid #D9DFED;
-    box-sizing: border-box;
-    border-radius: 8px;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: absolute;
-}
-
-.metamask__icon{
-    padding-top: 5px;
-}
-
-.online{
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    background-color: #20C86D;
-}
-
-.offline{
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    background-color: #3c3c3c;
-}
-
-.metamask__title{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 126%;
-    
-
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.03em;
-}
 
 @media screen and (max-width: 1140px){
     .navbar{
@@ -99,15 +54,7 @@
         width: 280px;
         
     }
-    .metamask{
-        position: unset;
-        display: flex;
-        order: -1;
-        margin-left: 0px;
-        width: 302px;
-        padding: 10px 0;
-        height: auto;
-    }
+
 }
 
 @media screen and (max-width: 425px){
@@ -115,9 +62,6 @@
         width: 100%;
     }
     .xp__logo{
-        width: 200px;
-    }
-    .metamask{
         width: 200px;
     }
 }
@@ -129,16 +73,10 @@
     .xp__logo{
         width: 178px;
     }
-    .metamask{
-        width: 178px;
-    }
 }
 
 @media screen and (max-width: 320px){
     .xp__logo{
-        width: 150px;
-    }
-    .metamask{
         width: 150px;
     }
 }

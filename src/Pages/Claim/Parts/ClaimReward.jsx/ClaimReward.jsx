@@ -17,7 +17,7 @@ export default function ClaimReward() {
     }
 
     useEffect(() => {
-        // debugger`
+        // debugger
         if(int){clearInterval(int)}
     }, [int])
 
