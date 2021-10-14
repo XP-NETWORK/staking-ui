@@ -13,89 +13,6 @@ import { useState } from "react"
 import Picture from "./Picture"
 
 
-// const arts = [
-//     { "art": art0, "id": 0 },
-//     { "art": art1, "id": 1 },
-//     { "art": art2, "id": 2 },
-//     { "art": art3, "id": 3 },
-//     { "art": art0, "id": 4 },
-//     { "art": art1, "id": 5 },
-//     { "art": art2, "id": 6 },
-//     { "art": art3, "id": 7 },
-//     { "art": art0, "id": 8 },
-//     { "art": art1, "id": 9 },
-//     { "art": art2, "id": 10 },
-//     { "art": art3, "id": 11 },
-//     { "art": art0, "id": 12 },
-//     { "art": art1, "id": 13 },
-//     { "art": art2, "id": 14 },
-//     { "art": art3, "id": 15 },
-//     { "art": art0, "id": 16 },
-//     { "art": art1, "id": 17 },
-//     { "art": art2, "id": 18 },
-//     { "art": art3, "id": 19 },
-//     { "art": art0, "id": 0 },
-//     { "art": art1, "id": 1 },
-//     { "art": art2, "id": 2 },
-//     { "art": art3, "id": 3 },
-//     { "art": art0, "id": 4 },
-//     { "art": art1, "id": 5 },
-//     { "art": art2, "id": 6 },
-//     { "art": art3, "id": 7 },
-//     { "art": art0, "id": 8 },
-//     { "art": art1, "id": 9 },
-//     { "art": art2, "id": 10 },
-//     { "art": art3, "id": 11 },
-//     { "art": art0, "id": 12 },
-//     { "art": art1, "id": 13 },
-//     { "art": art2, "id": 14 },
-//     { "art": art3, "id": 15 },
-//     { "art": art0, "id": 16 },
-//     { "art": art1, "id": 17 },
-//     { "art": art2, "id": 18 },
-//     { "art": art3, "id": 19 },
-//     { "art": art0, "id": 0 },
-//     { "art": art1, "id": 1 },
-//     { "art": art2, "id": 2 },
-//     { "art": art3, "id": 3 },
-//     { "art": art0, "id": 4 },
-//     { "art": art1, "id": 5 },
-//     { "art": art2, "id": 6 },
-//     { "art": art3, "id": 7 },
-//     { "art": art0, "id": 8 },
-//     { "art": art1, "id": 9 },
-//     { "art": art2, "id": 10 },
-//     { "art": art3, "id": 11 },
-//     { "art": art0, "id": 12 },
-//     { "art": art1, "id": 13 },
-//     { "art": art2, "id": 14 },
-//     { "art": art3, "id": 15 },
-//     { "art": art0, "id": 16 },
-//     { "art": art1, "id": 17 },
-//     { "art": art2, "id": 18 },
-//     { "art": art3, "id": 19 },
-//     { "art": art0, "id": 0 },
-//     { "art": art1, "id": 1 },
-//     { "art": art2, "id": 2 },
-//     { "art": art3, "id": 3 },
-//     { "art": art0, "id": 4 },
-//     { "art": art1, "id": 5 },
-//     { "art": art2, "id": 6 },
-//     { "art": art3, "id": 7 },
-//     { "art": art0, "id": 8 },
-//     { "art": art1, "id": 9 },
-//     { "art": art2, "id": 10 },
-//     { "art": art3, "id": 11 },
-//     { "art": art0, "id": 12 },
-//     { "art": art1, "id": 13 },
-//     { "art": art2, "id": 14 },
-//     { "art": art3, "id": 15 },
-//     { "art": art0, "id": 16 },
-//     { "art": art1, "id": 17 },
-//     { "art": art2, "id": 18 },
-//     { "art": art3, "id": 19 },
-// ]
-
 const arts = [
     { "art": art0, "id": 0 },
     { "art": art1, "id": 1 },
@@ -106,14 +23,12 @@ const arts = [
 
 export default function Widget({ tokens }) {
 
-    // const [x, setX] = useState(0)
+
     const x = useSelector(state => state.data.picPositionX)
-    console.log(x)
     const rowLength = (tokens.length-1)*292 
     const currentToken = useSelector(state => state.stakeData.index)
     const dispatch = useDispatch()
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
-    const picPositionX = useSelector(state => state.data.picPositionX)
     const [block, setBlock] = useState()
 
 
@@ -145,7 +60,6 @@ export default function Widget({ tokens }) {
     }
 
     const swiperHandler = (side) => {
-        console.log(x, rowLength, 'hksdlfds')
         if(x === 0 && side === 'prev') return;
         if(Math.abs(x) === rowLength && side === 'next') return;
         if(!block) {

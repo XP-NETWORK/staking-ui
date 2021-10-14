@@ -35,8 +35,6 @@ export default function Claim() {
     const showTokens = () => {
         if(tokensArr){
             return tokensArr.map((tokenID, i) => { 
-                console.log("tokenID: ", tokenID)
-                console.log("index: ", i)
                 return <NFT tokenID={tokenID} i={i} key={i}/> })
         }
     }
