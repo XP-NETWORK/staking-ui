@@ -27,35 +27,6 @@
     background-color: tomato;
 }
 
-/* .metamask__icon{
-    padding-top: 5px;
-}
-
-.online{
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    background-color: #20C86D;
-} */
-
-/* .offline{
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    background-color: #3c3c3c;
-} */
-
-/* .metamask__title{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 126%;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.03em;
-} */
-
 @media screen and (max-width: 600px) { 
     .metamask{
         position: unset;
@@ -72,10 +43,16 @@
     .metamask{
         width: 178px;
     }
+    .account{
+        width: 100px;
+    }
 }
 
 @media screen and (max-width: 320px){
     .metamask{
         width: 150px;
+    }
+    .account{
+        width: 80px;
     }
 }
