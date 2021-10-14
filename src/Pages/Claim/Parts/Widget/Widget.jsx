@@ -9,19 +9,114 @@ import { useSelector, useDispatch } from "react-redux"
 import { updateIndex } from "../../../../redux/stakeSlice"
 import "./Widget.css"
 import { useState } from "react"
+import Picture from "./Picture"
 
+
+// const arts = [
+//     { "art": art0, "id": 0 },
+//     { "art": art1, "id": 1 },
+//     { "art": art2, "id": 2 },
+//     { "art": art3, "id": 3 },
+//     { "art": art0, "id": 4 },
+//     { "art": art1, "id": 5 },
+//     { "art": art2, "id": 6 },
+//     { "art": art3, "id": 7 },
+//     { "art": art0, "id": 8 },
+//     { "art": art1, "id": 9 },
+//     { "art": art2, "id": 10 },
+//     { "art": art3, "id": 11 },
+//     { "art": art0, "id": 12 },
+//     { "art": art1, "id": 13 },
+//     { "art": art2, "id": 14 },
+//     { "art": art3, "id": 15 },
+//     { "art": art0, "id": 16 },
+//     { "art": art1, "id": 17 },
+//     { "art": art2, "id": 18 },
+//     { "art": art3, "id": 19 },
+//     { "art": art0, "id": 0 },
+//     { "art": art1, "id": 1 },
+//     { "art": art2, "id": 2 },
+//     { "art": art3, "id": 3 },
+//     { "art": art0, "id": 4 },
+//     { "art": art1, "id": 5 },
+//     { "art": art2, "id": 6 },
+//     { "art": art3, "id": 7 },
+//     { "art": art0, "id": 8 },
+//     { "art": art1, "id": 9 },
+//     { "art": art2, "id": 10 },
+//     { "art": art3, "id": 11 },
+//     { "art": art0, "id": 12 },
+//     { "art": art1, "id": 13 },
+//     { "art": art2, "id": 14 },
+//     { "art": art3, "id": 15 },
+//     { "art": art0, "id": 16 },
+//     { "art": art1, "id": 17 },
+//     { "art": art2, "id": 18 },
+//     { "art": art3, "id": 19 },
+//     { "art": art0, "id": 0 },
+//     { "art": art1, "id": 1 },
+//     { "art": art2, "id": 2 },
+//     { "art": art3, "id": 3 },
+//     { "art": art0, "id": 4 },
+//     { "art": art1, "id": 5 },
+//     { "art": art2, "id": 6 },
+//     { "art": art3, "id": 7 },
+//     { "art": art0, "id": 8 },
+//     { "art": art1, "id": 9 },
+//     { "art": art2, "id": 10 },
+//     { "art": art3, "id": 11 },
+//     { "art": art0, "id": 12 },
+//     { "art": art1, "id": 13 },
+//     { "art": art2, "id": 14 },
+//     { "art": art3, "id": 15 },
+//     { "art": art0, "id": 16 },
+//     { "art": art1, "id": 17 },
+//     { "art": art2, "id": 18 },
+//     { "art": art3, "id": 19 },
+//     { "art": art0, "id": 0 },
+//     { "art": art1, "id": 1 },
+//     { "art": art2, "id": 2 },
+//     { "art": art3, "id": 3 },
+//     { "art": art0, "id": 4 },
+//     { "art": art1, "id": 5 },
+//     { "art": art2, "id": 6 },
+//     { "art": art3, "id": 7 },
+//     { "art": art0, "id": 8 },
+//     { "art": art1, "id": 9 },
+//     { "art": art2, "id": 10 },
+//     { "art": art3, "id": 11 },
+//     { "art": art0, "id": 12 },
+//     { "art": art1, "id": 13 },
+//     { "art": art2, "id": 14 },
+//     { "art": art3, "id": 15 },
+//     { "art": art0, "id": 16 },
+//     { "art": art1, "id": 17 },
+//     { "art": art2, "id": 18 },
+//     { "art": art3, "id": 19 },
+// ]
 
 const arts = [
-    { "art": art0 },
-    { "art": art1 },
-    { "art": art2 },
-    { "art": art3 },
-    { "art": art0 },
-    { "art": art1 },
-    { "art": art2 },
-    { "art": art3 },
+    { "art": art0, "id": 0 },
+    { "art": art1, "id": 1 },
+    { "art": art2, "id": 2 },
+    { "art": art3, "id": 3 },
+    { "art": art0, "id": 4 },
+    { "art": art1, "id": 5 },
+    { "art": art2, "id": 6 },
+    { "art": art3, "id": 7 },
+    { "art": art0, "id": 8 },
+    { "art": art1, "id": 9 },
+    { "art": art2, "id": 10 },
+    { "art": art3, "id": 11 },
+    { "art": art0, "id": 12 },
+    { "art": art1, "id": 13 },
+    { "art": art2, "id": 14 },
+    { "art": art3, "id": 15 },
+    { "art": art0, "id": 16 },
+    { "art": art1, "id": 17 },
+    { "art": art2, "id": 18 },
+    { "art": art3, "id": 19 },
 ]
-
 
 
 export default function Widget({ tokens }) {
@@ -31,6 +126,11 @@ export default function Widget({ tokens }) {
     const dispatch = useDispatch()
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const rowLength = (tokens.length-1)*292 
+
+    const slideX = (side) => {
+
+    }
+
     const moveX = (side) => {
         if(side==="next"){
             // debugger
@@ -68,7 +168,7 @@ export default function Widget({ tokens }) {
             <div className="widget__art">
                 <div  style={{ transform: `translateX(${x}px)`}} className="art-row">
                     {arts.map( item => {
-                        return (<img src={item.art} alt="picture" />)
+                        return (<Picture art={item.art} id={item.id} />)
                     })}
                 </div>
             </div>

@@ -16,6 +16,10 @@
     background-color: #2549D1;
 }
 
+.loading{
+    pointer-events: none;
+}
+
 .approved{
     max-width: 426px;
     height: 44px;

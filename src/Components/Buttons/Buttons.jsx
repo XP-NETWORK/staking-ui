@@ -12,10 +12,11 @@ import "./Buttons.css"
 export function Approvance({ approvance, amount, duration, account }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
     const agreement = useSelector(state => state.data.agreement)
+    const allowence = useSelector(state => state.data.allowence) 
     
     useEffect(() => {
         
-    }, [approveloader, agreement])
+    }, [approveloader, agreement, allowence])
     
 
     if(approvance){
@@ -34,7 +35,7 @@ export function Lock({ approvance, amount, duration, account}){
     const agreement = useSelector(state => state.data.agreement)
     if(approvance && agreement && amount){
         return (
-            <div onClick={() => stake(amount, duration, account)} className="summary__button button">
+            <div onClick={() => stake(amount, duration, account)} className={ !lockloader ? "summary__button button" : "summary__button loading button"}>
                 {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Lock</span></>}
             </div>)
     }

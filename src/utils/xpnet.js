@@ -4,7 +4,7 @@ import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
-export let xpAddress = "0x3241Ae82AB966176bd760632BFC9A13D22Cf8C88"
+export let xpAddress = "0x1c6370c3339108684b59d4AdC89f8129c8B5103F"
 const W3 = new Web3(window.ethereum)
 const state = store.getState()
 
@@ -71,7 +71,6 @@ export const checkAllowence = async (owner) => {
             const Contract = await xpContract()
             const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
             if(parseInt(allowence)) store.dispatch(updateAllowence(allowence))
-            
         }
         catch(error){
             console.log(error)

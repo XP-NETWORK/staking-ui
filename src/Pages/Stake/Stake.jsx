@@ -54,8 +54,8 @@ const onBlurHandler = (e) => {
     }
 }
 
-useEffect(() => {
-}, [allowence])
+// useEffect(() => {
+// }, [allowence])
 
         return (
             <div className="stake__container">
