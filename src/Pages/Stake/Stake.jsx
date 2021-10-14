@@ -54,21 +54,6 @@ const onBlurHandler = (e) => {
     }
 }
 
-// const getRewards = () => {
-//     const rewards = duration === 3 ? 
-//     amount*0.1125 :
-//     duration === 6 ?
-//     amount*0.375 :
-//     duration === 9 ?
-//     amount*0.75 :
-//     amount*1.25
-//     return rewards
-// }
-
-// const agreementHandler = () => {
-//     dispatch(updateAgreement())
-// }
-
 useEffect(() => {
 }, [allowence])
 

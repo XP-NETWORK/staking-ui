@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import Web3 from "web3"
 import "./Claim.css"
 import { useEffect } from 'react'
@@ -52,13 +51,11 @@ export default function Claim() {
         if(!stakeInfo){
             if(tokensArr){
             getData()
-            // await getStakeById(tokensArr[currentToken], currentToken)
             }
         }
         else{
             if(tokensArr){
             getData()
-            // await getStakeById(tokensArr[currentToken], currentToken)
             }
         }
     

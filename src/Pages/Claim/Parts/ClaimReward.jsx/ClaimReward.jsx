@@ -11,13 +11,7 @@ export default function ClaimReward() {
     const [int, setInt] = useState()
     const currentToken = useSelector(state => state.stakeData.index)
 
-    const doSome = () => {
-        console.log("some")
-        clearInterval(int)
-    }
-
     useEffect(() => {
-        // debugger
         if(int){clearInterval(int)}
     }, [int])
 
@@ -29,11 +23,9 @@ export default function ClaimReward() {
         if(stakeInfo){
         const interval = setInterval(async() => {
             getData()
-            // await showAvailableRewards(stakeInfo[1])
         },2000)
         setInt(interval)
         getData()
-        // await showAvailableRewards(stakeInfo[1])
         }
     }, [stakeInfo, currentToken])
 

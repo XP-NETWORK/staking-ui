@@ -58,7 +58,7 @@ export const stakeSlice = createSlice({
             state.withdrawed = action.payload
         },
         addLoader(state, action){
-            state.nftLoaders = [...state.tftLoaders, action.payload]
+            state.nftLoaders = [...state.nftLoaders, action.payload]
         },
         updateLoader(state, action){
             // SOONE

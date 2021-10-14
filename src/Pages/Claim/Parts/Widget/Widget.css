@@ -9,11 +9,21 @@
 }
 
 .widget__art{
-    max-width: 292px;
+    width: 292px;
+    height: 292px;
+    border: 1px solid black;
+    overflow: hidden;
+    display: flex;
+ 
 } 
 
+.art-row{
+    display: flex;
+    transition: ease-in-out 0.35s;
+}
+
 .widget__art img{
-    width: 100%;
+    width: 292px;
 }
 
 .arrow{

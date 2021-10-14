@@ -1,9 +1,6 @@
-import Web3 from "web3"
 import { store } from "../redux/store"
-import { chengeStatus, updateAccount, updateChainId } from "../redux/counterSlice";
+import { chengeStatus, updateAccount } from "../redux/counterSlice";
 
-
-const W3 = new Web3(window.ethereum)
 let accounts
 const { ethereum } = window
 

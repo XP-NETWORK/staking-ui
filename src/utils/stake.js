@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIndex, updateIsUnlocked } from "../redux/stakeSlice"
+import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
 
 
 

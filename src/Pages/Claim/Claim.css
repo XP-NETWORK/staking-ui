@@ -242,12 +242,6 @@
     .nfts__toggler{
         width: 100%;
     }
-    .nft__address{
-        /* width: 100px;
-        text-overflow: ellipsis;
-        overflow: hidden; 
-        white-space: nowrap; */
-    }
     .address{
         width: 300px;
         text-overflow: ellipsis;
