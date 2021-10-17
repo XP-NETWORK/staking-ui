@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Stake.css"
-import Duration from "../../Components/Duration/Duration"
+// import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
 import { useState } from 'react'
@@ -14,6 +14,7 @@ import DetailsApy from './parts/DetailsApy'
 import DetailsRewards from './parts/DetailsRewards'
 import Agreement from './parts/Agreement'
 import { StakeAmount, StakeAmountMob } from './parts/StakeAmount';
+import StakeDuration from './parts/StakeDuration';
 
 
 export default function Stake() {
@@ -28,6 +29,7 @@ const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
 const balance = useSelector(state => state.data.balance)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
+
 const durations = [
     {d:3, p: 45},
     {d:6, p: 75},
@@ -60,7 +62,7 @@ const onBlurHandler = (e) => {
                 <div className="stake">
                     <div className="stake__title">My Stake</div>
                     <div className="line"></div>
-                    <div className="stake__duration">
+                    {/* <div className="stake__duration">
                         <div className="duration__header">
                         Select staking period
                         </div>
@@ -69,7 +71,8 @@ const onBlurHandler = (e) => {
                                return <Duration month={e.d} apy={e.p} key={i} index={i} />
                             })}
                         </div>
-                    </div>
+                    </div> */}
+                    <StakeDuration durations={durations} />
                     <StakeAmount />
                     <StakeAmountMob />
                     <Reawards durations={durations} duration={duration} />
