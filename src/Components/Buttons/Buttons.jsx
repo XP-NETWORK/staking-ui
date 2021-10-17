@@ -13,9 +13,7 @@ export function Approvance({ approvance, amount, duration, account }) {
     const approveloader = useSelector(state => state.data.aproveLoader)
     const agreement = useSelector(state => state.data.agreement)
     const allowence = useSelector(state => state.data.allowence)
-    console.log("allowence: ", allowence)
-    
-    
+
     useEffect(() => {
         
     }, [approveloader, agreement, allowence])

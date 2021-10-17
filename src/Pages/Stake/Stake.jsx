@@ -14,6 +14,7 @@ import DetailsEnd from './parts/DetailsEnd'
 import DetailsApy from './parts/DetailsApy'
 import DetailsRewards from './parts/DetailsRewards'
 import Agreement from './parts/Agreement'
+import { StakeAmount, StakeAmountMob } from './parts/StakeAmount';
 
 
 export default function Stake() {
@@ -71,7 +72,7 @@ const onBlurHandler = (e) => {
                             })}
                         </div>
                     </div>
-                    <div className="stake__amount">
+                    {/* <div className="stake__amount">
                         <div className="amount__header">
                             <div className="amount__title">Enter XPNET amount</div>
                             <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
@@ -83,8 +84,9 @@ const onBlurHandler = (e) => {
                                 <div onClick={ () => putMax()} className="max">MAX</div>
                             </div>
                         </div>
-                    </div>
-                    <div className="stake__amount--mobile">
+                    </div> */}
+                    <StakeAmount />
+                    {/* <div className="stake__amount--mobile">
                             <div className="amount__title">Enter your XPNET amount</div>
                             <div className="amount__input">
                                 <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
@@ -94,12 +96,12 @@ const onBlurHandler = (e) => {
                             </div>
                         </div>
                         <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div>
-                    </div>
+                    </div> */}
+                    <StakeAmountMob />
                     <Reawards durations={durations} duration={duration} />
                     <StakeInfo />
                 </div>
                 <div className="summary">
-                    
                     <div className="stake__title">Summary</div>
                     <div className="line"></div>
                     <div className="summary__details">
