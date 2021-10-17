@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeStakingAmount } from "../../../redux/counterSlice"
 import { nf } from "../../../utils/helper"
+import "./StakeAmount.css"
 
 export function StakeAmount() {
     const dispatch = useDispatch()

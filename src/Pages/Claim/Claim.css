@@ -85,8 +85,11 @@
     align-items: center;
     text-align: right;
     letter-spacing: 0.03em;
-
     color: #040D27;
+}
+
+.green{
+    color: #09BC71;
 }
 
 .progress-bar{
@@ -210,6 +213,7 @@
     }
     .claim__title{
         padding: 10px 0;
+
     }
     .nft__title{
         padding: 10px;

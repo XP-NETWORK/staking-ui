@@ -31,8 +31,8 @@ export default function ClaimReward() {
 
     return (
         <div className="claim__det claim__reward">
-            <div className="claim__capture">Staking Reward</div>
-            <div className="claim__text">{nf.format(rewards)} XPNET</div>
+            <div className="claim__capture">Rewards</div>
+            <div className="claim__text green">{nf.format(rewards)} XPNET</div>
         </div>
     )
 }

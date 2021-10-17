@@ -1,0 +1,146 @@
+
+.stake__amount{
+    padding: 0 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.amount__header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.amount__title{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+    letter-spacing: 0.01em;
+}
+
+
+.amount__subtitle{
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 126%;
+}
+
+.amount__subtitle span{
+    font-weight: 600;
+}
+
+.amount__input input{
+    width: 100%;
+    height: 48px;
+    background: #FBFCFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding-left: 16px;
+}
+
+
+.amount__input input:focus{
+    outline: none;
+}
+
+.amount__input{
+    position: relative;
+}
+
+.input__items{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.input__items .max{
+    width: 76px;
+    height: 32px;
+  
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 14px;
+
+    background: rgba(229, 232, 240, 0.5);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.max:hover{
+    background: rgb(229, 232, 240, 1);
+}
+
+.stake__amount--mobile{
+    display: none;
+}
+
+
+@media screen and (max-width: 1140px) {
+
+}
+
+@media screen and (max-width: 600px) {
+    .stake__amount--mobile{
+        display: block;
+    }
+
+    .stake__title{
+        padding: 0 10px 20px 10px;
+    }
+    .stake__duration{
+        padding: 0;
+    }
+    .stake__amount{
+        display: none;
+    }
+
+    .amount__title{
+        padding: 10px 10px;
+    }
+
+    .amount__subtitle{
+        display: flex;
+        padding: 10px;
+    }
+
+    .amount__input{
+        padding: 0 10px; 
+    }
+    .input__items{
+        right: 16PX;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .amount__title{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 126%;
+        letter-spacing: 0.03em;
+        margin-bottom: 12px;
+    }
+    .amount__subtitle{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 126%;
+        letter-spacing: 0.03em;
+        opacity: 0.6;
+        margin-top: 12px;
+    }
+    .amount__subtitle span{
+        margin-left: 5px;
+    }
+    
+}
