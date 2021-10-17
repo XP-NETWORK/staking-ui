@@ -17,8 +17,9 @@ import Agreement from './parts/Agreement'
 
 
 export default function Stake() {
+
 const dispatch = useDispatch()
-const [amount, setAmount] = useState("")
+const [amount, setAmount] = useState(1500)
 const allowence = useSelector(state => state.data.allowence)
 const agreement = useSelector(state => state.data.agreement)
 const currentPrice = useSelector(state => state.data.currentPrice)
