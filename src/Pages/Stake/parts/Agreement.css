@@ -2,7 +2,7 @@
 .agreement{
     display: flex;
     padding: 16px;
-    margin: 20px 0 16px 0;
+    margin: 56px 0 16px 0;
     gap: 10px;
     background: #F4F7FF;
     border-radius: 6px;
@@ -12,6 +12,10 @@
     align-items: flex-start;
     letter-spacing: 0.03em;
     color: #686E7D;
+}
+
+.agreement__text{
+font-size: 16px;
 }
 
 @media screen and (max-width: 425px){
