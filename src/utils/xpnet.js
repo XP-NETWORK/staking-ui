@@ -48,9 +48,10 @@ export const approve = async (account) => {
         Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
         .once('receipt', function(receipt){
             // console.log(receipt) 
+            debugger
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
-            checkAllowence(state.data.allowence)
+            checkAllowence(account)
         })
         .on('error', () => {
             store.dispatch(updateAproveButtonsLoader(false))

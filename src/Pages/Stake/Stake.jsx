@@ -3,7 +3,7 @@ import "./Stake.css"
 import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { changeStakingAmount } from "../../redux/counterSlice"
 import { nf } from "../../utils/helper"
 import { Approvance, Lock} from "../../Components/Buttons/Buttons"
@@ -53,9 +53,6 @@ const onBlurHandler = (e) => {
         setAmount("")
     }
 }
-
-// useEffect(() => {
-// }, [allowence])
 
         return (
             <div className="stake__container">
