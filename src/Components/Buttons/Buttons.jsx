@@ -35,7 +35,7 @@ export function Approvance({ approvance, amount, duration, account }) {
 export function Lock({ approvance, amount, duration, account}){
     const lockloader = useSelector(state => state.data.lockLoader)
     const agreement = useSelector(state => state.data.agreement)
-    if(approvance && agreement && amount){
+    if(approvance && agreement && amount > 150){
         return (
             <div onClick={() => stake(amount, duration, account)} className={ !lockloader ? "summary__button button" : "summary__button loading button"}>
                 {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Lock</span></>}

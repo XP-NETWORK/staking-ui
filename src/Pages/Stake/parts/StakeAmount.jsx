@@ -1,22 +1,13 @@
-import { React, useState} from 'react'
-import { nf } from "../../../utils/helper"
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeStakingAmount } from "../../../redux/counterSlice"
+import { nf } from "../../../utils/helper"
 
-export default function StakeAmount({ balance }) {
+export default function StakeAmount() {
 
-    const [amount, setAmount] = useState("")
     const dispatch = useDispatch()
-    const onBlurHandler = (e) => {
-        const num = e.target.value
-        if(num === "0"){
-            setAmount("")
-        }
-    }
-
-    const putMax = () => {
-        setAmount(balance)
-    }
+    const [amount, setAmount] = useState(1500)
+    const balance = useSelector(state => state.data.balance)
 
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
@@ -27,19 +18,41 @@ export default function StakeAmount({ balance }) {
         }
     }
 
+    const putMax = () => {
+        setAmount(balance)
+    }
+
+    const onBlurHandler = (e) => {
+        const num = e.target.value
+        if(num === "0"){
+            setAmount("")
+        }
+    }
+
     return (
-        <div className="stake__amount">
-            <div className="amount__header">
-                <div className="amount__title">Enter your XPNET amount</div>
-                <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
-            </div>
-            <div className="amount__input">
-                <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
-                <div className="input__items">
-                    <div className="xpnet">XPNET</div>
-                    <div onClick={ () => putMax()} className="max">MAX</div>
+        <>
+            <div className="stake__amount--mobile">
+                    <div className="amount__title">Enter your XPNET amount</div>
+                    <div className="amount__input">
+                        <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                        <div className="input__items">
+                        <div className="xpnet">XPNET</div>
+                        <div onClick={ () => putMax()} className="max">MAX</div>
+                    </div>
                 </div>
+                <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div>
             </div>
-        </div>
+            <div className="stake__amount--mobile">
+                    <div className="amount__title">Enter your XPNET amount</div>
+                    <div className="amount__input">
+                        <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                        <div className="input__items">
+                        <div className="xpnet">XPNET</div>
+                        <div onClick={ () => putMax()} className="max">MAX</div>
+                    </div>
+                </div>
+                <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div>
+            </div>
+        </>
     )
 }

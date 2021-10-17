@@ -95,7 +95,6 @@ const onBlurHandler = (e) => {
                         </div>
                         <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div>
                     </div>
-    
                     <Reawards durations={durations} duration={duration} />
                     <StakeInfo />
                 </div>
