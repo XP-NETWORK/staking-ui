@@ -62,16 +62,6 @@ const onBlurHandler = (e) => {
                 <div className="stake">
                     <div className="stake__title">My Stake</div>
                     <div className="line"></div>
-                    {/* <div className="stake__duration">
-                        <div className="duration__header">
-                        Select staking period
-                        </div>
-                        <div className="durations__container">
-                            {durations.map((e,i) => {
-                               return <Duration month={e.d} apy={e.p} key={i} index={i} />
-                            })}
-                        </div>
-                    </div> */}
                     <StakeDuration durations={durations} />
                     <StakeAmount />
                     <StakeAmountMob />
