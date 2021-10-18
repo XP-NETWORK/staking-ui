@@ -20,6 +20,7 @@
 @media screen and (max-width: 600px){
     .duration{
         flex-basis: 140px;
+        margin: 4px;
     }
 
     .stake__duration{
@@ -29,9 +30,12 @@
     .durations__container{
         margin: 0;
         max-width: 600px;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-
+    .duration__header {
+        text-align: center;
+    }
     .duration__header{
         padding: 0;
     }

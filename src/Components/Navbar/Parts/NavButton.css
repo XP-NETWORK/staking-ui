@@ -59,11 +59,15 @@
         border-radius: 8px;
         margin-left: unset;
     }
+    .metamask {
+        margin-left: 0px;
+    }
     .nav__button{
-        width: 292px;
+        width: 112px;
+        margin: 0px 2px;
     }
     .nav__button--active{
-        width: 292px;
+        width: 112px;
     }
 }
 

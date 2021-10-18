@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeStakingAmount } from "../../../redux/counterSlice"
 import { nf } from "../../../utils/helper"
@@ -9,6 +9,11 @@ export function StakeAmount() {
     const [amount, setAmount] = useState('')
     const [inputErr, setInputErr] = useState(false)
     const balance = useSelector(state => state.data.balance)
+    const {stakingAmount} = useSelector(s => s.data)
+    useEffect(() => {
+        if(stakingAmount) setAmount(stakingAmount)
+    },[])
+    console.log(useSelector(s => s.data))
 
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
@@ -20,7 +25,7 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
-        setAmount(balance)
+        amountHandler({target: {value: balance}})
     }
 
     const onBlurHandler = (e) => {
@@ -48,11 +53,10 @@ export function StakeAmount() {
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
-            <span style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error">the minimum staking amount is 1500 XPNET</span>
+            <span style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error">The minimum staking amount is 1500 XPNET</span>
         </div>
     )
 }
-
 
 
 export function StakeAmountMob() {
@@ -97,7 +101,7 @@ export function StakeAmountMob() {
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
-            { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">the minimum staking amount is 1500 XPNET</div>}
+            { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">The minimum staking amount is 1500 XPNET</div>}
             {/* // <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> */}
         </div>
     )

@@ -41,8 +41,8 @@ const accountsChanged = () => {
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
       if (accounts.length > 0) {
-       dispatch(updateAccount(accounts[0]))
-     }
+        dispatch(updateAccount(accounts[0]))
+      }
     });
   }
 }
