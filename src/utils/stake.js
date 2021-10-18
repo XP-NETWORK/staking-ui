@@ -59,6 +59,7 @@ export const stake = async (amount, duration, account) => {
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
     const Contract = await stakeContract()
+    debugger
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
@@ -136,7 +137,7 @@ export const showAvailableRewards = async (nftId) => {
     }
 }
 
-// Claim the rewards of choesen token.
+// Claim the rewards of chosen token.
 export const claimXpNet = async (nftId,rewards, account) => {
     debugger
     // store.dispatch(updateWithdrawed(true))

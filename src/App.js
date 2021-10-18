@@ -14,10 +14,11 @@ import axios from 'axios';
 
 
 function App() {
+const dispatch = useDispatch()
 const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
 const tokens = useSelector(state => state.stakeData.tokensAmount)
-const dispatch = useDispatch()
 const address = useSelector(state => state.data.account)
+const amountOfTokens = useSelector(state => state.data.tokenIDs)
 
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
@@ -34,16 +35,25 @@ const doDate = () => {
 }
 
 const accountsChanged = () => {
+  debugger
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
-    if (accounts.length > 0) {
+      if (accounts.length > 0) {
        dispatch(updateAccount(accounts[0]))
      }
- });
-}
+    });
+  }
 }
 
+
+
+useEffect(() => {
+  window.ethereum.on('accountsChanged', () => {
+    debugger
+    window.location.reload();
+  })
+  }, []) 
 
 useEffect( () => {
   const getData = async () =>{
@@ -56,7 +66,7 @@ useEffect( () => {
     }
   }
   getData()
-}, [address])
+}, [address, amountOfTokens])
 
 useEffect(() => {
   if(tokens){
