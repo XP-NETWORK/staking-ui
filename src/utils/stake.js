@@ -86,7 +86,7 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
                     store.dispatch(addLoader({id:token, loader:false}))
 
                      // Get picture for NFT
-                    const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${token}`)
+                    const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${token}/image`)
                     if(res) {
                         // debugger
                         const { image } = res.data

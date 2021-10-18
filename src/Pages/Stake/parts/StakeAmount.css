@@ -21,7 +21,6 @@
 
 
 .amount__subtitle{
-    
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -42,6 +41,17 @@
     padding-left: 16px;
 }
 
+.amount__input--error input{
+    width: 100%;
+    height: 48px;
+    background-color: #FEF5F8;
+    border: 1px solid #E27092;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding-left: 16px;
+    /* margin-left: 10px; */
+}
+
 
 .amount__input input:focus{
     outline: none;
@@ -49,6 +59,34 @@
 
 .amount__input{
     position: relative;
+}
+
+
+.amount__input--error input:focus{
+    outline: none;
+}
+
+.amount__input--error{
+    position: relative;
+}
+
+.error{
+    color:#C92454;
+    background: #FEE5EC;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 2px 12px;
+    margin: 2px 0;
+}
+
+.error--mobile{
+    max-width: 100%;
+    color:#C92454;
+    background: #FEE5EC;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 2px 12px;
+    margin: 6px 10px 16px 10px;
 }
 
 .input__items{
@@ -62,14 +100,10 @@
 .input__items .max{
     width: 76px;
     height: 32px;
-  
-    
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-left: 14px;
-
     background: rgba(229, 232, 240, 0.5);
     border-radius: 6px;
     cursor: pointer;
