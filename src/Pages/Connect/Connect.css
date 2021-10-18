@@ -25,7 +25,17 @@ font-style: normal;
 }
 
 .fox{
-margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.fox img{
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+}
+
+.wallet{
+
 }
 
 .connect__title{
