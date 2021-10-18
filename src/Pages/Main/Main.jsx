@@ -24,9 +24,9 @@ export default function Main() {
     else{
         return (
             <Switch>
-                <Route exact path="/"><Stake /></Route>
-                <Route path="/stake"><Stake /></Route>
-                <Route path="/claim"><Claim /></Route>
+                <Route component={Stake} exact path="/"></Route>
+                <Route component={Stake} path="/stake"></Route>
+                <Route component={Claim} path="/claim"></Route>
             </Switch>
             )
     }

@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import "./Claim.css"
 import { useEffect } from 'react'
-import { getStakeById, checkIsUnLocked } from "../../utils/stake"
+import { getStakeById, checkIsUnLocked, tokenOfOwnerByIndex } from "../../utils/stake"
 import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
@@ -28,9 +28,24 @@ export default function Claim() {
     const startDate = useSelector(state => state.stakeData.startDate)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const currentToken = useSelector(state => state.stakeData.index)
+
+    const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
+    const tokens = useSelector(state => state.stakeData.tokensAmount)
+
+
+
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     
+
+    useEffect(() => {
+        console.log("hello")
+        const getData = async () =>{
+            // debugger
+            await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+        }
+        getData()
+    },[tokensArr])
 
     const showTokens = () => {
         if(tokensArr){

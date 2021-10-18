@@ -47,9 +47,6 @@ const accountsChanged = () => {
 }
 
 
-
-
-
 useEffect( () => {
   const getData = async () =>{
     if(address) {
