@@ -4,12 +4,14 @@ import { useEffect } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
+import { getAccounts } from "./utils/walletConnect"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
+
 
 
 
@@ -35,7 +37,6 @@ const doDate = () => {
 }
 
 const accountsChanged = () => {
-  debugger
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
@@ -54,11 +55,11 @@ useEffect( () => {
       await checkAllowence(address)
       await getAmountOfTokens(address)
       await tokenOfOwnerByIndex(tokensFlag, tokens, address)
-      // await logStakeContract()
     }
   }
   getData()
 }, [address, amountOfTokens])
+
 
 useEffect(() => {
   if(tokens){
@@ -66,10 +67,21 @@ useEffect(() => {
   }
 }, [tokens])
 
+
 useEffect(() => {
   getCurrentPrice()
   initMetaMask()
   accountsChanged()
+
+  const getData = async () => {
+    debugger
+    try {
+      await getAccounts()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 }, [])
 
 useEffect(() => {
