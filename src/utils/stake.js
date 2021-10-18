@@ -7,7 +7,7 @@ import axios from "axios"
 
 
 
-export let stakeAddress = '0xFCeEa514CD2da9Bc109F7C2693735C2Ea6965F9A'
+export let stakeAddress = '0xbC9091bE033b276b7c2244495699491167C20037'
 const W3 = new Web3(window.ethereum)
 
 // Create staker smart contract.
@@ -28,7 +28,7 @@ export const logStakeContract = async () => {
     }
 
 // Lock the XPNet.
-export const stake = async (amount, duration, account) => {
+export const stake = async (amount, duration, account, history) => {
     console.log(amount, duration ,'heloaska')
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
@@ -44,7 +44,11 @@ export const stake = async (amount, duration, account) => {
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
             store.dispatch(updateAproveLockLoader(false))
-            await getAmountOfTokens(account)
+            const t = await getAmountOfTokens(account)
+            const {tokensAmountFlag, tokenAmount} = store.getState().data
+            console.log(t, 'helkalsdkladskl')
+            await tokenOfOwnerByIndex(false, t, account)
+            history.push('/claim')
         })
         .on('error',() => {
             store.dispatch(updateAproveLockLoader(false))
@@ -63,6 +67,7 @@ export const getAmountOfTokens = async (owner) => {
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
             store.dispatch(updateTokensAmount(tokensAmount))
+            return tokensAmount
             }
             catch(error){
                 console.log(error)

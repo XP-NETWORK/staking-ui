@@ -3,8 +3,9 @@ import pages from "../../../../assets/pages.png"
 
 
 
-export default function NFTAdres({address, currentToken}) {
-    
+export default function NFTAdres(props) {
+    const {currentToken} = props
+    console.log(props, 'akssdalkdaslkadsl', currentToken)
     const copyTextToClipboard = async() => {
         if ('clipboard' in navigator) {
           return await navigator.clipboard.writeText(`XPNFT #${currentToken}`);

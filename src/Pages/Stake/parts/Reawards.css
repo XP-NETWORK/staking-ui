@@ -6,7 +6,6 @@
     height: auto;
     /* margin: 0 10px; */
     display: flex;
-    justify-content: space-between;
     
     background: #FBFCFF;
     /* background-color: salmon; */
@@ -37,7 +36,7 @@
 
 .rewards__content{
     flex-basis: 355px;
-
+    margin-left: 15px;
     display: flex;
     flex-direction: column;
 }

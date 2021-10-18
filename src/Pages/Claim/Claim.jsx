@@ -33,7 +33,7 @@ export default function Claim() {
     const tokens = useSelector(state => state.stakeData.tokensAmount)
 
 
-
+console.log(tokensArr, 'tokensArr', tokensArr[currentToken])
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     
@@ -106,7 +106,7 @@ export default function Claim() {
                             <div className="line"></div>
                             <div className="nft__content">
                                 <Widget tokens={tokensArr} />
-                                <NFTAdres currentToken={currentToken} address={address}/>
+                                <NFTAdres currentToken={tokensArr[currentToken]} address={address}/>
                             </div>
                         </div>
                         <div className="nfts__toggler">
