@@ -4,7 +4,7 @@ import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
-export let xpAddress = "0x1c6370c3339108684b59d4AdC89f8129c8B5103F"
+export let xpAddress = "0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4"
 const W3 = new Web3(window.ethereum)
 const state = store.getState()
 

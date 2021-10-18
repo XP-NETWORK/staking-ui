@@ -7,18 +7,19 @@ import { initMetaMask } from "../src/utils/metamask"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence } from "../src/utils/xpnet"
-import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
+import { getAmountOfTokens, tokenOfOwnerByIndex } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
+import { getAccounts } from "./utils/walletConnect"
 
 
 
 function App() {
-const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
-const tokens = useSelector(state => state.stakeData.tokensAmount)
-const dispatch = useDispatch()
-const address = useSelector(state => state.data.account)
-
+  const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
+  const tokens = useSelector(state => state.stakeData.tokensAmount)
+  const dispatch = useDispatch()
+  const address = useSelector(state => state.data.account)
+  
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
   dispatch(updateCurrentPrice(currentPrice))
@@ -48,6 +49,7 @@ const accountsChanged = () => {
 useEffect( () => {
   const getData = async () =>{
     if(address) {
+      await getAccounts()
       await updateBalance()
       await checkAllowence(address)
       await getAmountOfTokens(address)
