@@ -42,7 +42,7 @@ export function StakeAmount() {
                 <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
             </div>
             <div className={ !inputErr ? "amount__input" : "amount__input--error"}>
-                <input placeholder="Enter amount (at last 1500 XPNET)" value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="Enter amount (minimum 1500 XPNET)" value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>
@@ -91,7 +91,7 @@ export function StakeAmountMob() {
         <div className="stake__amount--mobile">
             <div className="amount__title">Enter your XPNET amount</div>
             <div className={ !inputErr ? "amount__input" : "amount__input--error"}>
-                <input placeholder="Enter amount (at last 1500 XPNET)" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="Enter amount (minimum 1500 XPNET)" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>

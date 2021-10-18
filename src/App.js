@@ -48,12 +48,7 @@ const accountsChanged = () => {
 
 
 
-useEffect(() => {
-  window.ethereum.on('accountsChanged', () => {
-    debugger
-    window.location.reload();
-  })
-  }, []) 
+
 
 useEffect( () => {
   const getData = async () =>{
