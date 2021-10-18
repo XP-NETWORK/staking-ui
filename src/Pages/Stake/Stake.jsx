@@ -20,7 +20,8 @@ import StakeDuration from './parts/StakeDuration';
 export default function Stake() {
 
 const dispatch = useDispatch()
-const [amount, setAmount] = useState(1500)
+const [amount, setAmount] = useState('')
+const stakingAmount = useSelector(state => state.data.stakingAmount)
 const allowence = useSelector(state => state.data.allowence)
 const agreement = useSelector(state => state.data.agreement)
 const currentPrice = useSelector(state => state.data.currentPrice)

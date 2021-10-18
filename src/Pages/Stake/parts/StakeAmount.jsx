@@ -42,13 +42,13 @@ export function StakeAmount() {
                 <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
             </div>
             <div className={ !inputErr ? "amount__input" : "amount__input--error"}>
-                <input placeholder="MIN staking requirement 1500" value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="Enter amount (at last 1500 XPNET)" value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
-            <span style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error">Error: Minimum staking requirement 1500 XPNET</span>
+            <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error">Error: the minimum staking amount is 1500 XPNET</div>
         </div>
     )
 }
@@ -91,14 +91,13 @@ export function StakeAmountMob() {
         <div className="stake__amount--mobile">
             <div className="amount__title">Enter your XPNET amount</div>
             <div className={ !inputErr ? "amount__input" : "amount__input--error"}>
-                <input placeholder="MIN staking requirement 1500" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="Enter amount (at last 1500 XPNET)" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
-            { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">Error: Minimum staking requirement 1500 XPNET</div>}
-            {/* // <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> */}
+            { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">Error: the minimum staking amount is 1500 XPNET</div>}
         </div>
     )
 }
