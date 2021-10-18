@@ -1,6 +1,6 @@
 .metamask{
     right: 0;
-    width: 175px;
+    width: 157px;
     height: 32px;
     background: #EDF0F8;
     border: 1px solid #D9DFED;
@@ -23,6 +23,8 @@
 }
 .account__icon canvas {
     border-radius: 25px;
+    margin-top: 4px;
+    margin-right: -4px;
     width: 18px;
     height: 18px;
 }

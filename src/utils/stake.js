@@ -2,11 +2,12 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
+import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
+import axios from "axios"
 
 
 
-export let stakeAddress = '0x8c60FA038f5A269D131978fAf9d3d7072A1a0396'
+export let stakeAddress = '0xFCeEa514CD2da9Bc109F7C2693735C2Ea6965F9A'
 const W3 = new Web3(window.ethereum)
 
 // Create staker smart contract.
@@ -41,10 +42,9 @@ export const stake = async (amount, duration, account) => {
         const Contract = await stakeContract()
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
-            // debugger
+            debugger
             store.dispatch(updateAproveLockLoader(false))
             await getAmountOfTokens(account)
-            // console.log(receipt)
         })
         .on('error',() => {
             store.dispatch(updateAproveLockLoader(false))
@@ -59,6 +59,7 @@ export const stake = async (amount, duration, account) => {
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
     const Contract = await stakeContract()
+    debugger
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
@@ -84,6 +85,14 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
                     tokenArr.push(token)
                     store.dispatch(addLoader({id:token, loader:false}))
+
+                     // Get picture for NFT
+                    const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${token}/image`)
+                    if(res) {
+                        // debugger
+                        const { image } = res.data
+                        store.dispatch(updateImage({ url: image, token }))
+                    }
                 }
                 catch(error){
                     console.log(error)
@@ -114,6 +123,7 @@ export const getStakeById = async (id, index) => {
 }
 
 
+
 export const showAvailableRewards = async (nftId) => {
     const Contract = await stakeContract()
     try{
@@ -127,7 +137,7 @@ export const showAvailableRewards = async (nftId) => {
     }
 }
 
-// Claim the rewards of choesen token.
+// Claim the rewards of chosen token.
 export const claimXpNet = async (nftId,rewards, account) => {
     debugger
     // store.dispatch(updateWithdrawed(true))

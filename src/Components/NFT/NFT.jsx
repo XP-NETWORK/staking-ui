@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import "./nft.css"
 import { getStakeById } from "../../utils/stake"
 import { useSelector, useDispatch } from 'react-redux'
@@ -10,7 +10,7 @@ export default function NFT({ tokenID, i }) {
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const nftTokenId = useSelector(state => state.stakeData.nftTokenId)
     const currentToken = useSelector(state => state.stakeData.nftTokenIndex)
-
+    const img = useSelector(state => state.stakeData.image[i])
 
 
     const onClickHandler = () => {
@@ -18,21 +18,26 @@ export default function NFT({ tokenID, i }) {
         dispatch(updateIndex(i))
         dispatch(updateNftTokenIndex(i))
         dispatch(goBack(currentToken - i))
-
-        // dispatch(goForth(i-currentToken))
     }
+
+    let currImg
+    if(img){
+        // debugger
+        currImg = img.url
+    }
+
 
     if(withdrawed === true){
         return (
             <div className='token--disabled'>
-                {tokenID}
+                <img src={currImg} alt="" />
             </div>
         )
     }
     else{
         return (
             <div onClick={() => onClickHandler()} className={tokenID === nftTokenId ? 'token--active':'token'}>
-                {tokenID}
+                <img src={currImg} alt="" />
             </div>
         )
     }

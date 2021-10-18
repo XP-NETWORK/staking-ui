@@ -172,6 +172,11 @@
     border-radius: 6px;
 }
 
+.address{
+    width: 200px;
+    font-size: 15px;
+}
+
 .address__icon:hover{
     cursor: pointer;
 }

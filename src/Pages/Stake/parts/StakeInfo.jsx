@@ -7,7 +7,7 @@ export default function StakeInfo() {
         <div className="stake__info">
             <div className="info__title">
                 <img src={i} alt="" />
-                <span>Don’t sell your XPNET NFT</span>
+                <span>Important information</span>
             </div>
             <div className="info__text">
             If you sell this NFT, you’ll lose the right to claim the XPNET rewards, though you’ll still be able to withdraw the staking deposit once it matures.
