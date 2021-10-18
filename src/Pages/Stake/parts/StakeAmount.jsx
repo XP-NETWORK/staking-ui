@@ -48,7 +48,7 @@ export function StakeAmount() {
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
-            <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error">Error: the minimum staking amount is 1500 XPNET</div>
+            <span style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error">the minimum staking amount is 1500 XPNET</span>
         </div>
     )
 }
@@ -97,7 +97,8 @@ export function StakeAmountMob() {
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
-            { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">Error: the minimum staking amount is 1500 XPNET</div>}
+            { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">the minimum staking amount is 1500 XPNET</div>}
+            {/* // <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> */}
         </div>
     )
 }

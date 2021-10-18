@@ -61,7 +61,7 @@ const onBlurHandler = (e) => {
 
 useEffect(() => {
 }, [approveLoader])
-
+    console.log(currentPrice, 'stake.jsx ciurrent price')
         return (
             <div className="stake__container">
                 <div className="stake">
