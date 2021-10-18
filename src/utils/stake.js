@@ -6,7 +6,7 @@ import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvaila
 
 
 
-export let stakeAddress = '0x8c60FA038f5A269D131978fAf9d3d7072A1a0396'
+export let stakeAddress = '0xFCeEa514CD2da9Bc109F7C2693735C2Ea6965F9A'
 const W3 = new Web3(window.ethereum)
 
 // Create staker smart contract.

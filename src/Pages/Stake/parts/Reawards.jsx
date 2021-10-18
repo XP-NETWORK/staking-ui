@@ -1,5 +1,5 @@
 import React from 'react'
-import image from "../../../assets/Rectangle.png"
+import image from "../../../assets/xpnetart.jpeg"
 import { getPercent } from "../../../utils/helper"
 import "./Reawards.css"
 

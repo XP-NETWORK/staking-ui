@@ -27,11 +27,12 @@ export default function Widget({ tokens }) {
     const x = useSelector(state => state.data.picPositionX)
     const rowLength = (tokens.length-1)*292 
     const currentToken = useSelector(state => state.stakeData.index)
+    const {tokensArray} = useSelector(s => s.stakeData)
     const dispatch = useDispatch()
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const [block, setBlock] = useState()
 
-
+    console.log(useSelector(s => s.stakeData))
 
     const moveX = (side) => {
         if(side==="next"){
@@ -70,15 +71,15 @@ export default function Widget({ tokens }) {
         }
 
     }
-
+    console.log(tokensArray)
     return (
         <div className="nft__widget">
             <div onClick={item => swiperHandler('prev')} className={!withdrawed ? "left-arrow arrow" : "left-arrow arrow--disabled"}><img src={leftArrow} alt="" /></div>
             <div className="widget__art">
                 <div  style={{ transform: `translateX(${x}px)`}} className="art-row">
-                    {arts.map( item => {
-                        return (<Picture art={item.art} id={item.id} />)
-                    })}
+                    {tokensArray && tokensArray.length > 0 ?tokensArray.map( item => {
+                        return (<Picture id={item} />)
+                    }) : ''}
                 </div>
             </div>
             <div onClick={item => swiperHandler('next')} className={!withdrawed ? "right-arrow arrow": "right-arrow arrow--disabled"}><img src={rightArrow} alt="" /></div>
