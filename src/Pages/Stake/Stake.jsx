@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Stake.css"
 // import Duration from "../../Components/Duration/Duration"
 import { useDispatch, useSelector } from 'react-redux'
@@ -28,6 +28,7 @@ const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
 const balance = useSelector(state => state.data.balance)
+const approveLoader = useSelector(state => state.data.aproveLoader)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
 
 const durations = [
@@ -56,6 +57,10 @@ const onBlurHandler = (e) => {
         setAmount("")
     }
 }
+
+
+useEffect(() => {
+}, [approveLoader])
 
         return (
             <div className="stake__container">

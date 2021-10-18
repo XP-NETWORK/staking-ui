@@ -6,7 +6,7 @@ import "./StakeAmount.css"
 
 export function StakeAmount() {
     const dispatch = useDispatch()
-    const [amount, setAmount] = useState(1500)
+    const [amount, setAmount] = useState()
     const balance = useSelector(state => state.data.balance)
 
     const amountHandler = (e) => {
@@ -36,7 +36,7 @@ export function StakeAmount() {
                 <div className="amount__subtitle">Availabe for Staking: <span>{nf.format(balance)} XPNET</span></div>
             </div>
             <div className="amount__input">
-                <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="MIN staking requirement 1500" value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>
@@ -78,7 +78,7 @@ export function StakeAmountMob() {
         <div className="stake__amount--mobile">
             <div className="amount__title">Enter your XPNET amount</div>
             <div className="amount__input">
-                <input value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="MIN staking requirement 1500" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>

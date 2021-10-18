@@ -42,10 +42,9 @@ export const stake = async (amount, duration, account) => {
         const Contract = await stakeContract()
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
-            // debugger
+            debugger
             store.dispatch(updateAproveLockLoader(false))
             await getAmountOfTokens(account)
-            // console.log(receipt)
         })
         .on('error',() => {
             store.dispatch(updateAproveLockLoader(false))
@@ -105,26 +104,11 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
     }
 }
 
-
-// const getPicture = async () => {
-//     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}`)
-//     if(res) {
-//         const { image } = res.data
-//     }
-// }
 // Get token by id.
 export const getStakeById = async (id, index) => {
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
-        // Get picture for NFT
-        // const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}`)
-        // if(res) {
-        //     // debugger
-        //     const { image } = res.data
-        //     store.dispatch(updateImage({ url: image, id }))
-        // }
-
         store.dispatch(updateNftTokenIndex(index))
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
