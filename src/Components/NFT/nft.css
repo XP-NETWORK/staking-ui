@@ -11,6 +11,7 @@
     justify-content: center;
     cursor: pointer;
     transition: .17s;
+    overflow: hidden;
 }
 
 .token--disabled{
@@ -26,6 +27,7 @@
     justify-content: center;
     opacity: 0.3;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .token:hover{
@@ -46,6 +48,20 @@
     cursor: pointer;
     border: 1px solid #3180F7; 
     pointer-events: none;
+    overflow: hidden;
+}
+
+.token--disabled img{
+    width: 100%;
+}
+
+.token img{
+    width: 100%;
+}
+
+
+.token--active img{
+    width: 100%;
 }
 
 @media screen and (max-width: 600px) {

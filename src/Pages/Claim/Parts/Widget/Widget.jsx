@@ -77,8 +77,9 @@ export default function Widget({ tokens }) {
             <div onClick={item => swiperHandler('prev')} className={!withdrawed ? "left-arrow arrow" : "left-arrow arrow--disabled"}><img src={leftArrow} alt="" /></div>
             <div className="widget__art">
                 <div  style={{ transform: `translateX(${x}px)`}} className="art-row">
-                    {tokensArray && tokensArray.length > 0 ?tokensArray.map( item => {
-                        return (<Picture id={item} />)
+                    {tokensArray && tokensArray.length > 0 ?tokensArray.map(( item, index ) => {
+                        // debugger
+                        return (<Picture id={item} i={index} key={index} />)
                     }) : ''}
                 </div>
             </div>

@@ -2,7 +2,8 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
+import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
+import axios from "axios"
 
 
 
@@ -84,6 +85,14 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
                     tokenArr.push(token)
                     store.dispatch(addLoader({id:token, loader:false}))
+
+                     // Get picture for NFT
+                    const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${token}`)
+                    if(res) {
+                        // debugger
+                        const { image } = res.data
+                        store.dispatch(updateImage({ url: image, token }))
+                    }
                 }
                 catch(error){
                     console.log(error)
@@ -96,11 +105,26 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
     }
 }
 
+
+// const getPicture = async () => {
+//     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}`)
+//     if(res) {
+//         const { image } = res.data
+//     }
+// }
 // Get token by id.
 export const getStakeById = async (id, index) => {
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
+        // Get picture for NFT
+        // const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}`)
+        // if(res) {
+        //     // debugger
+        //     const { image } = res.data
+        //     store.dispatch(updateImage({ url: image, id }))
+        // }
+
         store.dispatch(updateNftTokenIndex(index))
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
@@ -112,6 +136,7 @@ export const getStakeById = async (id, index) => {
         console.log(error)
     }
 }
+
 
 
 export const showAvailableRewards = async (nftId) => {
