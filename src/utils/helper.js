@@ -49,7 +49,7 @@ export const getEndDate = (seconds, start) => {
     else if(seconds === '23328000'){
         return moment(start).add(9, 'month').format("YYYY-MM-DD HH:MM")
     }
-    else if(seconds === '31104000'){
+    else if(seconds === '31536000'){
         return moment(start).add(1, 'year').format("YYYY-MM-DD HH:MM")
     }
  }

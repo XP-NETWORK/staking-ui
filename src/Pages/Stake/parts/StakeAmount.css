@@ -143,6 +143,7 @@
 
     .amount__subtitle{
         display: flex;
+        width: 100%;
         padding: 10px;
     }
 
@@ -151,6 +152,7 @@
     }
     .input__items{
         right: 16PX;
+        display: none;
     }
 }
 

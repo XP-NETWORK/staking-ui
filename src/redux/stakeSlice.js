@@ -69,7 +69,8 @@ export const stakeSlice = createSlice({
         },
         updateImage(state, action){
             // debugger
-            state.image = [...state.image, action.payload]
+            console.log(action.payload,' hlsldkalskd')
+            state.image = [...new Map([...state.image, action.payload].map(item =>[item['token'], item])).values()]
         }
     },
   })

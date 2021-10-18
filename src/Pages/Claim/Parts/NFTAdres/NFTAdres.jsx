@@ -3,19 +3,19 @@ import pages from "../../../../assets/pages.png"
 
 
 
-export default function NFTAdres({address}) {
+export default function NFTAdres({address, currentToken}) {
     
     const copyTextToClipboard = async() => {
         if ('clipboard' in navigator) {
-          return await navigator.clipboard.writeText(address);
+          return await navigator.clipboard.writeText(`XPNFT #${currentToken}`);
         } else {
-          return document.execCommand('copy', true, address);
+          return document.execCommand('copy', true, `XPNFT #${currentToken}`);
         }
       }
 
     return (
     <div className="nft__address">
-        <div className="address">{address}</div>
+        <div className="address">XPNFT #{currentToken}</div>
         <div onClick={()=> copyTextToClipboard()} className="address__icon">
             <img src={pages} alt="" />
         </div>

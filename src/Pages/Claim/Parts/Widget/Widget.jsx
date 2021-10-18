@@ -71,10 +71,10 @@ export default function Widget({ tokens }) {
         }
 
     }
-
+    const cannotClickStyle = {opacity: 0.4, pointerEvents: 'none'}
     return (
         <div className="nft__widget">
-            <div onClick={item => swiperHandler('prev')} className={!withdrawed ? "left-arrow arrow" : "left-arrow arrow--disabled"}><img src={leftArrow} alt="" /></div>
+            <div style={x === 0 ? cannotClickStyle : {}} onClick={item => swiperHandler('prev')} className={!withdrawed ? "left-arrow arrow" : "left-arrow arrow--disabled"}><img src={leftArrow} alt="" /></div>
             <div className="widget__art">
                 <div  style={{ transform: `translateX(${x}px)`}} className="art-row">
                     {tokensArray && tokensArray.length > 0 ?tokensArray.map(( item, index ) => {
@@ -83,7 +83,7 @@ export default function Widget({ tokens }) {
                     }) : ''}
                 </div>
             </div>
-            <div onClick={item => swiperHandler('next')} className={!withdrawed ? "right-arrow arrow": "right-arrow arrow--disabled"}><img src={rightArrow} alt="" /></div>
+            <div style={Math.abs(x) === rowLength  ? cannotClickStyle : {}} onClick={item => swiperHandler('next')} className={!withdrawed ? "right-arrow arrow": "right-arrow arrow--disabled"}><img src={rightArrow} alt="" /></div>
         </div>
     )
 }

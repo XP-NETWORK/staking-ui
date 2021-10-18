@@ -29,20 +29,20 @@ export const logStakeContract = async () => {
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account) => {
+    console.log(amount, duration ,'heloaska')
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
-    if(duration!==1){
+    if(duration!==12){
          durInSec = 60*60*24*(duration * 30)
     }
     else{
-         durInSec = 31622400 
+         durInSec = 86400 * 365 
     }
     try{
         store.dispatch(updateAproveLockLoader(true))
         const Contract = await stakeContract()
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
-            debugger
             store.dispatch(updateAproveLockLoader(false))
             await getAmountOfTokens(account)
         })
@@ -59,7 +59,6 @@ export const stake = async (amount, duration, account) => {
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
     const Contract = await stakeContract()
-    debugger
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
@@ -85,12 +84,13 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
                     tokenArr.push(token)
                     store.dispatch(addLoader({id:token, loader:false}))
-
+                    console.log(token, 'hello get')
                      // Get picture for NFT
                     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${token}/image`)
                     if(res) {
                         // debugger
                         const { image } = res.data
+                        console.log({ url: image, token }, 'hello get l')
                         store.dispatch(updateImage({ url: image, token }))
                     }
                 }
@@ -139,7 +139,6 @@ export const showAvailableRewards = async (nftId) => {
 
 // Claim the rewards of chosen token.
 export const claimXpNet = async (nftId,rewards, account) => {
-    debugger
     // store.dispatch(updateWithdrawed(true))
     const Contract = await stakeContract()
     try{
@@ -158,7 +157,6 @@ export const claimXpNet = async (nftId,rewards, account) => {
 
 // Withdrow token and rewards. 
 export const withrow = async ( nftId, adress ) => {
-    debugger
     const Contract = await stakeContract()
     try{
         const result = await Contract.methods.withdraw(nftId).send({from:adress})

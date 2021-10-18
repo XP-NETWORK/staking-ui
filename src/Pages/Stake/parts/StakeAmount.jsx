@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeStakingAmount } from "../../../redux/counterSlice"
 import { nf } from "../../../utils/helper"
@@ -9,6 +9,11 @@ export function StakeAmount() {
     const [amount, setAmount] = useState('')
     const [inputErr, setInputErr] = useState(false)
     const balance = useSelector(state => state.data.balance)
+    const {stakingAmount} = useSelector(s => s.data)
+    useEffect(() => {
+        if(stakingAmount) setAmount(stakingAmount)
+    },[])
+    console.log(useSelector(s => s.data))
 
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
@@ -20,7 +25,7 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
-        setAmount(balance)
+        amountHandler({target: {value: balance}})
     }
 
     const onBlurHandler = (e) => {
@@ -52,7 +57,6 @@ export function StakeAmount() {
         </div>
     )
 }
-
 
 
 export function StakeAmountMob() {

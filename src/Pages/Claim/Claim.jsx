@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import "./Claim.css"
 import { useEffect } from 'react'
-import { getStakeById, checkIsUnLocked, tokenOfOwnerByIndex } from "../../utils/stake"
+import { getStakeById, checkIsUnLocked, tokenOfOwnerByIndex, getAmountOfTokens } from "../../utils/stake"
 import { useSelector } from "react-redux"
 import { useHistory } from 'react-router'
 import NFT from '../../Components/NFT/NFT'
@@ -37,11 +37,16 @@ export default function Claim() {
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     
-
+    useEffect(async () => {
+        await getAmountOfTokens(address)
+        tokenOfOwnerByIndex(tokensFlag, tokens, address)
+        console.log('helosasa')
+    }, [])
     useEffect(() => {
         console.log("hello")
         const getData = async () =>{
             // debugger
+            
             await tokenOfOwnerByIndex(tokensFlag, tokens, address)
         }
         getData()
@@ -101,7 +106,7 @@ export default function Claim() {
                             <div className="line"></div>
                             <div className="nft__content">
                                 <Widget tokens={tokensArr} />
-                                <NFTAdres address={address}/>
+                                <NFTAdres currentToken={currentToken} address={address}/>
                             </div>
                         </div>
                         <div className="nfts__toggler">

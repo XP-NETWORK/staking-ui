@@ -35,13 +35,12 @@ const doDate = () => {
 }
 
 const accountsChanged = () => {
-  debugger
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
       if (accounts.length > 0) {
-       dispatch(updateAccount(accounts[0]))
-     }
+        dispatch(updateAccount(accounts[0]))
+      }
     });
   }
 }

@@ -169,6 +169,7 @@
     background: #FBFCFF;
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
+    width: 140px;
     border-radius: 6px;
 }
 
@@ -189,8 +190,43 @@
 .un-stake:hover{
     cursor: pointer;
 }
-
-
+.nft__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 1107px) {
+    .claim__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nft__wrapper {
+        max-width: 800px;
+        width: 100%;
+        max-width: 622px;
+    }
+    .nft {
+        width: 100%;
+        max-width: 622px;
+    }
+    .nft__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .nft__address {
+        width: calc(100% - 60px);
+    }
+    .nfts__toggler {
+        width: 100%;
+    }
+    .token, .token--active {
+        height: auto !important;
+    }
+}
 
 @media screen and (max-width: 600px) {
     .claim__container{
@@ -236,7 +272,9 @@
 
 @media screen and (max-width: 425px){
     .claim__container{
-        width: 100%  
+        width: calc(100% - 24px);
+        padding: 0px 12px;
+
     }
     .claim{
         width: 100%;
@@ -259,7 +297,10 @@
     }
 }
 
-@media screen and (max-width: 325px){
+@media screen and (max-width: 385px){
+    .nft__widget {
+        width: 100% !important;
+    }
     .nfts__toggler{
         width: 100%;
     }
