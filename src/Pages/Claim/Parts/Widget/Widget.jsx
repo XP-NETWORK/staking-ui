@@ -32,7 +32,7 @@ export default function Widget({ tokens }) {
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const [block, setBlock] = useState()
 
-    console.log(useSelector(s => s.stakeData))
+
 
     const moveX = (side) => {
         if(side==="next"){
@@ -71,7 +71,7 @@ export default function Widget({ tokens }) {
         }
 
     }
-    console.log(tokensArray)
+
     return (
         <div className="nft__widget">
             <div onClick={item => swiperHandler('prev')} className={!withdrawed ? "left-arrow arrow" : "left-arrow arrow--disabled"}><img src={leftArrow} alt="" /></div>

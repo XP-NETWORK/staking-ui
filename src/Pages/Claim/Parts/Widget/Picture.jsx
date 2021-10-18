@@ -19,18 +19,6 @@ export default function Picture({ art, i }) {
     useEffect(() => {
     }, [img])
 
-    // const [img, setImg] = useState()
-    // useEffect(() => {
-    // //https://staking-api.xp.network/staking-nfts/3
-    // const getPicture = async () => {
-    //     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}`)
-    //     if(res) {
-    //         const { image } = res.data
-    //         setImg(image)
-    //     }
-    // }
-    //     getPicture()
-    // },[])
     return (
         img ? <img src={currImg} alt="picture" /> : <Loader />
     )

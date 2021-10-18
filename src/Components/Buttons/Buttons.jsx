@@ -34,7 +34,7 @@ export function Lock({ approvance, duration, account}){
     const lockloader = useSelector(state => state.data.lockLoader)
     const agreement = useSelector(state => state.data.agreement)
     const amount = useSelector(state => state.data.stakingAmount)
-    console.log("amount: ", amount, typeof amount)
+
     if(approvance && agreement && amount >= 1500){
         return (
             <div onClick={() => stake(amount, duration, account)} className={ !lockloader ? "summary__button button" : "summary__button loading button"}>
