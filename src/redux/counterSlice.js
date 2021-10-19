@@ -11,7 +11,6 @@ const initialState = {
     allowence: '',
     agreement: false,
     currentPrice: '',
-    tokenIDs:'',
     stakeInfo: '',
     chainId: "",
     aproveLoader: false,
@@ -53,9 +52,6 @@ export const counterSlice = createSlice({
       updateCurrentPrice(state, action){
         state.currentPrice = action.payload
       },
-      updateTokenIDs(state, action){
-        state.tokenIDs = action.payload
-      },
       updateStakeInfo(state, action){
         state.stakeInfo = action.payload
       },
@@ -92,7 +88,6 @@ export const {
   updateAllowence,
   updateAgreement,
   updateCurrentPrice,
-  updateTokenIDs,
   updateStakeInfo,
   updateChainId,
   updateAproveButtonsLoader,

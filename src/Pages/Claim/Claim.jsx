@@ -18,7 +18,7 @@ import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
  
 export default function Claim() {
-    const balance = useSelector(state => state.data.balance)
+    // const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
     const tokensArr = useSelector(state => state.stakeData.tokensArray)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
@@ -38,18 +38,18 @@ export default function Claim() {
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     
     useEffect(async () => {
+        console.log("claim get amount of tokens");
         await getAmountOfTokens(address)
-        tokenOfOwnerByIndex(tokensFlag, tokens, address)
+        await tokenOfOwnerByIndex(tokensFlag, tokens, address)
     }, [])
+
     useEffect(() => {
-   
+        console.log("useEffect tokens: ", tokens);
         const getData = async () =>{
-            // debugger
-            
             await tokenOfOwnerByIndex(tokensFlag, tokens, address)
         }
         getData()
-    },[tokensArr])
+    },[tokensFlag, tokens, address])
 
     const showTokens = () => {
         if(tokensArr){
@@ -80,7 +80,12 @@ export default function Claim() {
     }, [tokensArr, currentToken])
 
     useEffect(() => {
-    }, [stakeInfo])    
+        console.log("useEffect stakeInfo: ", stakeInfo)
+    }, [stakeInfo])   
+    
+    useEffect(() => {
+        console.log("useEffect address: ", address)
+    }, [address])   
 
         if(tokensArr){
             return (
