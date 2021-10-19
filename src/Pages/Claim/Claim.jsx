@@ -33,17 +33,16 @@ export default function Claim() {
     const tokens = useSelector(state => state.stakeData.tokensAmount)
 
 
-console.log(tokensArr, 'tokensArr', tokensArr[currentToken])
+
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     
     useEffect(async () => {
         await getAmountOfTokens(address)
         tokenOfOwnerByIndex(tokensFlag, tokens, address)
-        console.log('helosasa')
     }, [])
     useEffect(() => {
-        console.log("hello")
+   
         const getData = async () =>{
             // debugger
             
@@ -64,7 +63,7 @@ console.log(tokensArr, 'tokensArr', tokensArr[currentToken])
             await getStakeById(tokensArr[currentToken], currentToken)
             await checkIsUnLocked(currentToken)
         }
-        if(!address || !balance){
+        if(!address){
             history.push("/stake")
         }
         if(!stakeInfo){

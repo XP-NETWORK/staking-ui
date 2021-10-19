@@ -7,7 +7,7 @@ import { initMetaMask } from "../src/utils/metamask"
 import { getAccounts } from "./utils/walletConnect"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { checkBalance, checkAllowence } from "../src/utils/xpnet"
+import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
@@ -40,6 +40,7 @@ const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", accounts => {
+    debugger
       if (accounts.length > 0) {
         dispatch(updateAccount(accounts[0]))
       }
@@ -51,6 +52,7 @@ const accountsChanged = () => {
 useEffect( () => {
   const getData = async () =>{
     if(address) {
+      console.log("address chenged: ", address);
       await updateBalance()
       await checkAllowence(address)
       await getAmountOfTokens(address)
@@ -72,16 +74,8 @@ useEffect(() => {
   getCurrentPrice()
   initMetaMask()
   accountsChanged()
-
-  // const getData = async () => {
-  //   debugger
-  //   try {
-  //     await getAccounts()
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
+  logStakeContract()
+  logXPContract()
 }, [])
 
 useEffect(() => {

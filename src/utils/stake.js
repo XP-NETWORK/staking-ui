@@ -7,7 +7,7 @@ import axios from "axios"
 
 
 
-export let stakeAddress = '0xbC9091bE033b276b7c2244495699491167C20037'
+export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
 const W3 = new Web3(window.ethereum)
 
 // Create staker smart contract.
@@ -29,7 +29,7 @@ export const logStakeContract = async () => {
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account, history) => {
-    console.log(amount, duration ,'heloaska')
+
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
     if(duration!==12){
@@ -43,10 +43,11 @@ export const stake = async (amount, duration, account, history) => {
         const Contract = await stakeContract()
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
+            console.log("stake: ", receipt);
             store.dispatch(updateAproveLockLoader(false))
             const t = await getAmountOfTokens(account)
             const {tokensAmountFlag, tokenAmount} = store.getState().data
-            console.log(t, 'helkalsdkladskl')
+
             await tokenOfOwnerByIndex(false, t, account)
             history.push('/claim')
         })
@@ -89,13 +90,13 @@ export const tokenOfOwnerByIndex = async (flag, tokenAmount, owner) => {
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
                     tokenArr.push(token)
                     store.dispatch(addLoader({id:token, loader:false}))
-                    console.log(token, 'hello get')
+        
                      // Get picture for NFT
                     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${token}/image`)
                     if(res) {
                         // debugger
                         const { image } = res.data
-                        console.log({ url: image, token }, 'hello get l')
+                     
                         store.dispatch(updateImage({ url: image, token }))
                     }
                 }

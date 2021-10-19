@@ -38,30 +38,31 @@ const durations = [
     {d:1, p: 125},
 ]
 
-const putMax = () => {
-    setAmount(balance)
-}
+// const putMax = () => {
+//     console.log("putMax: ", balance)
+//     setAmount(balance)
+// }
 
-const amountHandler = (e) => {
-    const reg = new RegExp('^[0-9]+$');
-    const num = Number(e.target.value)
-    if(reg.test(num)){
-        setAmount(e.target.value)
-        dispatch(changeStakingAmount(num))
-    }
-}
+// const amountHandler = (e) => {
+//     const reg = new RegExp('^[0-9]+$');
+//     const num = Number(e.target.value)
+//     if(reg.test(num)){
+//         setAmount(e.target.value)
+//         dispatch(changeStakingAmount(num))
+//     }
+// }
 
-const onBlurHandler = (e) => {
-    const num = e.target.value
-    if(num === "0"){
-        setAmount("")
-    }
-}
+// const onBlurHandler = (e) => {
+//     const num = e.target.value
+//     if(num === "0"){
+//         setAmount("")
+//     }
+// }
 
 
 useEffect(() => {
 }, [approveLoader])
-    console.log(currentPrice, 'stake.jsx ciurrent price')
+ 
         return (
             <div className="stake__container">
                 <div className="stake">

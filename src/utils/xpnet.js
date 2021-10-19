@@ -4,7 +4,8 @@ import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
-export let xpAddress = "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
+export let xpAddress =  process.env.NODE_ENV === "development" ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
+
 const W3 = new Web3(window.ethereum)
 const state = store.getState()
 
@@ -40,15 +41,15 @@ export const checkBalance = async (address) => {
     }
 }
 
-// Aprove this account.
+// Approve this account.
 export const approve = async (account) => {
     try{
         store.dispatch(updateAproveButtonsLoader(true))
         const Contract = await xpContract()
         Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
         .once('receipt', function(receipt){
-            // console.log(receipt) 
-            // debugger
+            console.log("approve: ", receipt) 
+            debugger
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
             checkAllowence(account)

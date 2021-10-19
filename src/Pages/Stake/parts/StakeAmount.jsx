@@ -25,6 +25,7 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
+        console.log("putMax: ", balance)
         amountHandler({target: {value: balance}})
     }
 
