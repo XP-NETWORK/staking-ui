@@ -14,7 +14,6 @@ const initialState = {
     tokensAmountFlag: false,
     withdrawed: false,
     index: 0,
-    nftLoaders: [],
     isUnlocked: false,
     image: []
 }
@@ -59,18 +58,10 @@ export const stakeSlice = createSlice({
         updateWithdrawed(state, action){
             state.withdrawed = action.payload
         },
-        addLoader(state, action){
-            state.nftLoaders = [...state.nftLoaders, action.payload]
-        },
-        updateLoader(state, action){
-            // SOONE
-        },
         updateIsUnlocked(state, action){
             state.isUnlocked = action.payload
         },
         updateImage(state, action){
-            // debugger
-            // console.log(action.payload,' hlsldkalskd')
             state.image = [...new Map([...state.image, action.payload].map(item =>[item['token'], item])).values()]
         }
     },
@@ -87,10 +78,8 @@ export const {
     updateNftTokenIndex,
     updateTokensArray,
     updateTokensAmount,
-    updateTokensAmountFlag,
     updateIndex,
     updateWithdrawed,
-    addLoader,
     updateIsUnlocked,
     updateImage
 } = stakeSlice.actions
