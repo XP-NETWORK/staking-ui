@@ -10,7 +10,7 @@ export default function NFT({ tokenID, i }) {
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const nftTokenId = useSelector(state => state.stakeData.nftTokenId)
     const currentToken = useSelector(state => state.stakeData.nftTokenIndex)
-    const img = useSelector(state => state.stakeData.image[i])
+    const img = useSelector(state => state.stakeData.image).filter(n => n.token === tokenID)[0]
 
 
     const onClickHandler = () => {
@@ -19,6 +19,7 @@ export default function NFT({ tokenID, i }) {
         dispatch(updateNftTokenIndex(i))
         dispatch(goBack(currentToken - i))
     }
+
 
     let currImg
     if(img){

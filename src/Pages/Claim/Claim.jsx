@@ -36,17 +36,17 @@ export default function Claim() {
 
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
-    
+        // console.log(useSelector(s => s.stakeData), 'aklsdaklsdaklsda')
     useEffect(async () => {
-        console.log("claim get amount of tokens");
+
         await getAmountOfTokens(address)
-        await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+        await tokenOfOwnerByIndex(tokens, address)
     }, [])
 
     useEffect(() => {
-        console.log("useEffect tokens: ", tokens);
+        // console.log("useEffect tokens: ", tokens);
         const getData = async () =>{
-            await tokenOfOwnerByIndex(tokensFlag, tokens, address)
+            await tokenOfOwnerByIndex(tokens, address)
         }
         getData()
     },[tokensFlag, tokens, address])
@@ -80,11 +80,11 @@ export default function Claim() {
     }, [tokensArr, currentToken])
 
     useEffect(() => {
-        console.log("useEffect stakeInfo: ", stakeInfo)
+       
     }, [stakeInfo])   
     
     useEffect(() => {
-        console.log("useEffect address: ", address)
+      
     }, [address])   
 
         if(tokensArr){

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
-import { getAccounts } from "./utils/walletConnect"
+// import { getAccounts } from "./utils/walletConnect"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
@@ -18,10 +18,10 @@ import axios from 'axios';
 
 function App() {
 const dispatch = useDispatch()
-const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
+// const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
 ////////////////////////////////////////////////////////////////////////
 const tokens = useSelector(state => state.stakeData.tokensAmount)
-console.log("stakeData.tokensAmount: ", tokens);
+// console.log("stakeData.tokensAmount: ", tokens);
 
 const address = useSelector(state => state.data.account)
 //////////////////////////////////////
@@ -36,7 +36,7 @@ const getCurrentPrice = async () => {
 }
 
 const updateBalance = async () => {
-  console.log("updateBalance");
+  // console.log("updateBalance");
   await checkBalance(address)
 }
 
@@ -49,7 +49,7 @@ const accountsChanged = () => {
 
   const getTokens = async (add) => {
     try {
-      debugger
+      // debugger
       console.log("App get amount of tokens");
       await getAmountOfTokens(add)
     } catch (error) {
@@ -60,7 +60,7 @@ const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", async accounts =>  {
-    debugger
+    // debugger
       if (accounts.length > 0) {
         dispatch(updateAccount(accounts[0]))
         await getTokens(accounts[0])
@@ -73,13 +73,13 @@ const accountsChanged = () => {
 useEffect( () => {
   const getData = async () =>{
     if(address) {
-      debugger
+      // debugger
       await updateBalance()
       await checkAllowence(address)
-      console.log("app useeffect get amount of tokens");
+      // console.log("app useeffect get amount of tokens");
       await getAmountOfTokens(address)
-      // await tokenOfOwnerByIndex(tokensFlag, tokens, address)
-      console.log("address chenged: ", address);
+      // await tokenOfOwnerByIndex(tokens, address)
+      // console.log("address chenged: ", address);
     }
   }
   getData()
@@ -87,9 +87,9 @@ useEffect( () => {
 
 
 useEffect(() => {
-  debugger
+  // debugger
   if(parseInt(tokens) > 0){
-    tokenOfOwnerByIndex(tokensFlag, tokens, address)
+    tokenOfOwnerByIndex(tokens, address)
   }
   else{
     history.push('/stake')

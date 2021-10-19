@@ -13,7 +13,7 @@ export function StakeAmount() {
     useEffect(() => {
         if(stakingAmount) setAmount(stakingAmount)
     },[])
-    console.log(useSelector(s => s.data))
+    // console.log(useSelector(s => s.data))
 
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
@@ -25,7 +25,7 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
-        console.log("putMax: ", balance)
+        // console.log("putMax: ", balance)
         amountHandler({target: {value: balance}})
     }
 

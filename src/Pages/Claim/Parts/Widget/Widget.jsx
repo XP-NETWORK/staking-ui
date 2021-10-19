@@ -1,29 +1,16 @@
 
-import art0 from "../../../../assets/arts/bigart0.png"
-import art1 from "../../../../assets/arts/bigart1.png"
-import art2 from "../../../../assets/arts/bigart2.png"
-import art3 from "../../../../assets/arts/bigart3.png"
 import leftArrow from "../../../../assets/arrow_left.svg"
 import rightArrow from "../../../../assets/arrow_right.svg"
 import { useSelector, useDispatch } from "react-redux"
 import { updateIndex } from "../../../../redux/stakeSlice"
 import {  chengePositionX, goForth, goBack } from "../../../../redux/counterSlice"
 import "./Widget.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Picture from "./Picture"
-
-
-const arts = [
-    { "art": art0, "id": 0 },
-    { "art": art1, "id": 1 },
-    { "art": art2, "id": 2 },
-    { "art": art3, "id": 3 },
-]
-
 
 export default function Widget({ tokens }) {
 
-
+    const images = useSelector(state => state.stakeData.image)
     const x = useSelector(state => state.data.picPositionX)
     const rowLength = (tokens.length-1)*292 
     const currentToken = useSelector(state => state.stakeData.index)
@@ -32,6 +19,10 @@ export default function Widget({ tokens }) {
     const withdrawed = useSelector(state => state.stakeData.withdrawed)
     const [block, setBlock] = useState()
 
+
+    useEffect(() => {
+ 
+    }, [images])
 
 
     const moveX = (side) => {
