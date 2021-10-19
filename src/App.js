@@ -73,14 +73,14 @@ useEffect(() => {
   initMetaMask()
   accountsChanged()
 
-  const getData = async () => {
-    debugger
-    try {
-      await getAccounts()
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const getData = async () => {
+  //   debugger
+  //   try {
+  //     await getAccounts()
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
 }, [])
 
