@@ -18,7 +18,7 @@ export default function DetailsRewards({ currentPrice, duration }) {
     console.log(currentPrice, duration, amount)
     return (
         <div className="details details__rewards">
-            <div className="details__capture">Estimated APY</div>
+            <div className="details__capture">Estimated XPNET</div>
             <div className="details__text">{nf.format((getRewards()).toFixed(2))} XPNET<span>$ {nf.format((getRewards()*currentPrice).toFixed(2))}</span></div>
         </div>
     )

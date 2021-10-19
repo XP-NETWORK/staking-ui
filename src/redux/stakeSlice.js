@@ -10,6 +10,7 @@ const initialState = {
     availableRewards: "",
     tokensArray: '',
     tokensAmount: '',
+    agreement: true,
     tokensAmountFlag: false,
     withdrawed: false,
     index: 0,

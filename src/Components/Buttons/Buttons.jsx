@@ -39,10 +39,10 @@ export function Lock({ approvance, duration, account}){
     if(approvance && agreement && amount >= 1500){
         return (
             <div onClick={() => stake(amount, (duration === 1 ? 12 : duration), account, history)} className={ !lockloader ? "summary__button button" : "summary__button loading button"}>
-                {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Lock</span></>}
+                {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Stake</span></>}
             </div>)
     }
     else{
-        return <div className="summary__button lock"><img src={lock} alt=""/><span>Lock</span></div>
+        return <div className="summary__button lock"><img src={lock} alt=""/><span>Stake</span></div>
     }
 }
