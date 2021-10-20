@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
-// import { getAccounts } from "./utils/walletConnect"
+// import { getWalletAccounts } from "./utils/walletConnect"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
@@ -37,7 +37,6 @@ const doDate = () => {
 }
 
 const accountsChanged = () => {
-
   const getTokens = async (add) => {
     try {
       await getAmountOfTokens(add)
@@ -49,6 +48,7 @@ const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", async accounts =>  {
+    alert(accounts)
       if (accounts.length > 0) {
         dispatch(updateAccount(accounts[0]))
         await getTokens(accounts[0])
@@ -86,6 +86,7 @@ useEffect(() => {
   accountsChanged()
   logStakeContract()
   logXPContract()
+  // getWalletAccounts()
 }, [])
 
 useEffect(() => {

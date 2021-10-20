@@ -43,10 +43,17 @@
     color: #1D1D1D;
 }
 
+@media screen and (max-width: 600px){
+    .duration{
+        flex-basis: 280px;
+        margin: 4px;
+    }
+}
+
 
 @media screen and (max-width: 425px) {
     .duration{
-        flex-basis: 190px;
+        flex-basis: 188px;
         margin-bottom: 5px;
     }
     .duration__title{
@@ -66,14 +73,14 @@
 
 @media screen and (max-width: 375px) {
     .duration{
-        flex-basis: 170px;
+        flex-basis: 163px;
        
     }
 }
 
 @media screen and (max-width: 320px) {
     .duration{
-        flex-basis: 140px;
+        flex-basis: 136px;
        
     }
 }

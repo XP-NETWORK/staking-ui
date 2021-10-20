@@ -18,6 +18,12 @@
 font-size: 16px;
 }
 
+@media screen and (max-width: 600px){
+    .agreement{
+        margin-top: 10px;
+    }
+}
+
 @media screen and (max-width: 425px){
     .agreement{
         margin-top: 25px;
