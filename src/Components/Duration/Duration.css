@@ -45,7 +45,8 @@
 
 @media screen and (max-width: 600px){
     .duration{
-        flex-basis: 280px;
+        flex-basis: 48%;
+        /* background-color: tomato; */
         /* margin: 4px; */
     }
 }
@@ -53,7 +54,7 @@
 
 @media screen and (max-width: 425px) {
     .duration{
-        flex-basis: 196px;
+        /* flex-basis: 48%; */
         margin-bottom: 5px;
     }
     .duration__title{
@@ -73,14 +74,14 @@
 
 @media screen and (max-width: 375px) {
     .duration{
-        flex-basis: 170px;
+        /* flex-basis: 45%; */
        
     }
 }
 
 @media screen and (max-width: 320px) {
     .duration{
-        flex-basis: 144px;
+        /* flex-basis: 134px; */
        
     }
 }

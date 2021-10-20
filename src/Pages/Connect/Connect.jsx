@@ -22,10 +22,10 @@ export default function Connect() {
                     window.innerWidth <= 600 ? 
                     <>
                     <div className="fox">
-                        <img src={walletconnect} alt="" />
+                        <img src={MetaMask} alt="" />
                     </div>
                     <div className="connect__title">
-                        Coming Soon
+                        <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect</a></div>
                     </div>
                     </>
                     :
@@ -41,7 +41,7 @@ export default function Connect() {
                 <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
                     Connect
                 </div>
-                {/* { !ethereum ? <div className="required">MetaMask required</div> : null} */}
+                { !ethereum ? <div className="required">MetaMask required</div> : null}
             </div>
         </div>
     )

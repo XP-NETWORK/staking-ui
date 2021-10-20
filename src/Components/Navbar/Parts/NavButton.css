@@ -68,27 +68,30 @@
 }
 
 @media screen and (max-width: 425px){
+    .nav__buttons{
+        width: 100%;
+    }
     .nav__button{
-        width: 200px;
+        width: 50%;
     }
     .nav__button--active{
-        width: 200px;
+        width: 50%;
     }
     .nav__button--disabled{
-        width: 200px;
+        width: 50%;
 
     }
 }
 
 @media screen and (max-width: 375px){
     .nav__button{
-        width: 178px;
+        /* width: 140px; */
     }
     .nav__button--active{
-        width: 178px;
+        /* width: 140px; */
     }
     .nav__button--disabled{
-        width: 166px;
+        /* width: 140px; */
 
     }
 
@@ -96,13 +99,13 @@
 
 @media screen and (max-width: 320px){
     .nav__button{
-        width: 144px;
+        /* width: 104px; */
     }
     .nav__button--active{
-        width: 144px;
+        /* width: 104px; */
     }
     .nav__button--disabled{
-        width: 144px;
+        /* width: 104px; */
 
     }
 }
