@@ -18,27 +18,19 @@
 }
 
 @media screen and (max-width: 600px){
-    /* .duration{
-        flex-basis: 280px;
-        margin: 4px;
-    } */
 
     .stake__duration{
         padding: 0 10px 20px 10px;
     }
-
+    
     .durations__container{
+        gap: 10px;
         margin: 0;
         max-width: 600px;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
     }
-    /* .duration__header {
-        text-align: center;
-    }
-    .duration__header{
-        padding: 0;
-    } */
+
 }
 
 @media screen and (max-width: 425px){

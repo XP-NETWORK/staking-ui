@@ -46,14 +46,14 @@
 @media screen and (max-width: 600px){
     .duration{
         flex-basis: 280px;
-        margin: 4px;
+        /* margin: 4px; */
     }
 }
 
 
 @media screen and (max-width: 425px) {
     .duration{
-        flex-basis: 188px;
+        flex-basis: 196px;
         margin-bottom: 5px;
     }
     .duration__title{
@@ -73,14 +73,14 @@
 
 @media screen and (max-width: 375px) {
     .duration{
-        flex-basis: 163px;
+        flex-basis: 170px;
        
     }
 }
 
 @media screen and (max-width: 320px) {
     .duration{
-        flex-basis: 136px;
+        flex-basis: 144px;
        
     }
 }
