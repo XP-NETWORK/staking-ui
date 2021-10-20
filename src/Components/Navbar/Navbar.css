@@ -82,7 +82,7 @@
 @media screen and (max-width: 375px){
     .navbar--mobile{
         /* width: calc(100% - 40px); */
-        width: 100%;
+        /* width: 100%; */
     }
     .xp__logo{
         width: 150px;

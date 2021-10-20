@@ -37,8 +37,9 @@
         margin-left: 0px;
         width: 25%;
         margin-left: 0px;
-        padding: 12.5px 4px;
+        padding: 10.5px 6px;
         height: auto;
+        font-size: 14px;
     }
 
     .account__icon{
@@ -49,9 +50,9 @@
     .account__icon canvas {
         border-radius: 25px;
         margin-top: 4px;
-        margin-right: -10px;
-        width: 10px;
-        height: 10px;
+        margin-right: 10px;
+        width: 16px;
+        height: 16px;
     }
 }
 
@@ -62,8 +63,12 @@
         order: -1;
         margin-left: 0px;
         width: 50%;
-        padding: 10px 0;
+        padding: 10px 10px;
         height: auto;
+    }
+
+    .account{
+        max-width: 100px;
     }
 }
 
@@ -78,10 +83,10 @@
 
 @media screen and (max-width: 320px){
     .metamask{
-        /* max-width: 130px; */
+        /* max-width: 100%; */
     }
     .account{
-        font-size: 10px;
+        /* font-size: 10px; */
         max-width: 100%;
     }
 }
