@@ -9,7 +9,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: violet; */
   }
 
 }
+
+
+/* @media screen and (max-width: 425px){
+  .app__wraper{
+    max-width: 425px;
+    padding: 0 10px;
+    height: auto;
+  }
+} */

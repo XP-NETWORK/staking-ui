@@ -5,6 +5,9 @@ import './MetaMask.css'
 
 export default function MetaMask() {
 
+    
+    const account = useSelector(state => state.data.account)
+
     useEffect(() => {
         let Icon = createIcon({ // All options are optional
             seed: account, // seed used to generate icon data, default: random
@@ -14,6 +17,7 @@ export default function MetaMask() {
             scale: 3 // width/height of each block in pixels, default: 5
         });
         const l = document.getElementById('ls')
+        
         if(l){
             l.innerHTML = ''
             l.appendChild(Icon)
@@ -21,7 +25,6 @@ export default function MetaMask() {
         }, [])
 
 
-    const account = useSelector(state => state.data.account)
     return (
         <div className="metamask">
             <div className="account">

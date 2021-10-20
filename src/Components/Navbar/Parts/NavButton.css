@@ -11,10 +11,6 @@
     transition: .17s;
 }
 
-.nav__button:hover{
-/* background-color: tomato; */
-}
-
 .nav__button--disabled{
     width: 126px;
     height: 32px;
@@ -78,6 +74,10 @@
     .nav__button--active{
         width: 200px;
     }
+    .nav__button--disabled{
+        width: 200px;
+
+    }
 }
 
 @media screen and (max-width: 375px){
@@ -87,13 +87,22 @@
     .nav__button--active{
         width: 178px;
     }
+    .nav__button--disabled{
+        width: 166px;
+
+    }
+
 }
 
 @media screen and (max-width: 320px){
     .nav__button{
-        width: 150px;
+        width: 144px;
     }
     .nav__button--active{
-        width: 150px;
+        width: 144px;
+    }
+    .nav__button--disabled{
+        width: 144px;
+
     }
 }
