@@ -15,7 +15,8 @@ const initialState = {
     chainId: "",
     aproveLoader: false,
     lockLoader: false,
-    picPositionX: 0
+    picPositionX: 0,
+    search: false
 }
 
 export const counterSlice = createSlice({
@@ -48,6 +49,9 @@ export const counterSlice = createSlice({
       },
       updateAgreement(state){
         state.agreement = !state.agreement
+      },
+      changeSearch(state){
+        state.search = !state.search
       },
       updateCurrentPrice(state, action){
         state.currentPrice = action.payload
@@ -94,7 +98,8 @@ export const {
   updateAproveLockLoader,
   goForth,
   goBack,
-  chengePositionX
+  chengePositionX,
+  changeSearch
 } = counterSlice.actions
 
 export default counterSlice.reducer

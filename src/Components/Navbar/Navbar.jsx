@@ -24,6 +24,7 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance} location={location} type={'claim-btn'} />
                 </div>
+                <Link to="/search">Search</Link>
                 <MetaMask />
             </div>
             <div className="navbar--mobile">
@@ -37,7 +38,6 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance}  location={location} type={'claim-btn'} />
                 </div>
-                
             </div>
             </>
             )

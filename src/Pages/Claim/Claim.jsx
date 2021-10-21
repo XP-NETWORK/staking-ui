@@ -16,9 +16,8 @@ import ClaimButton from './Parts/ClaimButton/ClaimButton'
 import UnStakeButton from './Parts/UnStakeButton/UnStakeButton'
 import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
- 
+
 export default function Claim() {
-    // const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
     const tokensArr = useSelector(state => state.stakeData.tokensArray)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
@@ -28,15 +27,12 @@ export default function Claim() {
     const startDate = useSelector(state => state.stakeData.startDate)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const currentToken = useSelector(state => state.stakeData.index)
-
     const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
     const tokens = useSelector(state => state.stakeData.tokensAmount)
 
-
-
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
-        // console.log(useSelector(s => s.stakeData), 'aklsdaklsdaklsda')
+
     useEffect(async () => {
 
         await getAmountOfTokens(address)
