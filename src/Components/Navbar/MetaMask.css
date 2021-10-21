@@ -69,12 +69,14 @@
 
     .account{
         max-width: 100px;
+        padding: 0 6px;
+
     }
 }
 
 @media screen and (max-width: 375px){
     .metamask{
-        /* max-width: 40%; */
+        width: 40%;
     }
     .account{
         /* max-width: 100px; */
@@ -83,7 +85,7 @@
 
 @media screen and (max-width: 320px){
     .metamask{
-        /* max-width: 100%; */
+        width: 40%;
     }
     .account{
         /* font-size: 10px; */

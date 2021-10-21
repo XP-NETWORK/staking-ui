@@ -36,7 +36,7 @@
 }
 
 .nav__buttons{
-    font-size: calc(13px + 3 * ((100vw - 600px) / 600));
+    font-size: calc(13px + 2 * ((100vw - 600px) / 600));
     margin-left: 30px;
     display: flex;
 }
