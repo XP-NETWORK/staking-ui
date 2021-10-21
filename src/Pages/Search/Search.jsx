@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Web3 from "web3"
 import ClaimAmount from '../Claim/Parts/ClaimAmount/ClaimAmount'
 import ClaimAPY from '../Claim/Parts/ClaimAPY/ClaimAPY'
@@ -11,10 +11,10 @@ import UnStakeButton from '../Claim/Parts/UnStakeButton/UnStakeButton'
 import { useSelector } from "react-redux"
 import "./Search.css"
 import Picture from '../Claim/Parts/Widget/Picture'
-import { getStakeById } from "../../utils/stake"
-import { useDispatch } from 'react-redux'
-import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
-import {  goBack } from "../../redux/counterSlice"
+import { getStakeById, stakes } from "../../utils/stake"
+// import { useDispatch } from 'react-redux'
+// import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
+// import {  goBack } from "../../redux/counterSlice"
 
 export default function Search() {
 
@@ -24,12 +24,10 @@ export default function Search() {
     const startDate = useSelector(state => state.stakeData.startDate)
     const startTime = useSelector(state => state.stakeData.startTime)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
+    // console.log("staker", stakeInfo[5])
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const address = useSelector(state => state.data.account)
-    const dispatch = useDispatch()
-
     const [search, setSearch] = useState('')
-
     const searchHandler = (e) => {
         const pattern = new RegExp('^[0-9]+$')
         const input = Number(e.target.value)
@@ -40,18 +38,25 @@ export default function Search() {
     }
 
     const onClickHandler = () => {
-        debugger
-        getStakeById(search, 0)
+        // debugger
+        // getStakeById(search, 0)
+        stakes(search)
         // dispatch(updateIndex(0))
         // dispatch(updateNftTokenIndex(0))
         // dispatch(goBack(currentToken - 0))
     }
 
+    useEffect(() => {
+   
+    }, [stakeInfo])
+
     return (
         <div className="search__container">
             <div className="claim">
-                <div className="claim__title">Staking Reward</div>
+            <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
+                { stakeInfo[5]==="0x0000000000000000000000000000000000000000" ? <div className="not-exist">token not exist</div>
+                :
                 <div className="claim__details">
                     <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
                     <ClaimAPY period={period} />
@@ -62,12 +67,13 @@ export default function Search() {
                     <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
                     <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
                 </div>
+                }
              </div>
              <div className="search">
                  <div className="search__title">Search</div>
                  <div className="line"></div>
                  <div className="nft__content">
-                    <div className="nft__widget"><Picture /></div>
+                    <div className="nft__widget"><Picture id={stakeInfo[1]}/></div>
                     <div className="search__box">
                         <input onChange={(item) => searchHandler(item)} type="search" placeholder="Search NFT By ID"/>
                     <div onClick={() => onClickHandler()} className="search__btn">Search</div>

@@ -41,3 +41,8 @@
     display: flex;
     justify-content: center;
 }
+
+.not-exist{
+    background-color: tomato;
+    max-width: 560px;
+}

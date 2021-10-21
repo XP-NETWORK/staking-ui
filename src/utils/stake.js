@@ -78,6 +78,7 @@ export const getAmountOfTokens = async (owner) => {
 }
 
 
+
 // Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
 export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
     let tokenArr = []
@@ -104,6 +105,7 @@ export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
 
 // Get token by id.
 export const getStakeById = async (id, index) => {
+    // console.log("getStakeById", id);
     const Contract = await stakeContract()
     try{
         const info = await Contract.methods.stakes(id).call()
@@ -119,13 +121,33 @@ export const getStakeById = async (id, index) => {
     }
 }
 
+export const stakes = async (id) => {
+    const Contract = await stakeContract()
+    try {
+        const nft = await Contract.methods.stakes(id).call()
+        console.log(nft);
+        store.dispatch(updateStakeInfo(Object.values(nft)))
+        store.dispatch(updateAmount(nft.amount))
+        store.dispatch(updateDuration(nft.lockInPeriod))
+        store.dispatch(updateStartTime(nft.startTime))
+        store.dispatch(updateNftTokenId(nft.nftTokenId))
+        // debugger
+        const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
+                    if(res) {
+                        // debugger
+                        const { image } = res.data
+                        store.dispatch(updateImage({ url: image, token:id }))
+                    }
 
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 export const showAvailableRewards = async (nftId) => {
     const Contract = await stakeContract()
     try{
     const available = await Contract.methods.showAvailableRewards(nftId).call()
-
     store.dispatch(updateAvailableRewards(available))
     return available
     }

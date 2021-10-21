@@ -6,15 +6,15 @@ import { initMetaMask } from '../../../../utils/metamask'
 
 
 
-export default function Picture({ art, i, id }) {
+export default function Picture({ id }) {
 
 
+    
     const img = useSelector(state => state.stakeData.image).filter(n => n.token === id)[0]
     let currImg
+    
     if(img){
-        // debugger
         currImg = img.url
-        // console.log("img id: ", img[i].id)
     }
     
     useEffect(() => {
