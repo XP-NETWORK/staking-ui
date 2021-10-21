@@ -77,3 +77,19 @@ margin-bottom: 10px;
     color: #f63131;
     font-size: 12px;
 }
+
+.btn-metamask{
+    padding: 10px 16px;
+    color: white;
+    background: #3180F6;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .btn-metamask{
+        visibility: hidden;
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Connect.css"
 import MetaMask from "../../assets/MetaMask_Big_Fox.svg"
-import walletconnect from "../../assets/walletconnect.svg"
+// import walletconnect from "../../assets/walletconnect.svg"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
 import { chengeStatus } from "../../redux/counterSlice"
@@ -38,7 +38,7 @@ export default function Connect() {
                     </div>
                     </>
                 }
-                <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
+                <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="btn-metamask">
                     Connect
                 </div>
                 { !ethereum ? <div className="required">MetaMask required</div> : null}
