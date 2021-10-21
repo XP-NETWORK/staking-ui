@@ -43,6 +43,8 @@
 }
 
 .not-exist{
-    background-color: tomato;
-    max-width: 560px;
+    /* background-color: tomato; */
+    width: 560px;
+    display: flex;
+    justify-content: center;
 }

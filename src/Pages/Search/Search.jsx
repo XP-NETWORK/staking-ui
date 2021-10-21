@@ -38,16 +38,12 @@ export default function Search() {
     }
 
     const onClickHandler = () => {
-        // debugger
-        // getStakeById(search, 0)
         stakes(search)
-        // dispatch(updateIndex(0))
-        // dispatch(updateNftTokenIndex(0))
-        // dispatch(goBack(currentToken - 0))
     }
 
+    const flag = stakeInfo[5]==="0x0000000000000000000000000000000000000000" ? true : false
+
     useEffect(() => {
-   
     }, [stakeInfo])
 
     return (
@@ -55,7 +51,10 @@ export default function Search() {
             <div className="claim">
             <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
-                { stakeInfo[5]==="0x0000000000000000000000000000000000000000" ? <div className="not-exist">token not exist</div>
+                { flag ? 
+                <div className="claim__details">
+                    <div className="not-exist">token not exist</div>
+                </div>
                 :
                 <div className="claim__details">
                     <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
@@ -73,7 +72,7 @@ export default function Search() {
                  <div className="search__title">Search</div>
                  <div className="line"></div>
                  <div className="nft__content">
-                    <div className="nft__widget"><Picture id={stakeInfo[1]}/></div>
+                    <div className="nft__widget"><Picture id={flag ? -1 : stakeInfo[1]}/></div>
                     <div className="search__box">
                         <input onChange={(item) => searchHandler(item)} type="search" placeholder="Search NFT By ID"/>
                     <div onClick={() => onClickHandler()} className="search__btn">Search</div>
