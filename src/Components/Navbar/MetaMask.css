@@ -10,50 +10,50 @@
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    padding: 0 16px;
+    padding: 0 10px;
 }
 
 .account{
-    width: 140px;
-
+    width: 70%;
 }
 
 .account__icon{
-  
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .account__icon canvas {
     border-radius: 25px;
-    margin-top: 4px;
-    margin-right: -4px;
+    margin: 2px;
     width: 18px;
     height: 18px;
+    
 }
+
 @media screen and (max-width: 600px) { 
     .metamask{
         position: unset;
         display: flex;
         order: 1;
         margin-left: 0px;
-        width: 25%;
+        width: 27%;
         margin-left: 0px;
         padding: 10.5px 6px;
         height: auto;
-        font-size: 14px;
+        /* font-size: 12px; */
+        font-size: calc(14px + 2 * ((100vw - 600px) / 600));
+
     }
 
-    .account__icon{
-        /* width: 16px; */
-        /* background-color: tomato; */
-    }
-
-    .account__icon canvas {
+ 
+    /* .account__icon canvas {
         border-radius: 25px;
         margin-top: 4px;
         margin-right: 10px;
         width: 16px;
         height: 16px;
-    }
+    } */
 }
 
 @media screen and (max-width: 425px) { 
@@ -62,8 +62,8 @@
         display: flex;
         order: -1;
         margin-left: 0px;
-        width: 50%;
-        padding: 10px 10px;
+        width: 30%;
+        padding: 10px 8px;
         height: auto;
     }
 

@@ -5,13 +5,11 @@ import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
 import MetaMask from "./MetaMask";
 
-
 export default function Navbar() {
     const location = useLocation();
     const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
     
-
     const showNav = () => {
         if(account){
             return(

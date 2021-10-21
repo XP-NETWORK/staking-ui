@@ -73,7 +73,7 @@ export const checkAllowence = async (owner) => {
             const Contract = await xpContract()
             const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
             if(parseInt(allowence)) store.dispatch(updateAllowence(allowence))
-            console.log("checkAllowence");
+            // console.log("checkAllowence");
         }
         catch(error){
             console.log(error)

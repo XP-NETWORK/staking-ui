@@ -28,6 +28,11 @@
         max-width: 600px;
         margin: 0 auto;
     }
+
+    .xp__logo{
+        width: 130px;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -54,14 +59,11 @@
         width: 25%;
         
     }
+/* 
+    .nav__buttons{
+        width: 40%;
+    } */
 
-
-}
-
-@media screen and (max-width: 1140px){
- .xp__logo{
-     width: 130px;
- }   
 }
 
 

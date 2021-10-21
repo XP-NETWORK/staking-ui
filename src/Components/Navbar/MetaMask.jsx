@@ -11,7 +11,7 @@ export default function MetaMask() {
     useEffect(() => {
 
         const list = document.querySelectorAll('.account__icon')
-        console.log(list)
+        // console.log(list)
         if(list){
             list.forEach((item, index) => {
                 let Icon = createIcon({ // All options are optional
@@ -23,7 +23,7 @@ export default function MetaMask() {
                 });
                 item.innerHTML = ''
                 item.appendChild(Icon)
-                console.log(item, index)
+                // console.log(item, index)
             })
         }
     }, [])
@@ -32,7 +32,7 @@ export default function MetaMask() {
     return (
         <div className="metamask">
             <div className="account">
-                {account.slice(0,6) + '...' + account.slice(38,46)}
+                {account.slice(0,3) + '...' + account.slice(38,46)}
             </div>
            <div className="account__icon"></div>
         </div>
