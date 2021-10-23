@@ -16,6 +16,7 @@ import ClaimButton from './Parts/ClaimButton/ClaimButton'
 import UnStakeButton from './Parts/UnStakeButton/UnStakeButton'
 import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
+import Total from "./Parts/Total/Total"
 
 export default function Claim() {
     const address = useSelector(state => state.data.account)
@@ -93,6 +94,7 @@ export default function Claim() {
                             <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
                             <ClaimAPY period={period} />
                             <ClaimReward />
+                            <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
                             <ClaimStart startTime={startTime} />
                             <End startTime={startTime} period={period} startDate={startDate} />
                             <ProgressBar period={period} startTime={startTime} />
