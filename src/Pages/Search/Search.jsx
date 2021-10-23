@@ -12,6 +12,7 @@ import { useSelector } from "react-redux"
 import "./Search.css"
 import Picture from '../Claim/Parts/Widget/Picture'
 import { getStakeById, stakes } from "../../utils/stake"
+import Total from '../Claim/Parts/Total/Total'
 // import { useDispatch } from 'react-redux'
 // import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 // import {  goBack } from "../../redux/counterSlice"
@@ -60,6 +61,7 @@ export default function Search() {
                     <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
                     <ClaimAPY period={period} />
                     <ClaimReward />
+                    <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
                     <ClaimStart startTime={startTime} />
                     <End startTime={startTime} period={period} startDate={startDate} />
                     <ProgressBar period={period} startTime={startTime} />
