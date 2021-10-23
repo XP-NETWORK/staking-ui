@@ -25,6 +25,10 @@ export const stakeSlice = createSlice({
         updateAmount(state, action){
              state.amount = action.payload
         },
+        updateWithdrawnAmount(state, action) {
+            console.log(action.payload, '1kl31kll')
+            state.rewardWithdrawn = action.payload
+        },
         updateDuration(state, action){
              state.duration = action.payload
         },
@@ -82,6 +86,7 @@ export const {
     updateIndex,
     updateWithdrawed,
     updateIsUnlocked,
+    updateWithdrawnAmount,
     updateImage
 } = stakeSlice.actions
 

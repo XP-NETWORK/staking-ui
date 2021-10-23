@@ -13,7 +13,7 @@ export default function Navbar() {
     const showNav = () => {
         if(account){
             return(
-            <>
+        <>
             <div className="navbar">
                 <div className="xp__logo">
                     <Link to='/stake'>

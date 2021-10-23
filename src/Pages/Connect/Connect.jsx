@@ -25,7 +25,7 @@ export default function Connect() {
                         <img src={MetaMask} alt="" />
                     </div>
                     <div className="connect__title">
-                        <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect</a></div>
+                        {/* <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect</a></div> */}
                     </div>
                     </>
                     :

@@ -13,6 +13,7 @@ import "./Search.css"
 import Picture from '../Claim/Parts/Widget/Picture'
 import { getStakeById, stakes } from "../../utils/stake"
 import Total from '../Claim/Parts/Total/Total'
+import Withdrawn from '../Claim/Parts/Withdrawn/Withdrawn'
 // import { useDispatch } from 'react-redux'
 // import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 // import {  goBack } from "../../redux/counterSlice"
@@ -25,6 +26,7 @@ export default function Search() {
     const startDate = useSelector(state => state.stakeData.startDate)
     const startTime = useSelector(state => state.stakeData.startTime)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
+    const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     // console.log("staker", stakeInfo[5])
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const address = useSelector(state => state.data.account)
@@ -46,6 +48,7 @@ export default function Search() {
 
     useEffect(() => {
     }, [stakeInfo])
+    console.log(useSelector(state => state.stakeData))
 
     return (
         <div className="search__container">
@@ -62,9 +65,10 @@ export default function Search() {
                     <ClaimAPY period={period} />
                     <ClaimReward />
                     <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
+                    <Withdrawn withdrawn={rewardWithdrawn} />
                     <ClaimStart startTime={startTime} />
                     <End startTime={startTime} period={period} startDate={startDate} />
-                    <ProgressBar period={period} startTime={startTime} />
+                    <ProgressBar period={period} startTime={startTime} startDate={startDate} />
                     <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
                     <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
                 </div>

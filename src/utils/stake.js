@@ -2,12 +2,14 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
+import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked, updateWithdrawnAmount } from "../redux/stakeSlice"
 import axios from "axios"
 
 
 
-export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
+export let stakeAddress =  
+// process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : 
+'0xbC9091bE033b276b7c2244495699491167C20037'
 const W3 = new Web3(window.ethereum)
 
 // Create staker smart contract.
@@ -131,6 +133,7 @@ export const stakes = async (id) => {
         store.dispatch(updateDuration(nft.lockInPeriod))
         store.dispatch(updateStartTime(nft.startTime))
         store.dispatch(updateNftTokenId(nft.nftTokenId))
+        store.dispatch(updateWithdrawnAmount(nft.rewardWithdrawn))
         // debugger
         const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
                     if(res) {

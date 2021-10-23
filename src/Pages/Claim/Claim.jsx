@@ -17,6 +17,7 @@ import UnStakeButton from './Parts/UnStakeButton/UnStakeButton'
 import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
 import Total from "./Parts/Total/Total"
+import Withdrawn from "./Parts/Withdrawn/Withdrawn"
 
 export default function Claim() {
     const address = useSelector(state => state.data.account)
@@ -30,7 +31,7 @@ export default function Claim() {
     const currentToken = useSelector(state => state.stakeData.index)
     const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
     const tokens = useSelector(state => state.stakeData.tokensAmount)
-
+    const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
 
@@ -83,7 +84,6 @@ export default function Claim() {
     useEffect(() => {
       
     }, [address])   
-
         if(tokensArr){
             return (
                 <div className="claim__container">
@@ -95,9 +95,10 @@ export default function Claim() {
                             <ClaimAPY period={period} />
                             <ClaimReward />
                             <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
+                            <Withdrawn withdrawn={rewardWithdrawn} />
                             <ClaimStart startTime={startTime} />
                             <End startTime={startTime} period={period} startDate={startDate} />
-                            <ProgressBar period={period} startTime={startTime} />
+                            <ProgressBar period={period} startTime={startTime} startDate={startDate} />
                             <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
                             <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
                         </div>
