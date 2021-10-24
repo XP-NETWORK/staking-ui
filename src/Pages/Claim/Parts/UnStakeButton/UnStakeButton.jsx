@@ -23,14 +23,4 @@ export default function UnStakeButton({ stakeInfo, address, stakerAddress }) {
         }
         else return <></>
     }
-
-    // if(stakerAddress === address){
-    //     return (
-    //         <div className="claim__button" onClick={()=> withrow(stakeInfo, address)}>
-    //             <img src={unlockWhite} alt="" />
-    //             <span>Un-Stake</span>
-    //         </div>
-    //         )
-    // }
-    // else return <></>
 }

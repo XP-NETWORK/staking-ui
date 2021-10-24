@@ -6,7 +6,7 @@ import { nf } from '../../../../utils/helper'
 export default function Total({ stakedAmountEther, period, startDate }) {
     const t = period / 60 / 60 / 24
     let total = parseInt(stakedAmountEther)
-    console.log(t, total)
+    // console.log(t, total)
     if(t === 90) total = total * 0.1125
     else if (t === 180) total = total * 0.3750
     else if(t === 270) total = total * 0.7500
