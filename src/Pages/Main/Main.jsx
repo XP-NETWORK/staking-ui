@@ -4,7 +4,7 @@ import Stake from "../../Pages/Stake/Stake"
 import Claim from "../../Pages/Claim/Claim"
 import Search from "../../Pages/Search/Search"
 import { useSelector } from 'react-redux'
-import Connect from '../Connect/Connect';
+import Connection from '../Connect/Conection';
 import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
 
@@ -17,7 +17,7 @@ export default function Main() {
     }, [loader])
 
     if(!account && !loader){
-        return <Connect />
+        return <Connection />
     }
     else if(!account && loader){
         return <Loader />

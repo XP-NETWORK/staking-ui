@@ -16,7 +16,8 @@ const initialState = {
     aproveLoader: false,
     lockLoader: false,
     picPositionX: 0,
-    search: false
+    search: false,
+    toggleConnection: ''
 }
 
 export const counterSlice = createSlice({
@@ -76,6 +77,9 @@ export const counterSlice = createSlice({
       },
       chengePositionX(state, action){
         state.picPositionX = action.payload
+      },
+      toggleConnection(state, action){
+        state.toggleConnection = action.payload
       }
     },
   })
@@ -99,7 +103,8 @@ export const {
   goForth,
   goBack,
   chengePositionX,
-  changeSearch
+  changeSearch,
+  toggleConnection
 } = counterSlice.actions
 
 export default counterSlice.reducer

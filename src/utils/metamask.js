@@ -16,7 +16,6 @@ export const connectMetaMask = function() {
 }
 
 export const initMetaMask = async () => {
-
     if(ethereum){
         if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
             accounts = await getAccounts()
