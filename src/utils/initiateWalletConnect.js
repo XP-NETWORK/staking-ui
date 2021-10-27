@@ -21,7 +21,6 @@ connector.on("connect", (error, payload) => {
   if (error) {
     throw error;
   }
-
   // Get provided accounts and chainId
   const { accounts, chainId } = payload.params[0];
 });

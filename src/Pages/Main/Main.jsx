@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 export default function Main() {
 
     const account = useSelector(state => state.data.account)
+    console.log("Main: ", account);
     const loader = useSelector(state => state.data.connected)
 
     useEffect(() => {

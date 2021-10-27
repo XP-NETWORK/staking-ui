@@ -4,34 +4,32 @@ import { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
-import { initMetaMask } from "../src/utils/metamask"
+
 import { toggleConnection, updateCurrentPrice, getActualTime, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { checkBalance, checkAllowence, logXPContract, checkProvider } from "../src/utils/xpnet"
+import { checkBalance, checkAllowence, logXPContract, schooseProvider } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
-import { connectMetaMask } from "./utils/metamask"
+
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import WalletConnect from "@walletconnect/client";
-import QRCodeModal from "@walletconnect/qrcode-modal";
+import { MoralisProvider, useMoralis } from "react-moralis";
 
 
 
 function App() {
-
+const { Moralis } = useMoralis();
+// const connection = useSelector(state => state.data.toggleConnection)
+// const { web3, Moralis, user } = useMoralis();
 const dispatch = useDispatch()
 let history = useHistory();
-const { ethereum } = window
+// const { ethereum } = window
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
 const location = useLocation();
 const connectionToggler = useSelector(state => state.data.toggleConnection)
 
-const connector = new WalletConnect({
-  bridge: "https://bridge.walletconnect.org", // Required
-  qrcodeModal: QRCodeModal,
-});
+
 
 const provider = new WalletConnectProvider({
   infuraId: "2a744e8fea924e1fbec4bc041e05dd00" 
@@ -42,9 +40,9 @@ const getCurrentPrice = async () => {
   dispatch(updateCurrentPrice(currentPrice))
 }
 
-const updateBalance = async () => {
-  await checkBalance(address)
-}
+// const updateBalance = async () => {
+//   await checkBalance(address)
+// }
 
 const doDate = () => {
     let str = moment().format('YYYY-MM-DD hh:mm')
@@ -76,12 +74,15 @@ const accountsChanged = () => {
 useEffect( () => {
   const getData = async () =>{
     if(address) {
-      await updateBalance()
+      await checkBalance(address)
       await checkAllowence(address)
       await getAmountOfTokens(address)
     }
   }
   getData()
+  provider.on("accountsChanged", accounts => {
+    console.log("useEffect account changed",accounts);
+  });
 }, [address])
 
 
@@ -101,37 +102,29 @@ useEffect(() => {
 
 
 
-useEffect(() => {
-  provider.on("accountsChanged", accounts => {
-    console.log("useEffect account changed",accounts);
-  });
-}, [address])
-
-
-
 
 useEffect(() => {
-  debugger
+  // debugger
   getCurrentPrice()
-  // initMetaMask()
-  // /////////////////
-  // logStakeContract()
-  // logXPContract()
-  // getWalletAccounts()
+  // // initMetaMask()
+  // // /////////////////
+  // // logStakeContract()
+  // // logXPContract()
+  // // getWalletAccounts()
   
-  if (connector.connected) {
-    dispatch(toggleConnection("WalletConnect"))
-  }
-  else if(typeof ethereum !== 'undefined' && ethereum.isMetaMask){
-    checkBalance()
-    accountsChanged()
-    initMetaMask()
-    connectMetaMask()
-    dispatch(toggleConnection("MetaMask"))
-  }
-  else{
-    console.log("sdijfhgsdikjfhsidfhskjfhsdkjdgf");
-  }
+  // if (connector.connected) {
+  //   dispatch(toggleConnection("WalletConnect"))
+  // }
+  // else if(typeof ethereum !== 'undefined' && ethereum.isMetaMask){
+  //   checkBalance()
+  //   accountsChanged()
+  //   initMetaMask()
+  //   connectMetaMask()
+    
+  // }
+  // else{
+  //   console.log("sdijfhgsdikjfhsidfhskjfhsdkjdgf");
+  // }
 }, [])
 
 
@@ -141,19 +134,24 @@ useEffect(() => {
 
 
 useEffect(() => {
-  debugger
+  // debugger
   if (connectionToggler === 'MetaMask'){
-   console.log('Go with MetaMask')
-    getCurrentPrice()
+  //  console.log('Go with MetaMask')
+    // getCurrentPrice()
     checkBalance()
     accountsChanged()
     logStakeContract()
     logXPContract()
+    schooseProvider("MetaMask")
   }
   else if(connectionToggler === "WalletConnect"){
-   console.log("Go with WalletConnect");
+  //  console.log("Go with WalletConnect");
+   getCurrentPrice()
+   schooseProvider("WalletConnect")
+  //  logStakeContract()
+  //  logXPContract()
   }else{
-    console.log("sdijfhgsdikjfhsidfhskjfhsdkjdgf");
+    
   }
  
 }, [connectionToggler])
@@ -174,8 +172,10 @@ useEffect(() => {
 
   return (
     <div className="app__wraper">
-      <Navbar />
-      <Main />
+      {/* <MoralisProvider appId="juLf4FWikUo0NFgsKNzp2KPUKLbjuuhutf57r0f7" serverUrl="https://sukpptp3mu22.usemoralis.com:2053/server"> */}
+        <Navbar />
+        <Main />
+      {/* </MoralisProvider> */}
     </div>
   );
 }

@@ -7,9 +7,9 @@ import axios from "axios"
 
 
 
-export let stakeAddress =  
+export let stakeAddress = '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4'
 // process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : 
-'0xbC9091bE033b276b7c2244495699491167C20037'
+// '0xbC9091bE033b276b7c2244495699491167C20037'
 const W3 = new Web3(window.ethereum)
 
 // Create staker smart contract.
@@ -65,6 +65,7 @@ export const stake = async (amount, duration, account, history) => {
 
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner) => {
+    console.log("getAmountOfTokens: ", owner);
     const Contract = await stakeContract()
     if(owner){
         try{
