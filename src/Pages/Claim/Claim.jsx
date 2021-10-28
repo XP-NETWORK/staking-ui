@@ -18,6 +18,7 @@ import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
 import Total from "./Parts/Total/Total"
 import Withdrawn from "./Parts/Withdrawn/Withdrawn"
+import { useMoralis } from "react-moralis";
 
 export default function Claim() {
     const address = useSelector(state => state.data.account)
@@ -34,17 +35,19 @@ export default function Claim() {
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     let history = useHistory();
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
+    const connectionToggler = useSelector(state => state.data.toggleConnection)
+    const { Moralis } = useMoralis();
 
     useEffect(async () => {
 
-        await getAmountOfTokens(address)
-        await tokenOfOwnerByIndex(tokens, address)
+        await getAmountOfTokens(address, Moralis, connectionToggler)
+        await tokenOfOwnerByIndex(tokens, address, Moralis, connectionToggler)
     }, [])
 
     useEffect(() => {
         // console.log("useEffect tokens: ", tokens);
         const getData = async () =>{
-            await tokenOfOwnerByIndex(tokens, address)
+            await tokenOfOwnerByIndex(tokens, address, Moralis, connectionToggler)
         }
         getData()
     },[tokensFlag, tokens, address])

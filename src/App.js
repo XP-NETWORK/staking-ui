@@ -13,7 +13,7 @@ import moment from 'moment';
 import axios from 'axios';
 
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { MoralisProvider, useMoralis } from "react-moralis";
+import { useMoralis } from "react-moralis";
 
 
 
@@ -54,7 +54,7 @@ function App() {
   const accountsChanged = () => {
     const getTokens = async (add) => {
       try {
-        await getAmountOfTokens(add)
+        await getAmountOfTokens(add, Moralis, connectionToggler)
       } catch (error) {
         console.log(error);
       }
@@ -66,7 +66,7 @@ function App() {
     // alert(accounts)
       if (accounts.length > 0) {
         dispatch(updateAccount(accounts[0]))
-        await getTokens(accounts[0])
+        await getTokens(accounts[0],Moralis, connectionToggler)
       }
     });
   }
@@ -91,7 +91,7 @@ function App() {
   useEffect(() => {
     if(location.pathname !== "/search"){
       if(parseInt(tokens) > 0){
-      tokenOfOwnerByIndex(tokens, address)
+      tokenOfOwnerByIndex(tokens, address, Moralis, connectionToggler)
     }
     else{
       history.push('/stake')

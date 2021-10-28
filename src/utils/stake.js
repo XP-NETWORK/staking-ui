@@ -18,8 +18,8 @@ const W3 = new Web3(window.ethereum)
 
 // ! GENERATE CONTRACT FOR FUNCTIONS.
 const giveMeContract = async (Moralis, provider) => {
-    console.log(Moralis);
-    debugger
+
+    // debugger
     let Contract
     if(provider === "MetaMask"){
         const web3 = await Moralis.enableWeb3();
@@ -53,7 +53,7 @@ const stakeContract = async () => {
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account, history, Moralis, connection) => {
-
+    debugger
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
     if(duration!==12){
@@ -87,6 +87,7 @@ export const stake = async (amount, duration, account, history, Moralis, connect
 
 // Take owner addres and get amount of tokens on owner. APP
 export const getAmountOfTokens = async (owner, Moralis, connection) => {
+    debugger
     console.log("getAmountOfTokens: ", owner);
     const Contract = await giveMeContract(Moralis, connection)
     if(owner){
