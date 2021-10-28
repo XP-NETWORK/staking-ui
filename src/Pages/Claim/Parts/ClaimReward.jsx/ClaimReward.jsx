@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { nf } from '../../../../utils/helper'
 import Web3 from "web3"
 import { showAvailableRewards } from "../../../../utils/stake"
+import { useMoralis } from "react-moralis";
 
 export default function ClaimReward() {
     const stakeInfo = useSelector(state => state.data.stakeInfo)
@@ -10,6 +11,8 @@ export default function ClaimReward() {
     const rewards = Web3.utils.fromWei(rewardsWai, 'ether');
     const [int, setInt] = useState()
     const currentToken = useSelector(state => state.stakeData.index)
+    const connectionToggler = useSelector(state => state.data.toggleConnection)
+    const { Moralis } = useMoralis();
 
     useEffect(() => {
         if(int){clearInterval(int)}
@@ -18,7 +21,7 @@ export default function ClaimReward() {
     useEffect(() => {
         if(int){clearInterval(int)}
         const getData = async () => {
-            await showAvailableRewards(stakeInfo[1])
+            await showAvailableRewards(stakeInfo[1], Moralis, connectionToggler)
         }
         if(stakeInfo){
         const interval = setInterval(async() => {

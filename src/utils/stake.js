@@ -147,8 +147,8 @@ export const getStakeById = async (id, index, Moralis, connection) => {
     }
 }
 
-export const stakes = async (id) => {
-    const Contract = await stakeContract()
+export const stakes = async (id, Moralis, connection) => {
+    const Contract = await giveMeContract(Moralis, connection)
     try {
         const nft = await Contract.methods.stakes(id).call()
         console.log(nft);
@@ -171,8 +171,8 @@ export const stakes = async (id) => {
     }
 }
 
-export const showAvailableRewards = async (nftId) => {
-    const Contract = await stakeContract()
+export const showAvailableRewards = async (nftId, Moralis, connection) => {
+    const Contract = await giveMeContract(Moralis, connection)
     try{
     const available = await Contract.methods.showAvailableRewards(nftId).call()
     store.dispatch(updateAvailableRewards(available))

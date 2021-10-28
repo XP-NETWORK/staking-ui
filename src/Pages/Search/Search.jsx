@@ -14,6 +14,7 @@ import Picture from '../Claim/Parts/Widget/Picture'
 import { getStakeById, stakes } from "../../utils/stake"
 import Total from '../Claim/Parts/Total/Total'
 import Withdrawn from '../Claim/Parts/Withdrawn/Withdrawn'
+import { useMoralis } from "react-moralis";
 // import { useDispatch } from 'react-redux'
 // import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 // import {  goBack } from "../../redux/counterSlice"
@@ -31,6 +32,8 @@ export default function Search() {
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const address = useSelector(state => state.data.account)
     const [search, setSearch] = useState('')
+    const connectionToggler = useSelector(state => state.data.toggleConnection)
+    const { Moralis } = useMoralis();
     const searchHandler = (e) => {
         const pattern = new RegExp('^[0-9]+$')
         const input = Number(e.target.value)
@@ -41,7 +44,7 @@ export default function Search() {
     }
 
     const onClickHandler = () => {
-        stakes(search)
+        stakes(search, Moralis, connectionToggler)
     }
 
     const flag = stakeInfo[5]==="0x0000000000000000000000000000000000000000" ? true : false
