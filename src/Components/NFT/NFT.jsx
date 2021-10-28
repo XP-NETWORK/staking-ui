@@ -4,6 +4,7 @@ import { getStakeById } from "../../utils/stake"
 import { useSelector, useDispatch } from 'react-redux'
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import {  goBack } from "../../redux/counterSlice"
+import { useMoralis } from "react-moralis";
 
 export default function NFT({ tokenID, i }) {
     const dispatch = useDispatch()
@@ -11,10 +12,11 @@ export default function NFT({ tokenID, i }) {
     const nftTokenId = useSelector(state => state.stakeData.nftTokenId)
     const currentToken = useSelector(state => state.stakeData.nftTokenIndex)
     const img = useSelector(state => state.stakeData.image).filter(n => n.token === tokenID)[0]
-
+    const connectionToggler = useSelector(state => state.data.toggleConnection)
+    const { Moralis } = useMoralis();
 
     const onClickHandler = () => {
-        getStakeById(tokenID, i)
+        getStakeById(tokenID, i, Moralis, connectionToggler)
         dispatch(updateIndex(i))
         dispatch(updateNftTokenIndex(i))
         dispatch(goBack(currentToken - i))

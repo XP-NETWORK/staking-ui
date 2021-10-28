@@ -130,9 +130,9 @@ export const tokenOfOwnerByIndex = async (tokenAmount, owner, Moralis, connectio
 }
 
 // Get token by id.
-export const getStakeById = async (id, index) => {
+export const getStakeById = async (id, index, Moralis, connection) => {
     // console.log("getStakeById", id);
-    const Contract = await stakeContract()
+    const Contract = await giveMeContract(Moralis, connection)
     try{
         const info = await Contract.methods.stakes(id).call()
         store.dispatch(updateNftTokenIndex(index))
