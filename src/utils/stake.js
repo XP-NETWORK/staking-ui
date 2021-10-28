@@ -7,10 +7,32 @@ import axios from "axios"
 
 
 
+
+
+
+
 export let stakeAddress = '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4'
 // process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : 
 // '0xbC9091bE033b276b7c2244495699491167C20037'
 const W3 = new Web3(window.ethereum)
+
+// ! GENERATE CONTRACT FOR FUNCTIONS.
+const giveMeContract = async (Moralis, provider) => {
+    console.log(Moralis);
+    debugger
+    let Contract
+    if(provider === "MetaMask"){
+        const web3 = await Moralis.enableWeb3();
+        Contract = new web3.eth.Contract(stakeABI, stakeAddress);
+    }
+    else if(provider === "WalletConnect"){
+        const web3 = await Moralis.enableWeb3({ provider: "walletconnect" });
+        Contract = new web3.eth.Contract(stakeABI, stakeAddress);
+    }
+    return Contract
+}
+
+
 
 // Create staker smart contract.
 const stakeContract = async () => {
@@ -24,13 +46,13 @@ const stakeContract = async () => {
 }
 
 // Log the contract.
-export const logStakeContract = async () => {
-    const Contract = await stakeContract()
-    console.log(Contract)
-    }
+// export const logStakeContract = async () => {
+//     const Contract = await stakeContract()
+//     console.log(Contract)
+//     }
 
 // Lock the XPNet.
-export const stake = async (amount, duration, account, history) => {
+export const stake = async (amount, duration, account, history, Moralis, connection) => {
 
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
@@ -42,7 +64,7 @@ export const stake = async (amount, duration, account, history) => {
     }
     try{
         store.dispatch(updateAproveLockLoader(true))
-        const Contract = await stakeContract()
+        const Contract = await giveMeContract(Moralis, connection)
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
             console.log("stake: ", receipt);
@@ -64,9 +86,9 @@ export const stake = async (amount, duration, account, history) => {
 }
 
 // Take owner addres and get amount of tokens on owner. APP
-export const getAmountOfTokens = async (owner) => {
+export const getAmountOfTokens = async (owner, Moralis, connection) => {
     console.log("getAmountOfTokens: ", owner);
-    const Contract = await stakeContract()
+    const Contract = await giveMeContract(Moralis, connection)
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
@@ -83,11 +105,11 @@ export const getAmountOfTokens = async (owner) => {
 
 
 // Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
-export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
+export const tokenOfOwnerByIndex = async (tokenAmount, owner, Moralis, connection) => {
     let tokenArr = []
         if(parseInt(tokenAmount)){
             const num = tokenAmount
-            const Contract = await stakeContract()
+            const Contract = await giveMeContract(Moralis, connection)
             for (let i = 0; i < num; i++) {
                 try{
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()

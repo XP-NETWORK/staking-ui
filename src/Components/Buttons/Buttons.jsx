@@ -38,10 +38,11 @@ export function Lock({ approvance, duration, account}){
     const agreement = useSelector(state => state.data.agreement)
     const amount = useSelector(state => state.data.stakingAmount)
     const history = useHistory()
+    const connection = useSelector(state => state.data.toggleConnection)
     const { Moralis } = useMoralis();
     if(approvance && agreement && amount >= 1500){
         return (
-            <div onClick={() => stake(amount, (duration === 1 ? 12 : duration), account, history)} className={ !lockloader ? "summary__button button" : "summary__button loading button"}>
+            <div onClick={() => stake(amount, (duration === 1 ? 12 : duration), account, history, Moralis, connection)} className={ !lockloader ? "summary__button button" : "summary__button loading button"}>
                 {lockloader ? <ButtonLoader /> : <><img src={lockWhite} alt=""/><span>Stake</span></>}
             </div>)
     }
