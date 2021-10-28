@@ -39,7 +39,6 @@ export default function Claim() {
     const { Moralis } = useMoralis();
 
     useEffect(async () => {
-
         await getAmountOfTokens(address, Moralis, connectionToggler)
         await tokenOfOwnerByIndex(tokens, address, Moralis, connectionToggler)
     }, [])
