@@ -8,9 +8,11 @@ import { useSelector } from 'react-redux'
 import Connection from '../Connect/Conection';
 import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import { useMoralis } from "react-moralis";
 
 export default function Main() {
-
+    const { authenticate, isAuthenticated, user, logout, Moralis } = useMoralis();
     const account = useSelector(state => state.data.account)
     console.log("Main: ", account);
     const loader = useSelector(state => state.data.connected)

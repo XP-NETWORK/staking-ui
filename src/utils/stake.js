@@ -29,6 +29,7 @@ const giveMeContract = async (Moralis, provider) => {
         const web3 = await Moralis.enableWeb3({ provider: "walletconnect" });
         Contract = new web3.eth.Contract(stakeABI, stakeAddress);
     }
+    console.log(Contract);
     return Contract
 }
 
