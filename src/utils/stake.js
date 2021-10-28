@@ -202,10 +202,10 @@ export const claimXpNet = async (nftId,rewards, account, Moralis, connection) =>
 }
 
 // Withdrow token and rewards. 
-export const withrow = async ( nftId, adress ) => {
-    const Contract = await stakeContract()
+export const withrow = async ( nftId, address, Moralis, connection ) => {
+    const Contract = await giveMeContract(Moralis, connection)
     try{
-        const result = await Contract.methods.withdraw(nftId).send({from:adress})
+        const result = await Contract.methods.withdraw(nftId).send({from:address})
     }
     catch(error){
         console.log(error)
@@ -213,8 +213,8 @@ export const withrow = async ( nftId, adress ) => {
 } 
 
 
-export const checkIsUnLocked = async (id) => {
-    const Contract = await stakeContract()
+export const checkIsUnLocked = async (id, Moralis, connection ) => {
+    const Contract = await giveMeContract(Moralis, connection )
     try{
         const isUnlocked = await Contract.methods.checkIsUnlocked(id).call()
         store.dispatch(updateIsUnlocked(isUnlocked))

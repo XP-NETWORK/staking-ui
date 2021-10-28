@@ -62,7 +62,7 @@ export default function Claim() {
     useEffect(() => {
         const getData = async () => {
             await getStakeById(tokensArr[currentToken], currentToken, Moralis, connectionToggler)
-            await checkIsUnLocked(currentToken)
+            await checkIsUnLocked(currentToken, Moralis, connectionToggler)
         }
         if(!address){
             history.push("/stake")

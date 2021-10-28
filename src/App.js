@@ -89,7 +89,7 @@ function App() {
 
 
   useEffect(() => {
-    if(location.pathname !== "/search"){
+    if(location.pathname !== "/search" && location.pathname !== "/gallery"){
       if(parseInt(tokens) > 0){
       tokenOfOwnerByIndex(tokens, address, Moralis, connectionToggler)
     }
