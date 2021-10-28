@@ -184,9 +184,9 @@ export const showAvailableRewards = async (nftId, Moralis, connection) => {
 }
 
 // Claim the rewards of chosen token.
-export const claimXpNet = async (nftId,rewards, account) => {
+export const claimXpNet = async (nftId,rewards, account, Moralis, connection) => {
     // store.dispatch(updateWithdrawed(true))
-    const Contract = await stakeContract()
+    const Contract = await giveMeContract(Moralis, connection)
     try{
         await Contract.methods.withdrawRewards(nftId, rewards).send({from:account})
         .once('receipt', () => {

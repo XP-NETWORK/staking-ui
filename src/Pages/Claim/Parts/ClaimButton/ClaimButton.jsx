@@ -5,13 +5,16 @@ import ButtonLoader from '../../../../Components/Loader/ButtonLoader'
 import { updateWithdrawed } from "../../../../redux/stakeSlice"
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
+import { useMoralis } from "react-moralis";
 
 export default function ClaimButton({ stakeInfo, rewardsWai, address }) {
     const dispatch = useDispatch()
     const history = useHistory()
+    const { Moralis } = useMoralis();
+    const connectionToggler = useSelector(state => state.data.toggleConnection)
     const loader = useSelector(state => state.stakeData.withdrawed)
     const claimHandler = () => {
-        claimXpNet(stakeInfo, rewardsWai, address)
+        claimXpNet(stakeInfo, rewardsWai, address, Moralis, connectionToggler)
         dispatch(updateWithdrawed(true))
     }
 
