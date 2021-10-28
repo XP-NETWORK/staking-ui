@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Gallery.css"
 import  magnifier  from "../../assets/magnifier.svg"
 import NFTBox from './NFTBox'
 import { useSelector } from 'react-redux'
-
+import { useMoralis } from "react-moralis";
+import { totalSupply } from "../../utils/stake"
 
 export default function Gallery() {
 
     const image = useSelector(state => state.stakeData.image)
+    const connectionToggler = useSelector(state => state.data.toggleConnection)
+    const { Moralis } = useMoralis();
+
+    useEffect(() => {
+        totalSupply(Moralis, connectionToggler)
+    }, [])
 
     console.log("tokens: ", image)
     const showGallery = () => {

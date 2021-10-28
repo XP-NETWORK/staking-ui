@@ -224,3 +224,17 @@ export const checkIsUnLocked = async (id, Moralis, connection ) => {
         console.log(error)
     }
 }
+
+export const totalSupply = async ( Moralis, connection ) => {
+    debugger
+    const Contract = await giveMeContract(Moralis, connection)
+    try {
+        const allNFTs = await Contract.methods.totalSupply().call()
+        for (let i = 0; i < Number(allNFTs-1); i++) {
+            stakes(i, Moralis, connection)
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
