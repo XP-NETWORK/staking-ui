@@ -2,14 +2,16 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
+import { updateCollection } from "../redux/totalSupply"
 import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked, updateWithdrawnAmount } from "../redux/stakeSlice"
 import axios from "axios"
+import { id } from "@ethersproject/hash"
 
 
 
 
 
-
+// BSC 0x2Ddf125D8f8300F221B3552be65E0DeE9c05515B
 
 export let stakeAddress = '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4'
 // process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : 
@@ -164,7 +166,7 @@ export const stakes = async (id, Moralis, connection) => {
                     if(res) {
                         // debugger
                         const { image } = res.data
-                        store.dispatch(updateImage({ url: image, token:id }))
+                        store.dispatch(updateImage({ url: image, token: id}))
                     }
 
     } catch (error) {
@@ -231,7 +233,13 @@ export const totalSupply = async ( Moralis, connection ) => {
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
         for (let i = 0; i < Number(allNFTs-1); i++) {
-            stakes(i, Moralis, connection)
+            const nft = await Contract.methods.stakes(i).call()
+            const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${i}/image`)
+            if(res) {
+                // debugger
+                const { image } = res.data
+                store.dispatch(updateCollection({url: image, token: i, staker: nft[5]}))
+            }
         }
 
     } catch (error) {

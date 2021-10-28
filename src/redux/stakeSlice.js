@@ -66,8 +66,7 @@ export const stakeSlice = createSlice({
             state.isUnlocked = action.payload
         },
         updateImage(state, action){
-
-            state.image = [...new Map([...state.image, action.payload].map(item =>[item['token'], item])).values()]
+            state.image = [...new Map([...state.image, action.payload].map(item =>[item['token'], item, item['staker']])).values()]
         }
     },
   })

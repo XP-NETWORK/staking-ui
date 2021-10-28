@@ -24,9 +24,11 @@ export default function Conection() {
         }
         else{
             dispatch(toggleConnection("WalletConnect"))
-            authenticate({ provider: "walletconnect" }).then(()=>{
-                dispatch(updateAccount(user.attributes.accounts[0]))
-            })
+            if(authenticate){
+                authenticate({ provider: "walletconnect" }).then(()=>{
+                    dispatch(updateAccount(user.attributes.accounts[0]))
+                })
+            }
         }
     }
 

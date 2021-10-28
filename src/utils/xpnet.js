@@ -8,6 +8,8 @@ import WalletConnectProvider from "@walletconnect/web3-provider"
 const supportedChainIds = [
     3, // ropsten
 ]
+
+// 0x935d4d785166262000AFea0AAe0029A68b5b982F
 export let xpAddress = "0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C"
 // process.env.NODE_ENV === "development" ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : 
 // "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"

@@ -38,10 +38,15 @@
 
 .gallery__container{
    /* background-color: tomato; */
+   padding-top: 10px;
+   padding-left: 6px;
    margin-top: 39px;
    display: flex;
    flex-wrap: wrap;
-   gap: 24px;
+   gap: 18px;
+   height: 600px !important;
+   overflow: auto;
+
 }
 
 .nft__box{
@@ -71,4 +76,7 @@
 .nft__add{
     background-color: #fff;
     height: 100%;
+    display: flex;
+    padding-left: 16px;
+    padding-top: 16px;
 }
