@@ -62,10 +62,33 @@ export default function Gallery() {
     // console.log("tokens: ", collection)
     const showGallery = () => {
         console.log(search);
+        console.log(collection);
+
+        
+
+        // if(filterFlag){
+        
+        //     const nft = collection.find(item => {
+        //         console.log(item.token, typeof item.token);
+        //     })
+        //     console.log(nft);
+            
+        // }
+
+
+
+
+
+
+
+
+
+
+
         if(filterFlag){
             debugger
-            collection.filter(item => item.token === search).map(item => { return (
-                <NFTBox url={item.url} key={item.token} tokenID={item.token} staker={item.staker}/>
+            return collection.filter(item => item.token === Number(search)).map(item => { return (
+                <NFTBox url={item.url} key={item.token} tokenID={item.token} staker={ item.staker}/>
             )})
             
             // return filteredCollection.map( (item, index) => {

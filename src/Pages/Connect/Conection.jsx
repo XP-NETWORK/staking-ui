@@ -18,9 +18,11 @@ export default function Conection() {
     const connectionHandler =  async str  => {
         if(str === "MetaMask"){
             dispatch(toggleConnection("MetaMask"))
-            authenticate().then(()=>{
-                dispatch(updateAccount(user.attributes.accounts[0]))
-            })
+                console.log(authenticate);
+                authenticate().then(()=>{
+                    dispatch(updateAccount(user.attributes.accounts[0]))
+                })
+            
         }
         else{
             dispatch(toggleConnection("WalletConnect"))
