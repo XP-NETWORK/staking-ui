@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import Connect from '../Connect/Connect';
 import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
+import Gallery from "../Gallery/Gallery"
 
 export default function Main() {
 
@@ -27,6 +28,7 @@ export default function Main() {
                 <Route component={Stake} exact path="/"></Route>
                 <Route component={Stake} path="/stake"></Route>
                 <Route component={Claim} path="/claim"></Route>
+                <Route component={Gallery} path="/gallery"></Route>
             </Switch>
             )
     }
