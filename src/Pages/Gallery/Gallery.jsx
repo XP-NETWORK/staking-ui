@@ -15,7 +15,7 @@ export default function Gallery() {
     const collection = useSelector(state => state.totalSupply.collection)
     const connectionToggler = useSelector(state => state.data.toggleConnection)
     const { Moralis } = useMoralis();
-    const [endLoad, setAndLoad] = useState(18)
+    const [endLoad, setEndLoad] = useState(18)
     const [search, setSearch] = useState('')
     const [filterFlag, setFilterFlag] = useState(false)
 
@@ -28,7 +28,7 @@ export default function Gallery() {
         }
         if (element.scrollHeight - element.scrollTop < element.clientHeight + 10 ) {
           setGoingUp(true);
-          setAndLoad(prev => prev+12)
+          setEndLoad(prev => prev+12)
         }
         ref.current = currentScrollY;
       };
@@ -59,41 +59,12 @@ export default function Gallery() {
         }
     }
 
-    // console.log("tokens: ", collection)
     const showGallery = () => {
-        console.log(search);
-        console.log(collection);
-
-        
-
-        // if(filterFlag){
-        
-        //     const nft = collection.find(item => {
-        //         console.log(item.token, typeof item.token);
-        //     })
-        //     console.log(nft);
-            
-        // }
-
-
-
-
-
-
-
-
-
-
-
-        if(filterFlag){
+        if(filterFlag && search !== ""){
             debugger
             return collection.filter(item => item.token === Number(search)).map(item => { return (
                 <NFTBox url={item.url} key={item.token} tokenID={item.token} staker={ item.staker}/>
             )})
-            
-            // return filteredCollection.map( (item, index) => {
-            //     return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
-            // })
         }
         else if(collection.length > 0){ 
         const newCollection = collection.slice(0, endLoad)

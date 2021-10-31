@@ -152,10 +152,8 @@ function App() {
 
     return (
       <div className="app__wraper">
-        {/* <MoralisProvider appId="juLf4FWikUo0NFgsKNzp2KPUKLbjuuhutf57r0f7" serverUrl="https://sukpptp3mu22.usemoralis.com:2053/server"> */}
           <Navbar />
           <Main />
-        {/* </MoralisProvider> */}
       </div>
     );
 }

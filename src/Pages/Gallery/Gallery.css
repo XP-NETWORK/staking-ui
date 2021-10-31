@@ -38,6 +38,7 @@
 
 .gallery__container{
    /* background-color: tomato; */
+   min-width: 200px;
    padding-top: 10px;
    padding-left: 6px;
    margin-top: 39px;
