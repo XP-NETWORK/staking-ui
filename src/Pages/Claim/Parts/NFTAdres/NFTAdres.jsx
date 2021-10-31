@@ -4,7 +4,7 @@ import pages from "../../../../assets/pages.png"
 
 
 export default function NFTAdres(props) {
-    const {currentToken} = props
+    const { currentToken } = props
 
     const copyTextToClipboard = async() => {
         if ('clipboard' in navigator) {

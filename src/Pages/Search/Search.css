@@ -7,6 +7,7 @@
 
 .search{
     background: #FFFFFF;
+    width: 486px;
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
@@ -23,28 +24,20 @@
     font-size: 24px;
     line-height: 126%;
 }
-
-.search__box input {
-    outline: none;
-    margin: 10px;
-
+.nft__content{
+    max-width: calc(100% - 20px);
+    margin: 0 auto;
+    height: 100%;
+    
+    /* overflow: hidden; */
 }
 
-.search__btn{
-    padding: 10px 16px;
-    margin: 0 10px;
-    color: white;
-    background: #3180F6;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-bottom: 10px;
+.nft__pic{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.not-exist{
-    /* background-color: tomato; */
-    width: 560px;
-    display: flex;
-    justify-content: center;
+.nft__pic img{
+    width: 70%;
 }

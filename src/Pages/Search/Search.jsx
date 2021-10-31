@@ -10,14 +10,13 @@ import ClaimButton from '../Claim/Parts/ClaimButton/ClaimButton'
 import UnStakeButton from '../Claim/Parts/UnStakeButton/UnStakeButton'
 import { useSelector } from "react-redux"
 import "./Search.css"
-import Picture from '../Claim/Parts/Widget/Picture'
-import { getStakeById, stakes } from "../../utils/stake"
+import { stakes } from "../../utils/stake"
 import Total from '../Claim/Parts/Total/Total'
 import Withdrawn from '../Claim/Parts/Withdrawn/Withdrawn'
 import { useMoralis } from "react-moralis";
-// import { useDispatch } from 'react-redux'
-// import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
-// import {  goBack } from "../../redux/counterSlice"
+import { totalSupplay } from '../../redux/totalSupply'
+import NFTAdres from '../Claim/Parts/NFTAdres/NFTAdres'
+
 
 export default function Search() {
 
@@ -25,15 +24,26 @@ export default function Search() {
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     const period = useSelector(state => state.stakeData.duration)
     const startDate = useSelector(state => state.stakeData.startDate)
+    console.log(startDate);
     const startTime = useSelector(state => state.stakeData.startTime)
-    const stakeInfo = useSelector(state => state.data.stakeInfo)
+    console.log(startTime);
+    const selected = useSelector(state => state.totalSupply.selectedNFT)
+    const collection = useSelector(state => state.totalSupply.collection)
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
-    // console.log("staker", stakeInfo[5])
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const address = useSelector(state => state.data.account)
     const [search, setSearch] = useState('')
     const connectionToggler = useSelector(state => state.data.toggleConnection)
+    // const params = useSelector(state => state.totalSupplay.params)
     const { Moralis } = useMoralis();
+
+    
+    const nft = collection[Number(selected)].url
+    const nftID = collection[Number(selected)].token
+    const staker = collection[Number(selected)].staker
+    // console.log(nft[0].url);
+    // {if(item.token === Number(selected)){return item.url}}
+
     const searchHandler = (e) => {
         const pattern = new RegExp('^[0-9]+$')
         const input = Number(e.target.value)
@@ -43,26 +53,21 @@ export default function Search() {
         }
     }
 
-    const onClickHandler = () => {
-        stakes(search, Moralis, connectionToggler)
-    }
 
-    const flag = stakeInfo[5]==="0x0000000000000000000000000000000000000000" ? true : false
-
-    useEffect(() => {
-    }, [stakeInfo])
-    console.log(useSelector(state => state.stakeData))
+    // const nftFromCollection = () => {
+    //     const nft = collection.filter(item => {
+    //         if(item.token === Number(selected)){
+    //             return item.url
+    //         }
+    //     })
+    // }
 
     return (
         <div className="search__container">
             <div className="claim">
             <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
-                { flag ? 
-                <div className="claim__details">
-                    <div className="not-exist">token not exist</div>
-                </div>
-                :
+                
                 <div className="claim__details">
                     <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
                     <ClaimAPY period={period} />
@@ -72,20 +77,20 @@ export default function Search() {
                     <ClaimStart startTime={startTime} />
                     <End startTime={startTime} period={period} startDate={startDate} />
                     <ProgressBar period={period} startTime={startTime} startDate={startDate} />
-                    <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
-                    <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
+                    <ClaimButton stakeInfo={selected} rewardsWai={rewardsWai} address={address} />
+                    <UnStakeButton stakeInfo={selected} address={address} stakerAddress={toString(selected)} />
                 </div>
-                }
+            
              </div>
              <div className="search">
-                 <div className="search__title">Search</div>
+                 <div className="search__title">NFT #10</div>
                  <div className="line"></div>
                  <div className="nft__content">
-                    <div className="nft__widget"><Picture id={flag ? -1 : stakeInfo[1]}/></div>
-                    <div className="search__box">
-                        <input onChange={(item) => searchHandler(item)} type="search" placeholder="Search NFT By ID"/>
-                    <div onClick={() => onClickHandler()} className="search__btn">Search</div>
-                 </div>
+                    <div className="nft__pic">
+                        <img src={nft} alt={`NFT#${nftID}`} />
+                        {/* <NFTAdres currentToken={nftID ? nftID : null} /> */}
+                        {/* <div className="staker">{nftID}</div> */}
+                    </div>
                  </div>
              </div>
         </div>

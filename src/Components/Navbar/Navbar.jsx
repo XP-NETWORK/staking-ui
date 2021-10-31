@@ -4,14 +4,24 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
 import MetaMask from "./MetaMask";
+import { useMoralis } from "react-moralis";
 
 export default function Navbar() {
     const location = useLocation();
     const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
+    const {
+        authenticate,
+        isWeb3Enabled,
+        isAuthenticated,
+        user,
+        enableWeb3,
+        Moralis,
+        logout
+      } = useMoralis();
     
     const showNav = () => {
-        if(account){
+        if(isAuthenticated && user){
             return(
         <>
             <div className="navbar">
@@ -24,7 +34,8 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance} location={location} type={'claim-btn'} />
                 </div>
-                <Link to="/gallery">Gallery</Link>
+                <Link to="/search">Search</Link>
+                <div onClick={() => logout()} >Logout</div>
                 <MetaMask />
             </div>
             <div className="navbar--mobile">

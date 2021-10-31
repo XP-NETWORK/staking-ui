@@ -234,11 +234,12 @@ export const totalSupply = async ( Moralis, connection ) => {
         const allNFTs = await Contract.methods.totalSupply().call()
         for (let i = 0; i < Number(allNFTs-1); i++) {
             const nft = await Contract.methods.stakes(i).call()
+            console.log("totalSupply: ", nft);
             const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${i}/image`)
             if(res) {
                 // debugger
                 const { image } = res.data
-                store.dispatch(updateCollection({url: image, token: i, staker: nft[5]}))
+                store.dispatch(updateCollection({url: image, token: i, staker: nft[5], period: nft[2], amount: nft[0], }))
             }
         }
 

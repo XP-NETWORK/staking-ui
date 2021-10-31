@@ -61,7 +61,6 @@ export default function Gallery() {
 
     const showGallery = () => {
         if(filterFlag && search !== ""){
-            debugger
             return collection.filter(item => item.token === Number(search)).map(item => { return (
                 <NFTBox url={item.url} key={item.token} tokenID={item.token} staker={ item.staker}/>
             )})

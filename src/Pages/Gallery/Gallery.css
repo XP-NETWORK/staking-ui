@@ -71,7 +71,9 @@
 }
 
 .nft__art{
+    
     height: 170px;
+    background-color: tomato;
 }
 
 .nft__add{

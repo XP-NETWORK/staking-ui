@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
-
 import { toggleConnection, updateCurrentPrice, getActualTime, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract, schooseProvider } from "../src/utils/xpnet"
@@ -18,17 +17,21 @@ import { useMoralis } from "react-moralis";
 
 
 function App() {
-  // const connection = useSelector(state => state.data.toggleConnection)
-  // const { web3, Moralis, user } = useMoralis();
   const dispatch = useDispatch()
   let history = useHistory();
-  // const { ethereum } = window
   const tokens = useSelector(state => state.stakeData.tokensAmount)
   const address = useSelector(state => state.data.account)
   const location = useLocation();
   const connectionToggler = useSelector(state => state.data.toggleConnection)
-  console.log("connectionToggler: ", connectionToggler);
-  const { Moralis } = useMoralis();
+
+  const {
+    authenticate,
+    isWeb3Enabled,
+    isAuthenticated,
+    user,
+    enableWeb3,
+    Moralis,
+  } = useMoralis();
 
 
 
@@ -86,10 +89,8 @@ function App() {
     });
   }, [address])
 
-
-
   useEffect(() => {
-    if(location.pathname !== "/search" && location.pathname !== "/gallery"){
+    if(location.pathname === "/claim"){
       if(parseInt(tokens) > 0){
       tokenOfOwnerByIndex(tokens, address, Moralis, connectionToggler)
     }
@@ -97,53 +98,42 @@ function App() {
       history.push('/stake')
     }
     }
-
   }, [tokens])
 
 
-
-
-
   useEffect(() => {
-    getCurrentPrice()
-  }, [])
-
-
-
-
-
-
-
-  useEffect(() => {
-
-    if (connectionToggler === 'MetaMask'){
-
-      checkBalance(address, Moralis, connectionToggler)
-      accountsChanged()
-      // logStakeContract()
-      // logXPContract()
-      // schooseProvider("MetaMask")
+    debugger
+    if(isAuthenticated && user){
+      dispatch(updateAccount(user.attributes.accounts[0]))
     }
-    else if(connectionToggler === "WalletConnect"){
-    //  console.log("Go with WalletConnect");
-     getCurrentPrice()
-    //  schooseProvider("WalletConnect")
-    //  logStakeContract()
-    //  logXPContract()
-    }else{
+  }, [isAuthenticated, user])
 
-    }
+  // useEffect(() => {
+  //   getCurrentPrice()
+  //   const some = Moralis.onConnect( item => {
+  //     console.log("dsdfsdfsdfsdfsd: ",item);
+  //   })
+
+  // }, [])
+
+  // useEffect(() => {
+  //   if (connectionToggler === 'MetaMask'){
+  //     checkBalance(address, Moralis, connectionToggler)
+  //     accountsChanged()
+  //     // logStakeContract()
+  //     // logXPContract()
+  //     // schooseProvider("MetaMask")
+  //   }
+  //   else if(connectionToggler === "WalletConnect"){
+  //    getCurrentPrice()
+  //   //  schooseProvider("WalletConnect")
+  //   //  logStakeContract()
+  //   //  logXPContract()
+  //   }else{
+
+  //   }
   
-  }, [connectionToggler])
-
-
-
-
-
-
-
-
-
+  // }, [connectionToggler])
 
   useEffect(() => {
     doDate()

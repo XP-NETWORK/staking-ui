@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { toggleConnection, updateAccount } from "../../redux/counterSlice"
 import { useDispatch } from 'react-redux'
 import WalletConnectProvider from "@walletconnect/web3-provider";
@@ -8,31 +8,37 @@ import { useMoralis } from "react-moralis";
 
 
 export default function Conection() {
+    const {
+        authenticate,
+        isWeb3Enabled,
+        isAuthenticated,
+        user,
+        enableWeb3,
+        Moralis,
+        logout
+      } = useMoralis();
+
     const { ethereum } = window
     const dispatch = useDispatch()
-    const { authenticate, isAuthenticated, user, logout, Moralis } = useMoralis();
-    // const toggler = useSelector(state => state.data.toggleConnection)
-
-    // console.log(Moralis)
-
+  
     const connectionHandler =  async str  => {
         if(str === "MetaMask"){
             dispatch(toggleConnection("MetaMask"))
-                console.log(authenticate);
-                authenticate().then(()=>{
-                    dispatch(updateAccount(user.attributes.accounts[0]))
-                })
-            
+            await authenticate()
         }
         else{
             dispatch(toggleConnection("WalletConnect"))
-            if(authenticate){
-                authenticate({ provider: "walletconnect" }).then(()=>{
-                    dispatch(updateAccount(user.attributes.accounts[0]))
-                })
-            }
+                await authenticate({ provider: "walletconnect" })   
         }
     }
+
+    // useEffect(() => {
+    //     if(user && user.attirub
+    //         ) {
+    //         console.log(user)
+    //         dispatch(updateAccount(user.attributes.accounts[0]))
+    //     }
+    // },[user, isAuthenticated])
 
     return (
         <div className="connection__wrapper">
@@ -40,25 +46,17 @@ export default function Conection() {
                 <div className="init__icon">
                     ICON
                 </div>
-                <div onClick={()=> connectionHandler('MetaMask') } className="init__button">
+                <div onClick={() => connectionHandler('MetaMask')} className="init__button">
                     { !ethereum ? <a href="https://metamask.app.link/dapp/stake-testing.xp.network/">MetaMask</a> : "MetaMask" }
-                    
                 </div>
             </div>
             <div className="walletConnect__init">
                 <div className="init__icon">
                     ICON
                 </div>
-                <div onClick={() => connectionHandler('WalletConnect') } className="init__button">
+                <div onClick={() => connectionHandler('WalletConnect')} className="init__button">
                     WalletConnect
                 </div>
-                { !isAuthenticated ? (
-                <div>
-                    <button onClick={() => authenticate()}>Authenticate</button>
-                </div>
-                )
-                : null
-                }
             </div>
         </div>
     )
