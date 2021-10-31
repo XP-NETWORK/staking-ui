@@ -1,7 +1,7 @@
 import React from 'react'
 import Picture from "../../Pages/Claim/Parts/Widget/Picture"
 import { useDispatch } from 'react-redux';
-import { updateSelected } from "../../redux/totalSupply"
+// import { updateSelected } from "../../redux/totalSupply"
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import { Link } from 'react-router-dom';
 import { useMoralis } from "react-moralis";
