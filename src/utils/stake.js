@@ -197,3 +197,4 @@ export const totalSupply = async () => {
         console.log(error);
     }
 }
+
