@@ -191,7 +191,7 @@ export const totalSupply = async () => {
                 store.dispatch(updateCollection({url: image, token: i, staker: nft[5], period: nft[2], amount: nft[0], }))
             }
         }
-        debugger
+        // debugger
         store.dispatch(updateLoaded(true))
     } catch (error) {
         console.log(error);

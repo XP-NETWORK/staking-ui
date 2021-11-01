@@ -7,7 +7,7 @@
 
 .claim{
     padding-top: 30px;
-    height: 630px;
+    height: auto;
     max-width: 622px;
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
@@ -195,6 +195,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 @media (max-width: 1107px) {
     .claim__container {

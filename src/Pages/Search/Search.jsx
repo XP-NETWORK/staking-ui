@@ -44,7 +44,7 @@ export default function Search() {
 
     
     const setPicture = () => {
-        debugger
+        // debugger
         if(collection.length > 0){
             const reg = new RegExp('^[0-9]+$');
             if(reg.test(id)){
@@ -82,7 +82,7 @@ export default function Search() {
             if(nftUrl){
                 return <img src={nftUrl} alt={`NFT#${nftID}`} />
             }
-            else return <Loader />
+            else return <div>Loading...</div>
         }
         else{
             return <div>NFT not exist</div>
@@ -91,7 +91,7 @@ export default function Search() {
 
 
     useEffect(() => {
-        debugger
+        // debugger
        if(loaded)setPicture()
     }, [loaded])
     
@@ -104,7 +104,7 @@ export default function Search() {
             <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
                 
-                <div className="claim__details">
+                <div className="search__details">
                     <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
                     <ClaimAPY period={period} />
                     <ClaimReward />
@@ -113,15 +113,13 @@ export default function Search() {
                     <ClaimStart startTime={startTime} />
                     <End startTime={startTime} period={period} startDate={startDate} />
                     <ProgressBar period={period} startTime={startTime} startDate={startDate} />
-                    <ClaimButton stakeInfo={selected} rewardsWai={rewardsWai} address={address} />
-                    <UnStakeButton stakeInfo={selected} address={address} stakerAddress={toString(selected)} />
                 </div>
             
              </div>
-             <div className="search">
+             <div className="claim__search">
                  <div className="search__title">NFT #{id ? id : selected}</div>
                  <div className="line"></div>
-                 <div className="nft__content">
+                 <div className="claim__search__content">
                     <div className="nft__pic">
                         { showNft() }
                     </div>
