@@ -7,6 +7,7 @@ import Connect from '../Connect/Connect';
 import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
 import Gallery from "../Gallery/Gallery"
+import Search from "../Search/Search";
 
 export default function Main() {
 
@@ -29,7 +30,7 @@ export default function Main() {
                 <Route component={Stake} path="/stake"></Route>
                 <Route component={Claim} path="/claim"></Route>
                 <Route component={Gallery} path="/gallery"></Route>
-                {/* <Route component={Gallery} path="/search"></Route> */}
+                <Route component={Search} path="/search"></Route>
                 
             </Switch>
             )
