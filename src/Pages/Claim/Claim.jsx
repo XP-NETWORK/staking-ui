@@ -16,6 +16,8 @@ import ClaimButton from './Parts/ClaimButton/ClaimButton'
 import UnStakeButton from './Parts/UnStakeButton/UnStakeButton'
 import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
+import Total from "./Parts/Total/Total"
+import Withdrawn from "./Parts/Withdrown/Withdrown"
  
 export default function Claim() {
     // const balance = useSelector(state => state.data.balance)
@@ -28,7 +30,7 @@ export default function Claim() {
     const startDate = useSelector(state => state.stakeData.startDate)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const currentToken = useSelector(state => state.stakeData.index)
-
+    const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
     const tokens = useSelector(state => state.stakeData.tokensAmount)
 
@@ -97,6 +99,8 @@ export default function Claim() {
                             <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
                             <ClaimAPY period={period} />
                             <ClaimReward />
+                            <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
+                            <Withdrawn withdrawn={rewardWithdrawn} />
                             <ClaimStart startTime={startTime} />
                             <End startTime={startTime} period={period} startDate={startDate} />
                             <ProgressBar period={period} startTime={startTime} />

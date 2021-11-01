@@ -7,7 +7,7 @@
 
 .claim{
     padding-top: 30px;
-    height: 630px;
+    height: 730px;
     max-width: 622px;
     background: #FFFFFF;
     border: 1px solid #E5E8F0;
@@ -69,8 +69,6 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 126%;
-    
-
     display: flex;
     align-items: center;
     letter-spacing: 0.03em;
