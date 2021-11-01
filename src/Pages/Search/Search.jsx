@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Web3 from "web3"
 import ClaimAmount from '../Claim/Parts/ClaimAmount/ClaimAmount'
 import ClaimAPY from '../Claim/Parts/ClaimAPY/ClaimAPY'
@@ -10,13 +10,8 @@ import ClaimButton from '../Claim/Parts/ClaimButton/ClaimButton'
 import UnStakeButton from '../Claim/Parts/UnStakeButton/UnStakeButton'
 import { useSelector } from "react-redux"
 import "./Search.css"
-import { stakes } from "../../utils/stake"
 import Total from '../Claim/Parts/Total/Total'
 import Withdrawn from '../Claim/Parts/Withdrown/Withdrown'
-
-// import { totalSupplay } from '../../redux/totalSupply'
-import NFTAdres from '../Claim/Parts/NFTAdres/NFTAdres'
-
 
 export default function Search() {
 
