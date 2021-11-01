@@ -29,6 +29,8 @@ export default function Main() {
                 <Route component={Stake} path="/stake"></Route>
                 <Route component={Claim} path="/claim"></Route>
                 <Route component={Gallery} path="/gallery"></Route>
+                {/* <Route component={Gallery} path="/search"></Route> */}
+                
             </Switch>
             )
     }
