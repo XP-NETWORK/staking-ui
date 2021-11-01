@@ -3,7 +3,7 @@ import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
+import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked } from "../redux/stakeSlice"
 import axios from "axios"
 
 
@@ -198,3 +198,41 @@ export const totalSupply = async () => {
     }
 }
 
+export const stakes = async (id) => {
+    const Contract = await stakeContract()
+    try {
+        const nft = await Contract.methods.stakes(id).call()
+        // console.log(nft);
+        store.dispatch(updateStakeInfo(Object.values(nft)))
+        store.dispatch(updateAmount(nft.amount))
+        store.dispatch(updateDuration(nft.lockInPeriod))
+        store.dispatch(updateStartTime(nft.startTime))
+        store.dispatch(updateNftTokenId(nft.nftTokenId))
+        store.dispatch(updateWithdrawnAmount(nft.rewardWithdrawn))
+        // debugger
+        const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
+                    if(res) {
+                        // debugger
+                        const { image } = res.data
+                        store.dispatch(updateImage({ url: image, token: id}))
+                    }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const stakesGallery = async (id) => {
+    const Contract = await stakeContract()
+    try {
+        const nft = await Contract.methods.stakes(id).call()
+        const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
+            if(res) {
+                // debugger
+                const { image } = res.data
+                store.dispatch(updateCollection({url: image, token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
+            }
+    } catch (error) {
+        
+    }
+}

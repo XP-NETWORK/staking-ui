@@ -11,6 +11,7 @@ export const totalSupplay = createSlice({
     initialState,
     reducers: {
        updateCollection(state, action){
+         console.log("3")
           state.collection = [...state.collection, action.payload]
        },
        updateSelected(state, action){
