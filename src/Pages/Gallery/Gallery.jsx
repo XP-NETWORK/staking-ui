@@ -4,19 +4,22 @@ import  magnifier  from "../../assets/magnifier.svg"
 import NFTBox from './NFTBox'
 import { useSelector } from 'react-redux'
 import { totalSupply } from "../../utils/stake"
+import { useLocation } from 'react-router'
+import { useParams  } from "react-router-dom"
 
 
 export default function Gallery() {
 
     const [goingUp, setGoingUp] = useState(false);
-    const [infinityScroll, setInfinityScroll] = useState(0);
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
-    const connectionToggler = useSelector(state => state.data.toggleConnection)
+
 
     const [endLoad, setEndLoad] = useState(18)
     const [search, setSearch] = useState('')
     const [filterFlag, setFilterFlag] = useState(false)
+
+
 
     const onScroll = (e) => {
         const currentScrollY = e.target.scrollTop;
@@ -31,7 +34,7 @@ export default function Gallery() {
         }
         ref.current = currentScrollY;
       };
-
+    
     useEffect(() => {
         if(collection.length < 1){
             totalSupply()

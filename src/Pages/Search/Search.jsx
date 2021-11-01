@@ -12,9 +12,11 @@ import { useSelector } from "react-redux"
 import "./Search.css"
 import Total from '../Claim/Parts/Total/Total'
 import Withdrawn from '../Claim/Parts/Withdrown/Withdrown'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function Search() {
-
+    const params = useParams()
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     const period = useSelector(state => state.stakeData.duration)
@@ -25,26 +27,21 @@ export default function Search() {
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const address = useSelector(state => state.data.account)
-    const [search, setSearch] = useState('')
-    const connectionToggler = useSelector(state => state.data.toggleConnection)
-    // const params = useSelector(state => state.totalSupplay.params)
-
-
-    
     const nft = collection[Number(selected)].url
     const nftID = collection[Number(selected)].token
     const staker = collection[Number(selected)].staker
-    // console.log(nft[0].url);
-    // {if(item.token === Number(selected)){return item.url}}
+    console.log(nft, nftID);
 
-    const searchHandler = (e) => {
-        const pattern = new RegExp('^[0-9]+$')
-        const input = Number(e.target.value)
+
+    console.log("useParams: ", params);
+
+    
+
+
+    useEffect(() => {
         
-        if(pattern.test(input)){
-            setSearch(e.target.value)
-        }
-    }
+    }, [])
+
 
     return (
         <div className="search__container">

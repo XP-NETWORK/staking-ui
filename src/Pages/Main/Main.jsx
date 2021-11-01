@@ -1,5 +1,5 @@
 
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import Stake from "../../Pages/Stake/Stake"
 import Claim from "../../Pages/Claim/Claim"
 import { useSelector } from 'react-redux'
@@ -13,6 +13,8 @@ export default function Main() {
 
     const account = useSelector(state => state.data.account)
     const loader = useSelector(state => state.data.connected)
+
+    
 
     useEffect(() => {
     }, [loader])
@@ -31,7 +33,7 @@ export default function Main() {
                 <Route component={Claim} path="/claim"></Route>
                 <Route component={Gallery} path="/gallery"></Route>
                 <Route component={Search} path="/search"></Route>
-                
+                <Route component={Search} path="/search/:id"></Route>
             </Switch>
             )
     }
