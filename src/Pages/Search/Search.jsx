@@ -12,7 +12,7 @@ import { useSelector } from "react-redux"
 import "./Search.css"
 import { stakes } from "../../utils/stake"
 import Total from '../Claim/Parts/Total/Total'
-import Withdrawn from '../Claim/Parts/Withdrawn/Withdrawn'
+import Withdrawn from '../Claim/Parts/Withdrown/Withdrown'
 
 // import { totalSupplay } from '../../redux/totalSupply'
 import NFTAdres from '../Claim/Parts/NFTAdres/NFTAdres'
