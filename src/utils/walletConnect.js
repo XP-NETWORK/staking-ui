@@ -24,7 +24,7 @@ QR()
 export const getWalletAccounts = async () => {
     try{
         const accounts = await web3.eth.getAccounts();
-        console.log(accounts);
+        // console.log(accounts);
     }
     catch(error){
         alert(error)

@@ -11,7 +11,7 @@ export default function MetaMask() {
     useEffect(() => {
 
         const list = document.querySelectorAll('.account__icon')
-        console.log(list)
+       
         if(list){
             list.forEach((item, index) => {
                 let Icon = createIcon({ // All options are optional
@@ -23,7 +23,6 @@ export default function MetaMask() {
                 });
                 item.innerHTML = ''
                 item.appendChild(Icon)
-                console.log(item, index)
             })
         }
     }, [])

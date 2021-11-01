@@ -35,7 +35,7 @@ export default function Search() {
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     
     const { id } = useParams()
-    console.log(id)
+    // console.log(id)
     
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
@@ -84,7 +84,7 @@ export default function Search() {
             if(nftUrl){
                 return <img src={nftUrl} alt={`NFT#${nftID}`} />
             }
-            else return <div>Loading...</div>
+            else return <div className="search__loader">Loading...</div>
         }
         else{
             return <div>NFT not exist</div>
@@ -102,7 +102,7 @@ export default function Search() {
 
     return (
         <div className="search__container">
-            <div className="claim">
+            <div className="claim claim-search">
             <div className="claim__title">Staking Reward</div>
                 <div className="line"></div>
                 
@@ -126,9 +126,9 @@ export default function Search() {
                         { showNft() }
                     </div>
                     <div className="staker">{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
-                    <div className="gallery__btn">
-                        <Link to="/gallery">Back to Collection</Link>
-                    </div>
+                        <Link className="gallery__btn" to="/gallery">
+                            Back to Collection
+                        </Link>
                  </div>
              </div>
         </div>
