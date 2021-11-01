@@ -1,7 +1,7 @@
 import './App.css';
 import './Normalize.css'
 import { useEffect } from 'react';
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
@@ -20,6 +20,7 @@ function App() {
 const dispatch = useDispatch()
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
+const location = useLocation()
 let history = useHistory();
 
 const getCurrentPrice = async () => {
@@ -71,6 +72,7 @@ useEffect( () => {
 
 
 useEffect(() => {
+  
   if(parseInt(tokens) > 0){
     tokenOfOwnerByIndex(tokens, address)
   }
