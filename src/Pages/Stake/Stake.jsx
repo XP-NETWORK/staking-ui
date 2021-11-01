@@ -38,28 +38,6 @@ const durations = [
     {d:1, p: 125},
 ]
 
-// const putMax = () => {
-//     console.log("putMax: ", balance)
-//     setAmount(balance)
-// }
-
-// const amountHandler = (e) => {
-//     const reg = new RegExp('^[0-9]+$');
-//     const num = Number(e.target.value)
-//     if(reg.test(num)){
-//         setAmount(e.target.value)
-//         dispatch(changeStakingAmount(num))
-//     }
-// }
-
-// const onBlurHandler = (e) => {
-//     const num = e.target.value
-//     if(num === "0"){
-//         setAmount("")
-//     }
-// }
-
-
 useEffect(() => {
 }, [approveLoader])
  

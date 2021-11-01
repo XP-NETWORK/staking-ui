@@ -18,6 +18,7 @@
 
 .info__title span{
     padding-left: 14px;
+    font-size: 14px;
 }
 
 .info__text{
@@ -25,6 +26,7 @@
     padding-left: 35px;
     line-height: 126%;
     color: #686E7D;;
+    font-size: 14px;
 }
 
 

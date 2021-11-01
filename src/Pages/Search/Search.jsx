@@ -32,8 +32,6 @@ export default function Search() {
     const collection = useSelector(state => state.totalSupply.collection)
     const loaded = useSelector(state => state.totalSupply.loaded)
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
-    const rewardsWai = useSelector(state => state.stakeData.availableRewards)
-    const address = useSelector(state => state.data.account)
     
     const { id } = useParams()
     console.log(id)
@@ -56,11 +54,11 @@ export default function Search() {
                         setNftUrl(collection[Number(id)].url)
                         setNftID(collection[Number(id)].token)
                     }
-                    else{
-                        setNftUrl(collection[Number(selected)].url)
-                        setNftID(collection[Number(selected)].token) 
-                    } 
                 }
+            }
+            else if(selected){
+                setNftUrl(collection[Number(selected)].url)
+                setNftID(collection[Number(selected)].token) 
             }
             else setExist(false)
         }

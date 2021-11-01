@@ -4,11 +4,8 @@
     padding: 15px;
     max-width:  560px;
     height: auto;
-    /* margin: 0 10px; */
     display: flex;
-    
     background: #FBFCFF;
-    /* background-color: salmon; */
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
@@ -26,7 +23,7 @@
 }
 
 .rewards__widget{
-    flex-basis: 114px;
+    flex-basis: 149px;
 }
 
 .rewards__widget img{
@@ -34,11 +31,16 @@
     border-radius: 4px;
 }
 
+.gallery-link{
+    color: #2853EB !important;
+}
+
 .rewards__content{
     flex-basis: 355px;
     margin-left: 15px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .rewards__subtitle{
