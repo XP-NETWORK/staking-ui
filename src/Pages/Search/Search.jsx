@@ -8,15 +8,19 @@ import End from '../Claim/Parts/End/End'
 import ProgressBar from '../Claim/Parts/ProgressBar/ProgressBar'
 import ClaimButton from '../Claim/Parts/ClaimButton/ClaimButton'
 import UnStakeButton from '../Claim/Parts/UnStakeButton/UnStakeButton'
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import "./Search.css"
 import Total from '../Claim/Parts/Total/Total'
 import Withdrawn from '../Claim/Parts/Withdrown/Withdrown'
+import { totalSupply } from "../../utils/stake"
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router'
+import Loader from '../../Components/Loader/Loader'
+import ButtonLoader from '../../Components/Loader/ButtonLoader'
+
 
 export default function Search() {
-    const params = useParams()
+    const dispatch = useDispatch()
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
     const period = useSelector(state => state.stakeData.duration)
@@ -24,24 +28,47 @@ export default function Search() {
     const startTime = useSelector(state => state.stakeData.startTime)
     const selected = useSelector(state => state.totalSupply.selectedNFT)
     const collection = useSelector(state => state.totalSupply.collection)
+    const loaded = useSelector(state => state.totalSupply.loaded)
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     const rewardsWai = useSelector(state => state.stakeData.availableRewards)
     const address = useSelector(state => state.data.account)
-    const nft = collection[Number(selected)].url
-    const nftID = collection[Number(selected)].token
-    const staker = collection[Number(selected)].staker
-    console.log(nft, nftID);
-
-
-    console.log("useParams: ", params);
+    
+    const { id } = useParams()
+    console.log(id)
+    
+    const [nftUrl, setNftUrl] = useState('')
+    const [nftID, setNftID] = useState('')
 
     
+    const setPicture = () => {
+        debugger
+        if(collection.length > 0){
+            if(id){
+                setNftUrl(collection[Number(id)].url)
+                setNftID(collection[Number(id)].token)
+                //  staker = collection[Number(id)].staker
+            }
+            else{
+                setNftUrl(collection[Number(selected)].url)
+                setNftID(collection[Number(selected)].token) 
+            }
+        }
+    }
+    
+    useEffect(() => {
+        if(collection.length < 1){
+            totalSupply()
+        }
+    }, [])
 
 
     useEffect(() => {
-        
-    }, [])
-
+        debugger
+       if(loaded)setPicture()
+    }, [loaded])
+    
+    useEffect(() => {
+    }, [nftUrl, nftID ])
 
     return (
         <div className="search__container">
@@ -64,11 +91,11 @@ export default function Search() {
             
              </div>
              <div className="search">
-                 <div className="search__title">NFT #10</div>
+                 <div className="search__title">NFT #{id ? id : selected}</div>
                  <div className="line"></div>
                  <div className="nft__content">
                     <div className="nft__pic">
-                        <img src={nft} alt={`NFT#${nftID}`} />
+                        { nftUrl ? <img src={nftUrl} alt={`NFT#${nftID}`} /> : <ButtonLoader />}
                     </div>
                  </div>
              </div>

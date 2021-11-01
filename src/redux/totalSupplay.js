@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   collection: [],
   selectedNFT: '',
-  params: ''
+  loaded: 'false'
 }
 
 export const totalSupplay = createSlice({
@@ -16,8 +16,8 @@ export const totalSupplay = createSlice({
        updateSelected(state, action){
          state.selectedNFT = action.payload
        },
-       updateParams(state, action){
-         state.params = action.payload
+       updateLoaded(state, action){
+         state.loaded = action.payload
        }
     },
   })
@@ -26,7 +26,8 @@ export const totalSupplay = createSlice({
 export const { 
   updateCollection,
   updateSelected,
-  updateParams
+  updateLoaded
+
 } = totalSupplay.actions
 
 export default totalSupplay.reducer

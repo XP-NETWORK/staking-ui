@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
-import { updateCollection } from "../redux/totalSupplay"
+import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
 import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateTokensAmountFlag, updateIsUnlocked } from "../redux/stakeSlice"
 import axios from "axios"
@@ -177,7 +177,7 @@ export const checkIsUnLocked = async (id) => {
 }
 
 export const totalSupply = async () => {
-    debugger
+    
     const Contract = await stakeContract()
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
@@ -191,7 +191,8 @@ export const totalSupply = async () => {
                 store.dispatch(updateCollection({url: image, token: i, staker: nft[5], period: nft[2], amount: nft[0], }))
             }
         }
-
+        debugger
+        store.dispatch(updateLoaded(true))
     } catch (error) {
         console.log(error);
     }
