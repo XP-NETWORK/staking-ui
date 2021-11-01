@@ -12,13 +12,13 @@ import { getStakeById } from "../../utils/stake"
 export default function NFTBox({url, tokenID, staker}) {
     const dispatch = useDispatch()
     const connectionToggler = useSelector(state => state.data.toggleConnection)
-    const { Moralis } = useMoralis();
+
     // const onClickHandler = (id) => {
     //     dispatch(updateSelected(id))
     // }
 
     const onClickHandler = () => {
-        getStakeById(tokenID, tokenID, Moralis, connectionToggler)
+        getStakeById(tokenID, tokenID)
         dispatch(updateIndex(tokenID))
         dispatch(updateNftTokenIndex(tokenID))
     }

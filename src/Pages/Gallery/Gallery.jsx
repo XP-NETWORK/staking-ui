@@ -3,18 +3,17 @@ import "./Gallery.css"
 import  magnifier  from "../../assets/magnifier.svg"
 import NFTBox from './NFTBox'
 import { useSelector } from 'react-redux'
-import { useMoralis } from "react-moralis";
 import { totalSupply } from "../../utils/stake"
-import { serializeTransaction } from 'ethers/lib/utils'
+
 
 export default function Gallery() {
 
     const [goingUp, setGoingUp] = useState(false);
-    const [infinityScroll,setInfinityScroll] = useState(0);
+    const [infinityScroll, setInfinityScroll] = useState(0);
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
     const connectionToggler = useSelector(state => state.data.toggleConnection)
-    const { Moralis } = useMoralis();
+
     const [endLoad, setEndLoad] = useState(18)
     const [search, setSearch] = useState('')
     const [filterFlag, setFilterFlag] = useState(false)
@@ -35,7 +34,7 @@ export default function Gallery() {
 
     useEffect(() => {
         if(collection.length < 1){
-            totalSupply(Moralis, connectionToggler)
+            totalSupply()
         }
     }, [])
 

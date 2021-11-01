@@ -176,7 +176,7 @@ export const checkIsUnLocked = async (id) => {
     }
 }
 
-export const totalSupply = async ( Moralis, connection ) => {
+export const totalSupply = async () => {
     debugger
     const Contract = await stakeContract()
     try {

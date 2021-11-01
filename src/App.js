@@ -72,12 +72,13 @@ useEffect( () => {
 
 
 useEffect(() => {
-  
-  if(parseInt(tokens) > 0){
-    tokenOfOwnerByIndex(tokens, address)
-  }
-  else{
-    history.push('/stake')
+  if(location.pathname === "/claim"){
+    if(parseInt(tokens) > 0){
+      tokenOfOwnerByIndex(tokens, address)
+    }
+    else{
+      history.push('/stake')
+    }
   }
 }, [tokens])
 
