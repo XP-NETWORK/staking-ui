@@ -40,19 +40,29 @@ export default function Search() {
     
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
+    const [exist, setExist] = useState(true)
 
     
     const setPicture = () => {
         debugger
         if(collection.length > 0){
-            if(id){
-                setNftUrl(collection[Number(id)].url)
-                setNftID(collection[Number(id)].token)
+            const reg = new RegExp('^[0-9]+$');
+            if(reg.test(id)){
+                if(collection.length <= parseInt(id)){
+                    setExist(false)
+                }
+                else{
+                    if(id){
+                        setNftUrl(collection[Number(id)].url)
+                        setNftID(collection[Number(id)].token)
+                    }
+                    else{
+                        setNftUrl(collection[Number(selected)].url)
+                        setNftID(collection[Number(selected)].token) 
+                    } 
+                }
             }
-            else{
-                setNftUrl(collection[Number(selected)].url)
-                setNftID(collection[Number(selected)].token) 
-            }
+            else setExist(false)
         }
     }
     
@@ -67,7 +77,17 @@ export default function Search() {
         }
     }, [])
 
-    
+    const showNft = () => {
+        if(exist){
+            if(nftUrl){
+                return <img src={nftUrl} alt={`NFT#${nftID}`} />
+            }
+            else return <Loader />
+        }
+        else{
+            return <div>NFT not exist</div>
+        }
+    }
 
 
     useEffect(() => {
@@ -103,7 +123,7 @@ export default function Search() {
                  <div className="line"></div>
                  <div className="nft__content">
                     <div className="nft__pic">
-                        { nftUrl ? <img src={nftUrl} alt={`NFT#${nftID}`} /> : <Loader />}
+                        { showNft() }
                     </div>
                  </div>
              </div>
