@@ -17,6 +17,8 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router'
 import Loader from '../../Components/Loader/Loader'
 import ButtonLoader from '../../Components/Loader/ButtonLoader'
+import { getStakeById } from "../../utils/stake"
+import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 
 
 export default function Search() {
@@ -46,7 +48,6 @@ export default function Search() {
             if(id){
                 setNftUrl(collection[Number(id)].url)
                 setNftID(collection[Number(id)].token)
-                //  staker = collection[Number(id)].staker
             }
             else{
                 setNftUrl(collection[Number(selected)].url)
@@ -59,7 +60,14 @@ export default function Search() {
         if(collection.length < 1){
             totalSupply()
         }
+        if(id){
+            getStakeById(id, id)
+            dispatch(updateIndex(id))
+            dispatch(updateNftTokenIndex(id))  
+        }
     }, [])
+
+    
 
 
     useEffect(() => {
@@ -95,7 +103,7 @@ export default function Search() {
                  <div className="line"></div>
                  <div className="nft__content">
                     <div className="nft__pic">
-                        { nftUrl ? <img src={nftUrl} alt={`NFT#${nftID}`} /> : <ButtonLoader />}
+                        { nftUrl ? <img src={nftUrl} alt={`NFT#${nftID}`} /> : <Loader />}
                     </div>
                  </div>
              </div>
