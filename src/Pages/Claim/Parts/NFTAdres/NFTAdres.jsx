@@ -17,9 +17,6 @@ export default function NFTAdres(props) {
     return (
     <div className="nft__address">
         <div className="address">XPNFT #{currentToken}</div>
-        <div onClick={()=> copyTextToClipboard()} className="address__icon">
-            <img src={pages} alt="" />
-        </div>
     </div>
     )
 }

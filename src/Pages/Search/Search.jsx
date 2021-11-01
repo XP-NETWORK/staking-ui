@@ -19,6 +19,7 @@ import Loader from '../../Components/Loader/Loader'
 import ButtonLoader from '../../Components/Loader/ButtonLoader'
 import { getStakeById } from "../../utils/stake"
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
+import { Link } from 'react-router-dom'
 
 
 export default function Search() {
@@ -38,6 +39,7 @@ export default function Search() {
     
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
+    const [staker, setStaker] = useState('')
     const [exist, setExist] = useState(true)
 
     
@@ -53,12 +55,14 @@ export default function Search() {
                     if(id){
                         setNftUrl(collection[Number(id)].url)
                         setNftID(collection[Number(id)].token)
+                        setStaker(collection[Number(id)].staker)
                     }
                 }
             }
             else if(selected){
                 setNftUrl(collection[Number(selected)].url)
-                setNftID(collection[Number(selected)].token) 
+                setNftID(collection[Number(selected)].token)
+                setStaker(collection[Number(selected)].staker)
             }
             else setExist(false)
         }
@@ -120,6 +124,10 @@ export default function Search() {
                  <div className="claim__search__content">
                     <div className="nft__pic">
                         { showNft() }
+                    </div>
+                    <div className="staker">{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
+                    <div className="gallery__btn">
+                        <Link to="/gallery">Back to Collection</Link>
                     </div>
                  </div>
              </div>
