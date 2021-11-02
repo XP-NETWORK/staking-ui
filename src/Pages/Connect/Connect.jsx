@@ -47,7 +47,7 @@ export default function Connect() {
                 {/* <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
                     Connect
                 </div> */}
-                { !ethereum ? <div className="required">MetaMask required</div> : null}
+                { !ethereum ? <div className="required">MetaMask is required</div> : null}
             </div>
         </div>
     )

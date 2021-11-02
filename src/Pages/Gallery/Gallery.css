@@ -10,6 +10,15 @@
     line-height: 43px;
     letter-spacing: 3%;
     margin-top: 40px;
+    margin-bottom: 12px;
+}
+
+.gallery__subtitle{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 43px;
+    letter-spacing: 3%;
+    /* margin-top: 40px; */
     margin-bottom: 32px;
 }
 
@@ -79,9 +88,7 @@
 }
 
 .nft__art{
-    
     height: 170px;
-    background-color: tomato;
 }
 
 .nft__add{

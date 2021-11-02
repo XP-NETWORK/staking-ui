@@ -111,7 +111,7 @@ export default function Search() {
                            <div className="nft__pic">
                                <img src={nftUrl} alt={`NFT#${nftID}`} />
                            </div>
-                           <div className="staker">{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
+                           <div className="staker"><span>{staker.slice(0,26) + '...' + staker.slice(38,46)}</span></div>
                                <Link className="gallery__btn" to="/gallery">
                                    Back to Collection
                                </Link>

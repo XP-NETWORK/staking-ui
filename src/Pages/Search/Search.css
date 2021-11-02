@@ -7,12 +7,12 @@
 
 .claim-search{
     height: auto !important;
+    width: 100%;
 }
 
 .claim__search{
     background: #FFFFFF;
     width: 486px;
-
     border: 1px solid #E5E8F0;
     box-sizing: border-box;
     border-radius: 6px;
@@ -22,7 +22,7 @@
 .search__details{
     display: flex;
     flex-direction: column;
-    width: 562px;
+    /* width: calc(100% - 20px); */
     padding: 30px;
 }
 
@@ -37,7 +37,6 @@
 .claim__search__content{
     max-width: calc(100% - 20px);
     margin: 60px auto 0 auto;
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -228,4 +227,47 @@
     .gallery__container{
         justify-content: center;
     }
+}
+
+@media screen and (max-width: 600px){
+  .claim-search{
+    /* width: calc(100% - 20px) !important; */
+    width: 100% !important;
+  }
+  .claim__search{
+    /* width: calc(100% - 20px) !important; */
+    width: 100% !important;
+
+  }
+  .staker{
+    margin: unset;
+
+    /* width: calc(100% - 20px) !important; */
+  }
+  .nft__pic{
+    margin-bottom: 20px;
+  }
+  .staker{
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .claim-search{
+    /* width: calc(100% - 20px) !important; */
+    width: 100% !important;
+  }
+  .claim__search{
+    /* width: calc(100% - 20px) !important; */
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 375px){
+  .staker span{
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* width: calc(100% - 20px) !important; */
+  }
 }
