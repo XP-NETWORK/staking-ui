@@ -40,27 +40,26 @@ export default function Search() {
 
     
     const setPicture = () => {
-        // debugger
+        debugger
         if(collection.length > 0){
             const reg = new RegExp('^[0-9]+$');
             if(reg.test(id)){
-                const index = parseInt(id) || parseInt(selected)
-
-                if(collection.length <= index){
+                const index = parseInt(id) >= 0 || parseInt(selected)
+                if(collection.length && collection.length <= index){
                     setExist(true)
                     setNftUrl(collection[0].url)
                     setNftID(collection[0].token)
                     setStaker(collection[0].staker)
                 }
                 else{
-                    if(id){
+                    if(id >= 0){
                         setNftUrl(collection[index].url)
                         setNftID(collection[index].token)
                         setStaker(collection[index].staker)
                     }
                 }
             }
-            else if(selected){
+            else if(selected || selected == "0"){
                 setNftUrl(collection[parseInt(selected)].url)
                 setNftID(collection[parseInt(selected)].token)
                 setStaker(collection[parseInt(selected)].staker)
