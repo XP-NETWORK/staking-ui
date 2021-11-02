@@ -1,6 +1,8 @@
 import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
+import { createStore } from "redux"
+import { totalSupplay } from "../redux/totalSupplay"
 import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
 import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked } from "../redux/stakeSlice"
@@ -10,6 +12,7 @@ import axios from "axios"
 
 export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
 const W3 = new Web3(window.ethereum)
+const state = store.getState()
 
 // Create staker smart contract.
 const stakeContract = async () => {
@@ -177,13 +180,12 @@ export const checkIsUnLocked = async (id) => {
 }
 
 export const totalSupply = async () => {
-    
     const Contract = await stakeContract()
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
         for (let i = 0; i < Number(allNFTs-1); i++) {
             const nft = await Contract.methods.stakes(i).call()
-            console.log("totalSupply: ", nft);
+            
             const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${i}/image`)
             if(res) {
                 // debugger

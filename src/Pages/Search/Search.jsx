@@ -40,7 +40,7 @@ export default function Search() {
 
     
     const setPicture = () => {
-        debugger
+        // debugger
         if(collection.length > 0){
             const reg = new RegExp('^[0-9]+$');
             if(reg.test(id)){
@@ -70,7 +70,7 @@ export default function Search() {
     }
     
     useEffect(() => {
-        if(collection.length < 1){
+        if(collection.length <= 1){
             stakesGallery(id)
         }
         if(id){

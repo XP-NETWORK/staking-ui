@@ -36,7 +36,7 @@ export default function Gallery() {
       };
     
     useEffect(() => {
-        if(collection.length < 1){
+        if(collection.length <= 1){
             totalSupply()
         }
     }, [])
