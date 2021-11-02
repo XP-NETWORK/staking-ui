@@ -34,7 +34,7 @@ export default function Search() {
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
     const [staker, setStaker] = useState('')
-    const [exist, setExist] = useState(true)
+    const [exist, setExist] = useState(false)
 
     
     const setPicture = () => {

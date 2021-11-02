@@ -225,6 +225,7 @@ export const stakes = async (id) => {
 }
 
 export const stakesGallery = async (id) => {
+
     const Contract = await stakeContract()
     try {
         const nft = await Contract.methods.stakes(id).call()
@@ -234,7 +235,8 @@ export const stakesGallery = async (id) => {
                 const { image } = res.data
                 store.dispatch(updateCollection({url: image, token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
             }
+            else {store.dispatch(updateCollection({token: "out of range"}))}
     } catch (error) {
-        
+        console.log(error);
     }
 }
