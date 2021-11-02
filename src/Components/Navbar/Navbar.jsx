@@ -1,5 +1,5 @@
 import "./Navbar.css"
-import xplogo from "../../assets/XPLogo.svg"
+import xplogo from "../../assets/logoXpStake.svg"
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
