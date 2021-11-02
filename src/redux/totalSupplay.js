@@ -11,10 +11,9 @@ export const totalSupplay = createSlice({
     initialState,
     reducers: {
        updateCollection(state, action) {
-        const isInCollections = state.collection.map(n => n.token)
           const isInCollection = state.collection.filter(n => n.token == action.payload.token)[0]
           if(!isInCollection)
-         state.collection = [...new Map([...state.collection, action.payload].map(item =>[item['token'], item])).values()].sort((a,b )=> parseInt(a.token) - parseInt(b.token))
+         state.collection = [...state.collection, action.payload].sort((a,b )=> parseInt(a.token) - parseInt(b.token))
        },
        updateSelected(state, action){
          state.selectedNFT = action.payload
