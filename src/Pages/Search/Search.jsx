@@ -31,8 +31,6 @@ export default function Search() {
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     
     const { id } = useParams()
-    // console.log(id)
-    
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
     const [staker, setStaker] = useState('')
@@ -60,6 +58,7 @@ export default function Search() {
                 }
             }
             else if(selected || selected == "0"){
+                setExist(true)
                 setNftUrl(collection[parseInt(selected)].url)
                 setNftID(collection[parseInt(selected)].token)
                 setStaker(collection[parseInt(selected)].staker)
@@ -69,27 +68,59 @@ export default function Search() {
     }
     
     useEffect(() => {
-        if(collection.length <= 1){
-            stakesGallery(id)
-        }
-        if(id){
-            getStakeById(id, id)
-            dispatch(updateIndex(id))
-            dispatch(updateNftTokenIndex(id))  
+        const reg = new RegExp('^[0-9]+$');
+        if(reg.test(id)){
+            if(collection.length <= 1){
+                stakesGallery(id)
+            }
+            if(id){
+                getStakeById(id, id)
+                dispatch(updateIndex(id))
+                dispatch(updateNftTokenIndex(id))  
+            }
+        }else{
+            setExist(false)
         }
     }, [])
 
     const showNft = () => {
-        // debugger
+        debugger
         if(exist){
-            if(nftUrl){
-                return <img src={nftUrl} alt={`NFT#${nftID}`} />
+            if(!nftUrl) return <div className="search__loader"></div>
+            else{
+                return <>
+                    <div className="claim claim-search">
+                    <div className="claim__title">Staking Reward</div>
+                    <div className="line"></div>
+                    <div className="search__details">
+                        <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
+                        <ClaimAPY period={period} />
+                        <ClaimReward />
+                        <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
+                        <Withdrawn withdrawn={rewardWithdrawn} />
+                        <ClaimStart startTime={startTime} />
+                        <End startTime={startTime} period={period} startDate={startDate} />
+                        <ProgressBar period={period} startTime={startTime} startDate={startDate} />
+                    </div>
+                
+                    </div>
+                    <div className="claim__search">
+                        <div className="search__title">NFT #{id ? id : selected}</div>
+                        <div className="line"></div>
+                        <div className="claim__search__content">
+                           <div className="nft__pic">
+                               <img src={nftUrl} alt={`NFT#${nftID}`} />
+                           </div>
+                           <div className="staker">{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
+                               <Link className="gallery__btn" to="/gallery">
+                                   Back to Collection
+                               </Link>
+                        </div>
+                    </div>
+                </>
             }
-            else return <div className="search__loader">Loading...</div>
         }
-        else{
-            return <div>NFT not exist</div>
-        }
+        else return <div className="not-exist"><span>NFT does not exist</span></div> 
     }
 
 
@@ -103,35 +134,7 @@ export default function Search() {
 
     return (
         <div className="search__container">
-            <div className="claim claim-search">
-            <div className="claim__title">Staking Reward</div>
-                <div className="line"></div>
-                
-                <div className="search__details">
-                    <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
-                    <ClaimAPY period={period} />
-                    <ClaimReward />
-                    <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
-                    <Withdrawn withdrawn={rewardWithdrawn} />
-                    <ClaimStart startTime={startTime} />
-                    <End startTime={startTime} period={period} startDate={startDate} />
-                    <ProgressBar period={period} startTime={startTime} startDate={startDate} />
-                </div>
-            
-             </div>
-             <div className="claim__search">
-                 <div className="search__title">NFT #{id ? id : selected}</div>
-                 <div className="line"></div>
-                 <div className="claim__search__content">
-                    <div className="nft__pic">
-                        { showNft() }
-                    </div>
-                    <div className="staker">{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
-                        <Link className="gallery__btn" to="/gallery">
-                            Back to Collection
-                        </Link>
-                 </div>
-             </div>
+            {showNft()}
         </div>
     )
 }
