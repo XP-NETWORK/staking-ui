@@ -14,10 +14,9 @@
 }
 
 .gallery__search{
-    width: 619px;
+    width: 60% !important; 
     display: flex;
     position: relative;
-    /* background-color: tomato; */
 }
 
 
@@ -50,6 +49,9 @@
    gap: 18px;
    height: 600px !important;
    overflow: auto;
+
+   /* */
+   /* width: 90vw;   */
 }
 
 .gallery__container::-webkit-scrollbar {
@@ -89,3 +91,4 @@
     padding-left: 16px;
     padding-top: 16px;
 }
+

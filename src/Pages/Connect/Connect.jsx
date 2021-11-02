@@ -25,7 +25,13 @@ export default function Connect() {
                         <img src={MetaMask} alt="" />
                     </div>
                     <div className="connect__title">
-                        <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect</a></div>
+                        { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect</a></div>
+                        :
+                        <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
+                        Connect
+                        </div>
+                        }
+                        
                     </div>
                     </>
                     :
@@ -33,14 +39,14 @@ export default function Connect() {
                     <div className="fox">
                         <img src={MetaMask} alt="" />
                     </div>
-                    <div className="connect__title">
-                        MetaMask is required
+                    <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
+                    Connect
                     </div>
                     </>
                 }
-                <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
+                {/* <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
                     Connect
-                </div>
+                </div> */}
                 { !ethereum ? <div className="required">MetaMask required</div> : null}
             </div>
         </div>
