@@ -7,7 +7,7 @@ const provider = new WalletConnectProvider({
 });
 const web3 = new Web3(provider);
 provider.on("accountsChanged", (accounts) => {
-    alert(accounts)
+  
 });
 export const QR = async () => {
     try {
@@ -27,7 +27,7 @@ export const getWalletAccounts = async () => {
         // console.log(accounts);
     }
     catch(error){
-        alert(error)
+
         console.log(console.error());
     }
 

@@ -10,7 +10,9 @@
     flex-direction: column;
     align-items: center;
   }
-
+  .gallery__container {
+    height: calc(100vh - 400px) !important;
+  }
 }
 
 

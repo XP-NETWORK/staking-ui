@@ -2,7 +2,7 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { createStore } from "redux"
-import { totalSupplay } from "../redux/totalSupplay"
+import { totalSupplay, updateManyCollection } from "../redux/totalSupplay"
 import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
 import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked } from "../redux/stakeSlice"
@@ -179,21 +179,32 @@ export const checkIsUnLocked = async (id) => {
     }
 }
 
-export const totalSupply = async () => {
+export const totalSupply = async (index, length) => {
     const Contract = await stakeContract()
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
-        for (let i = 0; i < Number(allNFTs-1); i++) {
-            const nft = await Contract.methods.stakes(i).call()
+        const array = (await Promise.all(new Array(length).fill(0).map((n,i) => i+ index)
+        .map(async n => {
+            const res = (await axios.get(`https://staking-api.xp.network/staking-nfts/${n}/image`)).data
+            const nft = await Contract.methods.stakes(n).call()
+            return { nft, ...res}
+        } )
+        ))
+        .map((n,i)=> ({ url: n.image, token: i + index, staker: n.nft[5], period: n.nft[2], amount: n.nft[0] }))
+        console.log(array.length, )
+        store.dispatch(updateManyCollection(array))
+        // for (let i = 0; i < Number(allNFTs-1); i++) {
+        //     const nft = await Contract.methods.stakes(i).call()
             
-            const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${i}/image`)
-            if(res) {
-                // debugger
-                const { image } = res.data
-                store.dispatch(updateCollection({url: image, token: i, staker: nft[5], period: nft[2], amount: nft[0], }))
-            }
-        }
+        //     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${i}/image`)
+        //     if(res) {
+        //         // debugger
+        //         const { image } = res.data
+        //         store.dispatch(updateCollection({url: image, token: i, staker: nft[5], period: nft[2], amount: nft[0], }))
+        //     }
+        // }
         // debugger
+        console.log(array)
         store.dispatch(updateLoaded(true))
     } catch (error) {
         console.log(error);

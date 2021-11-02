@@ -9,7 +9,7 @@
     font-weight: 600;
     line-height: 43px;
     letter-spacing: 3%;
-    margin-top: 40px;
+    margin-top: 00px;
     margin-bottom: 12px;
 }
 
@@ -17,9 +17,10 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 43px;
-    letter-spacing: 3%;
+    letter-spacing: 3%; 
+    margin-top: -10px;
+    margin-bottom: 10px;
     /* margin-top: 40px; */
-    margin-bottom: 32px;
 }
 
 .gallery__search{
@@ -56,9 +57,10 @@
    display: flex;
    flex-wrap: wrap;
    gap: 18px;
-   height: 600px !important;
+   height: calc(100vh - 290px) !important;
+   overflow: scroll;
    overflow: auto;
-
+    width: 90vw;
    /* */
    /* width: 90vw;   */
 }
@@ -99,3 +101,9 @@
     padding-top: 16px;
 }
 
+@media screen and (max-width: 600px){
+    .gallery__container {
+      height: calc(100vh - 320px) !important;
+    }
+  }
+  

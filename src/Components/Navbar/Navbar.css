@@ -85,12 +85,12 @@
         /* width: 100%; */
     }
     .xp__logo{
-        width: 140px;
+        width: 43%;
     }
 }
 
 @media screen and (max-width: 320px){
     .xp__logo{
-        width: 130px;
+        width: 45%;
     }
 }

@@ -9,7 +9,7 @@ import { useParams  } from "react-router-dom"
 
 
 export default function Gallery() {
-
+    const [index, setIndex] = useState(0)
     const [goingUp, setGoingUp] = useState(false);
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
@@ -31,13 +31,16 @@ export default function Gallery() {
         if (element.scrollHeight - element.scrollTop < element.clientHeight + 10 ) {
           setGoingUp(true);
           setEndLoad(prev => prev+12)
+          totalSupply(index, 20)
+          setIndex(index + 20)
         }
         ref.current = currentScrollY;
       };
     
     useEffect(() => {
         if(collection.length <= 1){
-            totalSupply()
+            totalSupply(index, 80)
+            setIndex(80)
         }
     }, [])
 
@@ -68,7 +71,7 @@ export default function Gallery() {
             )})
         }
         else if(collection.length > 0){ 
-        const newCollection = collection.slice(0, endLoad)
+        const newCollection = collection
             return newCollection.map( (item, index) => {
                 return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
             })
@@ -79,10 +82,10 @@ export default function Gallery() {
         <div className="gallery__wrapper" >
             <div className="gallery__header">NFT Collection</div>
             <div className="gallery__subtitle">XPNET Users Gallery</div>
-            <div className="gallery__search">
+            {/* <div className="gallery__search">
                 <input onBlur={item => onBlurHandler(item)} onKeyPress={item => keyPresHandler(item)} onChange={ item => searchHandler(item)} value={search} placeholder="Search" type="search" name="nft-search" id="nft-search" className="nft-search" />
                 <div className="nft-search__items"><img src={magnifier} alt="" /></div>
-            </div>
+            </div> */}
             <div className="gallery__container" onScroll={onScroll}>
                 { showGallery() }
             </div>
