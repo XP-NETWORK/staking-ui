@@ -29,7 +29,7 @@ const stakeContract = async () => {
 export const logStakeContract = async () => {
     const Contract = await stakeContract()
     console.log(Contract)
-    }
+}
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account, history) => {
@@ -180,6 +180,7 @@ export const checkIsUnLocked = async (id) => {
 }
 
 export const totalSupply = async (index, length) => {
+    debugger
     const Contract = await stakeContract()
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
@@ -191,9 +192,7 @@ export const totalSupply = async (index, length) => {
         } )
         ))
         .map((n,i)=> ({ url: n.image, token: i + index, staker: n.nft[5], period: n.nft[2], amount: n.nft[0] }))
-        console.log(array.length, )
         store.dispatch(updateManyCollection(array))
-        console.log(array)
         store.dispatch(updateLoaded(true))
     } catch (error) {
         console.log(error);

@@ -38,10 +38,10 @@ export default function Gallery() {
       };
     
     useEffect(() => {
-        if(collection.length <= 1){
+     
             totalSupply(index, 80)
             setIndex(80)
-        }
+       
     }, [])
 
     // useEffect(() => {
@@ -95,7 +95,7 @@ export default function Gallery() {
     
 
     const showGallery = () => {
-        debugger
+
         if(!collection.length || !collection){
             return <div className="search__loader"></div>
         }

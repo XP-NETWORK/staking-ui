@@ -19,8 +19,12 @@ export default function Main() {
 
     useEffect(() => {
     }, [loader])
-    if(location.pathname ==="/gallery"){
-        return <Switch><Route component={Gallery} path="/gallery"></Route></Switch>
+    if(location.pathname ==="/gallery" || location.pathname.includes("search")){
+        return <Switch>
+        <Route component={Gallery} path="/gallery"></Route>
+        <Route path="/search/:id"><Search /></Route>
+         <Route component={Search} path="/search"></Route>
+        </Switch>
         }
     else if(!account && !loader){
         return <Connect />

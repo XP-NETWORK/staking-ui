@@ -34,11 +34,11 @@ export default function Search() {
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
     const [staker, setStaker] = useState('')
-    const [exist, setExist] = useState(false)
+    const [exist, setExist] = useState(true)
 
     
     const setPicture = () => {
-        debugger
+
         if(collection.length > 0){
             const reg = new RegExp('^[0-9]+$');
             if(reg.test(id)){
@@ -65,6 +65,14 @@ export default function Search() {
             }
             else setExist(false)
         }
+        else if(!Array.isArray(collection) && collection){
+     
+                setExist(true)
+                    setNftUrl(collection.url)
+                    setNftID(collection.token)
+                    setStaker(collection.staker)
+        }
+
     }
     
     useEffect(() => {
@@ -73,11 +81,11 @@ export default function Search() {
             if(collection.length <= 1){
                 stakesGallery(id)
             }
-            if(id){
-                getStakeById(id, id)
-                dispatch(updateIndex(id))
-                dispatch(updateNftTokenIndex(id))  
-            }
+            // if(id){
+            //     getStakeById(id, id)
+            //     dispatch(updateIndex(id))
+            //     dispatch(updateNftTokenIndex(id))  
+            // }
         }else{
             setExist(false)
         }
@@ -87,6 +95,9 @@ export default function Search() {
         debugger
         if(exist){
             if(!nftUrl) return <div className="search__loader"></div>
+            else if(!nftUrl && id){
+                <div className="not-exist"><span>NFT does not exist</span></div>
+            }
             else{
                 return <>
                     <div className="claim claim-search">
