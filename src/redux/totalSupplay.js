@@ -11,9 +11,10 @@ export const totalSupplay = createSlice({
     initialState,
     reducers: {
        updateCollection(state, action) {
-          const isInCollection = state.collection.filter(n => n.token == action.payload.token)[0]
-          if(!isInCollection)
-         state.collection = [...state.collection, action.payload].sort((a,b )=> parseInt(a.token) - parseInt(b.token))
+        //   const isInCollection = state.collection.filter(n => n.token == action.payload.token)[0]
+        //   if(!isInCollection)
+        //  state.collection = [...state.collection, action.payload].sort((a,b )=> parseInt(a.token) - parseInt(b.token))
+        state.collection = action.payload
        },
        updateManyCollection(state, action) {
         // console.log(action.payload, 'sakdldsalkadsklkdsal')

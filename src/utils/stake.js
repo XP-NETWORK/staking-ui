@@ -193,17 +193,6 @@ export const totalSupply = async (index, length) => {
         .map((n,i)=> ({ url: n.image, token: i + index, staker: n.nft[5], period: n.nft[2], amount: n.nft[0] }))
         console.log(array.length, )
         store.dispatch(updateManyCollection(array))
-        // for (let i = 0; i < Number(allNFTs-1); i++) {
-        //     const nft = await Contract.methods.stakes(i).call()
-            
-        //     const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${i}/image`)
-        //     if(res) {
-        //         // debugger
-        //         const { image } = res.data
-        //         store.dispatch(updateCollection({url: image, token: i, staker: nft[5], period: nft[2], amount: nft[0], }))
-        //     }
-        // }
-        // debugger
         console.log(array)
         store.dispatch(updateLoaded(true))
     } catch (error) {
@@ -212,6 +201,7 @@ export const totalSupply = async (index, length) => {
 }
 
 export const stakes = async (id) => {
+    console.log("stakes");
     const Contract = await stakeContract()
     try {
         const nft = await Contract.methods.stakes(id).call()
@@ -236,18 +226,18 @@ export const stakes = async (id) => {
 }
 
 export const stakesGallery = async (id) => {
-
     const Contract = await stakeContract()
     try {
         const nft = await Contract.methods.stakes(id).call()
+        console.log(nft)
         const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
             if(res) {
                 // debugger
                 const { image } = res.data
                 store.dispatch(updateCollection({url: image, token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
             }
-            else {store.dispatch(updateCollection({token: "out of range"}))}
     } catch (error) {
         console.log(error);
     }
 }
+
