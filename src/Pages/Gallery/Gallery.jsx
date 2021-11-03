@@ -65,7 +65,11 @@ export default function Gallery() {
     }
 
     const showGallery = () => {
-        if(filterFlag && search !== ""){
+      
+        if(collection.length < +search-1){
+            return <div className="not-exist"><span>NFT does not exist</span></div>
+        }
+        else if(filterFlag && search !== ""){
             return collection.filter(item => item.token === Number(search)).map(item => { return (
                 <NFTBox url={item.url} key={item.token} tokenID={item.token} staker={ item.staker}/>
             )})
@@ -82,10 +86,10 @@ export default function Gallery() {
         <div className="gallery__wrapper" >
             <div className="gallery__header">NFT Collection</div>
             <div className="gallery__subtitle">XPNET Users Gallery</div>
-            {/* <div className="gallery__search">
+            <div className="gallery__search">
                 <input onBlur={item => onBlurHandler(item)} onKeyPress={item => keyPresHandler(item)} onChange={ item => searchHandler(item)} value={search} placeholder="Search" type="search" name="nft-search" id="nft-search" className="nft-search" />
                 <div className="nft-search__items"><img src={magnifier} alt="" /></div>
-            </div> */}
+            </div>
             <div className="gallery__container" onScroll={onScroll}>
                 { showGallery() }
             </div>
