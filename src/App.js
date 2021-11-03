@@ -20,6 +20,7 @@ function App() {
 const dispatch = useDispatch()
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
+const provider = useSelector(state => state.data.provider)
 const location = useLocation()
 let history = useHistory();
 

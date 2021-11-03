@@ -4,7 +4,7 @@ import MetaMask from "../../assets/MetaMask_Big_Fox.svg"
 import walletconnect from "../../assets/walletconnect.svg"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
-import { chengeStatus } from "../../redux/counterSlice"
+import { chengeStatus, setProvide } from "../../redux/counterSlice"
 import { useMoralis } from "react-moralis";
 
 export default function Connect() {
@@ -23,12 +23,15 @@ export default function Connect() {
     const toggleMetaMask = () => {
         connectMetaMask()
         dispatch(chengeStatus(true))
+        dispatch(setProvide('metamask'))
     }
 
     const toggWalletCOnnect = () => {
         if (!isAuthenticated){
             authenticate({ provider: "walletconnect"})
+            
         }
+        dispatch(setProvide('walletconnect'))
     }
 
     return (

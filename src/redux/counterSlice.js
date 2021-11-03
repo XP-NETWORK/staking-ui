@@ -12,10 +12,11 @@ const initialState = {
     agreement: false,
     currentPrice: '',
     stakeInfo: '',
-    chainId: "",
+    chainId: '',
     aproveLoader: false,
     lockLoader: false,
-    picPositionX: 0
+    picPositionX: 0,
+    provider: ''
 }
 
 export const counterSlice = createSlice({
@@ -72,6 +73,9 @@ export const counterSlice = createSlice({
       },
       chengePositionX(state, action){
         state.picPositionX = action.payload
+      },
+      setProvide(state, action){
+        state.provider = action.payload
       }
     },
   })
@@ -94,7 +98,8 @@ export const {
   updateAproveLockLoader,
   goForth,
   goBack,
-  chengePositionX
+  chengePositionX,
+  setProvide
 } = counterSlice.actions
 
 export default counterSlice.reducer
