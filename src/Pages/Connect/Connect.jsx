@@ -10,7 +10,15 @@ import { useMoralis } from "react-moralis";
 export default function Connect() {
     const dispatch = useDispatch()
     const { ethereum } = window
-    const { authenticate, isAuthenticated, user, logout } = useMoralis();
+    const {
+        authenticate,
+        isWeb3Enabled,
+        isAuthenticated,
+        user,
+        enableWeb3,
+        Moralis,
+        logout
+      } = useMoralis();
 
     const toggleMetaMask = () => {
         connectMetaMask()
