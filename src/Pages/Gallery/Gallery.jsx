@@ -13,7 +13,7 @@ export default function Gallery() {
     const [goingUp, setGoingUp] = useState(false);
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
-    console.log(collection);
+    const account = useSelector(state => state.data.account)
 
     // const [endLoad, setEndLoad] = useState(18)
     const [search, setSearch] = useState('')
@@ -120,10 +120,12 @@ export default function Gallery() {
         <div className="gallery__wrapper" >
             <div className="gallery__header">NFT Collection</div>
             <div className="gallery__subtitle">XPNET Users Gallery</div>
-            <div className="gallery__search">
-                <input onBlur={item => onBlurHandler(item)} onKeyPress={item => keyPresHandler(item)} onChange={ item => searchHandler(item)} value={search} placeholder="Search" type="search" name="nft-search" id="nft-search" className="nft-search" />
-                <div className="nft-search__items"><img src={magnifier} alt="" /></div>
-            </div>
+            { account ? 
+                <div className="gallery__search">
+                    <input onBlur={item => onBlurHandler(item)} onKeyPress={item => keyPresHandler(item)} onChange={ item => searchHandler(item)} value={search} placeholder="Search" type="search" name="nft-search" id="nft-search" className="nft-search" />
+                    <div className="nft-search__items"><img src={magnifier} alt="" /></div>
+                </div>:
+            null}
             <div className="gallery__container" onScroll={onScroll}>
                 { showGallery() }
             </div>

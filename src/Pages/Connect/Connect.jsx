@@ -5,14 +5,22 @@ import walletconnect from "../../assets/walletconnect.svg"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
 import { chengeStatus } from "../../redux/counterSlice"
+import { useMoralis } from "react-moralis";
 
 export default function Connect() {
     const dispatch = useDispatch()
     const { ethereum } = window
+    const { authenticate, isAuthenticated, user, logout } = useMoralis();
 
     const toggleMetaMask = () => {
         connectMetaMask()
         dispatch(chengeStatus(true))
+    }
+
+    const toggWalletCOnnect = () => {
+        if (!isAuthenticated){
+            authenticate({ provider: "walletconnect"})
+        }
     }
 
     return (
@@ -25,7 +33,7 @@ export default function Connect() {
                         <img src={MetaMask} alt="" />
                     </div>
                     <div className="connect__title">
-                        { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect</a></div>
+                        { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect MetaMask</a></div>
                         :
                         <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
                         Connect
@@ -36,17 +44,21 @@ export default function Connect() {
                     </>
                     :
                     <>
-                    <div className="fox">
-                        <img src={MetaMask} alt="" />
-                    </div>
-                    <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
-                    Connect
-                    </div>
+                        <div className="fox">
+                            <img src={MetaMask} alt="" />
+                        </div>
+                        <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
+                        MetaMask
+                        </div>
+                        <div className="fox">
+                            <img src={walletconnect} alt="" />
+                        </div>
+                        <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggWalletCOnnect()} className="connect__button">
+                        WalletConnect
+                        </div>
+
                     </>
                 }
-                {/* <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => toggleMetaMask()} className="connect__button">
-                    Connect
-                </div> */}
                 { !ethereum ? <div className="required">MetaMask is required</div> : null}
             </div>
         </div>
