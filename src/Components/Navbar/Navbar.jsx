@@ -11,6 +11,16 @@ export default function Navbar() {
     const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
     
+    // TODO
+    const onLogoutHandler = async() => {
+        const { ethereum } = window
+        const permissions = await ethereum.request({
+            method: 'wallet_requestPermissions',
+            params: [{
+              eth_accounts: {},
+            }]
+          });
+    }
 
     const showNav = () => {
         if(account){
@@ -26,6 +36,7 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance} location={location} type={'claim-btn'} />
                 </div>
+                {/* <div onClick={() => onLogoutHandler()}>Logout</div> */}
                 <MetaMask />
             </div>
             <div className="navbar--mobile">

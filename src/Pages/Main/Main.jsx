@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, useParams } from "react-router-dom";
 import Stake from "../../Pages/Stake/Stake"
 import Claim from "../../Pages/Claim/Claim"
 import { useSelector } from 'react-redux'
+import { useLocation } from "react-router";
 import Connect from '../Connect/Connect';
 import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
@@ -14,12 +15,14 @@ export default function Main() {
     const account = useSelector(state => state.data.account)
     const loader = useSelector(state => state.data.connected)
 
-    
+    const location = useLocation()
 
     useEffect(() => {
     }, [loader])
-
-    if(!account && !loader){
+    if(location.pathname ==="/gallery"){
+        return <Switch><Route component={Gallery} path="/gallery"></Route></Switch>
+        }
+    else if(!account && !loader){
         return <Connect />
     }
     else if(!account && loader){
