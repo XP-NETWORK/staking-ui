@@ -5,7 +5,6 @@ import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import { initMetaMask } from "../src/utils/metamask"
-// import { getWalletAccounts } from "./utils/walletConnect"
 import { getActualTime, updateCurrentPrice, updateAccount } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
@@ -15,14 +14,13 @@ import axios from 'axios';
 
 
 
-
 function App() {
 const dispatch = useDispatch()
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
-const provider = useSelector(state => state.data.provider)
 const location = useLocation()
 let history = useHistory();
+
 
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
@@ -90,7 +88,7 @@ useEffect(() => {
   accountsChanged()
   logStakeContract()
   logXPContract()
-  // getWalletAccounts()
+
 }, [])
 
 useEffect(() => {
