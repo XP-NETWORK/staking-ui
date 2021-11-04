@@ -4,6 +4,7 @@ import { getStakeById } from "../../utils/stake"
 import { useSelector, useDispatch } from 'react-redux'
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import {  goBack } from "../../redux/counterSlice"
+import { useWeb3React } from '@web3-react/core'
 
 export default function NFT({ tokenID, i }) {
     const dispatch = useDispatch()
@@ -11,10 +12,10 @@ export default function NFT({ tokenID, i }) {
     const nftTokenId = useSelector(state => state.stakeData.nftTokenId)
     const currentToken = useSelector(state => state.stakeData.nftTokenIndex)
     const img = useSelector(state => state.stakeData.image).filter(n => n.token === tokenID)[0]
-
+    const {library, connector} = useWeb3React()
 
     const onClickHandler = () => {
-        getStakeById(tokenID, i)
+        getStakeById(tokenID, i, library)
         dispatch(updateIndex(i))
         dispatch(updateNftTokenIndex(i))
         dispatch(goBack(currentToken - i))

@@ -8,21 +8,24 @@ import {
 } from "react-router-dom";
 import { store } from '../src/redux/store'
 import { Provider } from 'react-redux'
-import { MoralisProvider } from "react-moralis";
+import { Web3ReactProvider } from '@web3-react/core';
+import Web3 from 'web3';
 
 
-const APP_ID = "juLf4FWikUo0NFgsKNzp2KPUKLbjuuhutf57r0f7";
-const SERVER_URL = "https://sukpptp3mu22.usemoralis.com:2053/server";
+
+const getLibrary = provider => {
+  return new Web3(provider)
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
+    <Web3ReactProvider getLibrary={getLibrary}>
     <Router>
       <Provider store={store}>
         <App />
       </Provider>
     </Router>
-    </MoralisProvider>
+    </Web3ReactProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

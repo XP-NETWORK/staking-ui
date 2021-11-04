@@ -18,7 +18,8 @@ import Loader from '../../Components/Loader/Loader'
 import Widget from './Parts/Widget/Widget'
 import Total from "./Parts/Total/Total"
 import Withdrawn from "./Parts/Withdrown/Withdrown"
- 
+import { useWeb3React } from '@web3-react/core' 
+
 export default function Claim() {
     // const balance = useSelector(state => state.data.balance)
     const address = useSelector(state => state.data.account)
@@ -33,7 +34,7 @@ export default function Claim() {
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
     const tokens = useSelector(state => state.stakeData.tokensAmount)
-
+    const {library, connector} = useWeb3React()
 
 
     let history = useHistory();
@@ -41,14 +42,14 @@ export default function Claim() {
         // console.log(useSelector(s => s.stakeData), 'aklsdaklsdaklsda')
     useEffect(async () => {
 
-        await getAmountOfTokens(address)
-        await tokenOfOwnerByIndex(tokens, address)
+        await getAmountOfTokens(address, library)
+        await tokenOfOwnerByIndex(tokens, address, library)
     }, [])
 
     useEffect(() => {
         // console.log("useEffect tokens: ", tokens);
         const getData = async () =>{
-            await tokenOfOwnerByIndex(tokens, address)
+            await tokenOfOwnerByIndex(tokens, address, library)
         }
         getData()
     },[tokensFlag, tokens, address])
@@ -62,8 +63,8 @@ export default function Claim() {
 
     useEffect(() => {
         const getData = async () => {
-            await getStakeById(tokensArr[currentToken], currentToken)
-            await checkIsUnLocked(currentToken)
+            await getStakeById(tokensArr[currentToken], currentToken, library)
+            await checkIsUnLocked(currentToken, library)
         }
         if(!address){
             history.push("/stake")

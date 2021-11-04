@@ -7,18 +7,34 @@ import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
 import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked } from "../redux/stakeSlice"
 import axios from "axios"
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 
+export const walletconnect = new WalletConnectConnector({ 
+    rpc: { 
+        // 1: 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+        3: "https://ropsten.mycustomnode.com",
+        56: 'https://bsc-dataseed.binance.org'
+    },
+})
 
-
-export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
-const W3 = new Web3(window.ethereum)
+// export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
+export let stakeAddress = "0xbC9091bE033b276b7c2244495699491167C20037"
 const state = store.getState()
+const p = state.data.provider
+const W3 = new Web3( p === "WalletCOnnect" ? walletconnect : window.ethereum )
+console.log("W3", W3)
+
 
 // Create staker smart contract.
-const stakeContract = async () => {
+const stakeContract = async (library) => {
     try{
-        const Contract = await new W3.eth.Contract(stakeABI, stakeAddress)
-        return Contract
+        let W3
+        if(library && library._provider) {
+            W3 = new Web3(library._provider)
+        }   else W3 = new Web3(window.ethereum)
+        console.log(W3)
+        const contract = await new W3.eth.Contract(stakeABI, stakeAddress)
+        return contract
     }
     catch(error){
         console.log(error)
@@ -32,7 +48,7 @@ export const logStakeContract = async () => {
 }
 
 // Lock the XPNet.
-export const stake = async (amount, duration, account, history) => {
+export const stake = async (amount, duration, account, history, library) => {
 
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
@@ -44,7 +60,7 @@ export const stake = async (amount, duration, account, history) => {
     }
     try{
         store.dispatch(updateAproveLockLoader(true))
-        const Contract = await stakeContract()
+        const Contract = await stakeContract(library)
         Contract.methods.stake(weiValue, durInSec).send({from:account})
         .once('receipt', async function(receipt){
             console.log("stake: ", receipt);
@@ -66,8 +82,8 @@ export const stake = async (amount, duration, account, history) => {
 }
 
 // Take owner addres and get amount of tokens on owner. APP
-export const getAmountOfTokens = async (owner) => {
-    const Contract = await stakeContract()
+export const getAmountOfTokens = async (owner,library) => {
+    const Contract = await stakeContract(library)
     if(owner){
         try{
             const tokensAmount = await Contract.methods.balanceOf(owner).call()
@@ -83,11 +99,11 @@ export const getAmountOfTokens = async (owner) => {
 
 
 // Take the amount of tokens, open loop. In each iteraction take owner addres and index, push token to array.
-export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
+export const tokenOfOwnerByIndex = async (tokenAmount, owner, library) => {
     let tokenArr = []
         if(parseInt(tokenAmount)){
             const num = tokenAmount
-            const Contract = await stakeContract()
+            const Contract = await stakeContract(library)
             for (let i = 0; i < num; i++) {
                 try{
                     const token = await Contract.methods.tokenOfOwnerByIndex(owner,i).call()
@@ -107,8 +123,8 @@ export const tokenOfOwnerByIndex = async (tokenAmount, owner) => {
 }
 
 // Get token by id.
-export const getStakeById = async (id, index) => {
-    const Contract = await stakeContract()
+export const getStakeById = async (id, index, library) => {
+    const Contract = await stakeContract(library)
     try{
         const info = await Contract.methods.stakes(id).call()
         store.dispatch(updateNftTokenIndex(index))
@@ -125,8 +141,8 @@ export const getStakeById = async (id, index) => {
 
 
 
-export const showAvailableRewards = async (nftId) => {
-    const Contract = await stakeContract()
+export const showAvailableRewards = async (nftId, library) => {
+    const Contract = await stakeContract(library)
     try{
     const available = await Contract.methods.showAvailableRewards(nftId).call()
 
@@ -139,9 +155,9 @@ export const showAvailableRewards = async (nftId) => {
 }
 
 // Claim the rewards of chosen token.
-export const claimXpNet = async (nftId,rewards, account) => {
+export const claimXpNet = async (nftId,rewards, account, library) => {
     // store.dispatch(updateWithdrawed(true))
-    const Contract = await stakeContract()
+    const Contract = await stakeContract(library)
     try{
         await Contract.methods.withdrawRewards(nftId, rewards).send({from:account})
         .once('receipt', () => {
@@ -157,8 +173,8 @@ export const claimXpNet = async (nftId,rewards, account) => {
 }
 
 // Withdrow token and rewards. 
-export const withrow = async ( nftId, adress ) => {
-    const Contract = await stakeContract()
+export const withrow = async ( nftId, adress, library ) => {
+    const Contract = await stakeContract(library)
     try{
         const result = await Contract.methods.withdraw(nftId).send({from:adress})
     }
@@ -168,8 +184,8 @@ export const withrow = async ( nftId, adress ) => {
 } 
 
 
-export const checkIsUnLocked = async (id) => {
-    const Contract = await stakeContract()
+export const checkIsUnLocked = async (id, library) => {
+    const Contract = await stakeContract(library)
     try{
         const isUnlocked = await Contract.methods.checkIsUnlocked(id).call()
         store.dispatch(updateIsUnlocked(isUnlocked))
@@ -179,9 +195,9 @@ export const checkIsUnLocked = async (id) => {
     }
 }
 
-export const totalSupply = async (index, length) => {
+export const totalSupply = async (index, length, library) => {
     debugger
-    const Contract = await stakeContract()
+    const Contract = await stakeContract(library)
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
         const array = (await Promise.all(new Array(length).fill(0).map((n,i) => i+ index)
@@ -199,9 +215,9 @@ export const totalSupply = async (index, length) => {
     }
 }
 
-export const stakes = async (id) => {
+export const stakes = async (id, library) => {
     console.log("stakes");
-    const Contract = await stakeContract()
+    const Contract = await stakeContract(library)
     try {
         const nft = await Contract.methods.stakes(id).call()
         // console.log(nft);
@@ -224,8 +240,8 @@ export const stakes = async (id) => {
     }
 }
 
-export const stakesGallery = async (id) => {
-    const Contract = await stakeContract()
+export const stakesGallery = async (id, library) => {
+    const Contract = await stakeContract(library)
     try {
         const nft = await Contract.methods.stakes(id).call()
         console.log(nft)

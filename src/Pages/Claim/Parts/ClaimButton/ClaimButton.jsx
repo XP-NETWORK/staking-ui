@@ -5,15 +5,21 @@ import ButtonLoader from '../../../../Components/Loader/ButtonLoader'
 import { updateWithdrawed } from "../../../../redux/stakeSlice"
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
+import { useWeb3React } from '@web3-react/core'
+
 
 export default function ClaimButton({ stakeInfo, rewardsWai, address }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const loader = useSelector(state => state.stakeData.withdrawed)
+    const {library, connector} = useWeb3React()
+
     const claimHandler = () => {
-        claimXpNet(stakeInfo, rewardsWai, address)
+        claimXpNet(stakeInfo, rewardsWai, address,library)
         dispatch(updateWithdrawed(true))
     }
+
+
 
     useEffect(() => {
     }, [loader])

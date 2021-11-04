@@ -9,6 +9,7 @@ import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
 import Gallery from "../Gallery/Gallery"
 import Search from "../Search/Search";
+import Connection from "../Connect/Connection";
 
 export default function Main() {
 

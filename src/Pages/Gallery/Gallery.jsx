@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { totalSupply, stakesGallery } from "../../utils/stake"
 import { useLocation } from 'react-router'
 import { useParams  } from "react-router-dom"
-
+import { useWeb3React } from '@web3-react/core'
 
 export default function Gallery() {
     const [index, setIndex] = useState(0)
@@ -14,7 +14,7 @@ export default function Gallery() {
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
     const account = useSelector(state => state.data.account)
-
+    const {library, connector} = useWeb3React()
     // const [endLoad, setEndLoad] = useState(18)
     const [search, setSearch] = useState('')
     const [filterFlag, setFilterFlag] = useState(false)
@@ -31,7 +31,7 @@ export default function Gallery() {
         if (element.scrollHeight - element.scrollTop < element.clientHeight + 10 ) {
           setGoingUp(true);
         //   setEndLoad(prev => prev+12)
-          totalSupply(index, 20)
+          totalSupply(index, 20, library)
           setIndex(index + 20)
         }
         ref.current = currentScrollY;
@@ -39,7 +39,7 @@ export default function Gallery() {
     
     useEffect(() => {
      
-            totalSupply(index, 80)
+            totalSupply(index, 80, library)
             setIndex(80)
        
     }, [])
@@ -60,7 +60,7 @@ export default function Gallery() {
 
     const searchHandler = item => {
         if(search === ""){
-            totalSupply(index, 80)
+            totalSupply(index, 80, library)
             setIndex(80)
         }
         const reg = new RegExp('^[0-9]+$');
@@ -73,7 +73,7 @@ export default function Gallery() {
     const keyPresHandler = (item) => {
         if(search === "" && item.key === "Enter"){
             if(collection.length <= 1){
-                totalSupply(index, 80)
+                totalSupply(index, 80, library)
                 setIndex(80)
                 setFilterFlag(false)
             }

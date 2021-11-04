@@ -11,7 +11,7 @@ import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
 import moment from 'moment';
 import axios from 'axios';
-
+import { useWeb3React } from '@web3-react/core'
 
 
 function App() {
@@ -20,15 +20,14 @@ const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
 const location = useLocation()
 let history = useHistory();
-
-
+const {library, connector} = useWeb3React()
 const getCurrentPrice = async () => {
   const currentPrice = (await axios.get("https://api.xp.network/current-price")).data
   dispatch(updateCurrentPrice(currentPrice))
 }
 
 const updateBalance = async () => {
-  await checkBalance(address)
+  await checkBalance(address, library)
 }
 
 const doDate = () => {
@@ -39,7 +38,7 @@ const doDate = () => {
 const accountsChanged = () => {
   const getTokens = async (add) => {
     try {
-      await getAmountOfTokens(add)
+      await getAmountOfTokens(add, library)
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +50,7 @@ const accountsChanged = () => {
     
       if (accounts.length > 0) {
         dispatch(updateAccount(accounts[0]))
-        await getTokens(accounts[0])
+        await getTokens(accounts[0], library)
       }
     });
   }
@@ -62,8 +61,8 @@ useEffect( () => {
   const getData = async () =>{
     if(address) {
       await updateBalance()
-      await checkAllowence(address)
-      await getAmountOfTokens(address)
+      await checkAllowence(address, library)
+      await getAmountOfTokens(address, library)
     }
   }
   getData()
@@ -73,7 +72,7 @@ useEffect( () => {
 useEffect(() => {
   if(location.pathname === "/claim"){
     if(parseInt(tokens) > 0){
-      tokenOfOwnerByIndex(tokens, address)
+      tokenOfOwnerByIndex(tokens, address, library)
     }
     else{
       history.push('/stake')

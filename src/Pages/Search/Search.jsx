@@ -16,7 +16,7 @@ import { useParams } from 'react-router'
 import { getStakeById } from "../../utils/stake"
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import { Link } from 'react-router-dom'
-
+import { useWeb3React } from '@web3-react/core' 
 
 export default function Search() {
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ export default function Search() {
     const collection = useSelector(state => state.totalSupply.collection)
     const loaded = useSelector(state => state.totalSupply.loaded)
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
-    
+    const {library, connector} = useWeb3React()
     const { id } = useParams()
     const [nftUrl, setNftUrl] = useState('')
     const [nftID, setNftID] = useState('')
@@ -79,13 +79,8 @@ export default function Search() {
         const reg = new RegExp('^[0-9]+$');
         if(reg.test(id)){
             if(collection.length <= 1){
-                stakesGallery(id)
+                stakesGallery(id, library)
             }
-            // if(id){
-            //     getStakeById(id, id)
-            //     dispatch(updateIndex(id))
-            //     dispatch(updateNftTokenIndex(id))  
-            // }
         }else{
             setExist(false)
         }
