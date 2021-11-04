@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import "./Connect.css"
 import MetaMask from "../../assets/MetaMask_Big_Fox.svg"
+import  walletconnectLogo  from "../../assets/metaLogo.png"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
 import { chengeStatus, setProvide, updateAccount } from "../../redux/counterSlice"
@@ -51,35 +52,23 @@ export default function Connect() {
     return (
         <div className="connect__container">
             <div className="connect">
-                {
-                    window.innerWidth <= 600 ? 
-                    <>
-                    <div className="fox">
-                        <img src={MetaMask} alt="" />
-                    </div>
-                    <div className="connect__title">
-                        { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect MetaMask</a></div>
-                        :
-                        <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => onMetamask()} className="connect__button">
-                        Connect
-                        </div>
-                        }
-                        
-                    </div>
-                    </>
+                <div className="fox">
+                    <img src={MetaMask} alt="" />
+                </div>
+                <div>
+                    { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect MetaMask</a></div>
                     :
-                    <>
-                        <div className="fox">
-                            <img src={MetaMask} alt="" />
-                        </div>
-                        <div style={{display:`${ethereum ? "block":"none"}`}} onClick={() => onMetamask()} className="connect__button">
-                        MetaMask
-                        </div>
-                        <div onClick={() => onWalletConnect()}>WalletConnect</div>
-
-                    </>
-                }
-                { !ethereum ? <div className="required">MetaMask is required</div> : null}
+                    <div onClick={() => onMetamask()} className="connect__button">
+                    Connect MetaMask
+                    </div>
+                    }
+                </div>
+            </div>
+            <div className="connect">
+                <div className="meta">
+                    <img src={walletconnectLogo} alt="" />
+                </div>
+                <div className="connect__button" onClick={() => onWalletConnect()}>Connect WalletConnect</div>
             </div>
         </div>
     )
