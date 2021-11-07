@@ -1,5 +1,5 @@
 import { store } from "../redux/store"
-import { chengeStatus, updateAccount } from "../redux/counterSlice";
+import { updateAccount } from "../redux/counterSlice";
 
 let accounts
 const { ethereum } = window
@@ -15,20 +15,20 @@ export const connectMetaMask = function() {
     getAccounts()
 }
 
-export const initMetaMask = async () => {
+// export const initMetaMask = async () => {
 
-    if(ethereum){
-        if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
-            accounts = await getAccounts()
-            if(accounts && accounts.length > 0) {
-                store.dispatch(chengeStatus(true))
-            } else {
-                store.dispatch(chengeStatus(false))
-                console.log("Need to connect.")
-            }
-        }
-        else{
-            console.log("MetaMask is required.")
-        }
-    }
-}
+//     if(ethereum){
+//         if (typeof ethereum !== 'undefined' && ethereum.isMetaMask) {
+//             accounts = await getAccounts()
+//             if(accounts && accounts.length > 0) {
+//                 store.dispatch(chengeStatus(true))
+//             } else {
+//                 store.dispatch(chengeStatus(false))
+//                 console.log("Need to connect.")
+//             }
+//         }
+//         else{
+//             console.log("MetaMask is required.")
+//         }
+//     }
+// }

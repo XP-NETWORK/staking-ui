@@ -15,6 +15,7 @@ import DetailsRewards from './parts/DetailsRewards'
 import Agreement from './parts/Agreement'
 import { StakeAmount, StakeAmountMob } from './parts/StakeAmount';
 import StakeDuration from './parts/StakeDuration';
+import { useHistory } from 'react-router';
 
 
 export default function Stake() {
@@ -27,9 +28,11 @@ const currentPrice = useSelector(state => state.data.currentPrice)
 const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
-const balance = useSelector(state => state.data.balance)
 const approveLoader = useSelector(state => state.data.aproveLoader)
+const connected = useSelector(state => state.data.connected)
+const connectPushed = useSelector(state => state.data.connectPushed)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
+const history = useHistory()
 
 const durations = [
     {d:3, p: 45},
@@ -40,6 +43,11 @@ const durations = [
 
 useEffect(() => {
 }, [approveLoader])
+
+useEffect(() => {
+// if(connected === false || connectPushed === false) history.push("/connect")
+}, [])
+
  
         return (
             <div className="stake__container">

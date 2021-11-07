@@ -12,14 +12,13 @@ import Search from "../Search/Search";
 import Connection from "../Connect/Connection";
 
 export default function Main() {
-
     const account = useSelector(state => state.data.account)
     const loader = useSelector(state => state.data.connected)
-
+    const connectPushed = useSelector(state => state.data.connectPushed)
     const location = useLocation()
 
-    useEffect(() => {
-    }, [loader])
+    // useEffect(() => {
+    // }, [loader])
     // || location.pathname.includes("search")
     if(location.pathname ==="/gallery" ){
         return <Switch>
@@ -28,7 +27,7 @@ export default function Main() {
          <Route component={Search} path="/search"></Route> */}
         </Switch>
         }
-    else if(!account && !loader){
+    else if(!connectPushed){
         return <Connect />
     }
     else if(!account && loader){

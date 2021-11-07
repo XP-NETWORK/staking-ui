@@ -9,7 +9,8 @@ align-items: center;
 
 .connect{
 border: 1px solid black;
-height: 313px;
+width: 270px;
+height: 270px;
 left: 568px;
 top: 126px;
 max-width: 304px;
@@ -22,7 +23,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 font-family: inter !important;
-font-size: 16px !important;
+font-size: 14px !important;
 font-weight: 400 !important;
 margin: 10px;
 padding: 10px 30px;
@@ -41,7 +42,7 @@ padding: 10px 30px;
 
 .meta{
     padding-top: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 23px;
     max-width: 110px;
 }
 
@@ -56,7 +57,6 @@ color: white;
 background: #3180F6;
 border-radius: 6px;
 cursor: pointer;
-margin-bottom: 10px;
 }
 
 .connect__button a{
@@ -66,4 +66,12 @@ margin-bottom: 10px;
 .required{
     color: #f63131;
     font-size: 12px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .connect__container{
+        align-content: flex-start;
+    }
 }

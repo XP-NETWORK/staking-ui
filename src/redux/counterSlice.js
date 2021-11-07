@@ -2,6 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     connected: false,
+    connectPushed: false,
+    onDisconnect: false,
+    modalIsOpen: false,
     duration: 3,
     startDate: '',
     stakingAmount: 0,
@@ -23,8 +26,17 @@ export const counterSlice = createSlice({
     name: 'data',
     initialState,
     reducers: {
-      chengeStatus(state, action){
+      changeStatus(state, action){
         state.connected = action.payload
+      },
+      setButtonPushed(state, action){
+        state.connectPushed = action.payload
+      },
+      setIsOpen(state, action){
+        state.modalIsOpen = action.payload
+      },
+      setonDisconnect(state, action){
+        state.onDisconnect = action.payload
       },
       changeDuraion(state, action){
         state.duration = action.payload 
@@ -82,7 +94,7 @@ export const counterSlice = createSlice({
 
 
 export const { 
-  chengeStatus,
+  changeStatus,
   changeDuraion,
   getActualTime,
   changeStakingAmount,
@@ -99,7 +111,10 @@ export const {
   goForth,
   goBack,
   chengePositionX,
-  setProvide
+  setProvide,
+  setButtonPushed,
+  setIsOpen,
+  setonDisconnect
 } = counterSlice.actions
 
 export default counterSlice.reducer

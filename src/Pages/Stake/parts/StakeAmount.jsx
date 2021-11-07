@@ -61,7 +61,6 @@ export function StakeAmount() {
 
 
 export function StakeAmountMob() {
-
     const dispatch = useDispatch()
     const [amount, setAmount] = useState('')
     const [inputErr, setInputErr] = useState(false)
@@ -96,14 +95,13 @@ export function StakeAmountMob() {
         <div className="stake__amount--mobile">
             <div className="amount__title">Enter your XPNET amount</div>
             <div className={ !inputErr ? "amount__input" : "amount__input--error"}>
-                <input placeholder="Enter amount (minimum 1500 XPNET)" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder="Enter amount" value={amount} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>
                 </div>
             </div>
             { !inputErr ? <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> : <div style={{visibility:`${ !inputErr ? 'hidden': 'visible'}`}} className="error--mobile">The minimum staking amount is 1500 XPNET</div>}
-            {/* // <div className="amount__subtitle">Availabe for Staking:<span>{(nf.format(balance))} XPNET</span></div> */}
         </div>
     )
 }

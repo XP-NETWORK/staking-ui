@@ -152,8 +152,8 @@
         padding: 0 10px; 
     }
     .input__items{
-        right: 16PX;
-        display: none;
+        right: 16px;
+        /* display: none; */
     }
 }
 

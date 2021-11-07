@@ -4,16 +4,22 @@ import MetaMask from "../../assets/MetaMask_Big_Fox.svg"
 import  walletconnectLogo  from "../../assets/metaLogo.png"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
-import { chengeStatus, setProvide, updateAccount } from "../../redux/counterSlice"
+import { setProvide, updateAccount, changeStatus, setButtonPushed } from "../../redux/counterSlice"
 import { useWeb3React } from '@web3-react/core'
 import { injected, walletconnect } from '../../utils/connectors'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
+import { useHistory } from 'react-router'
+import { useSelector } from 'react-redux'
 
 export default function Connect() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { ethereum } = window
 
-    const { active, account, library, connector, activate, deactivate } = useWeb3React()
+    const connectPushed = useSelector(state => state.data.connectPushed)
+    console.log("connectPushed", connectPushed)
+    const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
+
 
     const onMetamask = async () => {
         try {
@@ -23,6 +29,7 @@ export default function Connect() {
         } catch (error) {
             console.log(error);
         }
+        dispatch(setButtonPushed(true))
     }
 
     const onWalletConnect = async () => {
@@ -42,11 +49,15 @@ export default function Connect() {
         } catch (error) {
             console.log(error);
         }
+        dispatch(setButtonPushed(true))
     }
 
     useEffect(() => {
-
-        dispatch(updateAccount(account))
+        if(account){
+            dispatch(updateAccount(account))
+            dispatch(changeStatus(true))
+            history.push("/stake")
+        }
     }, [active])
 
     return (
@@ -56,10 +67,10 @@ export default function Connect() {
                     <img src={MetaMask} alt="" />
                 </div>
                 <div>
-                    { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake-testing.xp.network/">Connect MetaMask</a></div>
+                    { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake.xp.network/">MetaMask</a></div>
                     :
                     <div onClick={() => onMetamask()} className="connect__button">
-                    Connect MetaMask
+                    MetaMask
                     </div>
                     }
                 </div>
@@ -68,7 +79,7 @@ export default function Connect() {
                 <div className="meta">
                     <img src={walletconnectLogo} alt="" />
                 </div>
-                <div className="connect__button" onClick={() => onWalletConnect()}>Connect WalletConnect</div>
+                <div className="connect__button" onClick={() => onWalletConnect()}>WalletConnect</div>
             </div>
         </div>
     )

@@ -67,7 +67,6 @@
 
 @media screen and (max-width: 425px){
     .navbar--mobile{
-        /* width: calc(100% - 40px); */
         width: 90%;
         
         padding: 10px;
@@ -85,12 +84,12 @@
         /* width: 100%; */
     }
     .xp__logo{
-        width: 43%;
+        width: 40vw;
     }
 }
 
 @media screen and (max-width: 320px){
     .xp__logo{
-        width: 45%;
+        width: 40%;
     }
 }

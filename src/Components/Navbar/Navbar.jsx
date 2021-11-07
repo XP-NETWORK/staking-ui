@@ -8,22 +8,12 @@ import MetaMask from "./MetaMask";
 
 export default function Navbar() {
     const location = useLocation();
-    const account = useSelector(state => state.data.account)
     const balance = useSelector(state => state.data.balance)
+    const connectPushed = useSelector(state => state.data.connectPushed)
     
-    // TODO
-    const onLogoutHandler = async() => {
-        const { ethereum } = window
-        const permissions = await ethereum.request({
-            method: 'wallet_requestPermissions',
-            params: [{
-              eth_accounts: {},
-            }]
-          });
-    }
 
     const showNav = () => {
-        if(account){
+        if(connectPushed){
             return(
             <>
             <div className="navbar">

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import Loader from '../../../../Components/Loader/Loader'
 import { useSelector } from "react-redux"
-import { initMetaMask } from '../../../../utils/metamask'
+
 
 
 

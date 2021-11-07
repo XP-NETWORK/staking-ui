@@ -1,4 +1,4 @@
-.metamask{
+/* .metamask{
     right: 0;
     width: 157px;
     height: 32px;
@@ -11,25 +11,49 @@
     align-items: center;
     position: absolute;
     padding: 0 16px;
+    background-color: tomato;
+} */
+
+.metamask{
+    right: 0;
+    width: 200px;
+    height: 40px;
+    background: #EDF0F8;
+    border: 1px solid #D9DFED;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    padding: 0 16px;
+    /* background-color: tomato; */
+}
+
+.metamask:hover{
+    cursor: pointer;
 }
 
 .account{
-    width: 140px;
-
 }
 
 .account__icon{
-  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 25%;
+    
 }
 
 .account__icon canvas {
     border-radius: 25px;
-    margin-top: 4px;
     margin-right: -4px;
     width: 18px;
     height: 18px;
 }
-@media screen and (max-width: 600px) { 
+
+/* @media screen and (max-width: 600px) { 
     .metamask{
         position: unset;
         display: flex;
@@ -40,11 +64,6 @@
         padding: 10.5px 6px;
         height: auto;
         font-size: 14px;
-    }
-
-    .account__icon{
-        /* width: 16px; */
-        /* background-color: tomato; */
     }
 
     .account__icon canvas {
@@ -73,20 +92,15 @@
 }
 
 @media screen and (max-width: 375px){
-    .metamask{
-        /* max-width: 40%; */
-    }
-    .account{
-        /* max-width: 100px; */
-    }
+
 }
 
 @media screen and (max-width: 320px){
     .metamask{
-        /* max-width: 100%; */
+       
     }
     .account{
-        /* font-size: 10px; */
+      
         max-width: 100%;
     }
-}
+} */
