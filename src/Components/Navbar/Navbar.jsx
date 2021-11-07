@@ -1,5 +1,6 @@
 import "./Navbar.css"
 import xplogo from "../../assets/logoXpStake.svg"
+import mobileLogo from "../../assets/XPLogo.svg"
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
@@ -26,11 +27,10 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance} location={location} type={'claim-btn'} />
                 </div>
-                {/* <div onClick={() => onLogoutHandler()}>Logout</div> */}
                 <MetaMask />
             </div>
             <div className="navbar--mobile">
-                <div className="xp__logo">
+                <div className="xp__logo--mobile">
                     <Link to='/stake'>
                         <img src={xplogo} alt="XP.Network Logo" />
                     </Link>
@@ -40,7 +40,6 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance}  location={location} type={'claim-btn'} />
                 </div>
-                
             </div>
             </>
             )

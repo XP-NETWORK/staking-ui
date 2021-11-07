@@ -5,13 +5,14 @@ import { useSelector } from 'react-redux';
 
 export default function NavButton({ location, type, balance }) {
     const tokens = parseInt(useSelector(state => state.stakeData.tokensAmount))
+    const intViewportWidth = window.innerWidth;
     const history = useHistory()
     useEffect(() => {
     }, [balance])
 
     if(type === 'stake-btn') return (
         <div onClick={() => location.pathname === '/stake' ? '' : history.push('/stake')} className={location.pathname === '/stake' || location.pathname === '/' ? `Stake nav__button--active`: `Stake nav__button`}>
-            <Link style={{pointerEvents: 'none'}} to='/stake'>Stake XPNET</Link>
+            <Link style={{pointerEvents: 'none'}} to='/stake'><span>Stake XPNET</span></Link>
         </div>
     )
     else if(type === 'claim-btn') {

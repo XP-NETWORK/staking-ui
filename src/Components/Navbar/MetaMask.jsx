@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createIcon } from '@download/blockies';
 import { useSelector, useDispatch} from 'react-redux'
 import './MetaMask.css'
@@ -7,6 +7,7 @@ import { setButtonPushed, updateAccount, setIsOpen, setonDisconnect } from "../.
 
 
 export default function MetaMask() {
+    const intViewportWidth = window.innerWidth;
     const dispatch = useDispatch()
     const {
         deactivate,
@@ -43,7 +44,11 @@ export default function MetaMask() {
     return (
         <div onClick={() => onDisconnect()} className="metamask">
             <div className="account">
-                {account.slice(0,10) + '...' + account.slice(38,46)}
+                { intViewportWidth <= 600 ? 
+                account.slice(0,2) + '...' + account.slice(40,46)
+                :
+                account.slice(0,6) + '...' + account.slice(39,46)
+                }
             </div>
             <div className="account__icon"></div>
         </div>

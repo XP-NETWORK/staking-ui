@@ -37,24 +37,24 @@
 
     .navbar--mobile{
         max-width: calc(100% - 20px);
-        /* width: 100%; */
+        width: 100vw;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         align-items: center;
-        max-width: 600px;
-        gap: 5px;
+        /* max-width: 600px; */
+        gap: 20px;
         padding: 10px;
-        /* background-color: tomato; */
     }
 
-    .xp__logo{
-        order: -2;
+    .xp__logo--mobile{
+        /* order: -2; */
         padding: 10px 0;
-        width: 25%;
-        
+        width: 24vw;
     }
 
+    .xp__logo--mobile img{
+        width: 100%;
+    }
 
 }
 
@@ -67,29 +67,27 @@
 
 @media screen and (max-width: 425px){
     .navbar--mobile{
-        width: 90%;
-        
+        width: calc(100% - 20px);
         padding: 10px;
         justify-content: space-between;
+        gap: 0;
+        padding: 0 0 10px 0;
     }
-    .xp__logo{
-        width: 170px;
+    .xp__logo--mobile{
+        width: 200px;
         margin: unset;
     }
 }
-
+/* 
 @media screen and (max-width: 375px){
-    .navbar--mobile{
-        /* width: calc(100% - 40px); */
-        /* width: 100%; */
-    }
+  
     .xp__logo{
         width: 40vw;
     }
-}
+} */
 
-@media screen and (max-width: 320px){
+/* @media screen and (max-width: 320px){
     .xp__logo{
         width: 40%;
     }
-}
+} */

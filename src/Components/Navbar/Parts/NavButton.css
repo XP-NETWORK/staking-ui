@@ -55,15 +55,15 @@
         border-radius: 8px;
         margin-left: unset;
     }
-    .metamask {
-        margin-left: 0px;
-    }
+
     .nav__button{
-        width: 112px;
-        margin: 0px 2px;
+        width: 20vw;
     }
     .nav__button--active{
-        width: 112px;
+        width: 20vw;
+    }
+    .nav__button--disabled{
+        width: 20vw;
     }
 }
 
