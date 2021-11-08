@@ -4,7 +4,7 @@ import MetaMask from "../../assets/MetaMask_Big_Fox.svg"
 import  walletconnectLogo  from "../../assets/metaLogo.png"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
-import { setProvide, updateAccount, changeStatus, setButtonPushed } from "../../redux/counterSlice"
+import { setProvide, updateAccount, changeStatus, setButtonPushed, updateChainId } from "../../redux/counterSlice"
 import { useWeb3React } from '@web3-react/core'
 import { injected, walletconnect } from '../../utils/connectors'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
@@ -56,6 +56,7 @@ export default function Connect() {
         if(account){
             dispatch(updateAccount(account))
             dispatch(changeStatus(true))
+            dispatch(updateChainId(chainId))
             history.push("/stake")
         }
     }, [active])
