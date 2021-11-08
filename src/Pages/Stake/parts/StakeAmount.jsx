@@ -13,7 +13,6 @@ export function StakeAmount() {
     useEffect(() => {
         if(stakingAmount) setAmount(stakingAmount)
     },[])
-    // console.log(useSelector(s => s.data))
 
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
