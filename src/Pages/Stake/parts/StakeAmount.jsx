@@ -8,13 +8,9 @@ export function StakeAmount() {
     const dispatch = useDispatch()
     const [amount, setAmount] = useState('')
     const [inputErr, setInputErr] = useState(false)
-    const balance = useSelector(state => state.data.balance)
     const {stakingAmount} = useSelector(s => s.data)
-    useEffect(() => {
-        if(stakingAmount) setAmount(stakingAmount)
-    },[])
-    // console.log(useSelector(s => s.data))
-
+    const balance = useSelector(state => state.data.balance)
+  
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
         const num = Number(e.target.value)
@@ -23,12 +19,10 @@ export function StakeAmount() {
             dispatch(changeStakingAmount(num))
         }
     }
-
     const putMax = () => {
-        // console.log("putMax: ", balance)
         amountHandler({target: {value: balance}})
+        if(balance >= 1500) setInputErr(false)
     }
-
     const onBlurHandler = (e) => {
         const num = parseInt(e.target.value)
         if(num < 1500){
@@ -40,6 +34,9 @@ export function StakeAmount() {
        }
     }
 
+    useEffect(() => {
+        if(stakingAmount) setAmount(stakingAmount)
+    },[])
 
     return (
         <div className="stake__amount">
@@ -65,7 +62,6 @@ export function StakeAmountMob() {
     const [amount, setAmount] = useState('')
     const [inputErr, setInputErr] = useState(false)
     const balance = useSelector(state => state.data.balance)
-
     const amountHandler = (e) => {
         const reg = new RegExp('^[0-9]+$');
         const num = Number(e.target.value)
@@ -77,6 +73,7 @@ export function StakeAmountMob() {
 
     const putMax = () => {
         setAmount(balance)
+        if(balance >= 1500) setInputErr(false)
     }
 
     const onBlurHandler = (e) => {
