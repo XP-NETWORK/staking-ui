@@ -250,6 +250,7 @@ export const stakesGallery = async (id, library) => {
                 const { image } = res.data
                 store.dispatch(updateCollection({url: image, token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
             }
+            store.dispatch(updateCollection({token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
     } catch (error) {
         console.log(error);
     }

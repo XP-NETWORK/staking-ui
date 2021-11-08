@@ -10,10 +10,10 @@ import { useSelector, useDispatch } from "react-redux"
 import "./Search.css"
 import Total from '../Claim/Parts/Total/Total'
 import Withdrawn from '../Claim/Parts/Withdrown/Withdrown'
-import { stakesGallery } from "../../utils/stake"
+import { stake, stakesGallery } from "../../utils/stake"
 import { useEffect } from 'react'
 import { useParams } from 'react-router'
-import { getStakeById } from "../../utils/stake"
+import { getStakeById, stakes } from "../../utils/stake"
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import { Link } from 'react-router-dom'
 import { useWeb3React } from '@web3-react/core' 
@@ -35,55 +35,58 @@ export default function Search() {
     const [nftID, setNftID] = useState('')
     const [staker, setStaker] = useState('')
     const [exist, setExist] = useState(true)
+    const reg = new RegExp('^[0-9]+$');
 
-    
+
     const setPicture = () => {
-
         if(collection.length > 0){
-            const reg = new RegExp('^[0-9]+$');
             if(reg.test(id)){
-                const index = parseInt(id) >= 0 || parseInt(selected)
-                if(collection.length && collection.length <= index){
+                if(collection){
                     setExist(true)
                     setNftUrl(collection[0].url)
                     setNftID(collection[0].token)
                     setStaker(collection[0].staker)
                 }
                 else{
-                    if(id >= 0){
-                        setNftUrl(collection[index].url)
-                        setNftID(collection[index].token)
-                        setStaker(collection[index].staker)
-                    }
+                    setExist(false)
                 }
+                // const index = parseInt(id) >= 0 || parseInt(selected)
+                // if(collection.length && collection.length <= index){
+                //     setExist(true)
+                    // setNftUrl(collection[0].url)
+                    // setNftID(collection[0].token)
+                    // setStaker(collection[0].staker)
+                // }
+                // else{
+                //     if(id >= 0){
+                //         setNftUrl(collection[index].url)
+                //         setNftID(collection[index].token)
+                //         setStaker(collection[index].staker)
+                //     }
+                // }
             }
             else if(selected || selected == "0"){
                 setExist(true)
-                setNftUrl(collection[parseInt(selected)].url)
-                setNftID(collection[parseInt(selected)].token)
-                setStaker(collection[parseInt(selected)].staker)
+                setNftUrl(collection[0].url)
+                setNftID(collection[0].token)
+                setStaker(collection[0].staker)
             }
-            else setExist(false)
         }
-        else if(!Array.isArray(collection) && collection){
-     
-                setExist(true)
-                    setNftUrl(collection.url)
-                    setNftID(collection.token)
-                    setStaker(collection.staker)
+        else{
+            setExist(false)
         }
-
     }
     
     useEffect(() => {
-        const reg = new RegExp('^[0-9]+$');
         if(reg.test(id)){
             if(collection.length <= 1){
                 stakesGallery(id, library)
+                stakes(id, library)
             }
-        }else{
-            setExist(false)
         }
+        // else{
+        //     setExist(false)
+        // }
     }, [])
 
     const showNft = () => {
