@@ -48,6 +48,7 @@ export default function Gallery() {
         // }
     }
     const onBlurHandler = item => {
+        
         if(search === ""){
             totalSupply(index, 20, library)
             setIndex(index + 20)
@@ -78,7 +79,6 @@ export default function Gallery() {
     }
 
     useEffect(() => {
-        console.log("gallery render");
         totalSupply(index, 80, library)
         setIndex(80)
     }, [])
