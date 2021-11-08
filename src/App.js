@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
+import walletIcon from "./assets/walletIcon.png"
 import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, changeStatus, setButtonPushed } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
@@ -31,7 +32,7 @@ Modal.setAppElement('#root');
 
 const customStyles = {
   content: {
-    top: '20%',
+    top: '30%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
@@ -166,7 +167,6 @@ useEffect(() => {
     <div className="app__wraper">
       <Navbar />
       <Modal 
-  
       className="Modal"
       isOpen={modalIsOpen} 
       style={customStyles} 
@@ -180,12 +180,12 @@ useEffect(() => {
               <div onClick={() => closeModal()} className="modal-close">&#x2715;</div>
             </div>
             <div className="modal-body">
-              <div className="modal-icon">ICON</div>
+              <div className="modal-icon"><img src={walletIcon} alt="wallet-icon" /></div>
               <div className="modal-subtitle">You’re about to disconnect your wallet</div>
               <div className="modal-msg">To continue with the selected target chain, click on Cancel</div>
             </div>
             <div onClick={() => handleDisconnect()} className="modal-button">Disconnect Wallet</div>
-            <div onClick={() => closeModal()} className="modal-button-close">Close</div>
+            <div onClick={() => closeModal()} className="modal-button-close">Cancel</div>
           </>
           :
           <>

@@ -17,21 +17,17 @@
 
 .Modal{
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  width: 20vw;
-  height: 30vh;
-  padding: 10px 0;
+  width: 400px;
+  height: auto;
+  padding: 20px 10px 20px 10px;
   border-radius: 6px;
   box-shadow: 0px 0px 13px 0px #00000050;
   font-family: inter;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  background-color: rgb(0, 0, 0);
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
 }
 
 .MODAL .overly{
@@ -53,8 +49,10 @@
   line-height: 126%;
   display: flex;
   width: 100%;
+  padding: 10px;
   align-items: center;
   justify-content: center;
+
 }
 
 .modal-close{
@@ -88,6 +86,7 @@
 
 .modal-subtitle{
   font-weight: 600;
+  text-align: center;
 }
 
 .modal-msg{
@@ -105,10 +104,12 @@
   position: relative;
   transition: 0.17s;
   width: 50%;
-  height: 44px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .modal-button-close{
@@ -121,7 +122,7 @@
   position: relative;
   transition: 0.17s;
   width: 50%;
-  height: 44px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,10 +138,25 @@
   background-color: #2549D1;
 }
 
-/* @media screen and (max-width: 425px){
-  .app__wraper{
-    max-width: 425px;
-    padding: 0 10px;
-    height: auto;
+@media screen and (max-width: 600px){
+  .Modal{
+    width: calc(100% - 100px);
+  }
+}
+
+/* @media  screen and (max-width: 359px) {
+  .modal-button{
+    line-height: 200%;
+    padding-bottom: -30px;
+    overflow: hidden;
+  }
+}
+
+@media  screen and (max-width: 328px) {
+  .modal-button{
+    padding-top: -20px;
+    line-height: 200%;
+    padding-bottom: -30px;
+    overflow: hidden;
   }
 } */
