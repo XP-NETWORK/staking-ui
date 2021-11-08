@@ -9,6 +9,7 @@ const initialState = {
     startDate: '',
     stakingAmount: 0,
     account: '',
+    chainId: '',
     balance: 0,
     approved: false,
     allowence: '',
@@ -49,6 +50,9 @@ export const counterSlice = createSlice({
       },
       updateAccount(state, action){
         state.account = action.payload
+      },
+      setChainId(state, action){
+        state.chainId = action.payload
       },
       updateBalance(state, action){
         state.balance = action.payload
@@ -114,7 +118,8 @@ export const {
   setProvide,
   setButtonPushed,
   setIsOpen,
-  setonDisconnect
+  setonDisconnect,
+  setChainId
 } = counterSlice.actions
 
 export default counterSlice.reducer

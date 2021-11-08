@@ -21,6 +21,7 @@ const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
 const modalIsOpen = useSelector(state => state.data.modalIsOpen)
 const onDisconnect = useSelector(state => state.data.onDisconnect)
+const chain = useSelector(state => state.data.chainId)
 const location = useLocation()
 let history = useHistory();
 const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
@@ -161,7 +162,14 @@ useEffect(() => {
 useEffect(() => {
   doDate()
   setInterval(doDate, 1000);
+  console.log("chainId", typeof chainId, chainId);
+  // if(chainId !== "59" && connectPushed === true)dispatch(setIsOpen(true))
 }, [])
+
+
+useEffect(() => {
+  console.log("chainId", typeof chainId, chainId);
+}, [chain])
 
   return (
     <div className="app__wraper">

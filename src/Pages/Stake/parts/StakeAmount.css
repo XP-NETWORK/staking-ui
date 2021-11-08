@@ -42,6 +42,10 @@
     padding-left: 16px;
 }
 
+.amount__input--error{
+    padding: 0 10px;
+}
+
 .amount__input--error input{
     width: 100%;
     height: 48px;
@@ -80,7 +84,7 @@
 }
 
 .error--mobile{
-    max-width: 100%;
+    max-width: calc(100% - 20px);
     color:#C92454;
     background: #FEE5EC;
     border-radius: 4px;
