@@ -20,11 +20,11 @@ export default function Main() {
     // useEffect(() => {
     // }, [loader])
     // || location.pathname.includes("search")
-    if(location.pathname ==="/gallery" ){
+    if(location.pathname ==="/gallery" || location.pathname.includes("search")){
         return <Switch>
         <Route component={Gallery} path="/gallery"></Route>
-        {/* <Route path="/search/:id"><Search /></Route>
-         <Route component={Search} path="/search"></Route> */}
+        <Route path="/search/:id"><Search /></Route>
+         <Route component={Search} path="/search"></Route>
         </Switch>
         }
     else if(!connectPushed){
@@ -43,7 +43,7 @@ export default function Main() {
                 <Route path="/search/:id">
                     <Search />
                 </Route>
-                <Route component={Search} path="/search"></Route>
+                {/* <Route component={Search} path="/search"></Route> */}
             </Switch>
             )
     }

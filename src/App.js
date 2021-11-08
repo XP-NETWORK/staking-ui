@@ -93,7 +93,7 @@ const switchChain = async() => {
     contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
     blockExplorerUrls: "https://bscscan.com/tx", }]
 
-  debugger
+  // debugger /
   try {
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",

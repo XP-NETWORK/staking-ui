@@ -3,9 +3,7 @@ import "./Gallery.css"
 import  magnifier  from "../../assets/magnifier.svg"
 import NFTBox from './NFTBox'
 import { useSelector } from 'react-redux'
-import { totalSupply, stakesGallery } from "../../utils/stake"
-import { useLocation } from 'react-router'
-import { useParams  } from "react-router-dom"
+import { totalSupply } from "../../utils/stake"
 import { useWeb3React } from '@web3-react/core'
 
 export default function Gallery() {
@@ -14,8 +12,7 @@ export default function Gallery() {
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
     const account = useSelector(state => state.data.account)
-    const {library, connector} = useWeb3React()
-    // const [endLoad, setEndLoad] = useState(18)
+    const {library} = useWeb3React()
     const [search, setSearch] = useState('')
     const [filterFlag, setFilterFlag] = useState(false)
 
@@ -36,28 +33,6 @@ export default function Gallery() {
         }
         ref.current = currentScrollY;
       };
-    
-    useEffect(() => {
-     
-            totalSupply(index, 80, library)
-            setIndex(80)
-       
-    }, [])
-
-    // useEffect(() => {
-
-    //     if(search === ''){
-    //         totalSupply(index, 80)
-    //         setIndex(80)
-    //     }
-    // }, [search])
-
-    // useEffect(() => {
-    //     if(filterFlag){
-    //         stakesGallery(+search)
-    //     }
-    //     }, [filterFlag])
-
     const searchHandler = item => {
         if(search === ""){
             totalSupply(index, 80, library)
@@ -69,7 +44,6 @@ export default function Gallery() {
             setSearch(item.target.value)
         }
     }
-
     const keyPresHandler = (item) => {
         if(search === "" && item.key === "Enter"){
             if(collection.length <= 1){
@@ -82,7 +56,6 @@ export default function Gallery() {
             setFilterFlag(true)
         }
     }
-
     const onBlurHandler = item => {
         if(search === ""){
             console.log("Empty search");
@@ -91,11 +64,7 @@ export default function Gallery() {
             setFilterFlag(false)
         }
     }
-
-    
-
     const showGallery = () => {
-
         if(!collection.length || !collection){
             return <div className="search__loader"></div>
         }
@@ -113,8 +82,13 @@ export default function Gallery() {
                 return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
             })
         }
-       
     }
+
+    useEffect(() => {
+        console.log("gallery render");
+        totalSupply(index, 80, library)
+        setIndex(80)
+    }, [])
 
     return (
         <div className="gallery__wrapper" >

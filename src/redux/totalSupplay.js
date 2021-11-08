@@ -11,16 +11,15 @@ export const totalSupplay = createSlice({
     initialState,
     reducers: {
        updateCollection(state, action) {
-        //   const isInCollection = state.collection.filter(n => n.token == action.payload.token)[0]
-        //   if(!isInCollection)
-        //  state.collection = [...state.collection, action.payload].sort((a,b )=> parseInt(a.token) - parseInt(b.token))
         state.collection = action.payload
        },
        updateManyCollection(state, action) {
-        // console.log(action.payload, 'sakdldsalkadsklkdsal')
-       state.collection = 
+         console.log("before",state.collection);
+         debugger
+         state.collection = 
        [...new Map([...state.collection, ...action.payload].map(item =>[item['token'], item])).values()]
        .sort((a,b )=> parseInt(a.token) - parseInt(b.token))
+       console.log("after", state.collection);
       },
        updateSelected(state, action){
          state.selectedNFT = action.payload

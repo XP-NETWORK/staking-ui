@@ -196,7 +196,6 @@ export const checkIsUnLocked = async (id, library) => {
 }
 
 export const totalSupply = async (index, length, library) => {
-    debugger
     const Contract = await stakeContract(library)
     try {
         const allNFTs = await Contract.methods.totalSupply().call()

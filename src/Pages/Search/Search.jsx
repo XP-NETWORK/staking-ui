@@ -87,7 +87,7 @@ export default function Search() {
     }, [])
 
     const showNft = () => {
-        debugger
+       
         if(exist){
             if(!nftUrl) return <div className="search__loader"></div>
             else if(!nftUrl && id){
