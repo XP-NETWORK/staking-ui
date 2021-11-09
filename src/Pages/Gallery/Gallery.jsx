@@ -58,6 +58,7 @@ export default function Gallery() {
         }
     }
     const showGallery = () => {
+        debugger
         // if(!collection.length || !collection){
         //     return <div className="search__loader"></div>
         // }
@@ -75,7 +76,7 @@ export default function Gallery() {
                 return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
             })
         }
-        else if(!Array.isArray(collection)) return <NFTBox url={collection.url} key={search} tokenID={collection.token} staker={collection.staker}/>
+        else if(!Array.isArray(collection)) return <NFTBox url={collection[0].url} key={search} tokenID={collection[0].token} staker={collection[0].staker}/>
     }
 
     useEffect(() => {
