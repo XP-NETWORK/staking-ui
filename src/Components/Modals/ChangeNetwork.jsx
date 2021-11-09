@@ -54,7 +54,7 @@ export default function ChangeNetwork() {
               <div onClick={() => closeModal()} className="modal-close">&#x2715;</div>
             </div>
             <div className="modal-body">
-              <div className="modal-icon">ICON</div>
+              <div className="modal-icon"><img src={walletIcon} alt="wallet-icon" /></div>
               <div className="modal-subtitle">Switch to BSC Mainnet</div>
               <div className="modal-msg">XP.network bridge requires you to connect to the BSC Mainnet</div>
             </div>
