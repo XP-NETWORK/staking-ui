@@ -1,17 +1,16 @@
 import "./Navbar.css"
 import xplogo from "../../assets/logoXpStake.svg"
-import mobileLogo from "../../assets/XPLogo.svg"
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
 import MetaMask from "./MetaMask";
-
+import { useHistory } from "react-router";
 
 export default function Navbar() {
     const location = useLocation();
     const balance = useSelector(state => state.data.balance)
     const connectPushed = useSelector(state => state.data.connectPushed)
-    
+    const history = useHistory()
 
     const showNav = () => {
         if(connectPushed){
@@ -46,24 +45,16 @@ export default function Navbar() {
         }
         else{
             return(
-            <>
-            <div className="navbar">
+            <div className="navbar--disconnected">
                 <div className="xp__logo">
                     <Link to='/stake'>
                         <img src={xplogo} alt="XP.Network Logo" />
                     </Link>
                 </div>
-                <div className="investor">| Investor Portal</div>
+                {
+                    location.pathname === "/gallery" ? <div className="gallery__connect" onClick={() => history.push("/")}>Connect</div> : null
+                }
             </div>
-            <div className="navbar--mobile">
-            <div className="xp__logo">
-                <Link to='/stake'>
-                    <img src={xplogo} alt="XP.Network Logo" />
-                </Link>
-            </div>
-            <div className="investor">| Investor Portal</div>
-        </div>
-            </>
             )
         }
     }

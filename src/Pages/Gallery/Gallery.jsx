@@ -80,7 +80,7 @@ export default function Gallery() {
     return (
         <div className="gallery__wrapper" >
             <div className="gallery__header">NFT Collection</div>
-            <div className="gallery__subtitle">XPNET Users Gallery</div>
+            <div className="gallery__subtitle">Explore XPNET Stake Holders Gallery</div>
                 <div className="gallery__search">
                     {/* onBlur={item => onBlurHandler(item)}  onChange={ item => searchHandler(item)} */}
                     <input onBlur={item => onBlurHandler(item)} onKeyPress={item => keyPresHandler(item)} onChange={ item => searchHandler(item)} value={search} placeholder="Search" type="search" name="nft-search" id="nft-search" className="nft-search" />

@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { createIcon } from '@download/blockies';
 import { useSelector, useDispatch} from 'react-redux'
 import './MetaMask.css'
 import { useWeb3React } from '@web3-react/core'
-import { setButtonPushed, updateAccount, setIsOpen, setonDisconnect } from "../../redux/counterSlice"
+import { setIsOpen, setonDisconnect } from "../../redux/counterSlice"
 
 
 export default function MetaMask() {
     const intViewportWidth = window.innerWidth;
     const dispatch = useDispatch()
-    const {
-        deactivate,
-        connector
-    } = useWeb3React();
-
-    console.log("log", deactivate);
-
+    const { deactivate } = useWeb3React();
     const account = useSelector(state => state.data.account)
-
     const onDisconnect = async() => {
         dispatch(setonDisconnect(true))
         dispatch(setIsOpen(true))
