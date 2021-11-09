@@ -5,6 +5,8 @@ import NFTBox from './NFTBox'
 import { useSelector } from 'react-redux'
 import { totalSupply, stakesGallery } from "../../utils/stake"
 import { useWeb3React } from '@web3-react/core'
+import { useDispatch } from 'react-redux'
+import { setChainModalIsOpen } from "../../redux/counterSlice"
 
 export default function Gallery() {
     const [index, setIndex] = useState(0)
@@ -12,16 +14,15 @@ export default function Gallery() {
     const ref = useRef(0)
     const collection = useSelector(state => state.totalSupply.collection)
     const account = useSelector(state => state.data.account)
-    const {library} = useWeb3React()
+    const {library, chainId} = useWeb3React()
     const [search, setSearch] = useState('')
     const [filterFlag, setFilterFlag] = useState(false)
-
-
+    const dispatch = useDispatch()
+    const [wrongNetwork, setWrongNetwork] = useState(true)
 
     const onScroll = (e) => {
         const currentScrollY = e.target.scrollTop;
         var element = e.target;
-    
         if (ref.current < currentScrollY && goingUp) {
           setGoingUp(false);
         }
@@ -48,7 +49,6 @@ export default function Gallery() {
         // }
     }
     const onBlurHandler = item => {
-        
         if(search === ""){
             totalSupply(index, 20, library)
             setIndex(index + 20)
@@ -58,18 +58,6 @@ export default function Gallery() {
         }
     }
     const showGallery = () => {
-        debugger
-        // if(!collection.length || !collection){
-        //     return <div className="search__loader"></div>
-        // }
-        // else if(!collection[+search] || (Array.isArray(collection) && collection[+search].staker === "0x0000000000000000000000000000000000000000")){
-        //     return <div className="not-exist"><span>NFT does not exist</span></div>
-        // }
-        // else if(filterFlag && search !== "" && Array.isArray(collection)){
-        //     return collection.filter(item => item.token === Number(search)).map(item => { return (
-        //         <NFTBox url={item.url} key={item.token} tokenID={item.token} staker={ item.staker}/>
-        //     )})
-        // }
         if(collection.length > 0){ 
             const newCollection = collection
             return newCollection.map( (item, index) => {
