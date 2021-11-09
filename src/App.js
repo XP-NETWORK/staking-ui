@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import walletIcon from "./assets/walletIcon.png"
-import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, changeStatus, setButtonPushed } from "./redux/counterSlice"
+import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, setChainModalIsOpen } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
@@ -13,22 +13,23 @@ import moment from 'moment';
 import axios from 'axios';
 import { useWeb3React } from '@web3-react/core'
 import Modal from 'react-modal';
-
+import Disconnect from "../src/Components/Modals/Disconnect.jsx"
+import ChangeNetwork from './Components/Modals/ChangeNetwork';
 
 function App() {
 const dispatch = useDispatch()
 const tokens = useSelector(state => state.stakeData.tokensAmount)
 const address = useSelector(state => state.data.account)
 const modalIsOpen = useSelector(state => state.data.modalIsOpen)
+const chainModalISOpen = useSelector(state => state. data.chainIdModalIsOpen)
 const onDisconnect = useSelector(state => state.data.onDisconnect)
 const location = useLocation()
 let history = useHistory();
-const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
-
-// const [isOpen, setIsOpen] = useState(false)
+const {library, chainId } = useWeb3React()
+console.log("chainId", typeof chainId, chainId)
+const [wrongNetwork, setWrongNetwork] = useState(true)
+const connectPushed = useSelector(state => state.data.connectPushed)
 Modal.setAppElement('#root');
-
-
 
 const customStyles = {
   content: {
@@ -46,7 +47,8 @@ const customStyles = {
 };
 
 const closeModal = () => {
-  dispatch(setIsOpen(false))
+  if(modalIsOpen)dispatch(setIsOpen(false))
+  if(chainModalISOpen)dispatch(setChainModalIsOpen(false))
 }
 
 const getCurrentPrice = async () => {
@@ -84,46 +86,40 @@ const accountsChanged = () => {
   }
 }
 
-const switchChain = async() => {
-  const chainParams = [{ 
-    native: "BNB",
-    chainId: 56,
-    rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-    decimals: 1e18,
-    contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
-    blockExplorerUrls: "https://bscscan.com/tx", }]
+// const switchChain = async() => {
+//   const chainParams = [{ 
+//     native: "BNB",
+//     chainId: 56,
+//     rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
+//     decimals: 1e18,
+//     contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
+//     blockExplorerUrls: "https://bscscan.com/tx", 
+//   }]
 
-  // debugger /
-  try {
-    await window.ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: chainParams,
-    })
-  } catch(err) {
-    console.log(err)
-      try {
-          await window.ethereum.request({
-              method: "wallet_addEthereumChain",
-              params: { 
-                native: "BNB",
-                chainId: 56,
-                rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-                decimals: 1e18,
-                contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
-                blockExplorerUrls: "https://bscscan.com/tx", },
-            })
-      } catch(err) {
-          console.log(err)
-      }
+//   try {
+//     await window.ethereum.request({
+//       method: "wallet_switchEthereumChain",
+//       params: chainParams,
+//     })
+//   } catch(err) {
+//     console.log(err)
+//       try {
+//           await window.ethereum.request({
+//               method: "wallet_addEthereumChain",
+//               params: { 
+//                 native: "BNB",
+//                 chainId: 56,
+//                 rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
+//                 decimals: 1e18,
+//                 contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
+//                 blockExplorerUrls: "https://bscscan.com/tx", },
+//             })
+//       } catch(err) {
+//           console.log(err)
+//       }
 
-  }
-}
-
-const handleDisconnect = () => {
-  dispatch(updateAccount(''))
-  dispatch(setButtonPushed(false))
-  dispatch(setIsOpen(false))
-}
+//   }
+// }
 
 
 useEffect( () => {
@@ -136,6 +132,17 @@ useEffect( () => {
   }
   getData()
 }, [address])
+
+useEffect(() => {
+  debugger
+  if(chainId !== 56){
+    dispatch(setChainModalIsOpen(true))
+    setWrongNetwork(true)}
+  else{
+    dispatch(setChainModalIsOpen(false))
+    setWrongNetwork(false)
+  }
+}, [connectPushed, chainId])
 
 
 useEffect(() => {
@@ -155,7 +162,6 @@ useEffect(() => {
   accountsChanged()
   logStakeContract()
   logXPContract()
-
 }, [])
 
 useEffect(() => {
@@ -174,34 +180,23 @@ useEffect(() => {
       contentLabel="Example Modal">
         {
           onDisconnect ? 
-          <>
-            <div className="modal-header">
-              <div className="modal-title">Warning</div>
-              <div onClick={() => closeModal()} className="modal-close">&#x2715;</div>
-            </div>
-            <div className="modal-body">
-              <div className="modal-icon"><img src={walletIcon} alt="wallet-icon" /></div>
-              <div className="modal-subtitle">You’re about to disconnect your wallet</div>
-              <div className="modal-msg">To continue with the selected target chain, click on Cancel</div>
-            </div>
-            <div onClick={() => handleDisconnect()} className="modal-button">Disconnect Wallet</div>
-            <div onClick={() => closeModal()} className="modal-button-close">Cancel</div>
-          </>
+          <Disconnect />
           :
-          <>
-            <div className="modal-header">
-              <div className="modal-title">Warning</div>
-              <div onClick={() => closeModal()} className="modal-close">&#x2715;</div>
-            </div>
-            <div className="modal-body">
-              <div className="modal-icon">ICON</div>
-              <div className="modal-subtitle">Switch to BSC Mainnet</div>
-              <div className="modal-msg">XP.network bridge requires you to connect to the BSC Mainnet</div>
-            </div>
-            <div onClick={() => switchChain()} className="modal-button">Switch to Mainnet</div>
-          </>
+          null
         }
-       
+      </Modal>
+      <Modal 
+      className="Modal"
+      isOpen={chainModalISOpen && connectPushed} 
+      style={customStyles} 
+      onRequestClose={closeModal}
+      contentLabel="Example Modal">
+        {
+          wrongNetwork ? 
+          <ChangeNetwork />
+          :
+          null
+        }
       </Modal>
       <Main />
     </div>

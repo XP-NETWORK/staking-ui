@@ -5,6 +5,7 @@ const initialState = {
     connectPushed: false,
     onDisconnect: false,
     modalIsOpen: false,
+    chainIdModalIsOpen: false,
     duration: 3,
     startDate: '',
     stakingAmount: 0,
@@ -34,6 +35,9 @@ export const counterSlice = createSlice({
       },
       setIsOpen(state, action){
         state.modalIsOpen = action.payload
+      },
+      setChainModalIsOpen(state, action){
+        state.chainIdModalIsOpen = action.payload
       },
       setonDisconnect(state, action){
         state.onDisconnect = action.payload
@@ -114,7 +118,8 @@ export const {
   setProvide,
   setButtonPushed,
   setIsOpen,
-  setonDisconnect
+  setonDisconnect,
+  setChainModalIsOpen
 } = counterSlice.actions
 
 export default counterSlice.reducer
