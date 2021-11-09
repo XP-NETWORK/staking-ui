@@ -24,8 +24,8 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
-        // console.log("putMax: ", balance)
         amountHandler({target: {value: balance}})
+        if(balance >= 1500)setInputErr(false)
     }
 
     const onBlurHandler = (e) => {
@@ -76,6 +76,7 @@ export function StakeAmountMob() {
 
     const putMax = () => {
         setAmount(balance)
+        if(balance >= 1500)setInputErr(false)
     }
 
     const onBlurHandler = (e) => {

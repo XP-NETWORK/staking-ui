@@ -72,6 +72,11 @@ export default function Gallery() {
         setIndex(80)
     }, [])
 
+    useEffect(() => {
+        totalSupply(index, 80, library)
+        setIndex(80)
+    }, [chainId])
+
     return (
         <div className="gallery__wrapper" >
             <div className="gallery__header">NFT Collection</div>
