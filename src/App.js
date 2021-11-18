@@ -134,7 +134,6 @@ useEffect( () => {
 }, [address])
 
 useEffect(() => {
-  debugger
   if(chainId !== 56){
     dispatch(setChainModalIsOpen(true))
     setWrongNetwork(true)}

@@ -15,7 +15,7 @@ export const totalSupplay = createSlice({
        },
        updateManyCollection(state, action) {
          console.log("before",state.collection);
-         debugger
+
          state.collection = 
        [...new Map([...state.collection, ...action.payload].map(item =>[item['token'], item])).values()]
        .sort((a,b )=> parseInt(a.token) - parseInt(b.token))

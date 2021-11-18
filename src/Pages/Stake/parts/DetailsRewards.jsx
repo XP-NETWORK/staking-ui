@@ -5,7 +5,6 @@ import { nf } from "../../../utils/helper"
 export default function DetailsRewards({ currentPrice, duration }) {
     const amount = useSelector(s => s.data.stakingAmount)
     const getRewards = () => {
-        // debugger
         const rewards = duration === 3 ? 
         amount*0.1125 :
         duration === 6 ?

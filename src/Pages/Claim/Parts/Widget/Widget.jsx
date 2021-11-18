@@ -27,12 +27,10 @@ export default function Widget({ tokens }) {
 
     const moveX = (side) => {
         if(side==="next"){
-            // debugger
             if( x === -rowLength){chengePositionX(0)}
             dispatch(goForth())
         }
         else{
-            // debugger
             if( x === 0){chengePositionX(-rowLength-292)}
             dispatch(goBack())
         }

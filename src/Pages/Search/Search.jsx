@@ -50,20 +50,6 @@ export default function Search() {
                 else{
                     setExist(false)
                 }
-                // const index = parseInt(id) >= 0 || parseInt(selected)
-                // if(collection.length && collection.length <= index){
-                //     setExist(true)
-                    // setNftUrl(collection[0].url)
-                    // setNftID(collection[0].token)
-                    // setStaker(collection[0].staker)
-                // }
-                // else{
-                //     if(id >= 0){
-                //         setNftUrl(collection[index].url)
-                //         setNftID(collection[index].token)
-                //         setStaker(collection[index].staker)
-                //     }
-                // }
             }
             else if(selected || selected == "0"){
                 setExist(true)
@@ -84,9 +70,6 @@ export default function Search() {
                 stakes(id, library)
             }
         }
-        // else{
-        //     setExist(false)
-        // }
     }, [])
 
     const showNft = () => {
@@ -134,7 +117,6 @@ export default function Search() {
 
 
     useEffect(() => {
-        // debugger
        if(loaded)setPicture()
     }, [loaded, collection])
     

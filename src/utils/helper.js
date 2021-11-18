@@ -5,7 +5,6 @@ import { updateStartDate } from "../redux/stakeSlice"
 export const getPercent = (durationsArr, duration ) => {
     let percent
     durationsArr.forEach(item => {
-        // debugger
         if(item.d === duration){
             percent = item.p
         }

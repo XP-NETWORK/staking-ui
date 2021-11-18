@@ -219,17 +219,14 @@ export const stakes = async (id, library) => {
     const Contract = await stakeContract(library)
     try {
         const nft = await Contract.methods.stakes(id).call()
-        // console.log(nft);
         store.dispatch(updateStakeInfo(Object.values(nft)))
         store.dispatch(updateAmount(nft.amount))
         store.dispatch(updateDuration(nft.lockInPeriod))
         store.dispatch(updateStartTime(nft.startTime))
         store.dispatch(updateNftTokenId(nft.nftTokenId))
         store.dispatch(updateWithdrawnAmount(nft.rewardWithdrawn))
-        // debugger
         const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
                     if(res) {
-                        // debugger
                         const { image } = res.data
                         store.dispatch(updateImage({ url: image, token: id}))
                     }
@@ -246,11 +243,9 @@ export const stakesGallery = async (id, library) => {
         console.log(nft)
         const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
             if(res) {
-                // debugger
                 const { image } = res.data
                 store.dispatch(updateCollection({url: image, token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
             }
-            // store.dispatch(updateCollection({token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
     } catch (error) {
         console.log(error);
     }

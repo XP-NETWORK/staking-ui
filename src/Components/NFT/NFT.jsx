@@ -24,7 +24,6 @@ export default function NFT({ tokenID, i }) {
 
     let currImg
     if(img){
-        // debugger
         currImg = img.url
     }
 
