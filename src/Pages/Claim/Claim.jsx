@@ -41,7 +41,6 @@ export default function Claim() {
     const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
         // console.log(useSelector(s => s.stakeData), 'aklsdaklsdaklsda')
     useEffect(async () => {
-
         await getAmountOfTokens(address, library)
         await tokenOfOwnerByIndex(tokens, address, library)
     }, [])

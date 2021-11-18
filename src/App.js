@@ -86,41 +86,11 @@ const accountsChanged = () => {
   }
 }
 
-// const switchChain = async() => {
-//   const chainParams = [{ 
-//     native: "BNB",
-//     chainId: 56,
-//     rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-//     decimals: 1e18,
-//     contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
-//     blockExplorerUrls: "https://bscscan.com/tx", 
-//   }]
-
-//   try {
-//     await window.ethereum.request({
-//       method: "wallet_switchEthereumChain",
-//       params: chainParams,
-//     })
-//   } catch(err) {
-//     console.log(err)
-//       try {
-//           await window.ethereum.request({
-//               method: "wallet_addEthereumChain",
-//               params: { 
-//                 native: "BNB",
-//                 chainId: 56,
-//                 rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-//                 decimals: 1e18,
-//                 contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
-//                 blockExplorerUrls: "https://bscscan.com/tx", },
-//             })
-//       } catch(err) {
-//           console.log(err)
-//       }
-
-//   }
-// }
-
+const chainModalHandler = () => {
+  if(chainModalISOpen && connectPushed) return true
+  else if(chainModalISOpen && location.pathname === "/gallery") return true
+  else return false
+}
 
 useEffect( () => {
   const getData = async () =>{
@@ -142,7 +112,6 @@ useEffect(() => {
     setWrongNetwork(false)
   }
 }, [connectPushed, chainId])
-
 
 useEffect(() => {
   if(location.pathname === "/claim"){
@@ -186,8 +155,8 @@ useEffect(() => {
       </Modal>
       <Modal 
       className="Modal"
-      isOpen={chainModalISOpen && connectPushed} 
-      style={customStyles} 
+      isOpen={ chainModalHandler() } 
+      style={ customStyles } 
       onRequestClose={closeModal}
       contentLabel="Example Modal">
         {
