@@ -130,6 +130,7 @@ useEffect(() => {
   accountsChanged()
   logStakeContract()
   logXPContract()
+  
 }, [])
 
 useEffect(() => {

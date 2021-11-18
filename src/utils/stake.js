@@ -17,8 +17,8 @@ export const walletconnect = new WalletConnectConnector({
     },
 })
 
-// export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
-export let stakeAddress = "0xbC9091bE033b276b7c2244495699491167C20037"
+export let stakeAddress =  process.env.NODE_ENV === "development" ? '0xB61692F3425435203DD65Bb5f66a7A9Eac16CCc4' : '0xbC9091bE033b276b7c2244495699491167C20037'
+// export let stakeAddress = "0xbC9091bE033b276b7c2244495699491167C20037"
 const state = store.getState()
 const p = state.data.provider
 const W3 = new Web3( p === "WalletCOnnect" ? walletconnect : window.ethereum )

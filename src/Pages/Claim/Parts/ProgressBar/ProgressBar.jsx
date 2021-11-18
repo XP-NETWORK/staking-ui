@@ -5,17 +5,18 @@ import { getProgress } from "../../../../utils/helper"
 
 
 
-export default function ProgressBar({ period, startTime }) {
-
-    const [toDay, setToDay] = useState(moment().unix())
-    const startDayUnix = useSelector(state => state.stakeData.startTime)
+export default function ProgressBar({ startTime }) {
     const [remain, setRemain] = useState()
+    const period = useSelector(state => state.stakeData.duration)
+    const startDayUnix = useSelector(state => state.stakeData.startTime)
+
 
     useEffect(() => {
-        const num = Math.round(((period/60/60/24) - (toDay - startDayUnix)/60/60/24))
+        const today = moment().unix()
+        const num = Math.round(((period/60/60/24) - (today - startDayUnix)/60/60/24))
+        console.log('123812398321', num)
         setRemain(num)
-
-    }, [])
+    }, [startDayUnix])
 
     return (
     <div className="progress-bar">
