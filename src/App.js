@@ -56,7 +56,7 @@ const getCurrentPrice = async () => {
   dispatch(updateCurrentPrice(currentPrice))
 }
 
-const updateBalance = async () => {
+ async function updateBalance(){
   await checkBalance(address, library)
 }
 
@@ -93,7 +93,7 @@ const chainModalHandler = () => {
 }
 
 useEffect( () => {
-  const getData = async () =>{
+  async function getData(){
     if(address) {
       await updateBalance()
       await checkAllowence(address, library)
