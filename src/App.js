@@ -138,6 +138,10 @@ useEffect(() => {
   setInterval(doDate, 1000);
 }, [])
 
+useEffect(() => {
+  localStorage.clear()
+}, [])
+
   return (
     <div className="app__wraper">
       <Navbar />

@@ -46,10 +46,10 @@ export const checkBalance = async (address, library) => {
 
 // Approve this account.
 export const approve = async (account, library) => {
+    debugger
     try{
         store.dispatch(updateAproveButtonsLoader(true))
         const Contract = await xpContract(library)
-        console.log(Contract)
         Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
         .once('receipt', function(receipt){
             store.dispatch(updateAproveButtonsLoader(false))

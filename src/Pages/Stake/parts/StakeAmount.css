@@ -178,5 +178,9 @@
     .amount__subtitle span{
         margin-left: 5px;
     }
+
+    .amount__input--error{
+        margin: 0 10px !important;
+    }
     
 }
