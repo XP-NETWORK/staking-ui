@@ -18,6 +18,16 @@ export default function Connect() {
     const { ethereum } = window
 
     // const connectPushed = useSelector(state => state.data.connectPushed)
+
+    function getMobOps() {
+        // debugger
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+        if (/android/i.test(userAgent)) {
+            return true
+        }
+  
+    }
     
     const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
 
@@ -26,32 +36,59 @@ export default function Connect() {
         try {
             await activate(injected)
             dispatch(setProvide("MetaMask"))
-
-        } catch (error) {
-            console.log(error);
-        }
-        dispatch(setButtonPushed(true))
-    }
-
-    const onWalletConnect = async () => {
-     
-        try {
-            const walletconnect = new WalletConnectConnector({ 
-                rpc: { 
-                    56: 'https://bsc-dataseed.binance.org'
-                },
-                supportedChainIds: [56],
-                chainId: 56,
-                qrcode: true,
-            })
-            walletconnect.networkId = 56
-            await activate(walletconnect, undefined, true)
-            dispatch(setProvide("WalletCOnnect"))
             dispatch(setButtonPushed(true))
 
         } catch (error) {
             console.log(error);
-            dispatch(setButtonPushed(false))
+        }
+    }
+
+    const onTrustWallet = async () => {
+        console.log("onTrustWallet", window.location.host);
+        if(window.ethereum){
+            await activate(injected)
+            dispatch(setProvide("MetaMask"))
+            dispatch(setButtonPushed(true))
+        }
+        else{
+            window.open(`https://link.trustwallet.com/open_url?coin_id=60&url=https://${window.location.host}`)
+        }
+    }
+
+
+
+    const onWalletConnect = async () => {
+        if(window.ethereum){
+            try {
+                await activate(injected)
+                dispatch(setProvide("WalletConnect"))
+                dispatch(setButtonPushed(true))
+    
+            } catch (error) {
+                console.log(error);
+                dispatch(setButtonPushed(false))
+
+            }
+        }
+        else{
+            try {
+                const walletconnect = new WalletConnectConnector({ 
+                    rpc: { 
+                        56: 'https://bsc-dataseed.binance.org'
+                    },
+                    supportedChainIds: [56],
+                    chainId: 56,
+                    qrcode: true,
+                })
+                walletconnect.networkId = 56
+                await activate(walletconnect, undefined, true)
+                dispatch(setProvide("WalletCOnnect"))
+                dispatch(setButtonPushed(true))
+    
+            } catch (error) {
+                console.log(error);
+                dispatch(setButtonPushed(false))
+            }
         }
     }
 
@@ -84,12 +121,16 @@ export default function Connect() {
                 </div>
                 <div className="con__btn" onClick={() => onWalletConnect()}>WalletConnect</div>
             </div>
-            <div className="con__box">
-                <div className="con__header">
-                    <img src={trustwalleticon} alt="" />
-                </div>
-                <div className="con__btn" onClick={() => onWalletConnect()}>Trust Wallet</div>
-            </div>
+           { (getMobOps() && window.innerWidth <= 600) || (window.ethereum && window.innerWidth <= 600) ?
+                <div className="con__box">
+                    <div className="con__header">
+                        <img src={trustwalleticon} alt="" />
+                    </div>
+                    <div className="con__btn" onClick={() => onTrustWallet()}>Trust Wallet</div>
+                </div> 
+                : 
+                '' 
+            }
         </div>
     )
 }
