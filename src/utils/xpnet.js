@@ -4,6 +4,7 @@ import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
+//! XPNET
 export let xpAddress =  "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
 // export let xpAddress =  process.env.NODE_ENV === "development" ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
 
@@ -32,7 +33,7 @@ export const logXPContract = async () => {
 export const checkBalance = async (address, library) => {
 
     try{
-        const Contract = await xpContract()
+        const Contract = await xpContract(library)
         const weiBalance = await Contract.methods.balanceOf(address).call()
         const balance = parseInt(Web3.utils.fromWei(weiBalance, 'ether'));
         store.dispatch(updateBalance(balance))
