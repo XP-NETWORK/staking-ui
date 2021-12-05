@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import "./Connect.css"
 import MetaMask from "../../assets/MetaMask_Big_Fox.svg"
 import  walletconnectLogo  from "../../assets/metaLogo.png"
+import trustwalleticon from "../../assets/trustwalleticon.svg"
 import { connectMetaMask } from "../../utils/metamask"
 import { useDispatch } from 'react-redux'
 import { setProvide, updateAccount, changeStatus, setButtonPushed } from "../../redux/counterSlice"
@@ -16,8 +17,8 @@ export default function Connect() {
     const history = useHistory()
     const { ethereum } = window
 
-    const connectPushed = useSelector(state => state.data.connectPushed)
-    console.log("connectPushed", connectPushed)
+    // const connectPushed = useSelector(state => state.data.connectPushed)
+    
     const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
 
 
@@ -33,6 +34,7 @@ export default function Connect() {
     }
 
     const onWalletConnect = async () => {
+     
         try {
             const walletconnect = new WalletConnectConnector({ 
                 rpc: { 
@@ -45,11 +47,12 @@ export default function Connect() {
             walletconnect.networkId = 56
             await activate(walletconnect, undefined, true)
             dispatch(setProvide("WalletCOnnect"))
+            dispatch(setButtonPushed(true))
 
         } catch (error) {
             console.log(error);
+            dispatch(setButtonPushed(false))
         }
-        dispatch(setButtonPushed(true))
     }
 
     useEffect(() => {
@@ -62,24 +65,30 @@ export default function Connect() {
 
     return (
         <div className="connect__container">
-            <div className="connect">
-                <div className="fox">
+            <div className="con__box">
+                <div className="con__header">
                     <img src={MetaMask} alt="" />
                 </div>
                 <div>
-                    { !ethereum ? <div className="connect__button"><a href="https://metamask.app.link/dapp/stake.xp.network/">MetaMask</a></div>
+                    { !ethereum ? <div className="con__btn"><a href="https://metamask.app.link/dapp/stake.xp.network/">MetaMask</a></div>
                     :
-                    <div onClick={() => onMetamask()} className="connect__button">
+                    <div onClick={() => onMetamask()} className="con__btn">
                     MetaMask
                     </div>
                     }
                 </div>
             </div>
-            <div className="connect">
-                <div className="meta">
+            <div className="con__box">
+                <div className="con__header">
                     <img src={walletconnectLogo} alt="" />
                 </div>
-                <div className="connect__button" onClick={() => onWalletConnect()}>WalletConnect</div>
+                <div className="con__btn" onClick={() => onWalletConnect()}>WalletConnect</div>
+            </div>
+            <div className="con__box">
+                <div className="con__header">
+                    <img src={trustwalleticon} alt="" />
+                </div>
+                <div className="con__btn" onClick={() => onWalletConnect()}>Trust Wallet</div>
             </div>
         </div>
     )

@@ -75,3 +75,36 @@ cursor: pointer;
         align-content: flex-start;
     }
 }
+
+.con__box{
+    width: 200px;
+    height: 200px;
+    background-color: tomato;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+    padding: 10px 30px;
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    border-radius: 6px;
+}
+
+.con__btn{
+    padding: 10px 16px;
+    color: white;
+    background: #3180F6;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.con__header{
+    height: 120px;
+    width: 110px;
+}
+
+.con__header img{
+    width: 100%;
+}
