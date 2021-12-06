@@ -58,7 +58,7 @@ export default function Connect() {
 
 
     const onWalletConnect = async () => {
-        if(window.ethereum){
+        if(window.ethereum && window.innerWidth < 600){
             try {
                 await activate(injected)
                 dispatch(setProvide("WalletConnect"))
