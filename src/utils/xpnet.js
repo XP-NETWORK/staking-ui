@@ -90,7 +90,7 @@ export const approve = async (account, library) => {
         }
     }
     else{
-        alert("not enough");
+        // alert("not enough");
         store.dispatch(updateAproveButtonsLoader(false))
     }
 }
