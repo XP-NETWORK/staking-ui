@@ -45,24 +45,53 @@ export const checkBalance = async (address, library) => {
 }
 
 // Approve this account.
+// export const approve = async (account, library) => {
+//     debugger
+//     try{
+//         store.dispatch(updateAproveButtonsLoader(true))
+//         const Contract = await xpContract(library)
+//         Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
+//         .once('receipt', function(receipt){
+//             store.dispatch(updateAproveButtonsLoader(false))
+//             store.dispatch(updateApproved(true))
+//             checkAllowence(account, library)
+//         })
+//         .on('error', () => {
+//             store.dispatch(updateAproveButtonsLoader(false))
+//         })
+//     }
+//     catch(error){
+//         store.dispatch(updateAproveButtonsLoader(false))
+//         console.log(error)
+//     }
+// }
+
 export const approve = async (account, library) => {
     debugger
-    try{
-        store.dispatch(updateAproveButtonsLoader(true))
-        const Contract = await xpContract(library)
-        Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
-        .once('receipt', function(receipt){
+    store.dispatch(updateAproveButtonsLoader(true))
+    const Contract = await xpContract(library)
+    const web3 = new Web3(window.ethereum);
+    const balance = await web3.eth.getBalance(account)
+    const gas = await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').estimateGas({from: account})
+    if(parseInt(balance) > gas){
+        try{
+            const Contract = await xpContract(library)
+            await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
+            .estimateGas({from: account})
+            .then(gasAmount => console.log(gasAmount))
+            .catch(error => console.log(error))
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
             checkAllowence(account, library)
-        })
-        .on('error', () => {
+        }
+        catch(error){
             store.dispatch(updateAproveButtonsLoader(false))
-        })
+            console.log(error)
+        }
     }
-    catch(error){
+    else{
+        alert("not enough");
         store.dispatch(updateAproveButtonsLoader(false))
-        console.log(error)
     }
 }
 
