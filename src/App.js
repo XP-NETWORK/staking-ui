@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import walletIcon from "./assets/walletIcon.png"
-import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, setChainModalIsOpen } from "./redux/counterSlice"
+import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, setChainModalIsOpen, setNotEnoughGas } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
@@ -15,6 +15,7 @@ import { useWeb3React } from '@web3-react/core'
 import Modal from 'react-modal';
 import Disconnect from "../src/Components/Modals/Disconnect.jsx"
 import ChangeNetwork from './Components/Modals/ChangeNetwork';
+import NoGas from './Components/Modals/NoGas';
 
 function App() {
 const dispatch = useDispatch()
@@ -26,7 +27,7 @@ const onDisconnect = useSelector(state => state.data.onDisconnect)
 const location = useLocation()
 let history = useHistory();
 const {library, chainId } = useWeb3React()
-console.log("chainId", typeof chainId, chainId)
+const notEnoughGas = useSelector(state => state.data.notEnoughGas)
 const [wrongNetwork, setWrongNetwork] = useState(true)
 const connectPushed = useSelector(state => state.data.connectPushed)
 Modal.setAppElement('#root');
@@ -84,6 +85,10 @@ const accountsChanged = () => {
       }
     });
   }
+}
+
+function closeNoGas() {
+  dispatch(setNotEnoughGas(false))
 }
 
 const chainModalHandler = () => {
@@ -170,6 +175,11 @@ useEffect(() => {
           :
           null
         }
+      </Modal>
+      <Modal isOpen={notEnoughGas}
+      onRequestClose={() => closeNoGas()}
+      style={customStyles}>
+        <NoGas />
       </Modal>
       <Main />
     </div>

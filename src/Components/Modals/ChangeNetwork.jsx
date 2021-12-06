@@ -46,7 +46,7 @@ export default function ChangeNetwork() {
     }
 
     return (
-        <div>
+        <div className="no-gas__modal">
             <div className="modal-header">
               <div className="modal-title">Warning</div>
               <div onClick={() => closeModal()} className="modal-close">&#x2715;</div>

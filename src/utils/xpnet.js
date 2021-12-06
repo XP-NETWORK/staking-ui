@@ -1,7 +1,7 @@
 import Web3 from "web3"
 import XPNET from "../ABI/XPToken.json"
 import { store } from "../redux/store"
-import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader } from "../redux/counterSlice"
+import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader, setNotEnoughGas } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
 //! XPNET
@@ -67,7 +67,6 @@ export const checkBalance = async (address, library) => {
 // }
 
 export const approve = async (account, library) => {
-    debugger
     store.dispatch(updateAproveButtonsLoader(true))
     const Contract = await xpContract(library)
     const web3 = new Web3(window.ethereum);
@@ -92,6 +91,7 @@ export const approve = async (account, library) => {
     else{
         // alert("not enough");
         store.dispatch(updateAproveButtonsLoader(false))
+        store.dispatch(setNotEnoughGas(true))
     }
 }
 

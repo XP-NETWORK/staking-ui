@@ -20,7 +20,8 @@ const initialState = {
     aproveLoader: false,
     lockLoader: false,
     picPositionX: 0,
-    provider: ''
+    provider: '',
+
 }
 
 export const counterSlice = createSlice({
@@ -92,6 +93,9 @@ export const counterSlice = createSlice({
       },
       setProvide(state, action){
         state.provider = action.payload
+      },
+      setNotEnoughGas(state, action){
+        state.notEnoughGas = action.payload
       }
     },
   })
@@ -119,7 +123,8 @@ export const {
   setButtonPushed,
   setIsOpen,
   setonDisconnect,
-  setChainModalIsOpen
+  setChainModalIsOpen,
+  setNotEnoughGas
 } = counterSlice.actions
 
 export default counterSlice.reducer
