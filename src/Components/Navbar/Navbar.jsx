@@ -41,8 +41,10 @@ export default function Navbar() {
                 </div>
                 <div className="account__container"><AccountBox /></div>
             </div> */}
-            { window.innerWidth >= 1140 && <DesktopNav /> }
-            { window.innerWidth < 1140 && <MobileNav /> }
+            {/* { window.innerWidth >= 1140 && <DesktopNav /> } */}
+            <DesktopNav />
+            {/* { window.innerWidth < 1140 && <MobileNav /> } */}
+            <MobileNav />
             {/* <div className="navbar--mobile">
                 <div className="xp__logo--mobile">
                     <Link to='/stake'>

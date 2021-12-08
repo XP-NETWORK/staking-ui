@@ -184,7 +184,9 @@
 }
 
 .nav__mob{
-    width: 100%;
+    /* width: 100%; */
+    max-width: 625px;
+    margin: 0 auto;
 }
 
 .nav__top{
@@ -195,14 +197,17 @@
     margin: 0 auto;
 }
 
-@media screen and (min-width: 625px) {
+/* @media screen and (max-width: 625px) {
     .nav__top{
         max-width: 624px;
     }
     .nav__buttons--mob{
         max-width: 624px;
     }
-}
+    /* .nav__mob{
+        max-width: 625px;
+    } */
+/* } */ 
 
 .top__logo{
     margin-right: 10px;
@@ -210,4 +215,17 @@
 
 .nav__top img{
     max-width: 100%;
+}
+
+@media screen and (max-width: 625px) {
+ 
+    .navbar{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 625px) {
+    .nav__mob{
+        display: none;
+    }
 }

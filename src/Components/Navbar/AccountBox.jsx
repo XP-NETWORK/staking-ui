@@ -18,6 +18,7 @@ export default function AccountBox() {
         // debugger
         let ls
         const width = window.innerWidth
+        // ls = width >= 600 ? 
         if (width < 321) {
             ls = 1
         }
