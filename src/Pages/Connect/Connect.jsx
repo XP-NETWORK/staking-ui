@@ -11,6 +11,7 @@ import { injected, walletconnect } from '../../utils/connectors'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { useHistory } from 'react-router'
 import { useSelector } from 'react-redux'
+import AccountBox from '../../Components/Navbar/AccountBox'
 
 export default function Connect() {
     const dispatch = useDispatch()

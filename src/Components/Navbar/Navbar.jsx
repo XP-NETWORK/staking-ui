@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import NavButton from "./Parts/NavButton";
 import MetaMask from "./MetaMask";
 import { useHistory } from "react-router";
+import AccountBox from "./AccountBox";
 
 export default function Navbar() {
     const location = useLocation();
@@ -26,7 +27,8 @@ export default function Navbar() {
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance} location={location} type={'claim-btn'} />
                 </div>
-                <MetaMask />
+                {/* <MetaMask /> */}
+                <AccountBox />
             </div>
             <div className="navbar--mobile">
                 <div className="xp__logo--mobile">
@@ -34,7 +36,8 @@ export default function Navbar() {
                         <img src={xplogo} alt="XP.Network Logo" />
                     </Link>
                 </div>
-               <MetaMask />
+               {/* <MetaMask /> */}
+               <AccountBox />
                 <div className="nav__buttons">
                     <NavButton location={location} type="stake-btn" />
                     <NavButton balance={balance}  location={location} type={'claim-btn'} />

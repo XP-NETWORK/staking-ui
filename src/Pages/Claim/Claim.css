@@ -48,7 +48,7 @@
     padding-bottom: 22px;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 126%;
 }
 
@@ -67,7 +67,7 @@
 
 .claim__capture{
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 126%;
     display: flex;
     align-items: center;
@@ -118,7 +118,7 @@
     font-family: Inter;
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 126%;
     display: flex;
     align-items: center;
@@ -150,7 +150,7 @@
     padding-bottom: 22px;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 126%;
 }
 

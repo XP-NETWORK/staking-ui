@@ -74,6 +74,9 @@ export function StakeAmountMob() {
         if(reg.test(num)){
             setAmount(e.target.value)
             dispatch(changeStakingAmount(num))
+            if(num >= 1500){
+                setInputErr(false)
+            }
         }
     }
 
@@ -98,7 +101,7 @@ export function StakeAmountMob() {
         <div className="stake__amount--mobile">
             <div className="amount__title">Enter your XPNET amount</div>
             <div className={ !inputErr ? "amount__input" : "amount__input--error"}>
-                <input placeholder="Enter amount" value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
+                <input placeholder={window.innerWidth < 480 ? "Enter amount" : "Enter amount (minimum 1500 XPNET)"} value={amount} onChange={item => amountHandler(item)} onBlur={item => onBlurHandler(item)} type="text" />
                 <div className="input__items">
                     <div className="xpnet">XPNET</div>
                     <div onClick={ () => putMax()} className="max">MAX</div>

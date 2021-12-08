@@ -1,0 +1,27 @@
+.account__box{
+    max-width: 175px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #D9DFED;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 10px;
+    right: 0;
+    position: absolute;
+}
+
+.account__address{
+}
+
+.account__icon{
+    margin-left: 5px;
+}
+
+.account__icon canvas {
+    border-radius: 25px;
+    margin-right: -4px;
+    width: 18px;
+    height: 18px;
+}
