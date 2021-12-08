@@ -69,7 +69,6 @@ export const checkBalance = async (address, library) => {
 
 export const approve = async (account, library) => {
     store.dispatch(updateAproveButtonsLoader(true))
-    debugger
     const Contract = await xpContract(library)
     const web3 = new Web3(window.ethereum) || library;
     const balance = await web3.eth.getBalance(account)
