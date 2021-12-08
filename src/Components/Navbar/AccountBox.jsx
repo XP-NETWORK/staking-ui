@@ -25,7 +25,7 @@ export default function AccountBox() {
             ls = 3
         }
         else{
-            ls = 6
+            ls = 3
         }
         return ls
     }
@@ -49,7 +49,7 @@ export default function AccountBox() {
     }, [])
 
     return (
-    <div className="account__box">
+    <div onClick={() => onDisconnect()} className="account__box">
         <div className="account__address">{account.slice(0,ls()) + '...' + account.slice(39,46)}</div>
         <div className="account__icon">0</div>
     </div>

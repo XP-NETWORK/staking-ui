@@ -1,11 +1,3 @@
-.navbar{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-}
 
 .navbar--disconnected{
     width: 100%;
@@ -97,7 +89,6 @@
 
 @media screen and (max-width: 425px){
     .navbar--mobile{
-        /* width: calc(100% - 20px); */
         padding: 10px;
         justify-content: space-between;
         gap: 0;
@@ -108,16 +99,115 @@
         margin: unset;
     }
 }
-/* 
-@media screen and (max-width: 375px){
-  
-    .xp__logo{
-        width: 40vw;
-    }
-} */
 
-/* @media screen and (max-width: 320px){
-    .xp__logo{
-        width: 40%;
+
+.navbar{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 25px 0;
+    gap: 20px;
+    font-size: 16px;
+    line-height: 20.16px;
+    letter-spacing: 3%;
+}
+
+@media screen and (max-width: 1140px) {
+    .navbar{
+        gap: 10px;
     }
-} */
+}
+
+.navbar__nav-buttons{
+    flex-grow: 4;
+}
+
+.account__container{
+    flex-grow: 1;
+}
+
+.nav-buttons__container{
+    width: 252px;
+    height: 40px;
+    display: flex;
+    border-radius: 8px;
+}
+
+.navbar__btn{
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    color: #040D27;
+    opacity: 0.6;
+}
+
+.navbar__btn--active{
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    color: #2853EB;
+    background: #FFFFFF;
+    border-radius: 6px;
+}
+
+.navbar__btn--disabled{
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    color: #1D1D1D;
+    opacity: 0.2;
+    /* background: #FFFFFF; */
+    border-radius: 6px;
+}
+
+.nav__buttons--mob{
+    padding: 0 8px 20px 8px;
+    /* max-width: 624px; */
+    margin: 0 auto;
+}
+
+.mob__buttons__wrapper{
+    display: flex;
+    background: #ECEDF3;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.navbar__btn:hover{
+    cursor: pointer;
+}
+
+.nav__mob{
+    width: 100%;
+}
+
+.nav__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 625px) {
+    .nav__top{
+        max-width: 624px;
+    }
+    .nav__buttons--mob{
+        max-width: 624px;
+    }
+}
+
+.top__logo{
+    margin-right: 10px;
+}
+
+.nav__top img{
+    max-width: 100%;
+}
