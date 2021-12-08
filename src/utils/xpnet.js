@@ -4,6 +4,7 @@ import { store } from "../redux/store"
 import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader, setNotEnoughGas } from "../redux/counterSlice"
 import { stakeAddress } from "./stake"
 
+
 //! XPNET
 export let xpAddress =  "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
 // export let xpAddress =  process.env.NODE_ENV === "development" ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
@@ -68,8 +69,9 @@ export const checkBalance = async (address, library) => {
 
 export const approve = async (account, library) => {
     store.dispatch(updateAproveButtonsLoader(true))
+    debugger
     const Contract = await xpContract(library)
-    const web3 = new Web3(window.ethereum);
+    const web3 = new Web3(window.ethereum) || library;
     const balance = await web3.eth.getBalance(account)
     const gas = await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').estimateGas({from: account})
     if(parseInt(balance) > gas){

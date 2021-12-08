@@ -12,6 +12,7 @@ import { useWeb3React } from '@web3-react/core'
 
 
 export function Approvance({ approvance, amount, duration, account }) {
+    console.log("useWeb3React()", useWeb3React());
     const {library, connector} = useWeb3React()
     const approveloader = useSelector(state => state.data.aproveLoader)
     const agreement = useSelector(state => state.data.agreement)
