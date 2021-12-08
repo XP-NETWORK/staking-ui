@@ -15,13 +15,14 @@ export default function AccountBox() {
     const account = "0xb6C8748115d23Eb1c6d59Cb83eAe051b56ef75c7"
     
     function ls() {
+        // debugger
         let ls
         const width = window.innerWidth
         if (width < 321) {
-            ls = 3
+            ls = 1
         }
         else if(width < 425){
-            ls = 1
+            ls = 3
         }
         else{
             ls = 6

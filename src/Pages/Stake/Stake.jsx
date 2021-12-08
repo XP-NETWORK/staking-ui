@@ -29,10 +29,10 @@ const account = useSelector(state => state.data.account)
 const duration = useSelector(state => state.data.duration)
 const startDate = useSelector(state => state.data.startDate)
 const approveLoader = useSelector(state => state.data.aproveLoader)
-const connected = useSelector(state => state.data.connected)
-const connectPushed = useSelector(state => state.data.connectPushed)
+// const connected = useSelector(state => state.data.connected)
+// const connectPushed = useSelector(state => state.data.connectPushed)
 const endDate = duration !== 1 ? moment(startDate).add(duration, 'month').format('YYYY-MM-DD hh:mm') : moment(startDate).add(1, 'year').format('YYYY-MM-DD hh:mm')
-const history = useHistory()
+// const history = useHistory()
 
 const durations = [
     {d:3, p: 45},
