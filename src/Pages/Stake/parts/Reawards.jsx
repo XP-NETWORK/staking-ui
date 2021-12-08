@@ -8,10 +8,7 @@ import "./Reawards.css"
 export default function Reawards({ durations, duration }) {
     return (
         <div className="stake__rewards">
-            <div className="rewards__header">
-                {/* <div className="rewards__title">Reward rate</div>
-                <div className="rewards__percent">{getPercent(durations, duration)}%</div> */}
-            </div>
+           
             <div className="rewards">
                 <div className="rewards__widget">
                     <img src={image} alt="Reward art" />
