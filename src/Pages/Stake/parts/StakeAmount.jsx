@@ -20,6 +20,9 @@ export function StakeAmount() {
         if(reg.test(num)){
             setAmount(e.target.value)
             dispatch(changeStakingAmount(num))
+            if(num >= 1500){
+                setInputErr(false)
+            }
         }
     }
 
@@ -31,7 +34,7 @@ export function StakeAmount() {
     const onBlurHandler = (e) => {
         const num = parseInt(e.target.value)
         if(num < 1500){
-            setAmount("")
+            // setAmount("")
             setInputErr(true)
         }
        else{
