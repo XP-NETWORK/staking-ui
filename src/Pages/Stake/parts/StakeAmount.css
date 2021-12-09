@@ -34,6 +34,7 @@
 
 .amount__subtitle span{
     font-weight: 600;
+    margin-left: 5px;
 }
 
 .amount__input input{
@@ -90,7 +91,7 @@
     border-radius: 4px;
     font-size: 12px;
     padding: 2px 12px;
-    margin: 6px 10px 16px 10px;
+    margin: 6px 0 16px 0;
 }
 
 .input__items{
@@ -130,6 +131,7 @@
 @media screen and (max-width: 600px) {
     .stake__amount--mobile{
         display: block;
+        padding: 0 10px;
     }
 
     .stake__title{
@@ -185,7 +187,7 @@
     }
 
     .amount__input--error{
-        margin: 0 10px !important;
+        padding: 0 10px !important;
     }
     
 }
