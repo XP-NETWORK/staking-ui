@@ -10,6 +10,10 @@
     padding: 10px;
 }
 
+.account__box:hover{
+    cursor: pointer;
+}
+
 .account__container{
     display: flex;
     justify-content: flex-end;

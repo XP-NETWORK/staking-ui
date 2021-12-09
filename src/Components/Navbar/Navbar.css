@@ -39,7 +39,7 @@
 }
 
 
-@media screen and (max-width: 1140px){
+/* @media screen and (max-width: 1140px){
     .navbar{
         max-width: 600px;
         margin: 0 auto;
@@ -48,9 +48,9 @@
         max-width: 600px;
         margin: 0 auto;
     }
-}
+} */
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .navbar{
         display: none;
     }
@@ -60,7 +60,6 @@
     }
     .navbar--mobile{
         max-width: calc(100% - 20px);
-        /* width: 100vw; */
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -69,7 +68,6 @@
     }
 
     .xp__logo--mobile{
-        /* order: -2; */
         padding: 10px 0;
         width: 24vw;
     }
@@ -78,8 +76,8 @@
         width: 100%;
     }
 
-}
-
+} */
+/* 
 @media screen and (max-width: 1140px){
  .xp__logo{
      width: 130px;
@@ -99,7 +97,7 @@
         margin: unset;
     }
 }
-
+ */
 
 .navbar{
     width: 100%;
@@ -115,11 +113,17 @@
     letter-spacing: 3%;
 }
 
+/* @media screen and (max-width: 1155px) {
+    .navbar{
+        max-width: ;
+    }
+}
+
 @media screen and (max-width: 1140px) {
     .navbar{
         gap: 10px;
     }
-}
+} */
 
 .navbar__nav-buttons{
     flex-grow: 4;
@@ -162,13 +166,11 @@
     justify-content: center;
     color: #1D1D1D;
     opacity: 0.2;
-    /* background: #FFFFFF; */
     border-radius: 6px;
 }
 
 .nav__buttons--mob{
     padding: 0 8px 20px 8px;
-    /* max-width: 624px; */
     margin: 0 auto;
 }
 
@@ -184,7 +186,6 @@
 }
 
 .nav__mob{
-    /* width: 100%; */
     max-width: 625px;
     margin: 0 auto;
 }
@@ -197,18 +198,6 @@
     margin: 0 auto;
 }
 
-/* @media screen and (max-width: 625px) {
-    .nav__top{
-        max-width: 624px;
-    }
-    .nav__buttons--mob{
-        max-width: 624px;
-    }
-    /* .nav__mob{
-        max-width: 625px;
-    } */
-/* } */ 
-
 .top__logo{
     margin-right: 10px;
 }
@@ -217,8 +206,20 @@
     max-width: 100%;
 }
 
+@media screen and (max-width: 1140px) {
+    .navbar{
+        max-width: 600px;
+        gap: 10px;
+        margin: 0 auto;
+    }
+}
+
 @media screen and (max-width: 625px) {
  
+    .nav__mob{
+        width: 100%;
+    }
+    
     .navbar{
         display: none;
     }

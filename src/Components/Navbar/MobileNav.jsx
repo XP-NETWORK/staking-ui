@@ -6,18 +6,6 @@ import BTN from "./Parts/BTN";
 
 export default function MobileNav() {
     return (
-    // <div className="navbar--mobile">
-    //     <div className="xp__logo--mobile">
-    //         <Link to='/stake'>
-    //             <img src={xplogo} alt="XP.Network Logo" />
-    //         </Link>
-    //     </div>
-    //    <AccountBox />
-    //     <div className="nav__buttons">
-    //         <BTN type={"Stake"} />
-    //         <BTN type={"Claim"} />
-    //     </div>
-    // </div>
     <div className="nav__mob">
         <div className="nav__top">
             <div className="top__logo">
