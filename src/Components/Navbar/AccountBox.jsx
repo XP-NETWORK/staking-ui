@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { createIcon } from '@download/blockies';
 import { setIsOpen, setonDisconnect } from '../../redux/counterSlice'
 import "./AccountBox.css"
+import { useSelector } from 'react-redux';
 
 export default function AccountBox() {
     
@@ -12,7 +13,8 @@ export default function AccountBox() {
         dispatch(setonDisconnect(true))
         dispatch(setIsOpen(true))
     }
-    const account = "0xb6C8748115d23Eb1c6d59Cb83eAe051b56ef75c7"
+    
+    const account = useSelector(state => state.data.account)
     
     function ls() {
         // debugger

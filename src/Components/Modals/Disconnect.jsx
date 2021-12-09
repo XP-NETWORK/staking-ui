@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Modal } from 'web3modal'
 import "./Disconnect.css"
-import { updateAccount, setIsOpen, setButtonPushed  } from "../../redux/counterSlice"
+import { updateAccount, setIsOpen, setButtonPushed, setReset  } from "../../redux/counterSlice"
 import walletIcon from "../../assets/walletIcon.png"
 
 export default function Disconnect() {
@@ -15,6 +15,7 @@ export default function Disconnect() {
         dispatch(updateAccount(''))
         dispatch(setButtonPushed(false))
         dispatch(setIsOpen(false))
+        dispatch(setReset())
       }
 
     return (

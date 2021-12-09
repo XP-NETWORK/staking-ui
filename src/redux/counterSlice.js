@@ -96,6 +96,9 @@ export const counterSlice = createSlice({
       },
       setNotEnoughGas(state, action){
         state.notEnoughGas = action.payload
+      },
+      setReset(){
+        return initialState
       }
     },
   })
@@ -124,7 +127,8 @@ export const {
   setIsOpen,
   setonDisconnect,
   setChainModalIsOpen,
-  setNotEnoughGas
+  setNotEnoughGas,
+  setReset
 } = counterSlice.actions
 
 export default counterSlice.reducer
