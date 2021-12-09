@@ -14,9 +14,12 @@ import { stake, stakesGallery } from "../../utils/stake"
 import { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { getStakeById, stakes } from "../../utils/stake"
-import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import { Link } from 'react-router-dom'
 import { useWeb3React } from '@web3-react/core' 
+import copy from "../../assets/FileCopy.svg"
+import copyHover from"../../assets/CopyHover.svg"
+import {CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 export default function Search() {
     const dispatch = useDispatch()
@@ -103,10 +106,16 @@ export default function Search() {
                            <div className="nft__pic">
                                <img src={nftUrl} alt={`NFT#${nftID}`} />
                            </div>
-                           <div className="staker"><span>{staker.slice(0,26) + '...' + staker.slice(38,46)}</span></div>
-                               <Link className="gallery__btn" to="/gallery">
-                                   Back to Collection
-                               </Link>
+                           
+                           <div className="staker">
+                                    <div>{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
+                                <CopyToClipboard text={staker}>
+                                    <span className="copy__search"><img src={copy} alt="" /></span>
+                                </CopyToClipboard>
+                            </div>
+                            <Link className="gallery__btn" to="/gallery">
+                                Back to Collection
+                            </Link>
                         </div>
                     </div>
                 </>
