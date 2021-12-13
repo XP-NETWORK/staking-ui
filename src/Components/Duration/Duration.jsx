@@ -16,7 +16,7 @@ export default function Duration({ month, apy, index }) {
 
     return (
         <div onClick={() => durationHandler(index)} className={dur === month ? `duration duration--active`:`duration`}>
-            <div className="duration__title">{month} {month === 1 ? `year` : `month`}</div>
+            <div className="duration__title">{month} {month === 1 ? `year` : `months`}</div>
             <div className="duration__subtitle">APY {apy}%</div>
         </div>
     )
