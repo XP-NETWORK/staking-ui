@@ -17,31 +17,23 @@ export default function ChangeNetwork() {
     }
 
     const switchChain = async() => {
-        const chainParams = [{ 
-          native: "BNB",
-          chainId: 56,
-          rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-          decimals: 1e18,
-          contract: "0x12889E870A48Be2A04564e74f66fC91D439Da03e",
-          blockExplorerUrls: "https://bscscan.com/tx", }]
         try {
           await window.ethereum.request({
             method: 'wallet_switchEthereumChain',
             params: [{ chainId: '0x38' }],
           });
         } catch (switchError) {
-          // This error code indicates that the chain has not been added to MetaMask.
           if (switchError.code === 4902) {
             try {
               await window.ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [{ chainId: '0xf00', rpcUrl: 'https://bsc-dataseed.binance.org/'}],
               });
-            } catch (addError) {
-              // handle "add" error
+            } 
+            catch (addError) {
+              alert(addError)
             }
           }
-          // handle other "switch" errors
         }
     }
 

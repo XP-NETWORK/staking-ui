@@ -33,7 +33,8 @@ export default function Gallery() {
         }
         ref.current = currentScrollY;
       };
-    const searchHandler = item => {
+
+    function searchHandler(item){
         const reg = new RegExp('^[0-9]+$');
         const num = Number(item.target.value)
         if(reg.test(num)){
@@ -44,9 +45,6 @@ export default function Gallery() {
         if(item.key === "Enter"){
             stakesGallery(search,library)
         }
-        // if(item.key === "Enter"){
-        //     setFilterFlag(true)
-        // }
     }
     const onBlurHandler = item => {
         if(search === ""){
@@ -58,11 +56,17 @@ export default function Gallery() {
         }
     }
     const showGallery = () => {
+        debugger
         if(collection.length > 0){ 
-            const newCollection = collection
-            return newCollection.map( (item, index) => {
-                return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
-            })
+            if(collection[0].token === search){
+                const newCollection = collection
+                return newCollection.map( (item, index) => {
+                    return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
+                })
+            }
+            else{
+                return <div className='not-exist'>{`NFT with toke id ${search} not exist`}</div>
+            }
         }
         else if(!Array.isArray(collection)) return <NFTBox url={collection[0].url} key={search} tokenID={collection[0].token} staker={collection[0].staker}/>
     }
@@ -82,7 +86,6 @@ export default function Gallery() {
             <div className="gallery__header">NFT Collection</div>
             <div className="gallery__subtitle">Explore XPNET Stake Holders Gallery</div>
                 <div className="gallery__search">
-                    {/* onBlur={item => onBlurHandler(item)}  onChange={ item => searchHandler(item)} */}
                     <input onBlur={item => onBlurHandler(item)} onKeyPress={item => keyPresHandler(item)} onChange={ item => searchHandler(item)} value={search} placeholder="Search" type="search" name="nft-search" id="nft-search" className="nft-search" />
                     <div className="nft-search__items"><img src={magnifier} alt="" /></div>
                 </div>
