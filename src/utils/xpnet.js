@@ -45,28 +45,6 @@ export const checkBalance = async (address, library) => {
     }
 }
 
-// Approve this account.
-// export const approve = async (account, library) => {
-//     debugger
-//     try{
-//         store.dispatch(updateAproveButtonsLoader(true))
-//         const Contract = await xpContract(library)
-//         Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
-//         .once('receipt', function(receipt){
-//             store.dispatch(updateAproveButtonsLoader(false))
-//             store.dispatch(updateApproved(true))
-//             checkAllowence(account, library)
-//         })
-//         .on('error', () => {
-//             store.dispatch(updateAproveButtonsLoader(false))
-//         })
-//     }
-//     catch(error){
-//         store.dispatch(updateAproveButtonsLoader(false))
-//         console.log(error)
-//     }
-// }
-
 export const approve = async (account, library) => {
     debugger
     store.dispatch(updateAproveButtonsLoader(true))

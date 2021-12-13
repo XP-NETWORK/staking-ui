@@ -1,0 +1,135 @@
+
+.nft-from-collection__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.nft-from-collection{
+    border: 1px solid black;
+    width: 622px;
+    border: 1px solid #E5E8F0;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nft-from-collection__view{
+    width: 486px;
+    border: 1px solid black;
+    border: 1px solid #E5E8F0;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-bottom: 20px;
+}
+
+.nft-from-collection__title{
+    padding: 22px 30px;
+    font-size: 18px;
+    line-height: 22.68px;
+    font-weight: 600;
+    letter-spacing: 3%;
+}
+
+.nft-from-collection__details{
+    padding: 0 30px;
+}
+
+.nft-from-collection__content{
+    padding: 11px 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nft-from-collection__pic{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.nft-from-collection__pic img{
+    width: 70%;
+    border-radius: 5px;
+}
+
+.nft-from-collection__address{
+    display: flex;
+    align-items: center;
+    max-width: 426px;
+    height: 48px;
+    background: #FBFCFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 13px 15px;
+    margin-bottom: 25px;
+}
+
+
+.gallery__btn{
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1140px) {
+    .nft-from-collection__container{
+        justify-content: center;
+        gap: 16px;
+    }
+    .nft-from-collection__view{
+        width: 622px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .nft-from-collection{
+        width: unset;
+        max-width: 600px;
+        min-width: 425px;
+    }
+
+    .nft-from-collection__view{
+        width: unset;
+        max-width: 600px;
+        min-width: 425px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .nft-from-collection__container{
+        width: 100%;
+    }
+    
+    .nft-from-collection{
+        width: 100%;
+        min-width: unset;
+    }
+
+    .nft-from-collection__view{
+        width: 100%;
+        min-width: unset;
+
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .nft-from-collection__address{
+        width: 100%;
+    }
+
+    .nft-from-collection__address div{
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
