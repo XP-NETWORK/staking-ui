@@ -1,5 +1,6 @@
 import React from 'react'
 import { getPercents } from "../../../../utils/helper"
+import "./ClaimAPY.css"
 
 export default function ClaimAPY({ period }) {
     return (

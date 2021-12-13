@@ -58,7 +58,6 @@
 @media screen and (max-width: 600px) {
     .nft__widget{
         margin: 0 auto;
-        /* background-color: turquoise; */
     }
 }
 
@@ -66,7 +65,7 @@
     .nft__widget{
         margin: 0 auto;
         display: flex;
-        width: 390px;
+        width: 100%;
         align-items: center;
         justify-content: space-between;
     }
@@ -74,7 +73,6 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        /* margin: 0 5px; */
     }
 }
 
@@ -90,6 +88,5 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        /* margin: 0 5px; */
     }
 }

@@ -1,0 +1,128 @@
+.claim__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.claim{
+    width: 622px;
+    background-color: white;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding-bottom: 30px;
+}
+
+.nft__wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nft{
+    width: 486px;
+    /* height: 472px; */
+    flex-grow: 5;
+    background: #FFFFFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.nfts__toggler{
+    flex-grow: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.claim__title{
+    padding: 22px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22.68px;
+    letter-spacing: 3%;
+}
+
+.claim__details{
+    padding: 0 30px 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20.16px;
+    letter-spacing: 3%;
+}
+
+.claim-buttons__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.claim__det{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.claim__capture{
+    color: #686E7D;
+    
+}
+
+.nft__address{
+    width: 291px;
+    height: 44px;  
+    background: #FBFCFF;
+    border: 1px solid #E5E8F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nft__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 1140px) {
+    .claim__container{
+        justify-content: center;
+        gap: unset;
+    }
+
+    .nft__wrapper{
+        width: 622px;
+        margin-bottom: 20px;
+    }
+
+    .nft{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 622px) {
+    .claim__container{
+        width: 100%;
+    }
+
+    .nft__wrapper{
+        width: 100%;
+        border: unset;
+    }
+
+    .nft{
+        width: 100%;
+        border: unset;
+    }
+
+    .claim-buttons__container{
+        padding: 0 10px 10px 10px;
+    }
+
+    .nfts__toggler{
+        padding: 0 10px;
+    }
+}

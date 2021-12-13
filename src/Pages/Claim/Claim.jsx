@@ -1,5 +1,5 @@
 import Web3 from "web3"
-import "./Claim.css"
+// import "./Claim.css"
 import { useEffect } from 'react'
 import { getStakeById, checkIsUnLocked, tokenOfOwnerByIndex, getAmountOfTokens } from "../../utils/stake"
 import { useSelector } from "react-redux"
@@ -19,6 +19,7 @@ import Widget from './Parts/Widget/Widget'
 import Total from "./Parts/Total/Total"
 import Withdrawn from "./Parts/Withdrown/Withdrown"
 import { useWeb3React } from '@web3-react/core' 
+import "./ClaimNew.css"
 
 export default function Claim() {
     // const balance = useSelector(state => state.data.balance)
@@ -104,13 +105,15 @@ export default function Claim() {
                             <ClaimStart startTime={startTime} />
                             <End startTime={startTime} period={period} startDate={startDate} />
                             <ProgressBar period={period} startTime={startTime} />
+                        </div>
+                        <div className="claim-buttons__container">                            
                             <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
                             <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
                         </div>
                     </div>
                     <div className="nft__wrapper">
                         <div className="nft">
-                            <div className="nft__title">NFT</div>
+                            <div className="claim__title">NFT</div>
                             <div className="line"></div>
                             <div className="nft__content">
                                 <Widget tokens={tokensArr} />

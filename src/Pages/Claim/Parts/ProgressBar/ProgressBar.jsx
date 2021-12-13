@@ -2,7 +2,7 @@ import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getProgress } from "../../../../utils/helper"
-
+import "./ProgressBar.css"
 
 
 export default function ProgressBar({ startTime }) {
