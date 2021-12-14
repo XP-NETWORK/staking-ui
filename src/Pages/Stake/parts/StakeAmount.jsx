@@ -69,13 +69,16 @@ export function StakeAmountMob() {
     const balance = useSelector(state => state.data.balance)
 
     const amountHandler = (e) => {
+        
         const reg = new RegExp('^[0-9]+$');
         const num = Number(e.target.value)
-        if(reg.test(num)){
-            setAmount(e.target.value)
-            dispatch(changeStakingAmount(num))
-            if(num >= 1500){
-                setInputErr(false)
+        if(e.target.value.length < 10){
+            if(reg.test(num)){
+                setAmount(e.target.value)
+                dispatch(changeStakingAmount(num))
+                if(num >= 1500){
+                    setInputErr(false)
+                }
             }
         }
     }
