@@ -5,7 +5,7 @@ import { createStore } from "redux"
 import { totalSupplay, updateManyCollection } from "../redux/totalSupplay"
 import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
-import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked } from "../redux/stakeSlice"
+import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked, setNFTNotExist } from "../redux/stakeSlice"
 import axios from "axios"
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 
@@ -237,17 +237,19 @@ export const stakes = async (id, library) => {
 }
 
 export const stakesGallery = async (id, library) => {
+    debugger
     const Contract = await stakeContract(library)
     try {
         const nft = await Contract.methods.stakes(id).call()
-        console.log(nft)
         const res = await axios.get(`https://staking-api.xp.network/staking-nfts/${id}/image`)
             if(res) {
                 const { image } = res.data
+                store.dispatch(setNFTNotExist(false))
                 store.dispatch(updateCollection({url: image, token: id, staker: nft[5], period: nft[2], amount: nft[0] }))
             }
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
+        store.dispatch(setNFTNotExist(true))
     }
 }
 

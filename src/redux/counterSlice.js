@@ -99,12 +99,16 @@ export const counterSlice = createSlice({
       },
       setReset(){
         return initialState
+      },
+      setAgreementMod(state, action){
+        state.agreeMod = action.payload
       }
     },
   })
 
 
 export const { 
+  setAgreementMod,
   changeStatus,
   changeDuraion,
   getActualTime,

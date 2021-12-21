@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 export default function AccountBox() {
     
     const dispatch = useDispatch()
-    // const account = useSelector(state => state.data.account)
     const onDisconnect = async() => {
         dispatch(setonDisconnect(true))
         dispatch(setIsOpen(true))
@@ -20,7 +19,6 @@ export default function AccountBox() {
         // debugger
         let ls
         const width = window.innerWidth
-        // ls = width >= 600 ? 
         if (width < 321) {
             ls = 1
         }
@@ -53,8 +51,8 @@ export default function AccountBox() {
 
     return (
     <div onClick={() => onDisconnect()} className="account__box">
-        <div className="account__address">{account.slice(0,ls()) + '...' + account.slice(39,46)}</div>
         <div className="account__icon">0</div>
+        <div className="account__address">{account.slice(0,ls()) + '...' + account.slice(39,46)}</div>
     </div>
     )
 }

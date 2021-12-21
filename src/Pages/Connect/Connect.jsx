@@ -18,10 +18,9 @@ export default function Connect() {
     const history = useHistory()
     const { ethereum } = window
 
-    // const connectPushed = useSelector(state => state.data.connectPushed)
+
 
     function getMobOps() {
-        // debugger
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
   
         if (/android/i.test(userAgent)) {
@@ -30,7 +29,7 @@ export default function Connect() {
   
     }
     
-    const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
+    const { active, account, activate } = useWeb3React()
 
 
     const onMetamask = async () => {

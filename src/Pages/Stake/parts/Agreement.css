@@ -18,6 +18,14 @@
 font-size: 16px;
 }
 
+.agreement__text span{
+    color: #2853EB
+}
+
+.agreement__text span:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 600px){
     .agreement{
         margin-top: 10px;

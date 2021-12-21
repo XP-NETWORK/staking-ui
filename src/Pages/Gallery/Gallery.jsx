@@ -19,6 +19,7 @@ export default function Gallery() {
     const [filterFlag, setFilterFlag] = useState(false)
     const dispatch = useDispatch()
     const [wrongNetwork, setWrongNetwork] = useState(true)
+    const nftNotExist = useSelector(state => state.stakeData.nftNotExist)
 
     const onScroll = (e) => {
         const currentScrollY = e.target.scrollTop;
@@ -39,6 +40,7 @@ export default function Gallery() {
         const num = Number(item.target.value)
         if(reg.test(num)){
             setSearch(item.target.value)
+            stakesGallery(num,library)
         }
     }
     const keyPresHandler = (item) => {
@@ -56,19 +58,19 @@ export default function Gallery() {
         }
     }
     const showGallery = () => {
-        debugger
-        if(collection.length > 0){ 
-            if(collection[0].token === search){
+      
+        if(nftNotExist){
+            return <div>{`NFT with token id ${search} not exist.`}</div>
+        }
+        else{
+            if(collection.length > 0){ 
                 const newCollection = collection
                 return newCollection.map( (item, index) => {
                     return <NFTBox url={item.url} key={index} tokenID={item.token} staker={item.staker}/>
                 })
             }
-            else{
-                return <div className='not-exist'>{`NFT with toke id ${search} not exist`}</div>
-            }
+            else if(!Array.isArray(collection)) return <NFTBox url={collection[0].url} key={search} tokenID={collection[0].token} staker={collection[0].staker}/>
         }
-        else if(!Array.isArray(collection)) return <NFTBox url={collection[0].url} key={search} tokenID={collection[0].token} staker={collection[0].staker}/>
     }
 
     useEffect(() => {

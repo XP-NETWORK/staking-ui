@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router'
 import Navbar from './Components/Navbar/Navbar';
 import Main from "./Pages/Main/Main"
 import walletIcon from "./assets/walletIcon.png"
-import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, setChainModalIsOpen, setNotEnoughGas } from "./redux/counterSlice"
+import { getActualTime, updateCurrentPrice, updateAccount, setIsOpen, setChainModalIsOpen, setNotEnoughGas, setAgreementMod } from "./redux/counterSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { checkBalance, checkAllowence, logXPContract } from "../src/utils/xpnet"
 import { getAmountOfTokens, tokenOfOwnerByIndex, logStakeContract } from "../src/utils/stake"
@@ -16,6 +16,7 @@ import Modal from 'react-modal';
 import Disconnect from "../src/Components/Modals/Disconnect.jsx"
 import ChangeNetwork from './Components/Modals/ChangeNetwork';
 import NoGas from './Components/Modals/NoGas';
+import AgreeModal from './Pages/Stake/parts/AgreeModal';
 
 function App() {
 const dispatch = useDispatch()
@@ -30,6 +31,7 @@ const {library, chainId } = useWeb3React()
 const notEnoughGas = useSelector(state => state.data.notEnoughGas)
 const [wrongNetwork, setWrongNetwork] = useState(true)
 const connectPushed = useSelector(state => state.data.connectPushed)
+const agreeMod = useSelector(state => state.data.agreeMod)
 Modal.setAppElement('#root');
 
 const customStyles = {
@@ -91,6 +93,10 @@ function closeNoGas() {
   dispatch(setNotEnoughGas(false))
 }
 
+function closeAgreeModal() {
+  dispatch(setAgreementMod(false))
+}
+
 const chainModalHandler = () => {
   if(chainModalISOpen && connectPushed) return true
   else if(chainModalISOpen && location.pathname === "/gallery") return true
@@ -128,6 +134,29 @@ useEffect(() => {
     }
   }
 }, [tokens])
+
+
+function fnBrowserDetect(){
+                 
+  let userAgent = navigator.userAgent;
+  let browserName;
+  
+  if(userAgent.match(/chrome|chromium|crios/i)){
+      browserName = "chrome";
+    }else if(userAgent.match(/firefox|fxios/i)){
+      browserName = "firefox";
+    }  else if(userAgent.match(/safari/i)){
+      browserName = "safari";
+    }else if(userAgent.match(/opr\//i)){
+      browserName = "opera";
+    } else if(userAgent.match(/edg/i)){
+      browserName = "edge";
+    }else{
+      browserName="No browser detection";
+    }
+
+   return browserName     
+}
 
 
 useEffect(() => {
@@ -182,6 +211,13 @@ useEffect(() => {
         <NoGas />
       </Modal>
       <Main />
+      <Modal 
+      isOpen={agreeMod}
+      style={customStyles}
+      onRequestClose={() => closeAgreeModal()}
+      >
+        <AgreeModal />
+      </ Modal>
     </div>
   );
 }

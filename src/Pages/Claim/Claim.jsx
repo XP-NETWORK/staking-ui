@@ -94,7 +94,7 @@ export default function Claim() {
             return (
                 <div className="claim__container">
                     <div className="claim">
-                        <div className="claim__title">Staking Reward</div>
+                        <div className="claim__title">Staking Rewards</div>
                         <div className="line"></div>
                         <div className="claim__details">
                             <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>

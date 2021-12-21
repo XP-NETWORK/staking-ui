@@ -64,6 +64,9 @@ export const stakeSlice = createSlice({
         },
         updateImage(state, action){
             state.image = [...new Map([...state.image, action.payload].map(item =>[item['token'], item])).values()]
+        },
+        setNFTNotExist(state, action){
+            state.nftNotExist = action.payload
         }
     },
   })
@@ -83,7 +86,8 @@ export const {
     updateWithdrawed,
     updateWithdrawnAmount,
     updateIsUnlocked,
-    updateImage
+    updateImage,
+    setNFTNotExist
 } = stakeSlice.actions
 
 export default stakeSlice.reducer

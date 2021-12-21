@@ -8,6 +8,8 @@
     border-radius: 8px;
     font-size: 16px;
     padding: 10px;
+    background: #EDF0F8;
+
 }
 
 .account__box:hover{
@@ -20,7 +22,7 @@
 }
 
 .account__icon{
-    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .account__icon canvas {

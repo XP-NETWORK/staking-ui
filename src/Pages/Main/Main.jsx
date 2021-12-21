@@ -9,7 +9,6 @@ import Loader from '../../Components/Loader/Loader';
 import { useEffect } from 'react';
 import Gallery from "../Gallery/Gallery"
 import Search from "../Search/Search";
-import Connection from "../Connect/Connection";
 import CollectionNFT from "../Search/CollectionNFT";
 
 export default function Main() {
@@ -20,15 +19,15 @@ export default function Main() {
 
     if(location.pathname ==="/gallery" || location.pathname.includes("search")){
         return <Switch>
-        <Route component={Gallery} path="/gallery"></Route>
-        <Route path="/search/:id"><CollectionNFT /></Route>
-            <Route component={CollectionNFT} path="/search"></Route>
-        </Switch>
+                    <Route component={Gallery} path="/gallery"></Route>
+                    <Route path="/search/:id"><CollectionNFT /></Route>
+                    <Route component={CollectionNFT} path="/search"></Route>
+            </Switch>
         }
     else if(!connectPushed){
         return <Connect />
     }
-    else if(!account && loader){
+    else if(!account && loader && connectPushed){
         return <Loader />
     }
     else{
