@@ -194,7 +194,7 @@ useEffect(() => {
       </Modal>
       <Modal 
       className="Modal"
-      isOpen={ chainModalHandler() } 
+      isOpen={chainModalHandler()} 
       style={ customStyles } 
       onRequestClose={closeModal}
       contentLabel="Example Modal">
@@ -212,8 +212,10 @@ useEffect(() => {
       </Modal>
       <Main />
       <Modal 
+      className="agree-modal"
       isOpen={agreeMod}
-      style={customStyles}
+      overlayClassName="agree-overlay"
+      // style={customStyles}
       onRequestClose={() => closeAgreeModal()}
       >
         <AgreeModal />
