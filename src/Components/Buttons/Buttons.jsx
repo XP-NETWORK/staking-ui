@@ -35,7 +35,6 @@ export function Approvance({ approvance, amount, duration, account }) {
 
 export function Lock({ approvance, duration, account}){
     const {library, connector} = useWeb3React()
-    
     const lockloader = useSelector(state => state.data.lockLoader)
     const agreement = useSelector(state => state.data.agreement)
     const amount = useSelector(state => state.data.stakingAmount)

@@ -32,6 +32,8 @@ const notEnoughGas = useSelector(state => state.data.notEnoughGas)
 const [wrongNetwork, setWrongNetwork] = useState(true)
 const connectPushed = useSelector(state => state.data.connectPushed)
 const agreeMod = useSelector(state => state.data.agreeMod)
+const collection = useSelector(state => state.totalSupply.collection)
+
 Modal.setAppElement('#root');
 
 const customStyles = {

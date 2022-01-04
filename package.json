@@ -15,6 +15,7 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "^6.2.8",
     "axios": "^0.22.0",
+    "cordova-plugin-file": "^6.0.2",
     "identicon": "^3.0.1",
     "moment": "^2.29.1",
     "moralis": "^0.0.90",
@@ -28,7 +29,8 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
     "web3": "^1.6.0",
-    "web3modal": "^1.9.4"
+    "web3modal": "^1.9.4",
+    "write-json-file": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

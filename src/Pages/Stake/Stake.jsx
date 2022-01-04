@@ -15,7 +15,7 @@ import DetailsRewards from './parts/DetailsRewards'
 import Agreement from './parts/Agreement'
 import { StakeAmount, StakeAmountMob } from './parts/StakeAmount';
 import StakeDuration from './parts/StakeDuration';
-import { useHistory } from 'react-router';
+
 
 
 export default function Stake() {

@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   collection: [],
   selectedNFT: '',
-  loaded: 'false'
+  loaded: 'false',
+  arraAVG:[],
 }
 
 export const totalSupplay = createSlice({
@@ -14,24 +15,26 @@ export const totalSupplay = createSlice({
         state.collection = [action.payload]
        },
        updateManyCollection(state, action) {
-         console.log("before",state.collection);
-
          state.collection = 
        [...new Map([...state.collection, ...action.payload].map(item =>[item['token'], item])).values()]
        .sort((a,b )=> parseInt(a.token) - parseInt(b.token))
-       console.log("after", state.collection);
+       
       },
        updateSelected(state, action){
          state.selectedNFT = action.payload
        },
        updateLoaded(state, action){
          state.loaded = action.payload
+       },
+       setAvgObj(state, action){
+        state.arraAVG = [...state.arraAVG, action.payload]
        }
     },
 })
 
 
 export const { 
+  setAvgObj,
   updateCollection,
   updateSelected,
   updateManyCollection,

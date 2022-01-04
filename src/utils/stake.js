@@ -2,12 +2,14 @@ import Web3 from "web3"
 import stakeABI from "../ABI/XpNetStaker.json"
 import { store } from "../redux/store"
 import { createStore } from "redux"
-import { totalSupplay, updateManyCollection } from "../redux/totalSupplay"
+import { totalSupplay, updateManyCollection, setAvgObj } from "../redux/totalSupplay"
 import { updateCollection, updateLoaded } from "../redux/totalSupplay"
 import { updateStakeInfo, updateAproveLockLoader } from "../redux/counterSlice"
 import { updateImage, updateAmount, addLoader, updateWithdrawed, updateDuration, updateAvailableRewards ,updateStartTime, updateNftTokenId, updateNftTokenIndex, updateTokensArray, updateTokensAmount, updateWithdrawnAmount, updateIsUnlocked, setNFTNotExist } from "../redux/stakeSlice"
 import axios from "axios"
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
+
+
 
 export const walletconnect = new WalletConnectConnector({ 
     rpc: { 
@@ -22,7 +24,7 @@ export let stakeAddress = "0xbC9091bE033b276b7c2244495699491167C20037"
 const state = store.getState()
 const p = state.data.provider
 const W3 = new Web3( p === "WalletCOnnect" ? walletconnect : window.ethereum )
-console.log("W3", W3)
+
 
 
 // Create staker smart contract.
@@ -46,6 +48,46 @@ export const logStakeContract = async () => {
     const Contract = await stakeContract()
     console.log(Contract)
 }
+
+// async function getAvg(){
+    
+//     let object = {}
+//     const Contract = await stakeContract()
+//     try {
+//         const allNFTs = await Contract.methods.totalSupply().call() 
+//         const length = +allNFTs
+//         // const nfts = Number(allNFTs)
+//         for (let index = 0; index < 2; index++) {
+//             debugger
+//             const nft = await Contract.methods.stakes(index).call()
+//             const address = nft[5]
+//             if(nft){
+//                 if(object[address]){
+//                     object[address].push(nft[0])
+//                 } 
+//                 else{
+//                     object[nft[5]] = [nft[0]]
+//                 }
+//             }
+//         }
+        
+//     } catch (error) {
+//         console.log(error);
+//     } 
+    
+//     const parsed = JSON.stringify(object)
+//     console.log(parsed);
+//     // const file = new Blob(parsed, {type: 'text/plain'});
+//     // console.log(file);
+//     // fs.writeFile("./test.txt", parsed, function(err) {
+        
+//     //     if (err) {
+//     //         console.log(err);
+//     //     }
+//     // });
+// }
+
+// getAvg()
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account, history, library) => {
@@ -196,26 +238,29 @@ export const checkIsUnLocked = async (id, library) => {
 }
 
 export const totalSupply = async (index, length, library) => {
+    // debugger
     const Contract = await stakeContract(library)
+    
     try {
         const allNFTs = await Contract.methods.totalSupply().call()
-        const array = (await Promise.all(new Array(length).fill(0).map((n,i) => i+ index)
-        .map(async n => {
+        // getAvg(allNFTs, library)
+        const array = (await Promise.all(new Array(length).fill(0).map((n,i) => i+ index).map(async n => {
             const res = (await axios.get(`https://staking-api.xp.network/staking-nfts/${n}/image`)).data
             const nft = await Contract.methods.stakes(n).call()
             return { nft, ...res}
-        } )
-        ))
-        .map((n,i)=> ({ url: n.image, token: i + index, staker: n.nft[5], period: n.nft[2], amount: n.nft[0] }))
+        }))).map((n,i)=> ({ url: n.image, token: i + index, staker: n.nft[5], period: n.nft[2], amount: n.nft[0] }))
+
         store.dispatch(updateManyCollection(array))
         store.dispatch(updateLoaded(true))
+        
     } catch (error) {
         console.log(error);
     }
 }
 
+
 export const stakes = async (id, library) => {
-    console.log("stakes");
+    
     const Contract = await stakeContract(library)
     try {
         const nft = await Contract.methods.stakes(id).call()

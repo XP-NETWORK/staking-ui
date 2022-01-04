@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { setAgreementMod } from '../../../redux/counterSlice'
 import "./Agreement.css"
 import Radio from './Radio'
+import PDF from "../../../assets/Terms.pdf"
 
 export default function Agreement() {
     const dispatch = useDispatch()
@@ -16,8 +17,8 @@ export default function Agreement() {
     return (
         <div className="agreement">
             <Radio />
-            <div onClick={onClickHandler} className="agreement__text">
-             I have read and I agree to <span>XPNET Staking Service Agreement</span>
+            <div className="agreement__text">
+             <a href={PDF} target='_blank'> I have read and I agree to <span>XPNET Staking Service Agreement</span></a>
             </div>
         </div>
     )
