@@ -18,7 +18,7 @@ export default function Agreement() {
         <div className="agreement">
             <Radio />
             <div className="agreement__text">
-             <a href={PDF} target='_blank'> I have read and I agree to <span>XPNET Staking Service Agreement</span></a>
+            <span>I have read and I agree to <a href={PDF} target='_blank'>XPNET Staking Service Agreement</a></span>
             </div>
         </div>
     )

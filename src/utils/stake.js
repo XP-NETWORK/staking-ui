@@ -91,7 +91,7 @@ export const logStakeContract = async () => {
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account, history, library) => {
-
+    debugger
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
     if(duration!==12){
@@ -103,12 +103,12 @@ export const stake = async (amount, duration, account, history, library) => {
     try{
         store.dispatch(updateAproveLockLoader(true))
         const Contract = await stakeContract(library)
-        Contract.methods.stake(weiValue, durInSec).send({from:account})
+        Contract.methods.stake(weiValue, durInSec).send({from: account})
         .once('receipt', async function(receipt){
             console.log("stake: ", receipt);
             store.dispatch(updateAproveLockLoader(false))
             const t = await getAmountOfTokens(account)
-            const {tokensAmountFlag, tokenAmount} = store.getState().data
+            // const {tokensAmountFlag, tokenAmount} = store.getState().data
 
             await tokenOfOwnerByIndex(t, account)
             history.push('/claim')
