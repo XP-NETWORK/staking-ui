@@ -18,11 +18,12 @@
 font-size: 16px;
 }
 
-.agreement__text span{
-    color: #2853EB
+.agreement__text a{
+    color: #2853EB;
+    /* cursor: pointer; */
 }
 
-.agreement__text span:hover{
+.agreement__text a:hover{
     cursor: pointer;
 }
 
