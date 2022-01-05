@@ -91,7 +91,7 @@ export const logStakeContract = async () => {
 
 // Lock the XPNet.
 export const stake = async (amount, duration, account, history, library) => {
-    debugger
+    // debugger
     const weiValue = Web3.utils.toWei(amount.toString(), 'ether');
     let durInSec
     if(duration!==12){
@@ -282,7 +282,7 @@ export const stakes = async (id, library) => {
 }
 
 export const stakesGallery = async (id, library) => {
-    debugger
+    // debugger
     const Contract = await stakeContract(library)
     try {
         const nft = await Contract.methods.stakes(id).call()

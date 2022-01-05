@@ -7,6 +7,8 @@ import { totalSupply, stakesGallery } from "../../utils/stake"
 import { useWeb3React } from '@web3-react/core'
 import { useDispatch } from 'react-redux'
 import { setChainModalIsOpen } from "../../redux/counterSlice"
+import NoItems from './NoItems'
+import { setNFTNotExist } from '../../redux/stakeSlice'
 
 export default function Gallery() {
     const [index, setIndex] = useState(0)
@@ -20,6 +22,7 @@ export default function Gallery() {
     const dispatch = useDispatch()
     const [wrongNetwork, setWrongNetwork] = useState(true)
     const nftNotExist = useSelector(state => state.stakeData.nftNotExist)
+    const [toggler, setToggler] = useState(false)
 
     const onScroll = (e) => {
         const currentScrollY = e.target.scrollTop;
@@ -49,6 +52,7 @@ export default function Gallery() {
         }
     }
     const onBlurHandler = item => {
+        // debugger
         if(search === ""){
             totalSupply(index, 20, library)
             setIndex(index + 20)
@@ -60,7 +64,7 @@ export default function Gallery() {
     const showGallery = () => {
       
         if(nftNotExist){
-            return <div>{`NFT with token id ${search} not exist.`}</div>
+            return <NoItems onBackToItems={onBackToItems} />
         }
         else{
             if(collection.length > 0){ 
@@ -73,10 +77,25 @@ export default function Gallery() {
         }
     }
 
+    const onBackToItems = () => {
+        // debugger
+        setSearch("")
+        // setToggler(prev => prev = !prev)
+        totalSupply(index, 80, library)
+        setIndex(80)
+        dispatch(setNFTNotExist(false))
+    }
+
     useEffect(() => {
         totalSupply(index, 80, library)
         setIndex(80)
     }, [])
+
+    useEffect(() => {
+        // debugger
+        totalSupply(index, 80, library)
+        setIndex(80)
+    }, [toggler])
 
     useEffect(() => {
         totalSupply(index, 80, library)
