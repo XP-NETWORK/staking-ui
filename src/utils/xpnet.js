@@ -50,7 +50,11 @@ export const approve = async (account, library) => {
     store.dispatch(updateAproveButtonsLoader(true))
     const Contract = await xpContract(library)
     const web3 = new Web3(window.ethereum) || library;
-    const balance = await web3.eth.getBalance(account)
+    let balance
+    await web3.eth.getBalance(account, "latest", function(error, result) {
+        if(error)console.error(error)
+        balance = result || undefined
+    })
     const ethBalance = parseFloat(web3.utils.fromWei(balance))
     const gas = await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').estimateGas({from: account})
     const ethGas = parseFloat(web3.utils.fromWei(gas.toString(), "gwei"))
@@ -58,9 +62,7 @@ export const approve = async (account, library) => {
         try{
             const Contract = await xpContract(library)
             await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
-            .estimateGas({from: account})
-            .then(gasAmount => console.log(gasAmount))
-            .catch(error => console.log(error))
+            
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
             checkAllowence(account, library)
