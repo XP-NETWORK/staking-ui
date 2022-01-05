@@ -44,7 +44,7 @@ export default function Connect() {
     }
 
     const onTrustWallet = async () => {
-        console.log("onTrustWallet", window.location.host);
+        
         if(window.ethereum){
             await activate(injected)
             dispatch(setProvide("MetaMask"))
@@ -98,7 +98,7 @@ export default function Connect() {
             dispatch(changeStatus(true))
             history.push("/stake")
         }
-    }, [active])
+    }, [active, account])
 
     return (
         <div className="connect__container">
