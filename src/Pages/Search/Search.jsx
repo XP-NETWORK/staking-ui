@@ -32,6 +32,8 @@ export default function Search() {
     const collection = useSelector(state => state.totalSupply.collection)
     const loaded = useSelector(state => state.totalSupply.loaded)
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
+    const stakerAdd = useSelector(state => state.totalSupply.selectedNFTStaker)
+    console.log("sdfsdfsdfsdfsdf", stakerAdd);
     const {library, connector} = useWeb3React()
     const { id } = useParams()
     const [nftUrl, setNftUrl] = useState('')
@@ -42,13 +44,14 @@ export default function Search() {
 
 
     const setPicture = () => {
+        debugger
         if(collection.length > 0){
             if(reg.test(id)){
                 if(collection){
                     setExist(true)
                     setNftUrl(collection[0].url)
                     setNftID(collection[0].token)
-                    setStaker(collection[0].staker)
+                    setStaker(collection[id].staker)
                 }
                 else{
                     setExist(false)
@@ -58,7 +61,7 @@ export default function Search() {
                 setExist(true)
                 setNftUrl(collection[0].url)
                 setNftID(collection[0].token)
-                setStaker(collection[0].staker)
+                setStaker(collection[selected].staker)
             }
         }
         else{
@@ -108,10 +111,10 @@ export default function Search() {
                            </div>
                            
                            <div className="staker">
-                                    <div>{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
-                                <CopyToClipboard text={staker}>
-                                    <span className="copy__search"><img src={copy} alt="" /></span>
+                                <CopyToClipboard text={stakerAdd}>
+                                    <div>{stakerAdd.slice(0,26) + '...' + stakerAdd.slice(38,46)}</div>
                                 </CopyToClipboard>
+                                    <span className="copy__search"><img src={copy} alt="" /></span>
                             </div>
                             <Link className="gallery__btn" to="/gallery">
                                 Back to Collection

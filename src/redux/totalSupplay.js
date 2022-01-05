@@ -23,6 +23,9 @@ export const totalSupplay = createSlice({
        updateSelected(state, action){
          state.selectedNFT = action.payload
        },
+       updateSelectedNFTSTaker(state, action){
+        state.selectedNFTStaker = action.payload
+       },
        updateLoaded(state, action){
          state.loaded = action.payload
        },
@@ -35,6 +38,7 @@ export const totalSupplay = createSlice({
 
 export const { 
   setAvgObj,
+  updateSelectedNFTSTaker,
   updateCollection,
   updateSelected,
   updateManyCollection,

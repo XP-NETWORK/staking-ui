@@ -38,7 +38,8 @@ export default function CollectionNFT() {
     const [staker, setStaker] = useState('')
     const [exist, setExist] = useState(true)
     const reg = new RegExp('^[0-9]+$');
-
+    const stakerAdd = useSelector(state => state.totalSupply.selectedNFTStaker)
+    console.log("sdfsdfsdfsdfsdf", stakerAdd);
 
     const setPicture = () => {
         if(collection.length > 0){
@@ -111,8 +112,8 @@ export default function CollectionNFT() {
                                     <img src={nftUrl} alt={`NFT#${nftID}`} />
                                 </div>
                                 <div className="nft-from-collection__address">
-                                    <div>{staker.slice(0,26) + '...' + staker.slice(38,46)}</div>
-                                    <CopyToClipboard text={staker}>
+                                    <div>{stakerAdd.slice(0,26) + '...' + stakerAdd.slice(38,46)}</div>
+                                    <CopyToClipboard text={stakerAdd}>
                                         <span className="copy__search"><img src={copy} alt="" /></span>
                                     </CopyToClipboard>
                                 </div>
