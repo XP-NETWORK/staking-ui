@@ -131,3 +131,12 @@
     }
   }
   
+    
+  @media screen and (max-width: 375px){
+    .modal-button-close, .modal-button{
+     
+      width: 60%;
+
+    }
+
+  }

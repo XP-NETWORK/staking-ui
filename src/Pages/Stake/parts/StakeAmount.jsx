@@ -10,11 +10,13 @@ export function StakeAmount() {
     const [inputErr, setInputErr] = useState(false)
     const balance = useSelector(state => state.data.balance)
     const {stakingAmount} = useSelector(s => s.data)
+
     useEffect(() => {
         if(stakingAmount) setAmount(stakingAmount)
     },[])
 
     const amountHandler = (e) => {
+        debugger
         const reg = new RegExp('^[0-9]+$');
         const num = Number(e.target.value)
         if(reg.test(num)){
@@ -27,6 +29,7 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
+        debugger
         amountHandler({target: {value: balance}})
         if(balance >= 1500)setInputErr(false)
     }
@@ -42,6 +45,7 @@ export function StakeAmount() {
        }
     }
 
+    useEffect(() => {}, [balance])
 
     return (
         <div className="stake__amount">
@@ -72,7 +76,7 @@ export function StakeAmountMob() {
         
         const reg = new RegExp('^[0-9]+$');
         const num = Number(e.target.value)
-        if(e.target.value.length < 10){
+        if((e.target.value).toString().length < 10){
             if(reg.test(num)){
                 setAmount(e.target.value)
                 dispatch(changeStakingAmount(num))
@@ -81,9 +85,13 @@ export function StakeAmountMob() {
                 }
             }
         }
+        else{
+            console.log()
+        }
     }
 
     const putMax = () => {
+        
         amountHandler({target: {value: balance}})
         if(balance >= 1500)setInputErr(false)
     }
@@ -99,6 +107,7 @@ export function StakeAmountMob() {
            }
     }
 
+    useEffect(() => {}, [balance])
 
     return (
         <div className="stake__amount--mobile">
