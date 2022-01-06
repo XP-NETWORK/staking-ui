@@ -74,7 +74,7 @@ export default function Connect() {
             try {
                 const walletconnect = new WalletConnectConnector({ 
                     rpc: { 
-                        56: 'https://bsc-dataseed.binance.org'
+                        56: 'https://wandering-shy-leaf.bsc.quiknode.pro/ad8d20d7895c15e9afc03ff011dc3418152b07f7/'
                     },
                     supportedChainIds: [56],
                     chainId: 56,

@@ -16,7 +16,7 @@ export function StakeAmount() {
     },[])
 
     const amountHandler = (e) => {
-        debugger
+        // debugger
         const reg = new RegExp('^[0-9]+$');
         const num = Number(e.target.value)
         if(reg.test(num)){
@@ -29,7 +29,7 @@ export function StakeAmount() {
     }
 
     const putMax = () => {
-        debugger
+        // debugger
         amountHandler({target: {value: balance}})
         if(balance >= 1500)setInputErr(false)
     }
