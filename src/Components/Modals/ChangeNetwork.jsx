@@ -49,7 +49,7 @@ export default function ChangeNetwork() {
               <div className="modal-msg">XP.network bridge requires you to connect to the BSC Mainnet</div>
             </div>
             <div className="modal__buttons">
-              <div onClick={() => switchChain()} className="modal-button">Switch to Mainnet</div>
+              <div onClick={switchChain} className="modal-button">Switch to Mainnet</div>
             </div>
         </div>
     )
