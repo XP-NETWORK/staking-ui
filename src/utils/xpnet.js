@@ -33,7 +33,7 @@ export const logXPContract = async () => {
 
 // Check balance on this account.
 export const checkBalance = async (address, library) => {
-debugger
+// debugger
     try{
         const Contract = await xpContract(library)
         const weiBalance = await Contract.methods.balanceOf(address).call()
