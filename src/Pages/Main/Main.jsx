@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import Gallery from "../Gallery/Gallery"
 import Search from "../Search/Search";
 import CollectionNFT from "../Search/CollectionNFT";
+import Form from "../Form/Form";
 
 export default function Main() {
     const account = useSelector(state => state.data.account)
@@ -40,6 +41,7 @@ export default function Main() {
                 <Route path="/search/:id">
                     <CollectionNFT />
                 </Route>
+                <Route component={Gallery} path="/gallery"></Route>
                 {/* <Route component={Search} path="/search"></Route> */}
             </Switch>
             )

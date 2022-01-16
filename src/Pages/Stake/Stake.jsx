@@ -15,6 +15,8 @@ import DetailsRewards from './parts/DetailsRewards'
 import Agreement from './parts/Agreement'
 import { StakeAmount, StakeAmountMob } from './parts/StakeAmount';
 import StakeDuration from './parts/StakeDuration';
+import StakingReached from './parts/StakingReached';
+import Form from '../Form/Form';
 
 
 
@@ -70,9 +72,11 @@ useEffect(() => {
                         <DetailsApy durations={durations} duration={duration} />
                         <DetailsRewards currentPrice={currentPrice} amount={amount} duration={duration} />
                         <div className="line"></div>
-                        <Agreement />
+                        <StakingReached />
+                        <Form />
+                        {/* <Agreement />
                         <Approvance agreement={agreement} approvance={allowence} amount={amount} duration={duration} account={account} />
-                        <Lock approvance={allowence} amount={amount} duration={duration} account={account} />
+                        <Lock approvance={allowence} amount={amount} duration={duration} account={account} /> */}
                     </div>
                 </div>
             </div>

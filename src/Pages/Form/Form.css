@@ -1,0 +1,100 @@
+.notify-modal{
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    right: auto;
+    bottom: auto;
+    width: 375px;
+    /* height: 430px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 32px 10px;
+    outline: none;
+}
+
+.notify-modal-close{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.notify-form__title{
+    padding-bottom: 32px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.02em;
+}
+
+.notify-modal form{
+    width: calc(100% - 15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.notify-input{
+    width: calc(100% - 30px);
+    /* height: 42px; */
+    margin: 0 auto;
+    border-radius: 6px;
+    border: 1px solid #BDBECB;
+    padding: 10px;
+}
+
+.notify-submit{
+    background-color: #3D63F3;
+    border: none;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 6px;
+}
+
+.notify-input:focus{
+    outline: none;
+}
+
+.notify-submit{
+    width: 90px;
+}
+
+@media screen and (max-width: 768px) {
+    .notify-modal{
+        width: 405px;
+        top: 25%;
+        left: 25%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .notify-modal{
+        width: 405px;
+        top: 25%;
+        left: 10px;
+    }
+}
+
+
+@media screen and (max-width: 375px) {
+    .notify-modal{
+        width: 355px;
+        top: 25%;
+        left: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .notify-modal{
+        width: 300px;
+        top: 25%;
+        left: 10px;
+    }
+}

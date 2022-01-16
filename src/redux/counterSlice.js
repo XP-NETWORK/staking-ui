@@ -102,6 +102,9 @@ export const counterSlice = createSlice({
       },
       setAgreementMod(state, action){
         state.agreeMod = action.payload
+      },
+      setNotifyForm(state, action){
+        state.notifyForm = action.payload
       }
     },
   })
@@ -110,6 +113,7 @@ export const counterSlice = createSlice({
 export const { 
   setAgreementMod,
   changeStatus,
+  setNotifyForm,
   changeDuraion,
   getActualTime,
   changeStakingAmount,
