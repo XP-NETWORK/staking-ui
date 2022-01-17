@@ -86,6 +86,7 @@
     color: white;
     padding: 6px 16px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .notify-input input{
