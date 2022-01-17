@@ -37,7 +37,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 16px;
 }
 
@@ -48,6 +47,7 @@
     border-radius: 6px;
     border: 1px solid #BDBECB;
     padding: 10px;
+    position: relative;
 }
 
 .notify-submit{
@@ -58,12 +58,27 @@
     border-radius: 6px;
 }
 
-.notify-input:focus{
+.notify-input input:focus{
     outline: none;
 }
 
 .notify-submit{
     width: 90px;
+}
+
+.valid-mail-input::placeholder{
+    color: unset;
+}
+
+.invalid-mail-input::placeholder{
+}
+
+.mail--invalid{
+    color: red;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    font-size: 12px;
 }
 
 @media screen and (max-width: 768px) {
