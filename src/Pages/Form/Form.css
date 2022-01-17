@@ -1,3 +1,10 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 .notify-modal{
     position: absolute;
     top: 25%;
@@ -62,6 +69,17 @@
     cursor: pointer;
 }
 
+.sent-msg__button--unclickable{
+    background: #ECEDF3;
+    color: #1D1D1D;
+    height: 32px;width: 56px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 .notify-modal form{
     width: calc(100% - 15px);
     display: flex;
@@ -89,8 +107,22 @@
     cursor: pointer;
 }
 
+.notify-submit--unclickable{
+    background: #ECEDF3;
+    color: #1d1d1d73;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    pointer-events: none;
+}
+
 .notify-input input{
     border: unset;
+}
+
+.notify-input input::selected{
+    background: unset;
 }
 
 .notify-input input:focus{
@@ -119,7 +151,7 @@
 
 @media screen and (max-width: 425px) {
     .notify-modal{
-        width: 405px;
+        width: 385px;
         top: 25%;
         left: 10px;
     }
@@ -128,7 +160,7 @@
 
 @media screen and (max-width: 375px) {
     .notify-modal{
-        width: 355px;
+        width: 335px;
         top: 25%;
         left: 10px;
     }
@@ -136,7 +168,7 @@
 
 @media screen and (max-width: 320px) {
     .notify-modal{
-        width: 300px;
+        width: 280px;
         top: 25%;
         left: 10px;
     }
