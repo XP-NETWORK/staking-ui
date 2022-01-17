@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./StakingReached.css"
 import smile from "../../../assets/emoji.svg"
 import { useHistory } from 'react-router'
@@ -8,6 +8,8 @@ import { setNotifyForm } from '../../../redux/counterSlice'
 export default function StakingReached() {
     const history = useHistory()
     const dispatch = useDispatch()
+
+
 
     return (
         <div className="staking-reached-container">

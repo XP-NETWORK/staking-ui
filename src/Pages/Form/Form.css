@@ -23,12 +23,43 @@
     cursor: pointer;
 }
 
-.notify-form__title{
+.sent-msg__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24PX;
+}
+
+.notify-form__title, .sent-msg__title{
     padding-bottom: 32px;
     font-size: 24px;
     font-weight: 700;
     line-height: 30px;
     letter-spacing: 0.02em;
+}
+
+.sent-msg__title{
+    text-align: center;
+    padding: 0;
+}
+
+.sent-msg__text{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+}
+
+.sent-msg__button{
+    background: #3D63F3;
+    color: white;
+    height: 32px;width: 56px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .notify-modal form{
@@ -42,7 +73,6 @@
 
 .notify-input{
     width: calc(100% - 30px);
-    /* height: 42px; */
     margin: 0 auto;
     border-radius: 6px;
     border: 1px solid #BDBECB;
@@ -58,6 +88,10 @@
     border-radius: 6px;
 }
 
+.notify-input input{
+    border: unset;
+}
+
 .notify-input input:focus{
     outline: none;
 }
@@ -66,14 +100,7 @@
     width: 90px;
 }
 
-.valid-mail-input::placeholder{
-    color: unset;
-}
-
-.invalid-mail-input::placeholder{
-}
-
-.mail--invalid{
+.invalid{
     color: red;
     position: absolute;
     bottom: -16px;
