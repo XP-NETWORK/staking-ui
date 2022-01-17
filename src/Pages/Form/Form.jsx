@@ -76,6 +76,7 @@ export default function Form() {
         debugger
         setSending(true)
         e.preventDefault()
+        let validmail = true
         const pattern = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
         firstName?.length > 0 ? setValidFirst(true) : setValidFirst('invalid')
         lastName?.length > 0 ? setValidLast(true) : setValidLast('invalid')
@@ -85,9 +86,10 @@ export default function Form() {
         } 
         else{
             setValidMail('invalid')
+            validmail = false
         }
         let msg
-        if((validMail !== "invalid" ) && validFirst && validLast && validTelegram && validMail){
+        if(validmail && validFirst && validLast && validTelegram && validMail){
             msg = {
                 email,
                 telegram,
@@ -123,19 +125,19 @@ export default function Form() {
                     <form onSubmit={e => onSubmitHandler(e)}>
                         <div className="notify-input">
                             <input value={firstName} onChange={e => handleFirstName(e.target.value)}  type="text" name="name" placeholder='First Name*' />
-                            <span style={validFirst === 'invalid' ? {} : hidden} className='invalid'>Invalid First Name input</span>
+                            <span style={validFirst === 'invalid' ? {} : hidden} className='invalid'>Invalid first name input</span>
                         </div>
                         <div className="notify-input">
                             <input value={lastName} onChange={e => handleLastName(e.target.value)} type="text" name="name" placeholder='Last Name*' />
-                            <span style={validLast === 'invalid'? {} : hidden} className='invalid'>Invalid Last Name input</span>
+                            <span style={validLast === 'invalid'? {} : hidden} className='invalid'>Invalid last name input</span>
                         </div>
                         <div className="notify-input">
                             <input style={{border: "none"}} value={email} onChange={e => handleMail(e.target.value)}type="mail" name="name" placeholder='Email*' />
-                            <span style={validMail === 'invalid' ? {} : hidden} className='invalid'>Invalid mail input</span>
+                            <span style={validMail === 'invalid' ? {} : hidden} className='invalid'>Invalid email input</span>
                         </div>
                         <div className="notify-input">
                             <input value={telegram} onChange={e => handleTelegram(e.target.value)} type="text" name="name" placeholder='Telegram*' />
-                            <span style={validTelegram === 'invalid' ? {} : hidden} className='invalid'>Invalid Telegram input</span>
+                            <span style={validTelegram === 'invalid' ? {} : hidden} className='invalid'>Invalid telegram input</span>
                         </div>
                         <input className={sending ? "notify-submit--unclickable" : "notify-submit"} type="submit" value="Submit" />
                     </form>
