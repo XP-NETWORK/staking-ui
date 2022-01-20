@@ -34,7 +34,7 @@ const stakeContract = async (library) => {
         if(library && library._provider) {
             W3 = new Web3(library._provider)
         }   else W3 = new Web3(window.ethereum)
-        console.log(W3)
+        // console.log(W3)
         const contract = await new W3.eth.Contract(stakeABI, stakeAddress)
         return contract
     }
@@ -170,7 +170,10 @@ export const getStakeById = async (id, index, library) => {
     const Contract = await stakeContract(library)
     try{
         const info = await Contract.methods.stakes(id).call()
+        const isUnlocked = await Contract.methods.checkIsUnlocked(id).call()
+        // console.log(`Stake id: ${id} info: ${Object.values(info)} unlocked: ${isUnlocked}`)
         store.dispatch(updateNftTokenIndex(index))
+        // console.log("isUnlocked: ", isUnlocked);
         store.dispatch(updateStakeInfo(Object.values(info)))
         store.dispatch(updateAmount(info.amount))
         store.dispatch(updateDuration(info.lockInPeriod))
@@ -217,10 +220,11 @@ export const claimXpNet = async (nftId,rewards, account, library) => {
 }
 
 // Withdrow token and rewards. 
-export const withrow = async ( nftId, adress, library ) => {
+export const withrow = async ( nftId, address, library ) => {
+    debugger
     const Contract = await stakeContract(library)
     try{
-        const result = await Contract.methods.withdraw(nftId).send({from:adress})
+        const result = await Contract.methods.withdraw(nftId).send({from:address})
     }
     catch(error){
         console.log(error)
@@ -229,15 +233,19 @@ export const withrow = async ( nftId, adress, library ) => {
 
 
 export const checkIsUnLocked = async (id, library) => {
+    debugger
     const Contract = await stakeContract(library)
     try{
         const isUnlocked = await Contract.methods.checkIsUnlocked(id).call()
+        console.log(`id: ${id} isUnlocked: ${isUnlocked}`);
+        
         store.dispatch(updateIsUnlocked(isUnlocked))
     }
     catch(error){
         console.log(error)
     }
 }
+
 
 export const totalSupply = async (index, length, library) => {
     // debugger

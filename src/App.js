@@ -82,7 +82,7 @@ const accountsChanged = () => {
   const { ethereum } = window
   if(ethereum){
   ethereum.on("accountsChanged", async accounts =>  {
-    console.log("acount changed");
+    // console.log("acount changed");
       if (accounts.length > 0) {
         dispatch(updateAccount(accounts[0]))
         await getTokens(accounts[0], library)

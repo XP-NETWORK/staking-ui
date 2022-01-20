@@ -16,7 +16,7 @@ const xpContract = async (library) => {
         if(library && library._provider) {
             W3 = new Web3(library._provider)
         }   else W3 = new Web3(window.ethereum)
-        console.log(W3)
+        // console.log(W3)
         const contract = await new W3.eth.Contract(XPNET, xpAddress)
         return contract
     }

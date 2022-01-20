@@ -22,7 +22,7 @@ export default function ProgressBar({ startTime }) {
     <div className="progress-bar">
         <div className="progress__header">
             <div className="progress__title">Staking Duration</div>
-            <div className="progress__remaining">{remain} days remaining</div>
+            <div className="progress__remaining">{remain > 0 ? `${remain} days remaining` : `0 days remaining`}</div>
         </div>
         <div className="bar">
             <div style={{width: `${getProgress(period, startTime)}%`}} className="bar__prog"></div>

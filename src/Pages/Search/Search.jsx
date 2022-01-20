@@ -33,7 +33,7 @@ export default function Search() {
     const loaded = useSelector(state => state.totalSupply.loaded)
     const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
     const stakerAdd = useSelector(state => state.totalSupply.selectedNFTStaker)
-    console.log("sdfsdfsdfsdfsdf", stakerAdd);
+    // console.log("sdfsdfsdfsdfsdf", stakerAdd);
     const {library, connector} = useWeb3React()
     const { id } = useParams()
     const [nftUrl, setNftUrl] = useState('')

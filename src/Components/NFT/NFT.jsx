@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import "./nft.css"
-import { getStakeById } from "../../utils/stake"
+import { getStakeById, checkIsUnLocked } from "../../utils/stake"
 import { useSelector, useDispatch } from 'react-redux'
 import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
 import {  goBack } from "../../redux/counterSlice"
@@ -20,6 +20,11 @@ export default function NFT({ tokenID, i }) {
         dispatch(updateNftTokenIndex(i))
         dispatch(goBack(currentToken - i))
     }
+
+    useEffect(async () => {
+        await checkIsUnLocked(nftTokenId, library)
+    }, [nftTokenId]);
+    
 
 
     let currImg

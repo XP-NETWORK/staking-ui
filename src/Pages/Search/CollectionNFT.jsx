@@ -39,7 +39,7 @@ export default function CollectionNFT() {
     const [exist, setExist] = useState(true)
     const reg = new RegExp('^[0-9]+$');
     const stakerAdd = useSelector(state => state.totalSupply.selectedNFTStaker)
-    console.log("sdfsdfsdfsdfsdf", stakerAdd);
+    // console.log("sdfsdfsdfsdfsdf", stakerAdd);
 
     const setPicture = () => {
         if(collection.length > 0){
