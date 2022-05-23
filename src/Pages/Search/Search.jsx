@@ -44,7 +44,7 @@ export default function Search() {
 
 
     const setPicture = () => {
-        debugger
+        // debugger
         if(collection.length > 0){
             if(reg.test(id)){
                 if(collection){

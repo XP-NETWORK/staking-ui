@@ -132,7 +132,7 @@ useEffect(() => {
       tokenOfOwnerByIndex(tokens, address, library)
     }
     else{
-      history.push('/stake')
+      // history.push('/stake')
     }
   }
 }, [tokens])

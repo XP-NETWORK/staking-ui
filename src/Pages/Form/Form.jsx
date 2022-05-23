@@ -73,7 +73,7 @@ export default function Form() {
 
 // 
     const onSubmitHandler = async(e) => {
-        debugger
+        // debugger
         setSending(true)
         e.preventDefault()
         let validmail = true

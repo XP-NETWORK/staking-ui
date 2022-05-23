@@ -26,6 +26,7 @@ export default function Claim() {
     const address = useSelector(state => state.data.account)
     const tokensArr = useSelector(state => state.stakeData.tokensArray)
     const stakeInfo = useSelector(state => state.data.stakeInfo)
+    console.log("🚀 ~ file: Claim.jsx ~ line 29 ~ Claim ~ stakeInfo", stakeInfo)
     const stakedAmount = useSelector(state => state.stakeData.amount)
     const period = useSelector(state => state.stakeData.duration)
     const startTime = useSelector(state => state.stakeData.startTime)
@@ -64,13 +65,14 @@ export default function Claim() {
     }
 
     useEffect(() => {
+        // debugger
         const getData = async () => {
             await getStakeById(tokensArr[currentToken], currentToken, library)
-            // await checkIsUnLocked(tokenId, library)
+            await checkIsUnLocked(tokenId, library)
         }
-        if(!address){
-            history.push("/stake")
-        }
+        // if(!address){
+        //     history.push("/stake")
+        // }
         if(!stakeInfo){
             if(tokensArr){
             getData()
@@ -81,7 +83,6 @@ export default function Claim() {
             getData()
             }
         }
-    
     }, [tokensArr, currentToken])
 
     useEffect(() => {
