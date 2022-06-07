@@ -1,42 +1,42 @@
-.claim__container{
+.claim__container {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
 }
 
-.claim{
+.claim {
     width: 622px;
     background-color: white;
-    border: 1px solid #E5E8F0;
+    border: 1px solid #e5e8f0;
     box-sizing: border-box;
     border-radius: 6px;
     padding-bottom: 30px;
 }
 
-.nft__wrapper{
+.nft__wrapper {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.nft{
+.nft {
     width: 486px;
     /* height: 472px; */
     flex-grow: 5;
-    background: #FFFFFF;
-    border: 1px solid #E5E8F0;
+    background: #ffffff;
+    border: 1px solid #e5e8f0;
     box-sizing: border-box;
     border-radius: 6px;
 }
 
-.nfts__toggler{
+.nfts__toggler {
     flex-grow: 1;
     display: flex;
     gap: 10px;
     max-width: 475px;
 }
 
-.claim__title{
+.claim__title {
     padding: 22px 30px;
     font-size: 18px;
     font-weight: 600;
@@ -44,7 +44,7 @@
     letter-spacing: 3%;
 }
 
-.claim__details{
+.claim__details {
     padding: 0 30px 12px 30px;
     font-size: 14px;
     font-weight: 500;
@@ -52,29 +52,29 @@
     letter-spacing: 3%;
 }
 
-.claim-buttons__container{
+.claim-buttons__container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.claim__det{
+.claim__det {
     display: flex;
     justify-content: space-between;
     padding: 12px 0;
 }
 
-.claim__capture{
-    color: #686E7D;
+.claim__capture {
+    color: #686e7d;
     white-space: nowrap;
     min-width: 100px;
 }
 
-.nft__address{
+.nft__address {
     width: 291px;
-    height: 44px;  
-    background: #FBFCFF;
-    border: 1px solid #E5E8F0;
+    height: 44px;
+    background: #fbfcff;
+    border: 1px solid #e5e8f0;
     box-sizing: border-box;
     border-radius: 6px;
     display: flex;
@@ -82,49 +82,48 @@
     align-items: center;
 }
 
-.nft__content{
+.nft__content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 @media screen and (max-width: 1140px) {
-    .claim__container{
+    .claim__container {
         justify-content: center;
         gap: unset;
     }
 
-    .nft__wrapper{
+    .nft__wrapper {
         width: 622px;
         margin-bottom: 20px;
     }
 
-    .nft{
+    .nft {
         width: 100%;
     }
 }
 
-
 @media screen and (max-width: 622px) {
-    .claim__container{
+    .claim__container {
         width: 100%;
     }
 
-    .nft__wrapper{
-        width: 100%;
-        border: unset;
-    }
-
-    .nft{
+    .nft__wrapper {
         width: 100%;
         border: unset;
     }
 
-    .claim-buttons__container{
+    .nft {
+        width: 100%;
+        border: unset;
+    }
+
+    .claim-buttons__container {
         padding: 0 10px 10px 10px;
     }
 
-    .nfts__toggler{
+    .nfts__toggler {
         padding: 0 10px;
     }
 }

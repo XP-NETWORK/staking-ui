@@ -1,19 +1,19 @@
-import { store } from "../redux/store"
+import { store } from "../redux/store";
 import { updateAccount } from "../redux/counterSlice";
 
-let accounts
-const { ethereum } = window
+let accounts;
+const { ethereum } = window;
 
 const getAccounts = async () => {
-    const accounts = await ethereum.request({ method: 'eth_accounts' })
-    store.dispatch(updateAccount(accounts[0]))
-    return accounts
-}
+  const accounts = await ethereum.request({ method: "eth_accounts" });
+  store.dispatch(updateAccount(accounts[0]));
+  return accounts;
+};
 
 export const connectMetaMask = function() { 
-    ethereum.request({ method: 'eth_requestAccounts' })
-    getAccounts()
-}
+  ethereum.request({ method: "eth_requestAccounts" });
+  getAccounts();
+};
 
 // export const initMetaMask = async () => {
 

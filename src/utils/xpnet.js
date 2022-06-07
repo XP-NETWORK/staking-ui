@@ -1,26 +1,32 @@
-import Web3 from "web3"
-import XPNET from "../ABI/XPToken.json"
-import { store } from "../redux/store"
-import { updateBalance, updateApproved, updateAllowence, updateAproveButtonsLoader, setNotEnoughGas } from "../redux/counterSlice"
-import { stakeAddress } from "./stake"
+import Web3 from 'web3'
 
+import XPNET from '../ABI/XPToken.json'
+import {store} from '../redux/store'
+import {
+    updateBalance,
+    updateApproved,
+    updateAllowence,
+    updateAproveButtonsLoader,
+    setNotEnoughGas
+} from '../redux/counterSlice'
+
+import {stakeAddress} from './stake'
 
 //! XPNET
-export let xpAddress =  "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
-const axios = require("axios");
-// export let xpAddress =  process.env.NODE_ENV === "development" ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
+export const xpAddress = '0xc1cF17AF04934B10f6D32913dE0EdA8A738822f5'
+const axios = require('axios')
+// export let xpAddress =  process.env.NODE_ENV === "development"
+// ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"
 
 const xpContract = async (library) => {
-    try{
+    try {
         let W3
-        if(library && library._provider) {
+        if (library && library._provider) {
             W3 = new Web3(library._provider)
-        }   else W3 = new Web3(window.ethereum)
-        // console.log(W3)
+        } else W3 = new Web3(window.ethereum)
         const contract = await new W3.eth.Contract(XPNET, xpAddress)
         return contract
-    }
-    catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
@@ -28,20 +34,18 @@ const xpContract = async (library) => {
 // Log XPNet smart contract to console.
 export const logXPContract = async () => {
     const XPContract = await xpContract()
-  
 }
 
 // Check balance on this account.
 export const checkBalance = async (address, library) => {
-// debugger
-    try{
+    // debugger
+    try {
         const Contract = await xpContract(library)
         const weiBalance = await Contract.methods.balanceOf(address).call()
-        const balance = parseInt(Web3.utils.fromWei(weiBalance, 'ether'));
+        const balance = parseInt(Web3.utils.fromWei(weiBalance, 'ether'))
         store.dispatch(updateBalance(balance))
         return balance
-    }
-    catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
@@ -50,32 +54,35 @@ export const approve = async (account, library) => {
     // debugger
     let res
     try {
-         res = await axios.get(`https://api.bscscan.com/api?module=account&action=balance&address=${account}&apikey=YourApiKeyToken`)
-        
+        res = await axios.get(
+            `https://api.bscscan.com/api?module=account&action=balance&address=${account}&apikey=YourApiKeyToken`
+        )
     } catch (error) {
         console.error(error)
     }
     store.dispatch(updateAproveButtonsLoader(true))
     const Contract = await xpContract(library)
-    const web3 = new Web3(window.ethereum) || library;
+    const web3 = new Web3(window.ethereum) || library
     const ethBalance = parseFloat(web3.utils.fromWei(res.data.result))
-    const gas = await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').estimateGas({from: account})
-    const ethGas = parseFloat(web3.utils.fromWei(gas.toString(), "gwei"))
-    if(ethBalance > ethGas){
-        try{
+    const gas = await Contract.methods
+        .approve(stakeAddress, '10000000000000000000000000000000000000000000000000')
+        .estimateGas({from: account})
+    const ethGas = parseFloat(web3.utils.fromWei(gas.toString(), 'gwei'))
+    if (ethBalance > ethGas) {
+        try {
             const Contract = await xpContract(library)
-            await Contract.methods.approve(stakeAddress, '10000000000000000000000000000000000000000000000000').send({from: account})
-            
+            await Contract.methods
+                .approve(stakeAddress, '10000000000000000000000000000000000000000000000000')
+                .send({from: account})
+
             store.dispatch(updateAproveButtonsLoader(false))
             store.dispatch(updateApproved(true))
             checkAllowence(account, library)
-        }
-        catch(error){
+        } catch (error) {
             store.dispatch(updateAproveButtonsLoader(false))
             console.log(error)
         }
-    }
-    else{
+    } else {
         // alert("not enough");
         store.dispatch(updateAproveButtonsLoader(false))
         store.dispatch(setNotEnoughGas(true))
@@ -84,15 +91,13 @@ export const approve = async (account, library) => {
 
 // Check the allowence on this account.
 export const checkAllowence = async (owner, library) => {
-    if(owner){
-        try{
+    if (owner) {
+        try {
             const Contract = await xpContract(library)
             const allowence = await Contract.methods.allowance(owner, stakeAddress).call()
-            if(parseInt(allowence)) store.dispatch(updateAllowence(allowence))
-        }
-        catch(error){
+            if (parseInt(allowence)) store.dispatch(updateAllowence(allowence))
+        } catch (error) {
             console.log(error)
         }
     }
 }
-

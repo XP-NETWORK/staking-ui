@@ -1,17 +1,21 @@
 import React from 'react'
-import Picture from "../../Pages/Claim/Parts/Widget/Picture"
-import { useDispatch } from 'react-redux';
-import { updateSelected, updateSelectedNFTSTaker } from "../../redux/totalSupplay"
-import { updateIndex, updateNftTokenIndex } from "../../redux/stakeSlice"
-import { Link } from 'react-router-dom';
-import { useMoralis } from "react-moralis";
-import { useSelector } from 'react-redux';
-import { getStakeById } from "../../utils/stake"
-import { useWeb3React } from '@web3-react/core' 
+
+import {useDispatch} from 'react-redux'
+
+import {Link} from 'react-router-dom'
+import {useMoralis} from 'react-moralis'
+import {useSelector} from 'react-redux'
+
+import {useWeb3React} from '@web3-react/core'
+
+import {getStakeById} from '../../utils/stake'
+import {updateIndex, updateNftTokenIndex} from '../../redux/stakeSlice'
+import {updateSelected, updateSelectedNFTSTaker} from '../../redux/totalSupplay'
+import Picture from '../../Pages/Claim/Parts/Widget/Picture'
 
 export default function NFTBox({url, tokenID, staker}) {
     const dispatch = useDispatch()
-    const connectionToggler = useSelector(state => state.data.toggleConnection)
+    const connectionToggler = useSelector((state) => state.data.toggleConnection)
     const {library, connector} = useWeb3React()
     // const onClickHandler = (id) => {
     //     dispatch(updateSelected(id))

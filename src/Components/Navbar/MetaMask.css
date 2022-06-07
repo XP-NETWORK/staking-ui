@@ -1,9 +1,9 @@
-.metamask{
+.metamask {
     right: 10px;
     width: 170px;
     height: 40px;
-    background: #EDF0F8;
-    border: 1px solid #D9DFED;
+    background: #edf0f8;
+    border: 1px solid #d9dfed;
     box-sizing: border-box;
     border-radius: 8px;
     display: flex;
@@ -13,20 +13,19 @@
     padding: 0 16px;
 }
 
-.metamask:hover{
+.metamask:hover {
     cursor: pointer;
 }
 
-.account{
+.account {
 }
 
-.account__icon{
+.account__icon {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 25%;
-    
 }
 
 .account__icon canvas {
@@ -36,27 +35,26 @@
     height: 18px;
 }
 
-
 @media screen and (max-width: 1140px) {
-    .metamask{
+    .metamask {
         width: 140px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .metamask{
+    .metamask {
         width: 22vw;
     }
 }
 
 @media screen and (max-width: 425px) {
-    .metamask{
+    .metamask {
         top: 10px;
     }
 }
 
 @media screen and (max-width: 320px) {
-    .metamask{
+    .metamask {
         width: 85px;
         height: 4vh;
         padding: 0 10px;

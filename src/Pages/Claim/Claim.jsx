@@ -1,10 +1,19 @@
-import Web3 from "web3"
-// import "./Claim.css"
-import { useEffect } from 'react'
-import { getStakeById, checkIsUnLocked, tokenOfOwnerByIndex, getAmountOfTokens } from "../../utils/stake"
-import { useSelector } from "react-redux"
-import { useHistory } from 'react-router'
+import Web3 from 'web3'
+import React, {useEffect} from 'react'
+import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router'
+import {useWeb3React} from '@web3-react/core'
+
+import {
+    getStakeById,
+    checkIsUnLocked,
+    tokenOfOwnerByIndex,
+    getAmountOfTokens
+} from '../../utils/stake'
 import NFT from '../../Components/NFT/NFT'
+
+import Loader from '../../Components/Loader/Loader'
+
 import ClaimReward from './Parts/ClaimReward.jsx/ClaimReward'
 import ClaimAmount from './Parts/ClaimAmount/ClaimAmount'
 import ClaimAPY from './Parts/ClaimAPY/ClaimAPY'
@@ -14,53 +23,53 @@ import End from './Parts/End/End'
 import NFTAdres from './Parts/NFTAdres/NFTAdres'
 import ClaimButton from './Parts/ClaimButton/ClaimButton'
 import UnStakeButton from './Parts/UnStakeButton/UnStakeButton'
-import Loader from '../../Components/Loader/Loader'
+
+import Withdrawn from './Parts/Withdrown/Withdrown'
 import Widget from './Parts/Widget/Widget'
-import Total from "./Parts/Total/Total"
-import Withdrawn from "./Parts/Withdrown/Withdrown"
-import { useWeb3React } from '@web3-react/core' 
-import "./ClaimNew.css"
+import Total from './Parts/Total/Total'
+
+import './ClaimNew.css'
 
 export default function Claim() {
     // const balance = useSelector(state => state.data.balance)
-    const address = useSelector(state => state.data.account)
-    const tokensArr = useSelector(state => state.stakeData.tokensArray)
-    const stakeInfo = useSelector(state => state.data.stakeInfo)
-    console.log("🚀 ~ file: Claim.jsx ~ line 29 ~ Claim ~ stakeInfo", stakeInfo)
-    const stakedAmount = useSelector(state => state.stakeData.amount)
-    const period = useSelector(state => state.stakeData.duration)
-    const startTime = useSelector(state => state.stakeData.startTime)
-    const startDate = useSelector(state => state.stakeData.startDate)
-    const rewardsWai = useSelector(state => state.stakeData.availableRewards)
-    const currentToken = useSelector(state => state.stakeData.index)
-    const tokenId = useSelector(state => state.stakeData.nftTokenid)
-    
-    const rewardWithdrawn = useSelector(state => state.stakeData.rewardWithdrawn)
-    const tokensFlag = useSelector(state => state.stakeData.tokensAmountFlag)
-    const tokens = useSelector(state => state.stakeData.tokensAmount)
+    const address = useSelector((state) => state.data.account)
+    const tokensArr = useSelector((state) => state.stakeData.tokensArray)
+    const stakeInfo = useSelector((state) => state.data.stakeInfo)
+    const stakedAmount = useSelector((state) => state.stakeData.amount)
+    const period = useSelector((state) => state.stakeData.duration)
+    const startTime = useSelector((state) => state.stakeData.startTime)
+    const startDate = useSelector((state) => state.stakeData.startDate)
+    const rewardsWai = useSelector((state) => state.stakeData.availableRewards)
+    const currentToken = useSelector((state) => state.stakeData.index)
+    const tokenId = useSelector((state) => state.stakeData.nftTokenid)
+
+    const rewardWithdrawn = useSelector((state) => state.stakeData.rewardWithdrawn)
+    const tokensFlag = useSelector((state) => state.stakeData.tokensAmountFlag)
+    const tokens = useSelector((state) => state.stakeData.tokensAmount)
     const {library, connector} = useWeb3React()
 
-
-    let history = useHistory();
-    const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether');
-        // console.log(useSelector(s => s.stakeData), 'aklsdaklsdaklsda')
+    const history = useHistory()
+    const stakedAmountEther = Web3.utils.fromWei(stakedAmount, 'ether')
+    // console.log(useSelector(s => s.stakeData), 'aklsdaklsdaklsda')
     useEffect(async () => {
         await getAmountOfTokens(address, library)
         await tokenOfOwnerByIndex(tokens, address, library)
     }, [])
 
     useEffect(() => {
+        debugger
         // console.log("useEffect tokens: ", tokens);
-        const getData = async () =>{
+        const getData = async () => {
             await tokenOfOwnerByIndex(tokens, address, library)
         }
         getData()
-    },[tokensFlag, tokens, address])
+    }, [tokensFlag, tokens, address])
 
     const showTokens = () => {
-        if(tokensArr){
-            return tokensArr.map((tokenID, i) => { 
-                return <NFT tokenID={tokenID} i={i} key={i}/> })
+        if (tokensArr) {
+            return tokensArr.map((tokenID, i) => {
+                return <NFT tokenID={tokenID} i={i} key={i} />
+            })
         }
     }
 
@@ -70,68 +79,74 @@ export default function Claim() {
             await getStakeById(tokensArr[currentToken], currentToken, library)
             await checkIsUnLocked(tokenId, library)
         }
-        // if(!address){
-        //     history.push("/stake")
+        if (!address) {
+            history.push('/stake')
+        }
+        // if(!stakeInfo){
+        //     if(tokensArr){
+        //     getData()
+        //     }
         // }
-        if(!stakeInfo){
-            if(tokensArr){
+        else if (tokensArr) {
             getData()
-            }
         }
-        else{
-            if(tokensArr){
-            getData()
-            }
-        }
+        // }
     }, [tokensArr, currentToken])
 
-    useEffect(() => {
-       
-    }, [stakeInfo])   
-    
-    useEffect(() => {
-      
-    }, [address])   
+    useEffect(() => {}, [stakeInfo])
 
-        if(tokensArr){
-            return (
-                <div className="claim__container">
-                    <div className="claim">
-                        <div className="claim__title">Staking Rewards</div>
-                        <div className="line"></div>
-                        <div className="claim__details">
-                            <ClaimAmount stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}/>
-                            <ClaimAPY period={period} />
-                            <ClaimReward />
-                            <Total stakedAmount={stakedAmount} stakedAmountEther={stakedAmountEther}  period={period}/>
-                            <Withdrawn withdrawn={rewardWithdrawn} />
-                            <ClaimStart startTime={startTime} />
-                            <End startTime={startTime} period={period} startDate={startDate} />
-                            <ProgressBar period={period} startTime={startTime} />
-                        </div>
-                        <div className="claim-buttons__container">                            
-                            <ClaimButton stakeInfo={stakeInfo[1]} rewardsWai={rewardsWai} address={address} />
-                            <UnStakeButton stakeInfo={stakeInfo[1]} address={address} stakerAddress={stakeInfo[5]} />
-                        </div>
+    useEffect(() => {}, [address])
+
+    if (tokensArr) {
+        return (
+            <div className="claim__container">
+                <div className="claim">
+                    <div className="claim__title">Staking Rewards</div>
+                    <div className="line"></div>
+                    <div className="claim__details">
+                        <ClaimAmount
+                            stakedAmount={stakedAmount}
+                            stakedAmountEther={stakedAmountEther}
+                        />
+                        <ClaimAPY period={period} />
+                        <ClaimReward />
+                        <Total
+                            stakedAmount={stakedAmount}
+                            stakedAmountEther={stakedAmountEther}
+                            period={period}
+                        />
+                        <Withdrawn withdrawn={rewardWithdrawn} />
+                        <ClaimStart startTime={startTime} />
+                        <End startTime={startTime} period={period} startDate={startDate} />
+                        <ProgressBar period={period} startTime={startTime} />
                     </div>
-                    <div className="nft__wrapper">
-                        <div className="nft">
-                            <div className="claim__title">NFT</div>
-                            <div className="line"></div>
-                            <div className="nft__content">
-                                <Widget tokens={tokensArr} />
-                                <NFTAdres currentToken={tokensArr[currentToken]} address={address}/>
-                            </div>
-                        </div>
-                        <div className="nfts__toggler">
-                            { showTokens() }
-                        </div>  
+                    <div className="claim-buttons__container">
+                        <ClaimButton
+                            stakeInfo={stakeInfo[1]}
+                            rewardsWai={rewardsWai}
+                            address={address}
+                        />
+                        <UnStakeButton
+                            stakeInfo={stakeInfo[1]}
+                            address={address}
+                            stakerAddress={stakeInfo[5]}
+                        />
                     </div>
                 </div>
-            )
-        }
-        else{
-            return <Loader />
-        }
-   
+                <div className="nft__wrapper">
+                    <div className="nft">
+                        <div className="claim__title">NFT</div>
+                        <div className="line"></div>
+                        <div className="nft__content">
+                            <Widget tokens={tokensArr} />
+                            <NFTAdres currentToken={tokensArr[currentToken]} address={address} />
+                        </div>
+                    </div>
+                    <div className="nfts__toggler">{showTokens()}</div>
+                </div>
+            </div>
+        )
+    } else {
+        return <Loader />
+    }
 }

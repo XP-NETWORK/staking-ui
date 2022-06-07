@@ -1,42 +1,46 @@
-import React, { useEffect } from 'react'
-import { claimXpNet } from "../../../../utils/stake"
-import "./ClaimButton.css"
+import React, {useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useHistory} from 'react-router'
+import {useWeb3React} from '@web3-react/core'
+
+import {claimXpNet} from '../../../../utils/stake'
+import './ClaimButton.css'
 import ButtonLoader from '../../../../Components/Loader/ButtonLoader'
-import { updateWithdrawed } from "../../../../redux/stakeSlice"
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router'
-import { useWeb3React } from '@web3-react/core'
+import {updateWithdrawed} from '../../../../redux/stakeSlice'
 
-
-export default function ClaimButton({ stakeInfo, rewardsWai, address }) {
+export default function ClaimButton({stakeInfo, rewardsWai, address}) {
     const dispatch = useDispatch()
     const history = useHistory()
-    const loader = useSelector(state => state.stakeData.withdrawed)
+    const loader = useSelector((state) => state.stakeData.withdrawed)
     const {library, connector} = useWeb3React()
 
     const claimHandler = () => {
-        claimXpNet(stakeInfo, rewardsWai, address,library)
+        claimXpNet(stakeInfo, rewardsWai, address, library)
         dispatch(updateWithdrawed(true))
     }
 
+    useEffect(() => {}, [loader])
 
-
-    useEffect(() => {
-    }, [loader])
-
-    if(loader){
+    if (loader) {
         return (
             <>
-                <div onClick={() => claimHandler()} className="claim__button"><ButtonLoader /></div>
-                <div onClick={() => history.push('/stake')} className="claim__button">Stake More</div>
+                <div onClick={() => claimHandler()} className="claim__button">
+                    <ButtonLoader />
+                </div>
+                <div onClick={() => history.push('/stake')} className="claim__button">
+                    Stake More
+                </div>
             </>
         )
-    }
-    else{
+    } else {
         return (
             <>
-                <div onClick={() => claimHandler()} className="claim__button">Claim XPNET</div>
-                <div onClick={() => history.push('/stake')} className="claim__button">Stake More</div>
+                <div onClick={() => claimHandler()} className="claim__button">
+                    Claim XPNET
+                </div>
+                <div onClick={() => history.push('/stake')} className="claim__button">
+                    Stake More
+                </div>
             </>
         )
     }

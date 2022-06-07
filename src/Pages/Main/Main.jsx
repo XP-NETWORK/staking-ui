@@ -1,37 +1,38 @@
+import {BrowserRouter, Route, Switch, useParams} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import {useLocation} from 'react-router'
+import {useEffect} from 'react'
 
-import { BrowserRouter, Route, Switch, useParams } from "react-router-dom";
-import Stake from "../../Pages/Stake/Stake"
-import Claim from "../../Pages/Claim/Claim"
-import { useSelector } from 'react-redux'
-import { useLocation } from "react-router";
-import Connect from '../Connect/Connect';
-import Loader from '../../Components/Loader/Loader';
-import { useEffect } from 'react';
-import Gallery from "../Gallery/Gallery"
-import Search from "../Search/Search";
-import CollectionNFT from "../Search/CollectionNFT";
-import Form from "../Form/Form";
+import Stake from '../../Pages/Stake/Stake'
+import Claim from '../../Pages/Claim/Claim'
+import Connect from '../Connect/Connect'
+import Loader from '../../Components/Loader/Loader'
+import Gallery from '../Gallery/Gallery'
+import Search from '../Search/Search'
+import CollectionNFT from '../Search/CollectionNFT'
+import Form from '../Form/Form'
 
 export default function Main() {
-    const account = useSelector(state => state.data.account)
-    const loader = useSelector(state => state.data.connected)
-    const connectPushed = useSelector(state => state.data.connectPushed)
+    const account = useSelector((state) => state.data.account)
+    const loader = useSelector((state) => state.data.connected)
+    const connectPushed = useSelector((state) => state.data.connectPushed)
     const location = useLocation()
 
-    if(location.pathname ==="/gallery" || location.pathname.includes("search")){
-        return <Switch>
-                    <Route component={Gallery} path="/gallery"></Route>
-                    <Route path="/search/:id"><CollectionNFT /></Route>
-                    <Route component={CollectionNFT} path="/search"></Route>
+    if (location.pathname === '/gallery' || location.pathname.includes('search')) {
+        return (
+            <Switch>
+                <Route component={Gallery} path="/gallery"></Route>
+                <Route path="/search/:id">
+                    <CollectionNFT />
+                </Route>
+                <Route component={CollectionNFT} path="/search"></Route>
             </Switch>
-        }
-    else if(!connectPushed){
+        )
+    } else if (!connectPushed) {
         return <Connect />
-    }
-    else if(!account && loader && connectPushed){
+    } else if (!account && loader && connectPushed) {
         return <Loader />
-    }
-    else{
+    } else {
         return (
             <Switch>
                 <Route component={Stake} exact path="/"></Route>
@@ -44,6 +45,6 @@ export default function Main() {
                 <Route component={Gallery} path="/gallery"></Route>
                 {/* <Route component={Search} path="/search"></Route> */}
             </Switch>
-            )
+        )
     }
 }

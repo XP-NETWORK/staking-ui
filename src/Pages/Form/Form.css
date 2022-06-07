@@ -1,11 +1,11 @@
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.notify-modal{
+.notify-modal {
     position: absolute;
     top: 25%;
     left: 40%;
@@ -23,21 +23,22 @@ input:-webkit-autofill:active{
     outline: none;
 }
 
-.notify-modal-close{
+.notify-modal-close {
     position: absolute;
     top: 24px;
     right: 24px;
     cursor: pointer;
 }
 
-.sent-msg__container{
+.sent-msg__container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24PX;
+    gap: 24px;
 }
 
-.notify-form__title, .sent-msg__title{
+.notify-form__title,
+.sent-msg__title {
     padding-bottom: 32px;
     font-size: 24px;
     font-weight: 700;
@@ -45,12 +46,12 @@ input:-webkit-autofill:active{
     letter-spacing: 0.02em;
 }
 
-.sent-msg__title{
+.sent-msg__title {
     text-align: center;
     padding: 0;
 }
 
-.sent-msg__text{
+.sent-msg__text {
     text-align: center;
     font-size: 16px;
     font-weight: 400;
@@ -58,10 +59,11 @@ input:-webkit-autofill:active{
     letter-spacing: 0em;
 }
 
-.sent-msg__button{
-    background: #3D63F3;
+.sent-msg__button {
+    background: #3d63f3;
     color: white;
-    height: 32px;width: 56px;
+    height: 32px;
+    width: 56px;
     border-radius: 6px;
     display: flex;
     justify-content: center;
@@ -69,10 +71,11 @@ input:-webkit-autofill:active{
     cursor: pointer;
 }
 
-.sent-msg__button--unclickable{
-    background: #ECEDF3;
-    color: #1D1D1D;
-    height: 32px;width: 56px;
+.sent-msg__button--unclickable {
+    background: #ecedf3;
+    color: #1d1d1d;
+    height: 32px;
+    width: 56px;
     border-radius: 6px;
     display: flex;
     justify-content: center;
@@ -80,7 +83,7 @@ input:-webkit-autofill:active{
     cursor: pointer;
 }
 
-.notify-modal form{
+.notify-modal form {
     width: calc(100% - 15px);
     display: flex;
     flex-direction: column;
@@ -89,18 +92,18 @@ input:-webkit-autofill:active{
     gap: 16px;
 }
 
-.notify-input{
+.notify-input {
     width: calc(100% - 30px);
     margin: 0 auto;
     border-radius: 6px;
-    border: 1px solid #BDBECB;
+    border: 1px solid #bdbecb;
     padding: 10px;
     position: relative;
 }
 
-.notify-submit{
+.notify-submit {
     margin-top: 10px;
-    background-color: #3D63F3;
+    background-color: #3d63f3;
     border: none;
     color: white;
     padding: 6px 16px;
@@ -108,9 +111,9 @@ input:-webkit-autofill:active{
     cursor: pointer;
 }
 
-.notify-submit--unclickable{
+.notify-submit--unclickable {
     margin-top: 10px;
-    background: #ECEDF3;
+    background: #ecedf3;
     color: #1d1d1d73;
     border: none;
     padding: 6px 16px;
@@ -119,35 +122,35 @@ input:-webkit-autofill:active{
     pointer-events: none;
 }
 
-.notify-input input{
+.notify-input input {
     border: unset;
 }
 
-.notify-input input::selected{
+.notify-input input::selected {
     background: unset;
 }
 
-.notify-input input:focus{
+.notify-input input:focus {
     outline: none;
 }
 
-.notify-submit{
+.notify-submit {
     width: 90px;
 }
 
-.invalid{
-    color: #C92454;
+.invalid {
+    color: #c92454;
     position: absolute;
     bottom: -16px;
     left: 0;
     font-size: 12px;
-    background-color: #FEE5EC;
+    background-color: #fee5ec;
     padding: 0 4px;
     border-radius: 2px;
 }
 
 @media screen and (max-width: 768px) {
-    .notify-modal{
+    .notify-modal {
         width: 405px;
         top: 25%;
         left: 25%;
@@ -155,16 +158,15 @@ input:-webkit-autofill:active{
 }
 
 @media screen and (max-width: 425px) {
-    .notify-modal{
+    .notify-modal {
         width: 385px;
         top: 25%;
         left: 10px;
     }
 }
 
-
 @media screen and (max-width: 375px) {
-    .notify-modal{
+    .notify-modal {
         width: 335px;
         top: 25%;
         left: 10px;
@@ -172,7 +174,7 @@ input:-webkit-autofill:active{
 }
 
 @media screen and (max-width: 320px) {
-    .notify-modal{
+    .notify-modal {
         width: 280px;
         top: 25%;
         left: 10px;

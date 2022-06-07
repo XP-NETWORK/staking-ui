@@ -1,10 +1,10 @@
-.gallery__wrapper{
+.gallery__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.gallery__header{
+.gallery__header {
     font-size: 34px;
     font-weight: 600;
     line-height: 43px;
@@ -13,59 +13,57 @@
     margin-bottom: 12px;
 }
 
-.gallery__subtitle{
+.gallery__subtitle {
     font-size: 16px;
     font-weight: 600;
     line-height: 43px;
-    letter-spacing: 3%; 
+    letter-spacing: 3%;
     margin-top: -10px;
     margin-bottom: 10px;
 }
 
-.gallery__search{
-    width: 60% !important; 
+.gallery__search {
+    width: 60% !important;
     display: flex;
     position: relative;
 }
 
-
-.nft-search{
+.nft-search {
     width: 100%;
     height: 52px;
     padding: 16px 52px 16px 14px;
     outline: none;
     border-radius: 8px;
-    border: 1px solid #E5E8F0;
+    border: 1px solid #e5e8f0;
 }
 
-.nft-search__items{
+.nft-search__items {
     position: absolute;
     top: 18.5px;
     right: 18.5px;
 }
 
-.gallery__container{
-   -ms-overflow-style: none;  /* IE and Edge */
-   scrollbar-width: none;  /* Firefox */
-   min-width: 200px;
-   padding-top: 10px;
-   padding-left: 6px;
-   margin-top: 39px;
-   display: flex;
-   flex-wrap: wrap;
-   gap: 18px;
-   height: calc(100vh - 290px) !important;
-   overflow: scroll;
-   overflow: auto;
+.gallery__container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    min-width: 200px;
+    padding-top: 10px;
+    padding-left: 6px;
+    margin-top: 39px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    height: calc(100vh - 290px) !important;
+    overflow: scroll;
+    overflow: auto;
     width: 90vw;
-
 }
 
 .gallery__container::-webkit-scrollbar {
     display: none;
-  }
+}
 
-.nft__box{
+.nft__box {
     max-width: 170px;
     height: 230px;
     display: flex;
@@ -73,23 +71,23 @@
     overflow: hidden;
     box-shadow: 0px 1px 14px rgba(17, 18, 48, 0.05);
     border-radius: 8px;
-    transition: .17s;
+    transition: 0.17s;
 }
 
-.nft__box:hover{
-    transform: scale(1.070);
+.nft__box:hover {
+    transform: scale(1.07);
     cursor: pointer;
 }
 
-.nft__box img{
+.nft__box img {
     width: 100%;
 }
 
-.nft__art{
+.nft__art {
     height: 170px;
 }
 
-.nft__add{
+.nft__add {
     background-color: #fff;
     height: 100%;
     display: flex;
@@ -97,9 +95,8 @@
     padding-top: 16px;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
     .gallery__container {
-      height: calc(100vh - 320px) !important;
+        height: calc(100vh - 320px) !important;
     }
-  }
-  
+}

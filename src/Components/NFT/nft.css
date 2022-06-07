@@ -1,5 +1,5 @@
-.token{
-    width: calc(100%/4);
+.token {
+    width: calc(100% / 4);
     opacity: 0.7;
     box-sizing: border-box;
     border-radius: 6px;
@@ -7,14 +7,14 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: .17s;
+    transition: 0.17s;
     overflow: hidden;
 }
 
-.token--disabled{
-    width: calc(100%/4);
+.token--disabled {
+    width: calc(100% / 4);
     opacity: 0.7;
-    border: 1px solid #E5E8F0;
+    border: 1px solid #e5e8f0;
     box-sizing: border-box;
     border-radius: 6px;
     display: flex;
@@ -25,13 +25,13 @@
     overflow: hidden;
 }
 
-.token:hover{
+.token:hover {
     opacity: 1;
 }
 
-.token--active{
+.token--active {
     opacity: 1;
-    width: calc(100%/4);
+    width: calc(100% / 4);
     opacity: 1;
     box-sizing: border-box;
     border-radius: 6px;
@@ -43,41 +43,39 @@
     overflow: hidden;
 }
 
-.token--disabled img{
+.token--disabled img {
     width: 100%;
     border-radius: 6px;
 }
 
-.token img{
+.token img {
     width: 100%;
     border-radius: 6px;
 }
 
-.token--active img{
+.token--active img {
     width: 100%;
     border-radius: 6px;
 }
 
 @media screen and (max-width: 600px) {
-    .token{
+    .token {
         width: 50px;
         height: 50px;
     }
-    .token--active{
+    .token--active {
         width: 50px;
-        height: 50px; 
+        height: 50px;
     }
 }
 
-
-@media screen and (max-width: 425px){
-    .token{
+@media screen and (max-width: 425px) {
+    .token {
         width: 50px;
         height: 50px;
     }
-    .token--active{
+    .token--active {
         width: 50px;
-        height: 50px; 
+        height: 50px;
     }
-
 }

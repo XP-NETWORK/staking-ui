@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     amount: '',
@@ -7,7 +7,7 @@ const initialState = {
     startTime: '',
     nftTokenId: '',
     nftTokenIndex: '',
-    availableRewards: "",
+    availableRewards: '',
     tokensArray: '',
     tokensAmount: '',
     agreement: true,
@@ -22,57 +22,60 @@ export const stakeSlice = createSlice({
     name: 'stakeData',
     initialState,
     reducers: {
-        updateAmount(state, action){
-             state.amount = action.payload
+        updateAmount(state, action) {
+            state.amount = action.payload
         },
-        updateDuration(state, action){
-             state.duration = action.payload
+        updateDuration(state, action) {
+            state.duration = action.payload
         },
-        updateStartDate(state, action){
+        updateStartDate(state, action) {
             state.startDate = action.payload
         },
-        updateStartTime(state, action){
+        updateStartTime(state, action) {
             state.startTime = action.payload
         },
-        updateNftTokenId(state, action){
+        updateNftTokenId(state, action) {
             state.nftTokenId = action.payload
         },
-        updateAvailableRewards(state, action){
+        updateAvailableRewards(state, action) {
             state.availableRewards = action.payload
         },
-        updateNftTokenIndex(state, action){
+        updateNftTokenIndex(state, action) {
             state.nftTokenIndex = action.payload
         },
-        updateTokensArray(state, action){
+        updateTokensArray(state, action) {
             state.tokensArray = action.payload
         },
-        updateTokensAmount(state, action){
+        updateTokensAmount(state, action) {
             state.tokensAmount = action.payload
         },
-        updateTokensAmountFlag(state, action){
+        updateTokensAmountFlag(state, action) {
             state.tokensAmountFlag = action.payload
         },
-        updateIndex(state, action){
+        updateIndex(state, action) {
             state.index = action.payload
         },
         updateWithdrawnAmount(state, action) {
             // console.log(action.payload, '1kl31kll')
             state.rewardWithdrawn = action.payload
         },
-        updateIsUnlocked(state, action){
+        updateIsUnlocked(state, action) {
             state.isUnlocked = action.payload
         },
-        updateImage(state, action){
-            state.image = [...new Map([...state.image, action.payload].map(item =>[item['token'], item])).values()]
+        updateImage(state, action) {
+            state.image = [
+                ...new Map(
+                    [...state.image, action.payload].map((item) => [item['token'], item])
+                ).values()
+            ]
         },
-        setNFTNotExist(state, action){
+        setNFTNotExist(state, action) {
             state.nftNotExist = action.payload
         }
-    },
-  })
+    }
+})
 
-
-export const { 
+export const {
     updateAmount,
     updateDuration,
     updateStartDate,
