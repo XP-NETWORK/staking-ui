@@ -13,7 +13,7 @@ import {
 import {stakeAddress} from './stake'
 
 //! XPNET
-export const xpAddress = '0xc1cF17AF04934B10f6D32913dE0EdA8A738822f5'
+export const xpAddress = '0x8cf8238abf7b933Bf8BB5Ea2C7E4Be101c11de2A'
 const axios = require('axios')
 // export let xpAddress =  process.env.NODE_ENV === "development"
 // ? '0x067AC3B5fE293624C7d2e2c0fE463D1687763E8C' : "0x8cf8238abf7b933bf8bb5ea2c7e4be101c11de2a"

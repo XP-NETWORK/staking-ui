@@ -36,7 +36,7 @@ export const walletconnect = new WalletConnectConnector({
 })
 
 //0xbC9091bE033b276b7c2244495699491167C20037
-export const stakeAddress = '0x6f863CDe10d0a7CdF5AD4A7E3D7fBC84a30212f8'
+export const stakeAddress = '0xbC9091bE033b276b7c2244495699491167C20037'
 const state = store.getState()
 const p = state.data.provider
 const W3 = new Web3(p === 'WalletCOnnect' ? walletconnect : window.ethereum)
@@ -154,6 +154,17 @@ export const getStakeById = async (id, index, library) => {
         store.dispatch(updateStartTime(info.startTime))
         store.dispatch(updateNftTokenId(info.nftTokenId))
         store.dispatch(updateWithdrawnAmount(info.rewardWithdrawn))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const unstakeButton = async (id, index, library) => {
+    // debugger
+    const Contract = await stakeContract(library)
+    try {
+        const info = await Contract.methods.stakes(id).call()
+        return info
     } catch (error) {
         console.log(error)
     }
